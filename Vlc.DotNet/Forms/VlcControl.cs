@@ -8,14 +8,23 @@ using Vlc.DotNet.Core;
 
 namespace Vlc.DotNet.Forms
 {
+    /// <summary>
+    /// Vlc WinForms Control
+    /// </summary>
     public sealed class VlcControl : Control, IVlcControl
     {
         private const int WM_NCPAINT = 0x85;
         private bool isFirstWM_NCPAINT = true;
 
+        /// <summary>
+        /// Manager of the VlcControl
+        /// </summary>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public VlcManager Manager { get; private set; }
 
+        /// <summary>
+        /// Constructor of VlcControl
+        /// </summary>
         public VlcControl()
         {
             Manager = new VlcManager();
@@ -32,6 +41,10 @@ namespace Vlc.DotNet.Forms
             }
         }
 
+        /// <summary>
+        /// Disposes of the resources (other than memory) used by the Vlc.DotNet.Forms.VlcControl.
+        /// </summary>
+        /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
         {
             Manager.Dispose();
@@ -41,6 +54,9 @@ namespace Vlc.DotNet.Forms
             }
         }
 
+        /// <summary>
+        /// Destructor of VlcControl
+        /// </summary>
         ~VlcControl()
         {
             Dispose(false);
