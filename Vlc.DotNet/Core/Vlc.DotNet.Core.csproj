@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B1C51DD7-9CD8-41E4-A288-CE950729DF59}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Vlc.DotNet.Core</RootNamespace>
+    <AssemblyName>Vlc.DotNet.Core</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Interop\Event\StateChangedEventArgs.cs" />
+    <Compile Include="Interop\Event\VlcCallbackArgs.cs" />
+    <Compile Include="Interop\Event\VlcEventArgs.cs" />
+    <Compile Include="Interop\Event\VlcEventManager.cs" />
+    <Compile Include="Interop\Event\VlcEventType.cs" />
+    <Compile Include="Interop\Event\VlcPausableChangedEventArgs.cs" />
+    <Compile Include="Interop\Event\VlcPositionChangedEventArgs.cs" />
+    <Compile Include="Interop\Event\VlcSeekableChangedEventArgs.cs" />
+    <Compile Include="Interop\Event\VlcTimeChangedEventArgs.cs" />
+    <Compile Include="Interop\InteropMethods.cs" />
+    <Compile Include="Interop\VideoLanClient.cs" />
+    <Compile Include="Interop\VideoLanManager.cs" />
+    <Compile Include="Interop\Vlc\VlcAudio.cs" />
+    <Compile Include="Interop\Vlc\VlcLog.cs" />
+    <Compile Include="Interop\Vlc\VlcLogMessage.cs" />
+    <Compile Include="Interop\Vlc\VlcMedia.cs" />
+    <Compile Include="Interop\Vlc\VlcMediaList.cs" />
+    <Compile Include="Interop\Vlc\VlcMediaListPlayer.cs" />
+    <Compile Include="Interop\Vlc\VlcMediaPlayer.cs" />
+    <Compile Include="Interop\Vlc\VlcVideo.cs" />
+    <Compile Include="Interop\Vlm\VlmBroadcastStream.cs" />
+    <Compile Include="Interop\Vlm\VlmStream.cs" />
+    <Compile Include="Interop\Vlm\VlmStreamCollection.cs" />
+    <Compile Include="Interop\Vlm\VlmVodStream.cs" />
+    <Compile Include="IVlcControl.cs" />
+    <Compile Include="Medias\MediaBase%271.cs" />
+    <Compile Include="Medias\FileMedia.cs" />
+    <Compile Include="Medias\MediaOptionsBase.cs" />
+    <Compile Include="Medias\MediaBase.cs" />
+    <Compile Include="Medias\MediaStates.cs" />
+    <Compile Include="Medias\PauseMedia.cs" />
+    <Compile Include="Medias\QuitMedia.cs" />
+    <Compile Include="Medias\ScreenCaptureMedia.cs" />
+    <Compile Include="Medias\ScreenCaptureOptions.cs" />
+    <Compile Include="Options\AlbumArtType.cs" />
+    <Compile Include="Options\Audio\AudioOptions.cs" />
+    <Compile Include="Options\Audio\AudioRate.cs" />
+    <Compile Include="Medias\FileOptions.cs" />
+    <Compile Include="Options\Audio\ForceDolbySuroundState.cs" />
+    <Compile Include="Options\SubTitle\AutoDetectFuzzyState.cs" />
+    <Compile Include="Options\IOption.cs" />
+    <Compile Include="Options\Languages.cs" />
+    <Compile Include="Options\Option.cs" />
+    <Compile Include="Options\OptionsBase.cs" />
+    <Compile Include="Options\Osd\OsdOptions.cs" />
+    <Compile Include="Options\Audio\ReplayGainModeType.cs" />
+    <Compile Include="Options\ScreenCapture\ScreenCaptureOptions.cs" />
+    <Compile Include="Options\SnapShot\SnapShotFormat.cs" />
+    <Compile Include="Options\SnapShot\SnapShotOptions.cs" />
+    <Compile Include="Options\SubTitle\SubTitle.cs" />
+    <Compile Include="Options\Video\VideoOptions.cs" />
+    <Compile Include="Options\Video\VideoTitlePositions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\Extenders\StringExtender.cs" />
+    <Compile Include="Utils\Throw.cs" />
+    <Compile Include="VlcManager.cs" />
+    <Compile Include="VlcManagerProperties.cs" />
+    <Compile Include="VlcMediaCollection.cs" />
+    <Compile Include="VlcMediaLibraryManager.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

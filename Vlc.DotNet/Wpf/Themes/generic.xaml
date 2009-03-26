@@ -1,0 +1,26 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Vlc.DotNet.Wpf"
+    xmlns:Forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+    >
+
+    <Style TargetType="{x:Type local:VlcControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:VlcControl}">
+                    <!--<Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="25" />
+                        </Grid.RowDefinitions>-->
+                    <WindowsFormsHost x:Name="WFH">
+                        <Forms:Panel Dock="Fill" x:Name="PnlBox" />
+                    </WindowsFormsHost>
+                    <!--Grid.Row="0" Grid.RowSpan="1" />-->
+                    <!--</Grid>-->
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
