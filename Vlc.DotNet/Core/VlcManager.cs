@@ -9,6 +9,9 @@ using Vlc.DotNet.Core.Utils;
 
 namespace Vlc.DotNet.Core
 {
+    /// <summary>
+    /// VlcManager class
+    /// </summary>
     [TypeConverterAttribute(typeof(ExpandableObjectConverter))]
     public sealed partial class VlcManager : IDisposable
     {
@@ -17,17 +20,29 @@ namespace Vlc.DotNet.Core
         private IntPtr handle = IntPtr.Zero;
         private string myVlcLibPath;
 
+        /// <summary>
+        /// VlcManager constructor
+        /// </summary>
         public VlcManager()
         {
             MediaLibrary = new VlcMediaLibraryManager();
         }
 
+        /// <summary>
+        /// Get/Set Media libray
+        /// </summary>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public VlcMediaLibraryManager MediaLibrary { get; set; }
 
+        /// <summary>
+        /// Get/Set autostart
+        /// </summary>
         [DefaultValue(false)]
         public bool AutoStart { get; set; }
 
+        /// <summary>
+        /// Get/Set the libvlc, libvlccore files path
+        /// </summary>
         public string VlcLibPath
         {
             get
@@ -86,8 +101,9 @@ namespace Vlc.DotNet.Core
             }
         }
 
-        #region IDisposable Members
-
+        /// <summary>
+        /// Dispose of VlcManager
+        /// </summary>
         public void Dispose()
         {
             if (client == null)
@@ -96,13 +112,17 @@ namespace Vlc.DotNet.Core
             client = null;
         }
 
-        #endregion
-
+        /// <summary>
+        /// Destructor of VlcManager
+        /// </summary>
         ~VlcManager()
         {
             Dispose();
         }
 
+        /// <summary>
+        /// Play selected media
+        /// </summary>
         public void Play()
         {
             Throw.IfNull(player, new DirectoryNotFoundException("Vlc libraries directory not found."));
@@ -128,7 +148,10 @@ namespace Vlc.DotNet.Core
                 player.Play();
             }
         }
-
+        /// <summary>
+        /// Play media argument
+        /// </summary>
+        /// <param name="media">Media to play</param>
         public void Play(MediaBase media)
         {
             MediaLibrary.MediaItems.Clear();
@@ -136,13 +159,17 @@ namespace Vlc.DotNet.Core
             MediaLibrary.SelectedMedia = media;
             Play();
         }
-
+        /// <summary>
+        /// Pause selected playing media
+        /// </summary>
         public void Pause()
         {
             if (player != null)
                 player.Pause();
         }
-
+        /// <summary>
+        /// Play previous media in the media library
+        /// </summary>
         public void Previous()
         {
             if (MediaLibrary == null)
@@ -153,7 +180,9 @@ namespace Vlc.DotNet.Core
             if (oldMedia != newMedia && player.State == VlcState.Playing)
                 Play();
         }
-
+        /// <summary>
+        /// Play next media in media library
+        /// </summary>
         public void Next()
         {
             if (MediaLibrary == null)
@@ -165,7 +194,9 @@ namespace Vlc.DotNet.Core
             if (oldMedia != newMedia && player.State == VlcState.Playing)
                 Play();
         }
-
+        /// <summary>
+        /// Stop playing selected media
+        /// </summary>
         public void Stop()
         {
             player.Stop();

@@ -6,6 +6,9 @@ using Vlc.DotNet.Core.Medias;
 
 namespace Vlc.DotNet.Core
 {
+    /// <summary>
+    /// VlcMediaLibraryManager class
+    /// </summary>
     [ContentProperty("MediaItems")]
     [TypeConverter(typeof(ExpandableObjectConverter))]
     public class VlcMediaLibraryManager
@@ -16,6 +19,9 @@ namespace Vlc.DotNet.Core
         private bool myrandom;
         private MediaBase mySelectedMedia;
 
+        /// <summary>
+        /// VlcMediaLibraryManager constructor
+        /// </summary>
         public VlcMediaLibraryManager()
         {
             mediaItems = new VlcMediaCollection();
@@ -25,6 +31,9 @@ namespace Vlc.DotNet.Core
             Loop = false;
         }
 
+        /// <summary>
+        /// Get/Set random playing medias
+        /// </summary>
         [DefaultValue(false)]
         public bool Random
         {
@@ -42,9 +51,15 @@ namespace Vlc.DotNet.Core
             }
         }
 
+        /// <summary>
+        /// Get/Set loop of media items
+        /// </summary>
         [DefaultValue(false)]
         public bool Loop { get; set; }
 
+        /// <summary>
+        /// List of medias
+        /// </summary>
         public VlcMediaCollection MediaItems
         {
             get
@@ -53,6 +68,9 @@ namespace Vlc.DotNet.Core
             }
         }
 
+        /// <summary>
+        /// Get/Set selected media
+        /// </summary>
         [Browsable(false)]
         public MediaBase SelectedMedia
         {

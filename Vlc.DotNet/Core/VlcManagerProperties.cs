@@ -23,6 +23,9 @@ namespace Vlc.DotNet.Core
         private bool myMute = false;
         private float myPosition = 0;
 
+        /// <summary>
+        /// Get/Set volume
+        /// </summary>
         [DefaultValue(100)]
         public int Volume
         {
@@ -41,6 +44,9 @@ namespace Vlc.DotNet.Core
                 OnPropertyChanged("Volume");
             }
         }
+        /// <summary>
+        /// Mute volume
+        /// </summary>
         [DefaultValue(false)]
         public bool Mute
         {
@@ -56,6 +62,9 @@ namespace Vlc.DotNet.Core
                 OnPropertyChanged("Mute");
             }
         }
+        /// <summary>
+        /// Position of selected playing media
+        /// </summary>
         [DefaultValue(0)]
         public float Position
         {
@@ -78,6 +87,9 @@ namespace Vlc.DotNet.Core
                 OnPropertyChanged("Position");
             }
         }
+        /// <summary>
+        /// Get/Set fullscreen
+        /// </summary>
         [DefaultValue(false)]
         public bool FullScreen
         {
