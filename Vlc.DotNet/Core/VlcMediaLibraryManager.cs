@@ -35,6 +35,7 @@ namespace Vlc.DotNet.Core
         /// Get/Set random playing medias
         /// </summary>
         [DefaultValue(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public bool Random
         {
             get
@@ -55,11 +56,13 @@ namespace Vlc.DotNet.Core
         /// Get/Set loop of media items
         /// </summary>
         [DefaultValue(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public bool Loop { get; set; }
 
         /// <summary>
         /// List of medias
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public VlcMediaCollection MediaItems
         {
             get
@@ -72,6 +75,7 @@ namespace Vlc.DotNet.Core
         /// Get/Set selected media
         /// </summary>
         [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public MediaBase SelectedMedia
         {
             get

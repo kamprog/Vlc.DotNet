@@ -15,7 +15,9 @@ namespace Vlc.DotNet.Core.Medias
             Video = new VideoOptions();
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public AudioOptions Audio { get; set; }
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public VideoOptions Video { get; set; }
 
         internal override void SetOptionsToMedia(string optionSeparator, VlcMedia media)

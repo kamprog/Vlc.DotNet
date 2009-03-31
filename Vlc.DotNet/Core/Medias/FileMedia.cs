@@ -1,4 +1,5 @@
-﻿using Vlc.DotNet.Core.Utils.Extenders;
+﻿using System.ComponentModel;
+using Vlc.DotNet.Core.Utils.Extenders;
 
 namespace Vlc.DotNet.Core.Medias
 {
@@ -6,6 +7,7 @@ namespace Vlc.DotNet.Core.Medias
     {
         private string myFilePath;
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public string FilePath
         {
             get

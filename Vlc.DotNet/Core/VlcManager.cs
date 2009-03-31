@@ -31,36 +31,8 @@ namespace Vlc.DotNet.Core
         /// <summary>
         /// Get/Set Media libray
         /// </summary>
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public VlcMediaLibraryManager MediaLibrary { get; set; }
-
-        /// <summary>
-        /// Get/Set autostart
-        /// </summary>
-        [DefaultValue(false)]
-        public bool AutoStart { get; set; }
-
-        /// <summary>
-        /// Get/Set the libvlc, libvlccore files path
-        /// </summary>
-        public string VlcLibPath
-        {
-            get
-            {
-                return myVlcLibPath;
-            }
-            set
-            {
-                myVlcLibPath = value;
-                if (!string.IsNullOrEmpty(value) &&
-                    Directory.Exists(value) &&
-                    File.Exists(Path.Combine(value, "libvlc.dll")) &&
-                    File.Exists(Path.Combine(value, "libvlccore.dll")))
-                {
-                    TryToCreateClient();
-                }
-            }
-        }
 
         [Browsable(false)]
         internal IntPtr ControlHandle
@@ -120,6 +92,7 @@ namespace Vlc.DotNet.Core
             Dispose();
         }
 
+        #region MediaController
         /// <summary>
         /// Play selected media
         /// </summary>
@@ -201,6 +174,29 @@ namespace Vlc.DotNet.Core
         {
             player.Stop();
             Position = 0;
+        }
+        #endregion
+
+        /// <summary>
+        /// Take a snapshot of the video
+        /// </summary>
+        /// <param name="filepath">File path of the snapshot</param>
+        public void TakeSnapShot(string filepath)
+        {
+            if (player != null && player.Video != null && (player.State == VlcState.Playing || player.State == VlcState.Paused))
+                TakeSnapShot(filepath, player.Video.Width, player.Video.Height);
+        }
+
+        /// <summary>
+        /// Take a snapshot of the video
+        /// </summary>
+        /// <param name="filepath">File path of the snapshot</param>
+        /// <param name="width">Width of the snapshot</param>
+        /// <param name="height">Height of the snapshot</param>
+        public void TakeSnapShot(string filepath, int width, int height)
+        {
+            if (player != null && player.Video != null && (player.State == VlcState.Playing || player.State == VlcState.Paused) && width > 0 && height > 0)
+                player.Video.TakeSnapShot(filepath, (uint) width, (uint) height);
         }
     }
 }

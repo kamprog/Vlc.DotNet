@@ -15,6 +15,7 @@ namespace Vlc.DotNet.Core.Medias
             Options = new T();
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public T Options { get; set; }
 
         protected internal override string[] RetrieveOptions()

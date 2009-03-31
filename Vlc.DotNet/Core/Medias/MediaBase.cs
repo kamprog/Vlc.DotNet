@@ -27,6 +27,7 @@ namespace Vlc.DotNet.Core.Medias
 
         internal string Prefix { get; set; }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string Title
         {
             get
@@ -53,6 +54,7 @@ namespace Vlc.DotNet.Core.Medias
             }
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public long Length
         {
             get
@@ -66,6 +68,7 @@ namespace Vlc.DotNet.Core.Medias
             }
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string Description
         {
             get
