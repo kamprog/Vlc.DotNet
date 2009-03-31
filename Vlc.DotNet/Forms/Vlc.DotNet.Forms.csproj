@@ -51,7 +51,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Vlc.DotNet.Core\Vlc.DotNet.Core.csproj">
+    <ProjectReference Include="..\Core\Vlc.DotNet.Core.csproj">
       <Project>{B1C51DD7-9CD8-41E4-A288-CE950729DF59}</Project>
       <Name>Vlc.DotNet.Core</Name>
     </ProjectReference>
