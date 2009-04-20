@@ -39,6 +39,8 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
     <Reference Include="WindowsBase">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
@@ -69,6 +71,7 @@
     <Compile Include="Interop\Vlm\VlmStreamCollection.cs" />
     <Compile Include="Interop\Vlm\VlmVodStream.cs" />
     <Compile Include="IVlcControl.cs" />
+    <Compile Include="Medias\CustomMedia.cs" />
     <Compile Include="Medias\MediaBase%271.cs" />
     <Compile Include="Medias\FileMedia.cs" />
     <Compile Include="Medias\MediaOptionsBase.cs" />
