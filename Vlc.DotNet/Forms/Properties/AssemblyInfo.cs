@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Vlc.DotNet.Forms")]
@@ -10,4 +9,4 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 [assembly: Guid("68198d0a-0636-44ad-8e92-b918e2c9354b")]
 [assembly: AssemblyVersion("0.1.0.*")]
-[assembly: AssemblyFileVersion("0.9.8.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]

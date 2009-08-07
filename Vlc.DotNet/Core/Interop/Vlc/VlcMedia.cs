@@ -4,6 +4,8 @@ namespace Vlc.DotNet.Core.Interop.Vlc
 {
     internal class VlcMedia : IDisposable
     {
+        #region Private Members
+
         /// <summary>
         /// COM pointer to a vlc exception.  We will only use 1 exception pointer, 
         /// so we must always clear it out after use
@@ -15,10 +17,11 @@ namespace Vlc.DotNet.Core.Interop.Vlc
         /// </summary>
         internal IntPtr p_media;
 
+        #endregion
+
         #region Properties
 
         #region public string MRL
-
         /// <summary>
         /// Gets the MRL of the VlcMedia
         /// </summary>
@@ -32,11 +35,8 @@ namespace Vlc.DotNet.Core.Interop.Vlc
                 return rtn;
             }
         }
-
         #endregion
-
         #region public VlcState State
-
         /// <summary>
         /// 
         /// Gets the State of the VlcMedia
@@ -51,11 +51,8 @@ namespace Vlc.DotNet.Core.Interop.Vlc
                 return rtn;
             }
         }
-
         #endregion
-
         #region public long Length
-
         /// <summary>
         /// Gets the Length of the VlcMedia
         /// </summary>
@@ -69,11 +66,8 @@ namespace Vlc.DotNet.Core.Interop.Vlc
                 return rtn;
             }
         }
-
         #endregion
-
         #region public bool IsPreparsed
-
         /// <summary>
         /// Gets the IsPreparsed of the VlcMedia
         /// </summary>
@@ -87,7 +81,6 @@ namespace Vlc.DotNet.Core.Interop.Vlc
                 return rtn;
             }
         }
-
         #endregion
 
         #endregion
@@ -95,19 +88,14 @@ namespace Vlc.DotNet.Core.Interop.Vlc
         #region Constructors/Destructors
 
         #region internal VlcMedia(IntPtr p_media)
-
         /// <summary>
         /// Initializes a new instance of the <b>VlcMedia</b> class.
         /// </summary>
         /// <param name="p_media"></param>
-        internal VlcMedia(IntPtr p_media) : this(p_media, false)
-        {
-        }
-
+        internal VlcMedia(IntPtr p_media) : this(p_media, false) { }
         #endregion
 
         #region internal VlcMedia(IntPtr p_media, bool retain)
-
         /// <summary>
         /// Initializes a new instance of the <b>VlcMedia</b> class.
         /// </summary>
@@ -126,11 +114,9 @@ namespace Vlc.DotNet.Core.Interop.Vlc
                 InteropMethods.libvlc_media_retain(p_media);
             }
         }
-
         #endregion
 
         #region ~VlcMedia()
-
         /// <summary>
         /// Releases unmanaged resources and performs other cleanup operations before 
         /// the <b>VlcMedia</b> is reclaimed by garbage collection.
@@ -139,7 +125,6 @@ namespace Vlc.DotNet.Core.Interop.Vlc
         {
             Dispose(false);
         }
-
         #endregion
 
         #endregion
@@ -157,8 +142,8 @@ namespace Vlc.DotNet.Core.Interop.Vlc
             // release managed code
             if (disposing)
             {
-            }
 
+            }
             //release unmanaged code
             if (p_media != IntPtr.Zero)
                 InteropMethods.libvlc_media_release(p_media);

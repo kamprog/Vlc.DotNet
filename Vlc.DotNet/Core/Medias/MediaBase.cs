@@ -10,7 +10,7 @@ namespace Vlc.DotNet.Core.Medias
         private long myLength;
         private MediaStates myStatus;
         private string myTitle;
-        internal Guid UniqueId = Guid.NewGuid();
+        internal Guid myUniqueId = Guid.NewGuid();
 
         protected MediaBase()
         {
@@ -77,7 +77,7 @@ namespace Vlc.DotNet.Core.Medias
             }
             internal set
             {
-                Description = value;
+                myDescription = value;
                 OnPropertyChanged("Description");
             }
         }
@@ -110,9 +110,7 @@ namespace Vlc.DotNet.Core.Medias
                 return (ReferenceEquals(m2, null));
             if (ReferenceEquals(m2, null))
                 return (ReferenceEquals(m1, null));
-            if (m1.UniqueId == m2.UniqueId)
-                return true;
-            return false;
+            return m1.myUniqueId == m2.myUniqueId;
         }
 
         public static bool operator !=(MediaBase m1, MediaBase m2)
@@ -124,24 +122,20 @@ namespace Vlc.DotNet.Core.Medias
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            return obj.UniqueId.Equals(UniqueId);
+            return obj.myUniqueId.Equals(myUniqueId);
         }
 
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof (MediaBase)) return false;
-            return Equals((MediaBase) obj);
+            if (obj.GetType() != typeof(MediaBase)) return false;
+            return Equals((MediaBase)obj);
         }
 
         public override int GetHashCode()
         {
-            unchecked
-            {
-                int result = UniqueId.GetHashCode();
-                return result;
-            }
+            return myUniqueId.GetHashCode();
         }
 
         protected void OnPropertyChanged(string name)

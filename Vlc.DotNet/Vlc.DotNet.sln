@@ -7,18 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vlc.DotNet.Wpf", "Wpf\Vlc.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vlc.DotNet.Forms", "Forms\Vlc.DotNet.Forms.csproj", "{A3CDE3EB-B87C-46DA-A04F-3FAF5AEB355B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{289796B4-9D94-4757-A3E6-A2607CB1870C}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.9.8a", "0.9.8a", "{85989BF7-1165-48BB-B721-64A08ABC61C0}"
-	ProjectSection(SolutionItems) = preProject
-		Docs\0.9.8a\vlc-help.txt = Docs\0.9.8a\vlc-help.txt
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.9.9", "0.9.9", "{8316F76C-F8A6-4303-8A62-DFB9287433E5}"
-	ProjectSection(SolutionItems) = preProject
-		Docs\0.9.9\vlc-help.txt = Docs\0.9.9\vlc-help.txt
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 4
@@ -55,9 +43,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{85989BF7-1165-48BB-B721-64A08ABC61C0} = {289796B4-9D94-4757-A3E6-A2607CB1870C}
-		{8316F76C-F8A6-4303-8A62-DFB9287433E5} = {289796B4-9D94-4757-A3E6-A2607CB1870C}
 	EndGlobalSection
 EndGlobal

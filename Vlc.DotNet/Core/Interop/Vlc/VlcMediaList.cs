@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace Vlc.DotNet.Core.Interop.Vlc
 {
     internal class VlcMediaList : IDisposable, IEnumerable<VlcMedia>
     {
-        internal VideoLanClient _Vlc;
+        #region Private Members
 
         /// <summary>
         /// COM pointer to a vlc exception.  We will only use 1 exception pointer, 
@@ -19,6 +18,10 @@ namespace Vlc.DotNet.Core.Interop.Vlc
         /// </summary>
         internal IntPtr p_mlist;
 
+        internal VideoLanClient _Vlc;
+
+        #endregion
+
         #region VlcMediaList Properties
 
         public int Count
@@ -30,7 +33,6 @@ namespace Vlc.DotNet.Core.Interop.Vlc
                 return rtn;
             }
         }
-
         public bool IsReadOnly
         {
             get
@@ -38,7 +40,6 @@ namespace Vlc.DotNet.Core.Interop.Vlc
                 return InteropMethods.libvlc_media_list_is_readonly(p_mlist);
             }
         }
-
         public VlcMedia this[int index]
         {
             get
@@ -55,7 +56,7 @@ namespace Vlc.DotNet.Core.Interop.Vlc
 
         internal VlcMediaList(VideoLanClient Vlc, IntPtr p_mlist)
         {
-            _Vlc = Vlc;
+            this._Vlc = Vlc;
 
             //set our Media list pointer
             this.p_mlist = p_mlist;
@@ -85,6 +86,7 @@ namespace Vlc.DotNet.Core.Interop.Vlc
             // release managed code
             if (disposing)
             {
+
             }
 
             //release unmanaged code
@@ -103,20 +105,17 @@ namespace Vlc.DotNet.Core.Interop.Vlc
             p_exception.CheckException();
             return rtn;
         }
-
         public void Add(VlcMedia item)
         {
             InteropMethods.libvlc_media_list_add_media(p_mlist, item.p_media, ref p_exception);
             p_exception.CheckException();
         }
-
         public VlcMedia AddNew(string mrl)
         {
             VlcMedia media = _Vlc.CreateMedia(mrl);
-            Add(media);
+            this.Add(media);
             return media;
         }
-
         public void Insert(int index, VlcMedia item)
         {
             InteropMethods.libvlc_media_list_insert_media(p_mlist, item.p_media, index, ref p_exception);
@@ -125,10 +124,9 @@ namespace Vlc.DotNet.Core.Interop.Vlc
 
         public bool Remove(VlcMedia item)
         {
-            RemoveAt(IndexOf(item));
+            this.RemoveAt(this.IndexOf(item));
             return true;
         }
-
         public void RemoveAt(int index)
         {
             InteropMethods.libvlc_media_list_remove_index(p_mlist, index, ref p_exception);
@@ -139,7 +137,6 @@ namespace Vlc.DotNet.Core.Interop.Vlc
         {
             InteropMethods.libvlc_media_list_lock(p_mlist);
         }
-
         public void Unlock()
         {
             InteropMethods.libvlc_media_list_unlock(p_mlist);
@@ -154,36 +151,27 @@ namespace Vlc.DotNet.Core.Interop.Vlc
             return new VlcMediaEnumerator(this);
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
             return new VlcMediaEnumerator(this);
         }
-
-        #endregion
 
         #region Custom Enumerator
 
         private class VlcMediaEnumerator : IEnumerator<VlcMedia>
         {
-            private readonly VlcMediaList _mlist;
+            private VlcMediaList _mlist;
             private int _index;
 
             #region Properties
 
             public object Current
             {
-                get
-                {
-                    return _mlist[_index];
-                }
+                get { return _mlist[_index]; }
             }
-
             VlcMedia IEnumerator<VlcMedia>.Current
             {
-                get
-                {
-                    return _mlist[_index];
-                }
+                get { return _mlist[_index]; }
             }
 
             #endregion
@@ -198,17 +186,19 @@ namespace Vlc.DotNet.Core.Interop.Vlc
 
             #endregion
 
-            #region IEnumerator<VlcMedia> Members
 
+            #region IEnumerator<VlcMediaList> Members
             public void Reset()
             {
                 _index = -1;
             }
-
             public bool MoveNext()
             {
                 return (++_index >= _mlist.Count);
             }
+            #endregion
+
+            #region IDisposable Members
 
             public void Dispose()
             {
@@ -216,7 +206,14 @@ namespace Vlc.DotNet.Core.Interop.Vlc
 
             #endregion
 
-            #endregion
+        #endregion
+
+
+
+
+
         }
+
+        #endregion
     }
 }

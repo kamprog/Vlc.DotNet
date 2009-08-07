@@ -57,7 +57,13 @@
     <Compile Include="Interop\Event\VlcTimeChangedEventArgs.cs" />
     <Compile Include="Interop\InteropMethods.cs" />
     <Compile Include="Interop\VideoLanClient.cs" />
-    <Compile Include="Interop\VideoLanManager.cs" />
+    <Compile Include="Interop\Vlc\Tracks\VlcAudioTracks.cs" />
+    <Compile Include="Interop\Vlc\Tracks\VlcChapters.cs" />
+    <Compile Include="Interop\Vlc\Tracks\VlcSubtitles.cs" />
+    <Compile Include="Interop\Vlc\Tracks\VlcTitles.cs" />
+    <Compile Include="Interop\Vlc\Tracks\VlcTrack.cs" />
+    <Compile Include="Interop\Vlc\Tracks\VlcTracks.cs" />
+    <Compile Include="Interop\Vlc\Tracks\VlcVideoTracks.cs" />
     <Compile Include="Interop\Vlc\VlcAudio.cs" />
     <Compile Include="Interop\Vlc\VlcLog.cs" />
     <Compile Include="Interop\Vlc\VlcLogMessage.cs" />
@@ -66,10 +72,6 @@
     <Compile Include="Interop\Vlc\VlcMediaListPlayer.cs" />
     <Compile Include="Interop\Vlc\VlcMediaPlayer.cs" />
     <Compile Include="Interop\Vlc\VlcVideo.cs" />
-    <Compile Include="Interop\Vlm\VlmBroadcastStream.cs" />
-    <Compile Include="Interop\Vlm\VlmStream.cs" />
-    <Compile Include="Interop\Vlm\VlmStreamCollection.cs" />
-    <Compile Include="Interop\Vlm\VlmVodStream.cs" />
     <Compile Include="IVlcControl.cs" />
     <Compile Include="Medias\CustomMedia.cs" />
     <Compile Include="Medias\MediaBase%271.cs" />

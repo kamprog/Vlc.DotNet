@@ -1,99 +1,130 @@
-﻿namespace Vlc.DotNet.Core.Interop.Vlc
+﻿using Vlc.DotNet.Core.Interop.Vlc.Tracks;
+
+namespace Vlc.DotNet.Core.Interop.Vlc
 {
     internal class VlcAudio
     {
-        internal VlcMediaPlayer _Player;
-
-        /// <summary>
-        /// COM pointer to a vlc exception.  We will only use 1 exception pointer, 
-        /// so we must always clear it out after use
-        /// </summary>
-        private libvlc_exception_t p_exception;
-
-        internal VlcAudio(VlcMediaPlayer Player)
+        private VlcMediaPlayer _Player;
+        internal VlcMediaPlayer Player
         {
-            _Player = Player;
-            //Initalize our exception pointer
-            p_exception = new libvlc_exception_t();
-            p_exception.Initalize();
+            get { return _Player; }
         }
 
+        private VlcAudioTracks _Tracks;
 
-        public int Channel
+
+        public AudioOutputChannel Channel
         {
             get
             {
-                int rtn = InteropMethods.libvlc_audio_get_channel(_Player._Vlc.p_instance, ref p_exception);
-                p_exception.CheckException();
-                return rtn;
+                lock (Player.player_lock)
+                {
+                    AudioOutputChannel rtn = InteropMethods.libvlc_audio_get_channel(_Player._Vlc.p_instance, ref Player.p_ex);
+                    Player.p_ex.CheckException();
+                    return rtn;
+                }
             }
             set
             {
-                InteropMethods.libvlc_audio_set_channel(_Player._Vlc.p_instance, value, ref p_exception);
-                p_exception.CheckException();
+                lock (Player.player_lock)
+                {
+                    InteropMethods.libvlc_audio_set_channel(_Player._Vlc.p_instance, value, ref Player.p_ex);
+                    Player.p_ex.CheckException();
+                }
             }
         }
-
         public bool Mute
         {
             get
             {
-                bool rtn = InteropMethods.libvlc_audio_get_mute(_Player._Vlc.p_instance, ref p_exception);
-                p_exception.CheckException();
-                return rtn;
+                lock (Player.player_lock)
+                {
+                    bool rtn = InteropMethods.libvlc_audio_get_mute(_Player._Vlc.p_instance, ref Player.p_ex);
+                    Player.p_ex.CheckException();
+                    return rtn;
+                }
             }
             set
             {
-                InteropMethods.libvlc_audio_set_mute(_Player._Vlc.p_instance, value, ref p_exception);
-                p_exception.CheckException();
+                lock (Player.player_lock)
+                {
+                    InteropMethods.libvlc_audio_set_mute(_Player._Vlc.p_instance, value, ref Player.p_ex);
+                    Player.p_ex.CheckException();
+                }
             }
         }
-
         public int Track
         {
             get
             {
-                int rtn = InteropMethods.libvlc_audio_get_track(_Player.p_media_player, ref p_exception);
-                p_exception.CheckException();
-                return rtn;
+                lock (Player.player_lock)
+                {
+                    int rtn = InteropMethods.libvlc_audio_get_track(_Player.p_media_player, ref Player.p_ex);
+                    Player.p_ex.CheckException();
+                    return rtn;
+                }
             }
             set
             {
-                InteropMethods.libvlc_audio_set_track(_Player.p_media_player, value, ref p_exception);
-                p_exception.CheckException();
+                lock (Player.player_lock)
+                {
+                    InteropMethods.libvlc_audio_set_track(_Player.p_media_player, value, ref Player.p_ex);
+                    Player.p_ex.CheckException();
+                }
             }
         }
-
         public int TrackCount
         {
             get
             {
-                int rtn = InteropMethods.libvlc_audio_get_track_count(_Player.p_media_player, ref p_exception);
-                p_exception.CheckException();
-                return rtn;
+                lock (Player.player_lock)
+                {
+                    int rtn = InteropMethods.libvlc_audio_get_track_count(_Player.p_media_player, ref Player.p_ex);
+                    Player.p_ex.CheckException();
+                    return rtn;
+                }
             }
         }
-
         public int Volume
         {
             get
             {
-                int rtn = InteropMethods.libvlc_audio_get_volume(_Player._Vlc.p_instance, ref p_exception);
-                p_exception.CheckException();
-                return rtn;
+                lock (Player.player_lock)
+                {
+                    int rtn = InteropMethods.libvlc_audio_get_volume(_Player._Vlc.p_instance, ref Player.p_ex);
+                    Player.p_ex.CheckException();
+                    return rtn;
+                }
             }
             set
             {
-                InteropMethods.libvlc_audio_set_volume(_Player._Vlc.p_instance, value, ref p_exception);
-                p_exception.CheckException();
+                lock (Player.player_lock)
+                {
+                    InteropMethods.libvlc_audio_set_volume(_Player._Vlc.p_instance, value, ref Player.p_ex);
+                    Player.p_ex.CheckException();
+                }
             }
         }
+        public VlcAudioTracks Tracks
+        {
+            get { return _Tracks; }
+        }
 
+
+        internal VlcAudio(VlcMediaPlayer Player)
+        {
+            _Player = Player;
+            _Tracks = new VlcAudioTracks(this);
+        }
 
         public void ToggleMute()
         {
-            InteropMethods.libvlc_audio_toggle_mute(_Player._Vlc.p_instance, ref p_exception);
-            p_exception.CheckException();
+            lock (Player.player_lock)
+            {
+                InteropMethods.libvlc_audio_toggle_mute(_Player._Vlc.p_instance, ref Player.p_ex);
+                Player.p_ex.CheckException();
+            }
         }
+
     }
 }

@@ -8,6 +8,7 @@
         MediaPreparsedChanged,
         MediaFreed,
         MediaStateChanged,
+
         MediaPlayerNothingSpecial,
         MediaPlayerOpening,
         MediaPlayerBuffering,
@@ -22,18 +23,24 @@
         MediaPlayerPositionChanged,
         MediaPlayerSeekableChanged,
         MediaPlayerPausableChanged,
+
         MediaListItemAdded,
         MediaListWillAddItem,
         MediaListItemDeleted,
         MediaListWillDeleteItem,
+
         MediaListViewItemAdded,
         MediaListViewWillAddItem,
         MediaListViewItemDeleted,
         MediaListViewWillDeleteItem,
+
         MediaListPlayerPlayed,
         MediaListPlayerNextItemSet,
         MediaListPlayerStopped,
+
         MediaDiscovererStarted,
-        MediaDiscovererEnded
+        MediaDiscovererEnded,
+        MediaPlayerTitleChanged,
+        MediaPlayerSnapshotTaken,
     }
 }

@@ -83,29 +83,12 @@ namespace Vlc.DotNet.Core.Interop
             //Set the directory to load the COM object libvlc.dll
             Environment.CurrentDirectory = VlcDirectory;
 
-            //Initalize our exception pointer
             p_exception = new libvlc_exception_t();
             p_exception.Initalize();
-            //create out vlc instance
             p_instance = InteropMethods.libvlc_new(args.Length, args, ref p_exception);
             p_exception.CheckException();
-            //cbSurfaceChanged = SurfacedChanged;
-            //InteropMethods.libd3d_surface_changed_callback(cbSurfaceChanged);
-            //restore the original EnviornmentDirectory.
             Environment.CurrentDirectory = originalDir;
         }
-
-        //private void SurfacedChanged(IntPtr Handle, IntPtr Surface)
-        //{
-        //    if (SurfacePtrs.ContainsKey(Handle))
-        //    {
-        //        SurfacePtrs[Handle] = Surface;
-        //    }
-        //    else
-        //    {
-        //        SurfacePtrs.Add(Handle, Surface);
-        //    }
-        //}
 
         public VlcMedia CreateMedia(string MRL)
         {
@@ -132,7 +115,7 @@ namespace Vlc.DotNet.Core.Interop
         {
             IntPtr p_media_player = InteropMethods.libvlc_media_player_new(p_instance, ref p_exception);
             p_exception.CheckException();
-            InteropMethods.libvlc_media_player_set_drawable(p_media_player, parent, ref p_exception);
+            InteropMethods.libvlc_media_player_set_nsobject(p_media_player, parent, ref p_exception);
             p_exception.CheckException();
             return new VlcMediaPlayer(this, p_media_player);
         }
@@ -141,14 +124,14 @@ namespace Vlc.DotNet.Core.Interop
         {
             IntPtr p_media_player = InteropMethods.libvlc_media_player_new_from_media(media.p_media, ref p_exception);
             p_exception.CheckException();
-            InteropMethods.libvlc_media_player_set_drawable(p_media_player, parent, ref p_exception);
+            InteropMethods.libvlc_media_player_set_nsobject(p_media_player, parent, ref p_exception);
             p_exception.CheckException();
             return new VlcMediaPlayer(this, p_media_player);
         }
 
         public void SetControlToMediaPlayer(IntPtr p_media_player, IntPtr parent)
         {
-            InteropMethods.libvlc_media_player_set_drawable(p_media_player, parent, ref p_exception);
+            InteropMethods.libvlc_media_player_set_nsobject(p_media_player, parent, ref p_exception);
             p_exception.CheckException();
         }
 
@@ -162,7 +145,7 @@ namespace Vlc.DotNet.Core.Interop
         {
             IntPtr p_media_player = InteropMethods.libvlc_media_player_new(p_instance, ref p_exception);
             p_exception.CheckException();
-            InteropMethods.libvlc_media_player_set_drawable(p_media_player, parent, ref p_exception);
+            InteropMethods.libvlc_media_player_set_nsobject(p_media_player, parent, ref p_exception);
             p_exception.CheckException();
             IntPtr p_ml_player = InteropMethods.libvlc_media_list_player_new(p_instance, ref p_exception);
             p_exception.CheckException();

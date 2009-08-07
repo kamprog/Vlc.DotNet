@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace Vlc.DotNet.Core.Interop.Event
 {
+
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     internal delegate void VlcCallback(ref VlcCallbackArgs Event, IntPtr UserData);
 
@@ -70,22 +71,27 @@ namespace Vlc.DotNet.Core.Interop.Event
         public media_list_view_will_delete_item media_list_view_will_delete_item;
 
         [FieldOffset(16)]
-        public media_media_discoverer_started media_media_discoverer_started;
+        public media_player_snapshot_taken media_player_snapshot_taken;
 
-        [FieldOffset(16)]
-        public media_media_discoverer_ended media_media_discoverer_ended;
+        //[FieldOffset(16)]
+        //public media_media_discoverer_started media_media_discoverer_started;
+
+        //[FieldOffset(16)]
+        //public media_media_discoverer_ended media_media_discoverer_ended;
     }
+
+    #region media descriptor
 
     [StructLayout(LayoutKind.Sequential)]
     internal struct media_meta_changed
     {
-        private libvlc_meta_t meta_type;
+        libvlc_meta_t meta_type;
     }
 
     [StructLayout(LayoutKind.Sequential)]
     internal struct media_subitem_added
     {
-        private IntPtr p_media;
+        IntPtr p_media;
     }
 
     [StructLayout(LayoutKind.Sequential)]
@@ -93,7 +99,6 @@ namespace Vlc.DotNet.Core.Interop.Event
     {
         public long new_duration;
     }
-
     [StructLayout(LayoutKind.Sequential)]
     internal struct media_preparsed_changed
     {
@@ -111,6 +116,10 @@ namespace Vlc.DotNet.Core.Interop.Event
     {
         public VlcState new_state;
     }
+
+    #endregion
+
+    #region media player
 
     [StructLayout(LayoutKind.Sequential)]
     internal struct media_player_position_changed
@@ -136,6 +145,15 @@ namespace Vlc.DotNet.Core.Interop.Event
         public long new_pausable;
     }
 
+    [StructLayout(LayoutKind.Sequential)]
+    internal struct media_player_snapshot_taken
+    {
+        //[MarshalAs(UnmanagedType.LPStr)]
+        public IntPtr psz_filename;
+    }
+    #endregion
+
+    #region media list
     [StructLayout(LayoutKind.Sequential)]
     internal struct media_list_item_added
     {
@@ -163,7 +181,9 @@ namespace Vlc.DotNet.Core.Interop.Event
         public IntPtr p_media;
         public int index;
     }
+    #endregion
 
+    #region media list view
     [StructLayout(LayoutKind.Sequential)]
     internal struct media_list_view_item_added
     {
@@ -191,7 +211,9 @@ namespace Vlc.DotNet.Core.Interop.Event
         public IntPtr p_media;
         public int index;
     }
+    #endregion
 
+    #region media discoverer
     [StructLayout(LayoutKind.Sequential)]
     internal struct media_media_discoverer_started
     {
@@ -203,4 +225,5 @@ namespace Vlc.DotNet.Core.Interop.Event
     {
         public IntPtr unused;
     }
+    #endregion
 }
