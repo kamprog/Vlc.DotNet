@@ -7,11 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vlc.DotNet.Wpf", "Wpf\Vlc.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vlc.DotNet.Forms", "Forms\Vlc.DotNet.Forms.csproj", "{A3CDE3EB-B87C-46DA-A04F-3FAF5AEB355B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vlc.DotNet.Forms.Exemple", "Vlc.DotNet.Forms.Exemple\Vlc.DotNet.Forms.Exemple.csproj", "{886B8533-446C-4BFF-9998-856A248D79BC}"
-EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 5
+		SccNumberOfProjects = 4
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs10.codeplex.com/
 		SccLocalPath0 = .
@@ -24,9 +22,6 @@ Global
 		SccProjectUniqueName3 = Wpf\\Vlc.DotNet.Wpf.csproj
 		SccProjectName3 = Wpf
 		SccLocalPath3 = Wpf
-		SccProjectUniqueName4 = Vlc.DotNet.Forms.Exemple\\Vlc.DotNet.Forms.Exemple.csproj
-		SccProjectName4 = Vlc.DotNet.Forms.Exemple
-		SccLocalPath4 = Vlc.DotNet.Forms.Exemple
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,10 +40,6 @@ Global
 		{A3CDE3EB-B87C-46DA-A04F-3FAF5AEB355B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3CDE3EB-B87C-46DA-A04F-3FAF5AEB355B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3CDE3EB-B87C-46DA-A04F-3FAF5AEB355B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{886B8533-446C-4BFF-9998-856A248D79BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{886B8533-446C-4BFF-9998-856A248D79BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{886B8533-446C-4BFF-9998-856A248D79BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{886B8533-446C-4BFF-9998-856A248D79BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
