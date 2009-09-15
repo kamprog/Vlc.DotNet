@@ -22,7 +22,7 @@ namespace Vlc.DotNet.Core.Medias
         }
 
         public FileMedia()
-            : base("file://{0}")
+            : base("file:///{0}")
         {
         }
 
@@ -36,6 +36,11 @@ namespace Vlc.DotNet.Core.Medias
         protected internal override string RetrieveMrl()
         {
             return Prefix.FormatIt(FilePath);
+        }
+
+        public override string ToString()
+        {
+            return FilePath;
         }
     }
 }

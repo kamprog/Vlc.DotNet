@@ -591,8 +591,8 @@ namespace Vlc.DotNet.Core.Interop
         /// <param name="p_media_player"></param>
         /// <param name="handle"></param>
         /// <param name="p_exception"></param>
-        [DllImport("libvlc")]
-        internal static extern void libvlc_media_player_set_nsobject(IntPtr p_media_player, IntPtr handle, ref libvlc_exception_t p_exception);
+        //[DllImport("libvlc")]
+        //internal static extern void libvlc_media_player_set_nsobject(IntPtr p_media_player, IntPtr handle, ref libvlc_exception_t p_exception);
         #endregion
         #region internal static extern IntPtr libvlc_media_player_get_nsobject(IntPtr p_media_player, ref libvlc_exception_t p_exception)
         /// <summary>
@@ -601,9 +601,10 @@ namespace Vlc.DotNet.Core.Interop
         /// <param name="p_media_player"></param>
         /// <param name="p_exception"></param>
         /// <returns></returns>
-        [DllImport("libvlc")]
-        internal static extern IntPtr libvlc_media_player_get_nsobject(IntPtr p_media_player, ref libvlc_exception_t p_exception);
+        //[DllImport("libvlc")]
+        //internal static extern IntPtr libvlc_media_player_get_nsobject(IntPtr p_media_player, ref libvlc_exception_t p_exception);
         #endregion
+
         #region internal static extern void libvlc_media_player_set_agl(IntPtr p_media_player, UInt32 handle, ref libvlc_exception_t p_exception)
         /// <summary>
         /// Set the agl handler where the media player should render its video output.

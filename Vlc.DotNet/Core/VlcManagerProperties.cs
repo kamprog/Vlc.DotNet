@@ -49,8 +49,8 @@ namespace Vlc.DotNet.Core
                 if (value < 0 || value > 200)
                     Throw.Exception("Value must be between 0 and 200.");
                 myVolume = value;
-                if (player != null)
-                    player.Audio.Volume = value;
+                if (myPlayer != null)
+                    myPlayer.Audio.Volume = value;
                 OnPropertyChanged("Volume");
             }
         }
@@ -66,8 +66,8 @@ namespace Vlc.DotNet.Core
             set
             {
                 myMute = value;
-                if (player != null)
-                    player.Audio.Mute = value;
+                if (myPlayer != null)
+                    myPlayer.Audio.Mute = value;
                 OnPropertyChanged("Mute");
             }
         }
@@ -88,8 +88,8 @@ namespace Vlc.DotNet.Core
                     return;
 
                 myPosition = value;
-                if (player != null && player.State == VlcState.Playing)
-                    player.Position = value;
+                if (myPlayer != null && myPlayer.State == VlcState.Playing)
+                    myPlayer.Position = value;
                 else
                     myPosition = 0;
                 OnPropertyChanged("Position");
@@ -105,22 +105,21 @@ namespace Vlc.DotNet.Core
         {
             get
             {
-                if (player != null)
+                if (myPlayer != null)
                 {
-                    if (player.State == VlcState.Playing || player.State == VlcState.Paused)
+                    if (myPlayer.State == VlcState.Playing || myPlayer.State == VlcState.Paused)
                     {
-                        return player.Video.FullScreen;
+                        return myPlayer.Video.FullScreen;
                     }
                 }
                 return false;
             }
             set
             {
-                if (player != null && player.State == VlcState.Playing)
-                {
-                    player.Video.FullScreen = value;
-                    OnPropertyChanged("FullScreen");
-                }
+                if (myPlayer == null || myPlayer.State != VlcState.Playing) 
+                    return;
+                myPlayer.Video.FullScreen = value;
+                OnPropertyChanged("FullScreen");
             }
         }
 

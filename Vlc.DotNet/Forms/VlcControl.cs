@@ -27,8 +27,10 @@ namespace Vlc.DotNet.Forms
         /// </summary>
         public VlcControl()
         {
-            Manager = new VlcManager();
             BackColor = Color.Black;
+            if(DesignMode)
+                return;
+            Manager = new VlcManager();
             try
             {
                 CreateHandle();

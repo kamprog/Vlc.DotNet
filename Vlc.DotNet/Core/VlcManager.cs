@@ -15,9 +15,9 @@ namespace Vlc.DotNet.Core
     [TypeConverterAttribute(typeof(ExpandableObjectConverter))]
     public sealed partial class VlcManager : IDisposable
     {
-        private VlcMediaPlayer player;
-        private VideoLanClient client;
-        private IntPtr handle = IntPtr.Zero;
+        private VlcMediaPlayer myPlayer;
+        private VideoLanClient myClient;
+        private IntPtr myHandle = IntPtr.Zero;
         private string myVlcLibPath;
 
         /// <summary>
@@ -39,38 +39,38 @@ namespace Vlc.DotNet.Core
         {
             set
             {
-                handle = value;
+                myHandle = value;
                 TryToCreateClient();
             }
         }
 
         private void TryToCreateClient()
         {
-            if (handle != IntPtr.Zero)
-            {
-                string path = string.IsNullOrEmpty(myVlcLibPath) ? AppDomain.CurrentDomain.BaseDirectory : myVlcLibPath;
-                if (File.Exists(Path.Combine(path, "libvlc.dll")) &&
-                    File.Exists(Path.Combine(path, "libvlccore.dll")))
+            if (myHandle == IntPtr.Zero)
+                return;
+
+            string path = string.IsNullOrEmpty(myVlcLibPath) ? AppDomain.CurrentDomain.BaseDirectory : myVlcLibPath;
+            if (!File.Exists(Path.Combine(path, "libvlc.dll")) || !File.Exists(Path.Combine(path, "libvlccore.dll")))
+                return;
+            myClient = new VideoLanClient(path);
+            myClient.PluginPath = Path.Combine(path, "plugins");
+            myPlayer = myClient.CreateMediaPlayer(myHandle);
+            myPlayer.Audio.Volume = Volume;
+            myPlayer.Audio.Mute = Mute;
+            //todo
+            //myPlayer.PositionChanged +=
+            //    delegate(object sender, VlcPositionChangedEventArgs e)
+            //    {
+            //        Position = e.Position;
+            //    };
+            myPlayer.StateChanged +=
+                delegate(object sender, VlcStateChangedEventArgs e)
                 {
-                    client = new VideoLanClient(path);
-                    player = client.CreateMediaPlayer(handle);
-                    player.Audio.Volume = Volume;
-                    player.Audio.Mute = Mute;
-                    player.PositionChanged +=
-                        delegate(object sender, VlcPositionChangedEventArgs e)
-                        {
-                            Position = e.Position;
-                        };
-                    player.StateChanged +=
-                        delegate(object sender, VlcStateChangedEventArgs e)
-                        {
-                            if (e.NewState == VlcState.Ended)
-                            {
-                                Position = 0;
-                            }
-                        };
-                }
-            }
+                    if (e.NewState == VlcState.Ended)
+                    {
+                        Position = 0;
+                    }
+                };
         }
 
         /// <summary>
@@ -78,10 +78,10 @@ namespace Vlc.DotNet.Core
         /// </summary>
         public void Dispose()
         {
-            if (client == null)
+            if (myClient == null)
                 return;
-            client.Dispose();
-            client = null;
+            myClient.Dispose();
+            myClient = null;
         }
 
         /// <summary>
@@ -98,9 +98,9 @@ namespace Vlc.DotNet.Core
         /// </summary>
         public void Play()
         {
-            Throw.IfNull(player, new DirectoryNotFoundException("Vlc libraries directory not found."));
+            Throw.IfNull(myPlayer, new DirectoryNotFoundException("Vlc libraries directory not found."));
 
-            if (MediaLibrary.MediaItems.Count > 0 && MediaLibrary.SelectedMedia == null && player.State != VlcState.Playing)
+            if (MediaLibrary.MediaItems.Count > 0 && MediaLibrary.SelectedMedia == null && myPlayer.State != VlcState.Playing)
             {
                 Next();
             }
@@ -108,18 +108,18 @@ namespace Vlc.DotNet.Core
             {
                 Next();
             }
-            if (MediaLibrary.MediaItems.Count > 0 && MediaLibrary.SelectedMedia != null)
+            if (MediaLibrary.MediaItems.Count <= 0 || MediaLibrary.SelectedMedia == null)
+                return;
+
+            using (var media = myClient.CreateMedia(MediaLibrary.SelectedMedia.RetrieveMrl()))
             {
-                using (VlcMedia media = client.CreateMedia(MediaLibrary.SelectedMedia.RetrieveMrl()))
+                foreach (var option in MediaLibrary.SelectedMedia.RetrieveOptions())
                 {
-                    foreach (string option in MediaLibrary.SelectedMedia.RetrieveOptions())
-                    {
-                        media.AddOption(option);
-                    }
-                    player.Load(media);
+                    media.AddOption(option);
                 }
-                player.Play();
+                myPlayer.Load(media);
             }
+            myPlayer.Play();
         }
         /// <summary>
         /// Play media argument
@@ -137,8 +137,8 @@ namespace Vlc.DotNet.Core
         /// </summary>
         public void Pause()
         {
-            if (player != null)
-                player.Pause();
+            if (myPlayer != null)
+                myPlayer.Pause();
         }
         /// <summary>
         /// Play previous media in the media library
@@ -150,7 +150,7 @@ namespace Vlc.DotNet.Core
             MediaBase oldMedia = MediaLibrary.SelectedMedia;
             MediaLibrary.Previous();
             MediaBase newMedia = MediaLibrary.SelectedMedia;
-            if (oldMedia != newMedia && player.State == VlcState.Playing)
+            if (oldMedia != newMedia && myPlayer.State == VlcState.Playing)
                 Play();
         }
         /// <summary>
@@ -164,7 +164,7 @@ namespace Vlc.DotNet.Core
             MediaLibrary.Next();
             MediaBase newMedia = MediaLibrary.SelectedMedia;
 
-            if (oldMedia != newMedia && player.State == VlcState.Playing)
+            if (oldMedia != newMedia && myPlayer.State == VlcState.Playing)
                 Play();
         }
         /// <summary>
@@ -172,7 +172,7 @@ namespace Vlc.DotNet.Core
         /// </summary>
         public void Stop()
         {
-            player.Stop();
+            myPlayer.Stop();
             Position = 0;
         }
         #endregion
@@ -183,8 +183,8 @@ namespace Vlc.DotNet.Core
         /// <param name="filepath">File path of the snapshot</param>
         public void TakeSnapShot(string filepath)
         {
-            if (player != null && player.Video != null && (player.State == VlcState.Playing || player.State == VlcState.Paused))
-                TakeSnapShot(filepath, player.Video.Width, player.Video.Height);
+            if (myPlayer != null && myPlayer.Video != null && (myPlayer.State == VlcState.Playing || myPlayer.State == VlcState.Paused))
+                TakeSnapShot(filepath, myPlayer.Video.Width, myPlayer.Video.Height);
         }
 
         /// <summary>
@@ -195,8 +195,8 @@ namespace Vlc.DotNet.Core
         /// <param name="height">Height of the snapshot</param>
         public void TakeSnapShot(string filepath, int width, int height)
         {
-            if (player != null && player.Video != null && (player.State == VlcState.Playing || player.State == VlcState.Paused) && width > 0 && height > 0)
-                player.Video.TakeSnapShot(filepath, (uint) width, (uint) height);
+            if (myPlayer != null && myPlayer.Video != null && (myPlayer.State == VlcState.Playing || myPlayer.State == VlcState.Paused) && width > 0 && height > 0)
+                myPlayer.Video.TakeSnapShot(filepath, (uint)width, (uint)height);
         }
     }
 }
