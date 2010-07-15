@@ -1,0 +1,250 @@
+Microsoft (R) COFF/PE Dumper Version 10.00.30319.01
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+
+Dump of file libvlc.dll
+
+File Type: DLL
+
+  Section contains the following exports for libvlc.dll
+
+    00000000 characteristics
+    4C1EB2FB time date stamp Mon Jun 21 02:31:55 2010
+        0.00 version
+           1 ordinal base
+         220 number of functions
+         220 number of names
+
+    ordinal hint RVA      name
+
+          1    0 00001240 libvlc_add_intf
+          2    1 00005A60 libvlc_audio_get_channel
+          3    2 00005ED0 libvlc_audio_get_mute
+          4    3 00005C90 libvlc_audio_get_track
+          5    4 00005B40 libvlc_audio_get_track_count
+          6    5 00005E20 libvlc_audio_get_track_description
+          7    6 00005EA0 libvlc_audio_get_volume
+          8    7 00006270 libvlc_audio_output_device_count
+          9    8 00006040 libvlc_audio_output_device_id
+         10    9 00006150 libvlc_audio_output_device_longname
+         11    A 00005F40 libvlc_audio_output_device_set
+         12    B 00005AD0 libvlc_audio_output_get_device_type
+         13    C 000063B0 libvlc_audio_output_list_get
+         14    D 00006000 libvlc_audio_output_list_release
+         15    E 00006360 libvlc_audio_output_set
+         16    F 000059E0 libvlc_audio_output_set_device_type
+         17   10 00005960 libvlc_audio_set_channel
+         18   11 00005EF0 libvlc_audio_set_mute
+         19   12 00005BC0 libvlc_audio_set_track
+         20   13 00005E40 libvlc_audio_set_volume
+         21   14 00005F20 libvlc_audio_toggle_mute
+         22   15 000015C0 libvlc_clearerr
+         23   16 000015E0 libvlc_errmsg
+         24   17 00006D30 libvlc_event_attach
+         25   18 00006510 libvlc_event_detach
+         26   19 00007490 libvlc_event_manager_new
+         27   1A 000075C0 libvlc_event_manager_register_event_type
+         28   1B 00007500 libvlc_event_manager_release
+         29   1C 00006D60 libvlc_event_send
+         30   1D 00006A80 libvlc_event_type_name
+         31   1E 000011F0 libvlc_get_changeset
+         32   1F 00001200 libvlc_get_compiler
+         33   20 000043C0 libvlc_get_fullscreen
+         34   21 000097D0 libvlc_get_input_thread
+         35   22 000016A0 libvlc_get_log_verbosity
+         36   23 00001210 libvlc_get_version
+         37   24 00001850 libvlc_log_clear
+         38   25 00001A30 libvlc_log_close
+         39   26 00001770 libvlc_log_count
+         40   27 000017D0 libvlc_log_get_iterator
+         41   28 000017C0 libvlc_log_iterator_free
+         42   29 000016C0 libvlc_log_iterator_has_next
+         43   2A 000016E0 libvlc_log_iterator_next
+         44   2B 00001A80 libvlc_log_open
+         45   2C 00008440 libvlc_media_add_option
+         46   2D 00008420 libvlc_media_add_option_flag
+         47   2E 0000C770 libvlc_media_discoverer_event_manager
+         48   2F 0000C780 libvlc_media_discoverer_is_running
+         49   30 0000C7B0 libvlc_media_discoverer_localized_name
+         50   31 0000C790 libvlc_media_discoverer_media_list
+         51   32 0000CA90 libvlc_media_discoverer_new_from_name
+         52   33 0000CC90 libvlc_media_discoverer_release
+         53   34 00008650 libvlc_media_duplicate
+         54   35 00007B60 libvlc_media_event_manager
+         55   36 00007F60 libvlc_media_get_duration
+         56   37 00008170 libvlc_media_get_meta
+         57   38 00008270 libvlc_media_get_mrl
+         58   39 00007B50 libvlc_media_get_state
+         59   3A 00007E10 libvlc_media_get_stats
+         60   3B 00007B90 libvlc_media_get_tracks_info
+         61   3C 00007B80 libvlc_media_get_user_data
+         62   3D 00007EA0 libvlc_media_is_parsed
+         63   3E 0000C620 libvlc_media_library_load
+         64   3F 0000C5F0 libvlc_media_library_media_list
+         65   40 0000C710 libvlc_media_library_new
+         66   41 0000C6D0 libvlc_media_library_release
+         67   42 0000C5E0 libvlc_media_library_retain
+         68   43 0000AB90 libvlc_media_list_add_file_content
+         69   44 0000AB40 libvlc_media_list_add_media
+         70   45 0000A680 libvlc_media_list_count
+         71   46 0000A770 libvlc_media_list_event_manager
+         72   47 0000A690 libvlc_media_list_index_of_item
+         73   48 0000AEF0 libvlc_media_list_insert_media
+         74   49 0000A760 libvlc_media_list_is_readonly
+         75   4A 0000A7E0 libvlc_media_list_item_at_index
+         76   4B 0000A790 libvlc_media_list_lock
+         77   4C 0000A830 libvlc_media_list_media
+         78   4D 0000AD10 libvlc_media_list_new
+         79   4E 0000AF50 libvlc_media_list_player_event_manager
+         80   4F 0000B240 libvlc_media_list_player_get_state
+         81   50 0000B270 libvlc_media_list_player_is_playing
+         82   51 0000B2D0 libvlc_media_list_player_new
+         83   52 0000C3B0 libvlc_media_list_player_next
+         84   53 0000C580 libvlc_media_list_player_pause
+         85   54 0000C510 libvlc_media_list_player_play
+         86   55 0000B680 libvlc_media_list_player_play_item
+         87   56 0000B760 libvlc_media_list_player_play_item_at_index
+         88   57 0000C310 libvlc_media_list_player_previous
+         89   58 0000C410 libvlc_media_list_player_release
+         90   59 0000B880 libvlc_media_list_player_set_media_list
+         91   5A 0000B920 libvlc_media_list_player_set_media_player
+         92   5B 0000B620 libvlc_media_list_player_set_playback_mode
+         93   5C 0000B800 libvlc_media_list_player_stop
+         94   5D 0000AC60 libvlc_media_list_release
+         95   5E 0000A9C0 libvlc_media_list_remove_index
+         96   5F 0000A7A0 libvlc_media_list_retain
+         97   60 0000A870 libvlc_media_list_set_media
+         98   61 0000A780 libvlc_media_list_unlock
+         99   62 00008700 libvlc_media_new_as_node
+        100   63 00008470 libvlc_media_new_from_input_item
+        101   64 00008780 libvlc_media_new_location
+        102   65 00008800 libvlc_media_new_path
+        103   66 00007EF0 libvlc_media_parse
+        104   67 00007EC0 libvlc_media_parse_async
+        105   68 00009860 libvlc_media_player_can_pause
+        106   69 00008850 libvlc_media_player_event_manager
+        107   6A 00008890 libvlc_media_player_get_agl
+        108   6B 0000A210 libvlc_media_player_get_chapter
+        109   6C 00009E40 libvlc_media_player_get_chapter_count
+        110   6D 00009DB0 libvlc_media_player_get_chapter_count_for_title
+        111   6E 00009B50 libvlc_media_player_get_fps
+        112   6F 000088F0 libvlc_media_player_get_hwnd
+        113   70 0000A320 libvlc_media_player_get_length
+        114   71 00008C00 libvlc_media_player_get_media
+        115   72 00008870 libvlc_media_player_get_nsobject
+        116   73 00009F10 libvlc_media_player_get_position
+        117   74 000088A0 libvlc_media_player_get_rate
+        118   75 00008970 libvlc_media_player_get_state
+        119   76 0000A280 libvlc_media_player_get_time
+        120   77 0000A1A0 libvlc_media_player_get_title
+        121   78 00009CC0 libvlc_media_player_get_title_count
+        122   79 0000A160 libvlc_media_player_get_xwindow
+        123   7A 00004060 libvlc_media_player_has_vout
+        124   7B 000089B0 libvlc_media_player_is_playing
+        125   7C 000099F0 libvlc_media_player_is_seekable
+        126   7D 00009120 libvlc_media_player_new
+        127   7E 000097A0 libvlc_media_player_new_from_media
+        128   7F 00009C40 libvlc_media_player_next_chapter
+        129   80 00009820 libvlc_media_player_next_frame
+        130   81 0000A0A0 libvlc_media_player_pause
+        131   82 00008E50 libvlc_media_player_play
+        132   83 00009BC0 libvlc_media_player_previous_chapter
+        133   84 00009040 libvlc_media_player_release
+        134   85 000089D0 libvlc_media_player_retain
+        135   86 00008880 libvlc_media_player_set_agl
+        136   87 00009EA0 libvlc_media_player_set_chapter
+        137   88 00008A50 libvlc_media_player_set_hwnd
+        138   89 00008D60 libvlc_media_player_set_media
+        139   8A 00008860 libvlc_media_player_set_nsobject
+        140   8B 00009FA0 libvlc_media_player_set_position
+        141   8C 00009A60 libvlc_media_player_set_rate
+        142   8D 0000A010 libvlc_media_player_set_time
+        143   8E 00009D20 libvlc_media_player_set_title
+        144   8F 00008A10 libvlc_media_player_set_xwindow
+        145   90 00008CD0 libvlc_media_player_stop
+        146   91 00009B10 libvlc_media_player_will_play
+        147   92 00008290 libvlc_media_release
+        148   93 00007B40 libvlc_media_retain
+        149   94 00008110 libvlc_media_save_meta
+        150   95 00008140 libvlc_media_set_meta
+        151   96 00008030 libvlc_media_set_state
+        152   97 00007B70 libvlc_media_set_user_data
+        153   98 00008000 libvlc_media_subitems
+        154   99 00001340 libvlc_new
+        155   9A 00001BC0 libvlc_playlist_play
+        156   9B 000015A0 libvlc_printerr
+        157   9C 000012B0 libvlc_release
+        158   9D 00001270 libvlc_retain
+        159   9E 00004AE0 libvlc_set_fullscreen
+        160   9F 000016B0 libvlc_set_log_verbosity
+        161   A0 000048D0 libvlc_toggle_fullscreen
+        162   A1 00005250 libvlc_toggle_teletext
+        163   A2 00008930 libvlc_track_description_release
+        164   A3 000042E0 libvlc_video_get_aspect_ratio
+        165   A4 00004800 libvlc_video_get_chapter_description
+        166   A5 000055E0 libvlc_video_get_crop_geometry
+        167   A6 00004840 libvlc_video_get_cursor
+        168   A7 00004020 libvlc_video_get_height
+        169   A8 000041A0 libvlc_video_get_logo_int
+        170   A9 000041F0 libvlc_video_get_marquee_int
+        171   AA 00004260 libvlc_video_get_marquee_string
+        172   AB 00004330 libvlc_video_get_scale
+        173   AC 00003FA0 libvlc_video_get_size
+        174   AD 000045D0 libvlc_video_get_spu
+        175   AE 00004C50 libvlc_video_get_spu_count
+        176   AF 000047B0 libvlc_video_get_spu_description
+        177   B0 00004220 libvlc_video_get_teletext
+        178   B1 00004790 libvlc_video_get_title_description
+        179   B2 00004440 libvlc_video_get_track
+        180   B3 00004BE0 libvlc_video_get_track_count
+        181   B4 00004770 libvlc_video_get_track_description
+        182   B5 00003FE0 libvlc_video_get_width
+        183   B6 00004D80 libvlc_video_set_aspect_ratio
+        184   B7 00004CC0 libvlc_video_set_crop_geometry
+        185   B8 00005070 libvlc_video_set_deinterlace
+        186   B9 00004400 libvlc_video_set_key_input
+        187   BA 00005730 libvlc_video_set_logo_int
+        188   BB 00004FD0 libvlc_video_set_logo_string
+        189   BC 00005790 libvlc_video_set_marquee_int
+        190   BD 00005030 libvlc_video_set_marquee_string
+        191   BE 00004BA0 libvlc_video_set_mouse_input
+        192   BF 00004990 libvlc_video_set_scale
+        193   C0 00005390 libvlc_video_set_spu
+        194   C1 000040B0 libvlc_video_set_subtitle_file
+        195   C2 000057D0 libvlc_video_set_teletext
+        196   C3 00005470 libvlc_video_set_track
+        197   C4 00004E40 libvlc_video_take_snapshot
+        198   C5 00003570 libvlc_vlm_add_broadcast
+        199   C6 00003090 libvlc_vlm_add_input
+        200   C7 00003920 libvlc_vlm_add_vod
+        201   C8 00003210 libvlc_vlm_change_media
+        202   C9 000020F0 libvlc_vlm_del_media
+        203   CA 00001D80 libvlc_vlm_get_event_manager
+        204   CB 00002AA0 libvlc_vlm_get_media_instance_length
+        205   CC 00002A00 libvlc_vlm_get_media_instance_position
+        206   CD 00002A50 libvlc_vlm_get_media_instance_rate
+        207   CE 00002AF0 libvlc_vlm_get_media_instance_time
+        208   CF 00001E70 libvlc_vlm_pause_media
+        209   D0 00001FB0 libvlc_vlm_play_media
+        210   D1 00002220 libvlc_vlm_release
+        211   D2 00001DA0 libvlc_vlm_seek_media
+        212   D3 00002F50 libvlc_vlm_set_enabled
+        213   D4 00002B40 libvlc_vlm_set_input
+        214   D5 00002E10 libvlc_vlm_set_loop
+        215   D6 00002CB0 libvlc_vlm_set_mux
+        216   D7 00003CC0 libvlc_vlm_set_output
+        217   D8 000026B0 libvlc_vlm_show_media
+        218   D9 00001F10 libvlc_vlm_stop_media
+        219   DA 00001550 libvlc_vprinterr
+        220   DB 00001220 libvlc_wait
+
+  Summary
+
+        1000 .bss
+        1000 .data
+        3000 .edata
+        1000 .gnu_deb
+        2000 .idata
+        2000 .rdata
+        1000 .reloc
+       13000 .text
