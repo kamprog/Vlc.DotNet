@@ -4,4 +4,4 @@
 
 #pragma once
 
-
+#include <vlc/vlc.h>
