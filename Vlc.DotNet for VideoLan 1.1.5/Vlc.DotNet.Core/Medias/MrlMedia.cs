@@ -7,7 +7,7 @@ namespace Vlc.DotNet.Core.Medias
     {
         private bool myIsInitialized;
 
-        public string Mrl { get; set; }
+        public new string Mrl { get; set; }
 
         protected internal override IntPtr Initialize(IntPtr vlcClient)
         {

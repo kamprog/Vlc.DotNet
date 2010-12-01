@@ -6,6 +6,18 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vlc.DotNet.Forms", "Vlc.DotNet.Forms\Vlc.DotNet.Forms.csproj", "{662137FD-8F2F-464C-B34E-CD14E92BD591}"
 EndProject
 Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs10
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Vlc.DotNet.Core\\Vlc.DotNet.Core.csproj
+		SccProjectName1 = Vlc.DotNet.Core
+		SccLocalPath1 = Vlc.DotNet.Core
+		SccProjectUniqueName2 = Vlc.DotNet.Forms\\Vlc.DotNet.Forms.csproj
+		SccProjectName2 = Vlc.DotNet.Forms
+		SccLocalPath2 = Vlc.DotNet.Forms
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
