@@ -5,11 +5,11 @@ namespace Vlc.DotNet.Core.Helpers
 {
     internal static class EventsHelper
     {
-        public static void RaiseEvent<THandler>(VlcEventHandler<THandler> handler, object sender, VlcEventArgs<THandler> arg)
+        public static void RaiseEvent<TSender, THandler>(VlcEventHandler<TSender, THandler> handler, TSender sender, VlcEventArgs<THandler> arg)
         {
             if (handler == null)
                 return;
-            foreach (VlcEventHandler<THandler> singleInvoke in handler.GetInvocationList())
+            foreach (VlcEventHandler<TSender, THandler> singleInvoke in handler.GetInvocationList())
             {
                 var syncInvoke = singleInvoke.Target as ISynchronizeInvoke;
                 if (syncInvoke == null)
@@ -19,7 +19,7 @@ namespace Vlc.DotNet.Core.Helpers
                 try
                 {
                     if (syncInvoke.InvokeRequired)
-                        syncInvoke.Invoke(singleInvoke, new[] {sender, arg});
+                        syncInvoke.Invoke(singleInvoke, new object[] {sender, arg});
                     else
                         singleInvoke(sender, arg);
                 }

@@ -1,6 +1,6 @@
-﻿namespace Vlc.DotNet.Core.Medias
+﻿namespace Vlc.DotNet.Core
 {
-    public enum MetaData
+    public enum MetaTypes
     {
         Title,
         Artist,

@@ -4,11 +4,11 @@ using Vlc.DotNet.Core;
 namespace Vlc.DotNet.Forms
 {
     [TypeConverter(typeof (ExpandableObjectConverter))]
-    public sealed class VlcLog
+    public sealed class VlcLogOptions
     {
         #region Verbosity enum
 
-        public enum Verbosity
+        public enum Verbosities
         {
             None = -1,
             Standard = 0,
@@ -18,17 +18,17 @@ namespace Vlc.DotNet.Forms
 
         #endregion
 
-        internal VlcLog()
+        internal VlcLogOptions()
         {
-            Verbose = Verbosity.None;
+            Verbosity = Verbosities.None;
             LogInFile = false;
             LogInFilePath = "vlc_dotnet.log";
             ShowLoggerConsole = false;
         }
 
-        [DefaultValue(Verbosity.None)]
+        [DefaultValue(Verbosities.None)]
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public Verbosity Verbose { get; set; }
+        public Verbosities Verbosity { get; set; }
 
         [DefaultValue(false)]
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]

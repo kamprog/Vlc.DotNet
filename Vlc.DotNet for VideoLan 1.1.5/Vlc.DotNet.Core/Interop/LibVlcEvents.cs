@@ -3,7 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace Vlc.DotNet.Core.Interop
 {
-    // ReSharper disable InconsistentNaming
     internal enum libvlc_event_e : uint
     {
         MediaMetaChanged = 0,
@@ -306,6 +305,4 @@ namespace Vlc.DotNet.Core.Interop
     }
 
     #endregion
-
-    // ReSharper restore InconsistentNaming
 }

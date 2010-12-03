@@ -1,6 +1,6 @@
-﻿namespace Vlc.DotNet.Core.Medias
+﻿namespace Vlc.DotNet.Core
 {
-    public enum MediaType
+    public enum MediaTypes
     {
         Location,
         Path,

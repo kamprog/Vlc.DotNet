@@ -1,6 +1,6 @@
-﻿namespace Vlc.DotNet.Core.Medias
+﻿namespace Vlc.DotNet.Core
 {
-    public enum MediaTrackType
+    public enum MediaTrackTypes
     {
         Unknown = -1,
         Audio = 0,

@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access" MembersFormat="FullSignature">
+  <Class Name="Vlc.DotNet.Core.MediaBase">
+    <Position X="0.5" Y="0.5" Width="3.75" />
+    <Compartments>
+      <Compartment Name="Protected" Collapsed="true" />
+      <Compartment Name="ProtectedInternal" Collapsed="true" />
+      <Compartment Name="Internal" Collapsed="true" />
+      <Compartment Name="Private" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ABAAAEABCCkiAXkECAIABAAAAoAMgAEJOAAADADIACA=</HashCode>
+      <FileName>MediaBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Vlc.DotNet.Core.MrlMedia">
+    <Position X="4.5" Y="10.5" Width="3.75" />
+    <Compartments>
+      <Compartment Name="ProtectedInternal" Collapsed="true" />
+      <Compartment Name="Private" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgQAAAAAAAAAAAAAABAAIAAAAAAAAAAA=</HashCode>
+      <FileName>MrlMedia.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vlc.DotNet.Core.Medias.FileMedia">
+    <Position X="0.5" Y="10.5" Width="3.75" />
+    <Compartments>
+      <Compartment Name="ProtectedInternal" Collapsed="true" />
+      <Compartment Name="Private" Collapsed="true" />
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgQIAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FileMedia.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vlc.DotNet.Core.MediaStatistics">
+    <Position X="4.5" Y="0.5" Width="3.75" />
+    <Compartments>
+      <Compartment Name="Internal" Collapsed="true" />
+      <Compartment Name="Private" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>BACgAAAAAIAYAAAACAAAACAUAACgAEAAAAAQAAAgAAA=</HashCode>
+      <FileName>MediaStatistics.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vlc.DotNet.Core.MediaTrackInfos">
+    <Position X="4.5" Y="4.75" Width="3.75" />
+    <Compartments>
+      <Compartment Name="Internal" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAACAIAAAQQAgAAAAAAAAAoAAAAAAAABABAAAAAAAAA=</HashCode>
+      <FileName>MediaTrackInfos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Vlc.DotNet.Core.MediaTypes">
+    <Position X="8.5" Y="4.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAIAAAAAAAAAAAAAAAAAAFAAAAA=</HashCode>
+      <FileName>MediaTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Vlc.DotNet.Core.MetaTypes">
+    <Position X="8.5" Y="6" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAABCAAgAEAACAIAAAAAAoAEAAEBCAAACABIAAA=</HashCode>
+      <FileName>MetaTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Vlc.DotNet.Core.MediaTrackTypes">
+    <Position X="8.5" Y="2.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAACAAAABg=</HashCode>
+      <FileName>MediaTrackTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Vlc.DotNet.Core.MediaStates">
+    <Position X="8.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAiCAAAAAIAAQEAAAAAAAAIAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MediaStates.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

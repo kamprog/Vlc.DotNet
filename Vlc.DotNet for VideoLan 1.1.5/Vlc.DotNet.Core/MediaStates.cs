@@ -1,6 +1,6 @@
-﻿namespace Vlc.DotNet.Core.Medias
+﻿namespace Vlc.DotNet.Core
 {
-    public enum State
+    public enum MediaStates
     {
         NothingSpecial = 0,
         Opening,

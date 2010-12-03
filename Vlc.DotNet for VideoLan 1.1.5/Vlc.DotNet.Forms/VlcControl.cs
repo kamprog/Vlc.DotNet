@@ -7,7 +7,6 @@ using System.Windows.Forms;
 using Vlc.DotNet.Core;
 using Vlc.DotNet.Core.Helpers;
 using Vlc.DotNet.Core.Interop;
-using Vlc.DotNet.Core.Medias;
 
 namespace Vlc.DotNet.Forms
 {
@@ -99,6 +98,164 @@ namespace Vlc.DotNet.Forms
                 return false;
             }
         }
+
+        #region Audio properties
+
+        /// <summary>
+        /// Audio device type
+        /// </summary>
+        [Browsable(false)]
+        public AudioDeviceTypes AudioDeviceType
+        {
+            get
+            {
+                if (VlcMediaPlayer != IntPtr.Zero)
+                    return (AudioDeviceTypes) LibVlcMethods.libvlc_audio_output_get_device_type(VlcMediaPlayer);
+                return AudioDeviceTypes.Error;
+            }
+            set
+            {
+                if (VlcMediaPlayer != IntPtr.Zero)
+                    LibVlcMethods.libvlc_audio_output_set_device_type(VlcMediaPlayer, (LibVlcMethods.libvlc_audio_output_device_types_t) value);
+                else
+                    throw new PlayerNotAttachedToVlcControlException();
+            }
+        }
+
+        /// <summary>
+        /// Get mute status of audio
+        /// </summary>
+        [Browsable(false)]
+        public bool IsMute
+        {
+            get
+            {
+                if (VlcMediaPlayer != IntPtr.Zero)
+                    return LibVlcMethods.libvlc_audio_get_mute(VlcMediaPlayer) == 1;
+                return false;
+            }
+            set
+            {
+                if (VlcMediaPlayer != IntPtr.Zero)
+                    LibVlcMethods.libvlc_audio_set_mute(VlcMediaPlayer, value ? 1 : 0);
+                else
+                    throw new PlayerNotAttachedToVlcControlException();
+            }
+        }
+
+        /// <summary>
+        /// Volume level
+        /// </summary>
+        [Browsable(false)]
+        public int VolumeLevel
+        {
+            get
+            {
+                if (VlcMediaPlayer != IntPtr.Zero)
+                    return LibVlcMethods.libvlc_audio_get_volume(VlcMediaPlayer);
+                return -1;
+            }
+            set
+            {
+                if (VlcMediaPlayer != IntPtr.Zero)
+                    LibVlcMethods.libvlc_audio_set_volume(VlcMediaPlayer, value);
+                else
+                    throw new PlayerNotAttachedToVlcControlException();
+            }
+        }
+
+        /// <summary>
+        /// Get number of available audio tracks.
+        /// </summary>
+        [Browsable(false)]
+        public int AudioTrackCount
+        {
+            get
+            {
+                if (VlcMediaPlayer != IntPtr.Zero)
+                    return LibVlcMethods.libvlc_audio_get_track_count(VlcMediaPlayer);
+                return -1;
+            }
+        }
+
+        /// <summary>
+        /// Get the description of available audio tracks
+        /// </summary>
+        [Browsable(false)]
+        public string AudioTrackDescription
+        {
+            get
+            {
+                if (VlcMediaPlayer != IntPtr.Zero)
+                    return LibVlcMethods.libvlc_audio_get_track_description(VlcMediaPlayer).psz_name;
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Audio track
+        /// </summary>
+        [Browsable(false)]
+        public int AudioTrack
+        {
+            get
+            {
+                if (VlcMediaPlayer != IntPtr.Zero)
+                    return LibVlcMethods.libvlc_audio_get_track(VlcMediaPlayer);
+                return -1;
+            }
+            set
+            {
+                if (VlcMediaPlayer != IntPtr.Zero)
+                    LibVlcMethods.libvlc_audio_set_track(VlcMediaPlayer, value);
+                else
+                    throw new PlayerNotAttachedToVlcControlException();
+            }
+        }
+
+        /// <summary>
+        /// Current audio channel
+        /// </summary>
+        [Browsable(false)]
+        public AudioChannels AudioChannel
+        {
+            get
+            {
+                if (VlcMediaPlayer != IntPtr.Zero)
+                    return (AudioChannels) LibVlcMethods.libvlc_audio_get_channel(VlcMediaPlayer);
+                return AudioChannels.Error;
+            }
+            set
+            {
+                if (VlcMediaPlayer != IntPtr.Zero)
+                    LibVlcMethods.libvlc_audio_set_channel(VlcMediaPlayer, (int) value);
+                else
+                    throw new PlayerNotAttachedToVlcControlException();
+            }
+        }
+
+        /// <summary>
+        /// Current audio delay
+        /// </summary>
+        [Browsable(false)]
+        public long AudioDelay
+        {
+            get
+            {
+                if (VlcMediaPlayer != IntPtr.Zero)
+                    return LibVlcMethods.libvlc_audio_get_delay(VlcMediaPlayer);
+                return 0;
+            }
+            set
+            {
+                if (VlcMediaPlayer != IntPtr.Zero)
+                    LibVlcMethods.libvlc_audio_set_delay(VlcMediaPlayer, value);
+                else
+                    throw new PlayerNotAttachedToVlcControlException();
+            }
+        }
+
+        #endregion
 
         protected override void Dispose(bool disposing)
         {
@@ -212,6 +369,12 @@ namespace Vlc.DotNet.Forms
             LibVlcMethods.libvlc_media_player_pause(VlcMediaPlayer);
         }
 
+        public void ToggleMute()
+        {
+            if (VlcMediaPlayer != IntPtr.Zero)
+                LibVlcMethods.libvlc_audio_toggle_mute(VlcMediaPlayer);
+        }
+
         public void TakeSnapshot(string path = null, uint width = (uint) 300, uint height = (uint) 300)
         {
             if (DesignMode)
@@ -227,60 +390,60 @@ namespace Vlc.DotNet.Forms
         #region Events
 
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public event VlcEventHandler<EventArgs> Backward;
+        public event VlcEventHandler<VlcControl, EventArgs> Backward;
 
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public event VlcEventHandler<float> Buffering;
+        public event VlcEventHandler<VlcControl, float> Buffering;
 
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public event VlcEventHandler<EventArgs> EncounteredError;
+        public event VlcEventHandler<VlcControl, EventArgs> EncounteredError;
 
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public event VlcEventHandler<EventArgs> EndReached;
+        public event VlcEventHandler<VlcControl, EventArgs> EndReached;
 
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public event VlcEventHandler<EventArgs> Forward;
+        public event VlcEventHandler<VlcControl, EventArgs> Forward;
 
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public event VlcEventHandler<long> LengthChanged;
+        public event VlcEventHandler<VlcControl, long> LengthChanged;
 
         //TODO
         //[Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         //public event VlcEventHandler<MediaBase> MediaChanged;
 
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public event VlcEventHandler<int> PausableChanged;
+        public event VlcEventHandler<VlcControl, int> PausableChanged;
 
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public event VlcEventHandler<EventArgs> Paused;
+        public event VlcEventHandler<VlcControl, EventArgs> Paused;
 
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public event VlcEventHandler<float> PositionChanged;
+        public event VlcEventHandler<VlcControl, float> PositionChanged;
 
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public event VlcEventHandler<int> SeekableChanged;
+        public event VlcEventHandler<VlcControl, int> SeekableChanged;
 
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public event VlcEventHandler<string> SnapshotTaken;
+        public event VlcEventHandler<VlcControl, string> SnapshotTaken;
 
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public event VlcEventHandler<EventArgs> Stopped;
+        public event VlcEventHandler<VlcControl, EventArgs> Stopped;
 
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public event VlcEventHandler<long> TimeChanged;
+        public event VlcEventHandler<VlcControl, long> TimeChanged;
 
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public event VlcEventHandler<long> TitleChanged;
+        public event VlcEventHandler<VlcControl, long> TitleChanged;
 
-        private void OnVlcEvent(ref libvlc_event_t libvlc_event, IntPtr userdata)
+        private void OnVlcEvent(ref libvlc_event_t eventData, IntPtr userData)
         {
-            switch (libvlc_event.type)
+            switch (eventData.type)
             {
                 case libvlc_event_e.MediaPlayerBackward:
                     EventsHelper.RaiseEvent(Backward, this, new VlcEventArgs<EventArgs>(EventArgs.Empty));
                     break;
                 case libvlc_event_e.MediaPlayerBuffering:
-                    EventsHelper.RaiseEvent(Buffering, this, new VlcEventArgs<float>(libvlc_event.media_player_buffering.new_cache));
+                    EventsHelper.RaiseEvent(Buffering, this, new VlcEventArgs<float>(eventData.media_player_buffering.new_cache));
                     break;
                 case libvlc_event_e.MediaPlayerEncounteredError:
                     EventsHelper.RaiseEvent(EncounteredError, this, new VlcEventArgs<EventArgs>(EventArgs.Empty));
@@ -292,11 +455,11 @@ namespace Vlc.DotNet.Forms
                     EventsHelper.RaiseEvent(Forward, this, new VlcEventArgs<EventArgs>(EventArgs.Empty));
                     break;
                 case libvlc_event_e.MediaPlayerLengthChanged:
-                    EventsHelper.RaiseEvent(LengthChanged, this, new VlcEventArgs<long>(libvlc_event.media_player_length_changed.new_length));
+                    EventsHelper.RaiseEvent(LengthChanged, this, new VlcEventArgs<long>(eventData.media_player_length_changed.new_length));
                     break;
                 case libvlc_event_e.MediaPlayerMediaChanged:
                     //TODO
-                    //EventsHelper.RaiseEvent(MediaChanged, this, new VlcEventArgs<MediaBase>(libvlc_event.media_player_media_changed.new_media));
+                    //EventsHelper.RaiseEvent(MediaChanged, this, new VlcEventArgs<MediaBase>(eventData.media_player_media_changed.new_media));
                     break;
                 case libvlc_event_e.MediaPlayerNothingSpecial:
 
@@ -304,28 +467,28 @@ namespace Vlc.DotNet.Forms
                 case libvlc_event_e.MediaPlayerOpening:
                     break;
                 case libvlc_event_e.MediaPlayerPausableChanged:
-                    EventsHelper.RaiseEvent(PausableChanged, this, new VlcEventArgs<int>(libvlc_event.media_player_pausable_changed.new_pausable));
+                    EventsHelper.RaiseEvent(PausableChanged, this, new VlcEventArgs<int>(eventData.media_player_pausable_changed.new_pausable));
                     break;
                 case libvlc_event_e.MediaPlayerPaused:
                     EventsHelper.RaiseEvent(Paused, this, new VlcEventArgs<EventArgs>(EventArgs.Empty));
                     break;
                 case libvlc_event_e.MediaPlayerPositionChanged:
-                    EventsHelper.RaiseEvent(PositionChanged, this, new VlcEventArgs<float>(libvlc_event.media_player_position_changed.new_position));
+                    EventsHelper.RaiseEvent(PositionChanged, this, new VlcEventArgs<float>(eventData.media_player_position_changed.new_position));
                     break;
                 case libvlc_event_e.MediaPlayerSeekableChanged:
-                    EventsHelper.RaiseEvent(SeekableChanged, this, new VlcEventArgs<int>(libvlc_event.media_player_seekable_changed.new_seekable));
+                    EventsHelper.RaiseEvent(SeekableChanged, this, new VlcEventArgs<int>(eventData.media_player_seekable_changed.new_seekable));
                     break;
                 case libvlc_event_e.MediaPlayerSnapshotTaken:
-                    EventsHelper.RaiseEvent(SnapshotTaken, this, new VlcEventArgs<string>(IntPtrExtensions.ToStringAnsi(libvlc_event.media_player_snapshot_taken.psz_filename)));
+                    EventsHelper.RaiseEvent(SnapshotTaken, this, new VlcEventArgs<string>(IntPtrExtensions.ToStringAnsi(eventData.media_player_snapshot_taken.psz_filename)));
                     break;
                 case libvlc_event_e.MediaPlayerStopped:
                     EventsHelper.RaiseEvent(Stopped, this, new VlcEventArgs<EventArgs>(EventArgs.Empty));
                     break;
                 case libvlc_event_e.MediaPlayerTimeChanged:
-                    EventsHelper.RaiseEvent(TimeChanged, this, new VlcEventArgs<long>(libvlc_event.media_player_time_changed.new_time));
+                    EventsHelper.RaiseEvent(TimeChanged, this, new VlcEventArgs<long>(eventData.media_player_time_changed.new_time));
                     break;
                 case libvlc_event_e.MediaPlayerTitleChanged:
-                    EventsHelper.RaiseEvent(TitleChanged, this, new VlcEventArgs<long>(libvlc_event.media_player_title_changed.new_title));
+                    EventsHelper.RaiseEvent(TitleChanged, this, new VlcEventArgs<long>(eventData.media_player_title_changed.new_title));
                     break;
             }
         }

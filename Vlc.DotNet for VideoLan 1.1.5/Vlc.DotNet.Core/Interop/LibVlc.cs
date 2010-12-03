@@ -45,18 +45,18 @@ namespace Vlc.DotNet.Core.Interop
         #region Delegates
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate void EventCallbackDelegate(ref libvlc_event_t libvlc_event, IntPtr userdata);
+        public delegate void EventCallbackDelegate(ref libvlc_event_t eventType, IntPtr userData);
 
         #endregion
 
         [DllImport("libvlc")]
-        public static extern int libvlc_event_attach(IntPtr p_event_manager, libvlc_event_e i_event_type, IntPtr f_callback, IntPtr user_data);
+        public static extern int libvlc_event_attach(IntPtr eventManagerInstance, libvlc_event_e eventType, IntPtr callback, IntPtr userData);
 
         [DllImport("libvlc")]
-        public static extern void libvlc_event_detach(IntPtr p_event_manager, libvlc_event_e i_event_type, IntPtr f_callback, IntPtr user_data);
+        public static extern void libvlc_event_detach(IntPtr eventManagerInstance, libvlc_event_e eventType, IntPtr callback, IntPtr userData);
 
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-        public static extern IntPtr libvlc_event_type_name(libvlc_event_t event_type);
+        public static extern IntPtr libvlc_event_type_name(libvlc_event_t eventType);
 
         #endregion
 

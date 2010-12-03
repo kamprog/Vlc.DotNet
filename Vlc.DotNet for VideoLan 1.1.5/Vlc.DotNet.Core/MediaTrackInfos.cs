@@ -1,14 +1,14 @@
 ﻿using Vlc.DotNet.Core.Interop;
 
-namespace Vlc.DotNet.Core.Medias
+namespace Vlc.DotNet.Core
 {
-    public sealed class MediaTrackInfo
+    public sealed class MediaTrackInfos
     {
-        internal MediaTrackInfo(libvlc_media_track_info_t info)
+        internal MediaTrackInfos(libvlc_media_track_info_t info)
         {
             Codec = info.i_codec;
             Id = info.i_id;
-            TrackType = (MediaTrackType) info.i_type;
+            TrackType = (MediaTrackTypes) info.i_type;
             Profile = info.i_profile;
             Level = info.i_level;
             AudioChannels = info.audio.i_channels;
@@ -19,7 +19,7 @@ namespace Vlc.DotNet.Core.Medias
 
         public uint Codec { get; private set; }
         public int Id { get; private set; }
-        public MediaTrackType TrackType { get; private set; }
+        public MediaTrackTypes TrackType { get; private set; }
         public int Profile { get; private set; }
         public int Level { get; private set; }
         public uint AudioChannels { get; private set; }

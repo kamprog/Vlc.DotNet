@@ -17,7 +17,7 @@ namespace Vlc.DotNet.Forms
         {
             PluginsPath = CommonStrings.PLUGINS_PATH_DEFAULT_VALUE;
             ScreenSaverEnabled = false;
-            Logging = new VlcLog();
+            LogOptions = new VlcLogOptions();
             IgnoreConfig = true;
         }
 
@@ -46,7 +46,7 @@ namespace Vlc.DotNet.Forms
         [DefaultValue(false)]
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public VlcLog Logging { get; private set; }
+        public VlcLogOptions LogOptions { get; private set; }
 
         [DefaultValue(true)]
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
@@ -106,15 +106,15 @@ namespace Vlc.DotNet.Forms
             args.Add("dummy");
             if (IgnoreConfig)
                 args.Add("--ignore-config");
-            if (Logging != null && Logging.Verbose != VlcLog.Verbosity.None)
+            if (LogOptions != null && LogOptions.Verbosity != VlcLogOptions.Verbosities.None)
             {
-                if (Logging.ShowLoggerConsole)
+                if (LogOptions.ShowLoggerConsole)
                     args.Add("--extraintf=logger");
-                args.Add("--verbose=" + (int) Logging.Verbose);
-                if (Logging.LogInFile)
+                args.Add("--verbose=" + (int) LogOptions.Verbosity);
+                if (LogOptions.LogInFile)
                 {
                     args.Add("--file-logging");
-                    args.Add(@"--logfile=" + Logging.LogInFilePath);
+                    args.Add(@"--logfile=" + LogOptions.LogInFilePath);
                 }
             }
             if (!string.IsNullOrEmpty(PluginsPath) && Directory.Exists(PluginsPath))

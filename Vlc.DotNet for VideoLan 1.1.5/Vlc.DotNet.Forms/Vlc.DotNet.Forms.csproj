@@ -45,7 +45,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VlcLog.cs" />
+    <Compile Include="VlcLogOptions.cs" />
     <Compile Include="VlcManager.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -55,6 +55,9 @@
       <Project>{4CBEC810-E46A-4CC1-80D0-9A31F4AE884A}</Project>
       <Name>Vlc.DotNet.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="WinformClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

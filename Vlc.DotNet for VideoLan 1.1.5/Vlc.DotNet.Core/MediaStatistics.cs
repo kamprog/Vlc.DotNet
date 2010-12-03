@@ -1,9 +1,9 @@
 ﻿using System;
 using Vlc.DotNet.Core.Interop;
 
-namespace Vlc.DotNet.Core.Medias
+namespace Vlc.DotNet.Core
 {
-    public sealed class MediaStatistic
+    public sealed class MediaStatistics
     {
         private readonly MediaBase myMedia;
 
@@ -241,7 +241,7 @@ namespace Vlc.DotNet.Core.Medias
 
         #endregion
 
-        internal MediaStatistic(MediaBase media)
+        internal MediaStatistics(MediaBase media)
         {
             myMedia = media;
         }

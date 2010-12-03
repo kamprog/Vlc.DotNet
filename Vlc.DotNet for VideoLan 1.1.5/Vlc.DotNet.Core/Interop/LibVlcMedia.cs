@@ -111,199 +111,199 @@ namespace Vlc.DotNet.Core.Interop
         /// <summary>
         /// Create a media with a certain given media resource location, for instance a valid URL.
         /// </summary>
-        /// <param name="p_instance">The instance</param>
-        /// <param name="psz_mrl">Media location</param>
+        /// <param name="instance">The instance</param>
+        /// <param name="mrl">Media location</param>
         /// <returns>Newly created media or NULL on error</returns>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr libvlc_media_new_location(IntPtr p_instance, string psz_mrl);
+        public static extern IntPtr libvlc_media_new_location(IntPtr instance, string mrl);
 
         /// <summary>
         /// Create a media for a certain file path.
         /// </summary>
-        /// <param name="p_instance">The instance</param>
+        /// <param name="instance">The instance</param>
         /// <param name="path">Path local filesystem path</param>
         /// <returns>Newly created media or NULL on error</returns>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr libvlc_media_new_path(IntPtr p_instance, string path);
+        public static extern IntPtr libvlc_media_new_path(IntPtr instance, string path);
 
         /// <summary>
         /// Create a media for an already open file descriptor.
         /// </summary>
-        /// <param name="p_instance">The instance</param>
+        /// <param name="instance">The instance</param>
         /// <param name="fd">Open file descriptor</param>
         /// <returns>Newly created media or NULL on error</returns>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr libvlc_media_new_fd(IntPtr p_instance, int fd);
+        public static extern IntPtr libvlc_media_new_fd(IntPtr instance, int fd);
 
         /// <summary>
         /// Create a media as an empty node with a given name.
         /// </summary>
-        /// <param name="p_instance">The instance</param>
-        /// <param name="psz_name">The name of the node</param>
+        /// <param name="instance">The instance</param>
+        /// <param name="name">The name of the node</param>
         /// <returns>New empty media or NULL on error</returns>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr libvlc_media_new_as_node(IntPtr p_instance, string psz_name);
+        public static extern IntPtr libvlc_media_new_as_node(IntPtr instance, string name);
 
         /// <summary>
         /// Add an option to the media.
         /// </summary>
-        /// <param name="media">media descriptor</param>
-        /// <param name="ppsz_options">options (as a string)</param>
+        /// <param name="mediaInstance">media descriptor</param>
+        /// <param name="options">options (as a string)</param>
         [DllImport("libvlc")]
-        public static extern void libvlc_media_add_option(IntPtr media, string ppsz_options);
+        public static extern void libvlc_media_add_option(IntPtr mediaInstance, string options);
 
         /// <summary>
         /// Add an option to the media with configurable flags.
         /// </summary>
-        /// <param name="media">media descriptor</param>
-        /// <param name="ppsz_options">options (as a string)</param>
-        /// <param name="i_flags">flags for this option</param>
+        /// <param name="mediaInstance">media descriptor</param>
+        /// <param name="options">options (as a string)</param>
+        /// <param name="flags">flags for this option</param>
         [DllImport("libvlc")]
-        public static extern void libvlc_media_add_option_flag(IntPtr media, string ppsz_options, uint i_flags);
+        public static extern void libvlc_media_add_option_flag(IntPtr mediaInstance, string options, uint flags);
 
         /// <summary>
         /// Retain a reference to a media descriptor object (libvlc_media_t). Use libvlc_media_release() to decrement the reference count of a media descriptor object.
         /// </summary>
-        /// <param name="media">media descriptor</param>
+        /// <param name="mediaInstance">media descriptor</param>
         [DllImport("libvlc")]
-        public static extern void libvlc_media_retain(IntPtr media);
+        public static extern void libvlc_media_retain(IntPtr mediaInstance);
 
         /// <summary>
         /// Decrement the reference count of a media descriptor object. If the reference count is 0, then libvlc_media_release() will release the media descriptor object. It will send out an libvlc_MediaFreed event to all listeners. If the media descriptor object has been released it should not be used again.
         /// </summary>
-        /// <param name="media">media descriptor</param>
+        /// <param name="mediaInstance">media descriptor</param>
         /// <returns></returns>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr libvlc_media_release(IntPtr media);
+        public static extern IntPtr libvlc_media_release(IntPtr mediaInstance);
 
         /// <summary>
         /// Get the media resource locator (mrl) from a media descriptor object
         /// </summary>
-        /// <param name="media">media descriptor</param>
+        /// <param name="mediaInstance">media descriptor</param>
         /// <returns></returns>
         [DllImport("libvlc")]
-        public static extern IntPtr libvlc_media_get_mrl(IntPtr media);
+        public static extern IntPtr libvlc_media_get_mrl(IntPtr mediaInstance);
 
         /// <summary>
         /// Duplicate a media descriptor object.
         /// </summary>
-        /// <param name="media">media descriptor object.</param>
+        /// <param name="mediaInstance">media descriptor object.</param>
         /// <returns></returns>
         [DllImport("libvlc")]
-        public static extern IntPtr libvlc_media_duplicate(IntPtr media);
+        public static extern IntPtr libvlc_media_duplicate(IntPtr mediaInstance);
 
         /// <summary>
         /// Read the meta of the media.
         /// </summary>
-        /// <param name="media">Media descriptor object</param>
-        /// <param name="e_meta">Meta to read</param>
+        /// <param name="mediaInstance">Media descriptor object</param>
+        /// <param name="meta">Meta to read</param>
         /// <returns></returns>
         [DllImport("libvlc")]
-        public static extern IntPtr libvlc_media_get_meta(IntPtr media, libvlc_meta_t e_meta);
+        public static extern IntPtr libvlc_media_get_meta(IntPtr mediaInstance, libvlc_meta_t meta);
 
         /// <summary>
         /// Set the meta of the media (this function will not save the meta, call libvlc_media_save_meta in order to save the meta)
         /// </summary>
-        /// <param name="media">Media descriptor object</param>
-        /// <param name="e_meta">Meta to write</param>
-        /// <param name="psz_value">Media's meta</param>
+        /// <param name="mediaInstance">Media descriptor object</param>
+        /// <param name="meta">Meta to write</param>
+        /// <param name="value">Media's meta</param>
         [DllImport("libvlc")]
-        public static extern void libvlc_media_set_meta(IntPtr media, libvlc_meta_t e_meta, string psz_value);
+        public static extern void libvlc_media_set_meta(IntPtr mediaInstance, libvlc_meta_t meta, string value);
 
         /// <summary>
         /// Save the meta previously set.
         /// </summary>
-        /// <param name="media">Media descriptor object</param>
+        /// <param name="mediaInstance">Media descriptor object</param>
         /// <returns>True if the write operation was successfull</returns>
         [DllImport("libvlc")]
-        public static extern bool libvlc_media_save_meta(IntPtr media);
+        public static extern bool libvlc_media_save_meta(IntPtr mediaInstance);
 
         /// <summary>
         /// Get current state of media descriptor object.
         /// </summary>
-        /// <param name="media">Media descriptor object</param>
+        /// <param name="mediaInstance">Media descriptor object</param>
         /// <returns>State of media descriptor object</returns>
         [DllImport("libvlc")]
-        public static extern libvlc_state_t libvlc_media_get_state(IntPtr media);
+        public static extern libvlc_state_t libvlc_media_get_state(IntPtr mediaInstance);
 
         /// <summary>
         /// Get the current statistics about the media.
         /// </summary>
-        /// <param name="media">Media descriptor object</param>
-        /// <param name="p_stats">Structure that contain the statistics about the media</param>
+        /// <param name="mediaInstance">Media descriptor object</param>
+        /// <param name="stats">Structure that contain the statistics about the media</param>
         /// <returns></returns>
         [DllImport("libvlc")]
-        public static extern bool libvlc_media_get_stats(IntPtr media, ref libvlc_media_stats_t p_stats);
+        public static extern bool libvlc_media_get_stats(IntPtr mediaInstance, ref libvlc_media_stats_t stats);
 
         /// <summary>
         /// Get subitems of media descriptor object.
         /// </summary>
-        /// <param name="media">Media descriptor object</param>
+        /// <param name="mediaInstance">Media descriptor object</param>
         /// <returns>List of media descriptor subitems or NULL</returns>
         [DllImport("libvlc")]
-        public static extern IntPtr libvlc_media_subitems(IntPtr media);
+        public static extern IntPtr libvlc_media_subitems(IntPtr mediaInstance);
 
         /// <summary>
         /// Get event manager from media descriptor object.
         /// </summary>
-        /// <param name="media">Media descriptor object</param>
+        /// <param name="mediaInstance">Media descriptor object</param>
         /// <returns>Event manager object</returns>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr libvlc_media_event_manager(IntPtr media);
+        public static extern IntPtr libvlc_media_event_manager(IntPtr mediaInstance);
 
         /// <summary>
         /// Get duration (in ms) of media descriptor object item.
         /// </summary>
-        /// <param name="media">Media descriptor object</param>
+        /// <param name="mediaInstance">Media descriptor object</param>
         /// <returns></returns>
         [DllImport("libvlc")]
-        public static extern long libvlc_media_get_duration(IntPtr media);
+        public static extern long libvlc_media_get_duration(IntPtr mediaInstance);
 
         /// <summary>
         /// Parse a media.
         /// </summary>
-        /// <param name="media">Media descriptor object</param>
+        /// <param name="mediaInstance">Media descriptor object</param>
         [DllImport("libvlc")]
-        public static extern void libvlc_media_parse(IntPtr media);
+        public static extern void libvlc_media_parse(IntPtr mediaInstance);
 
         /// <summary>
         /// Parse a media.
         /// </summary>
-        /// <param name="media">Media descriptor object</param>
+        /// <param name="mediaInstance">Media descriptor object</param>
         [DllImport("libvlc")]
-        public static extern void libvlc_media_parse_async(IntPtr media);
+        public static extern void libvlc_media_parse_async(IntPtr mediaInstance);
 
         /// <summary>
         /// Get Parsed status for media descriptor object.
         /// </summary>
-        /// <param name="media">Media descriptor object</param>
+        /// <param name="mediaInstance">Media descriptor object</param>
         /// <returns>True if media object has been parsed otherwise it returns false</returns>
         [DllImport("libvlc")]
-        public static extern bool libvlc_media_is_parsed(IntPtr media);
+        public static extern bool libvlc_media_is_parsed(IntPtr mediaInstance);
 
         /// <summary>
         /// Sets media descriptor's user_data. user_data is specialized data accessed by the host application, VLC.framework uses it as a pointer to an native object that references a libvlc_media_t pointer
         /// </summary>
-        /// <param name="media">Media descriptor object</param>
-        /// <param name="p_new_user_data">Pointer to user data</param>
+        /// <param name="mediaInstance">Media descriptor object</param>
+        /// <param name="newUserData">Pointer to user data</param>
         [DllImport("libvlc")]
-        public static extern void libvlc_media_set_user_data(IntPtr media, IntPtr p_new_user_data);
+        public static extern void libvlc_media_set_user_data(IntPtr mediaInstance, IntPtr newUserData);
 
         /// <summary>
         /// Get media descriptor's user_data. user_data is specialized data accessed by the host application, VLC.framework uses it as a pointer to an native object that references a libvlc_media_t pointer
         /// </summary>
-        /// <param name="media">Media descriptor object</param>
+        /// <param name="mediaInstance">Media descriptor object</param>
         /// <returns>Pointer to user data</returns>
         [DllImport("libvlc")]
-        public static extern IntPtr libvlc_media_get_user_data(IntPtr media);
+        public static extern IntPtr libvlc_media_get_user_data(IntPtr mediaInstance);
 
         /// <summary>
         /// Get media descriptor's elementary streams description.
         /// </summary>
-        /// <param name="media">Media descriptor object</param>
+        /// <param name="mediaInstance">Media descriptor object</param>
         /// <param name="tracks">Array of Elementary Streams descriptions (must be freed by the caller)</param>
         /// <returns>Number of Elementary Streams</returns>
         [DllImport("libvlc")]
-        public static extern int libvlc_media_get_tracks_info(IntPtr media, libvlc_media_track_info_t[] tracks);
+        public static extern int libvlc_media_get_tracks_info(IntPtr mediaInstance, libvlc_media_track_info_t[] tracks);
     }
 }

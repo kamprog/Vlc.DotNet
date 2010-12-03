@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using Vlc.DotNet.Core.Helpers;
 using Vlc.DotNet.Core.Interop;
 
-namespace Vlc.DotNet.Core.Medias
+namespace Vlc.DotNet.Core
 {
     public abstract class MediaBase : IDisposable
     {
@@ -26,7 +26,7 @@ namespace Vlc.DotNet.Core.Medias
             {
                 if (IsAttachedToControl)
                     LibVlcMethods.libvlc_media_set_meta(VlcMedia, libvlc_meta_t.libvlc_meta_Album, value);
-                throw new MediaNotAttachedToVlcControl();
+                throw new MediaNotAttachedToVlcControlException();
             }
         }
 
@@ -42,7 +42,7 @@ namespace Vlc.DotNet.Core.Medias
             {
                 if (IsAttachedToControl)
                     LibVlcMethods.libvlc_media_set_meta(VlcMedia, libvlc_meta_t.libvlc_meta_Artist, value);
-                throw new MediaNotAttachedToVlcControl();
+                throw new MediaNotAttachedToVlcControlException();
             }
         }
 
@@ -58,7 +58,7 @@ namespace Vlc.DotNet.Core.Medias
             {
                 if (IsAttachedToControl)
                     LibVlcMethods.libvlc_media_set_meta(VlcMedia, libvlc_meta_t.libvlc_meta_ArtworkURL, value);
-                throw new MediaNotAttachedToVlcControl();
+                throw new MediaNotAttachedToVlcControlException();
             }
         }
 
@@ -74,7 +74,7 @@ namespace Vlc.DotNet.Core.Medias
             {
                 if (IsAttachedToControl)
                     LibVlcMethods.libvlc_media_set_meta(VlcMedia, libvlc_meta_t.libvlc_meta_Copyright, value);
-                throw new MediaNotAttachedToVlcControl();
+                throw new MediaNotAttachedToVlcControlException();
             }
         }
 
@@ -90,7 +90,7 @@ namespace Vlc.DotNet.Core.Medias
             {
                 if (IsAttachedToControl)
                     LibVlcMethods.libvlc_media_set_meta(VlcMedia, libvlc_meta_t.libvlc_meta_Date, value);
-                throw new MediaNotAttachedToVlcControl();
+                throw new MediaNotAttachedToVlcControlException();
             }
         }
 
@@ -106,7 +106,7 @@ namespace Vlc.DotNet.Core.Medias
             {
                 if (IsAttachedToControl)
                     LibVlcMethods.libvlc_media_set_meta(VlcMedia, libvlc_meta_t.libvlc_meta_Description, value);
-                throw new MediaNotAttachedToVlcControl();
+                throw new MediaNotAttachedToVlcControlException();
             }
         }
 
@@ -122,7 +122,7 @@ namespace Vlc.DotNet.Core.Medias
             {
                 if (IsAttachedToControl)
                     LibVlcMethods.libvlc_media_set_meta(VlcMedia, libvlc_meta_t.libvlc_meta_EncodedBy, value);
-                throw new MediaNotAttachedToVlcControl();
+                throw new MediaNotAttachedToVlcControlException();
             }
         }
 
@@ -138,7 +138,7 @@ namespace Vlc.DotNet.Core.Medias
             {
                 if (IsAttachedToControl)
                     LibVlcMethods.libvlc_media_set_meta(VlcMedia, libvlc_meta_t.libvlc_meta_Genre, value);
-                throw new MediaNotAttachedToVlcControl();
+                throw new MediaNotAttachedToVlcControlException();
             }
         }
 
@@ -154,7 +154,7 @@ namespace Vlc.DotNet.Core.Medias
             {
                 if (IsAttachedToControl)
                     LibVlcMethods.libvlc_media_set_meta(VlcMedia, libvlc_meta_t.libvlc_meta_Language, value);
-                throw new MediaNotAttachedToVlcControl();
+                throw new MediaNotAttachedToVlcControlException();
             }
         }
 
@@ -170,7 +170,7 @@ namespace Vlc.DotNet.Core.Medias
             {
                 if (IsAttachedToControl)
                     LibVlcMethods.libvlc_media_set_meta(VlcMedia, libvlc_meta_t.libvlc_meta_NowPlaying, value);
-                throw new MediaNotAttachedToVlcControl();
+                throw new MediaNotAttachedToVlcControlException();
             }
         }
 
@@ -186,7 +186,7 @@ namespace Vlc.DotNet.Core.Medias
             {
                 if (IsAttachedToControl)
                     LibVlcMethods.libvlc_media_set_meta(VlcMedia, libvlc_meta_t.libvlc_meta_Publisher, value);
-                throw new MediaNotAttachedToVlcControl();
+                throw new MediaNotAttachedToVlcControlException();
             }
         }
 
@@ -202,7 +202,7 @@ namespace Vlc.DotNet.Core.Medias
             {
                 if (IsAttachedToControl)
                     LibVlcMethods.libvlc_media_set_meta(VlcMedia, libvlc_meta_t.libvlc_meta_Rating, value);
-                throw new MediaNotAttachedToVlcControl();
+                throw new MediaNotAttachedToVlcControlException();
             }
         }
 
@@ -218,7 +218,7 @@ namespace Vlc.DotNet.Core.Medias
             {
                 if (IsAttachedToControl)
                     LibVlcMethods.libvlc_media_set_meta(VlcMedia, libvlc_meta_t.libvlc_meta_Setting, value);
-                throw new MediaNotAttachedToVlcControl();
+                throw new MediaNotAttachedToVlcControlException();
             }
         }
 
@@ -234,7 +234,7 @@ namespace Vlc.DotNet.Core.Medias
             {
                 if (IsAttachedToControl)
                     LibVlcMethods.libvlc_media_set_meta(VlcMedia, libvlc_meta_t.libvlc_meta_Title, value);
-                throw new MediaNotAttachedToVlcControl();
+                throw new MediaNotAttachedToVlcControlException();
             }
         }
 
@@ -250,7 +250,7 @@ namespace Vlc.DotNet.Core.Medias
             {
                 if (IsAttachedToControl)
                     LibVlcMethods.libvlc_media_set_meta(VlcMedia, libvlc_meta_t.libvlc_meta_TrackID, value);
-                throw new MediaNotAttachedToVlcControl();
+                throw new MediaNotAttachedToVlcControlException();
             }
         }
 
@@ -266,7 +266,7 @@ namespace Vlc.DotNet.Core.Medias
             {
                 if (IsAttachedToControl)
                     LibVlcMethods.libvlc_media_set_meta(VlcMedia, libvlc_meta_t.libvlc_meta_TrackNumber, value);
-                throw new MediaNotAttachedToVlcControl();
+                throw new MediaNotAttachedToVlcControlException();
             }
         }
 
@@ -282,7 +282,7 @@ namespace Vlc.DotNet.Core.Medias
             {
                 if (IsAttachedToControl)
                     LibVlcMethods.libvlc_media_set_meta(VlcMedia, libvlc_meta_t.libvlc_meta_URL, value);
-                throw new MediaNotAttachedToVlcControl();
+                throw new MediaNotAttachedToVlcControlException();
             }
         }
 
@@ -290,7 +290,7 @@ namespace Vlc.DotNet.Core.Medias
 
         protected MediaBase()
         {
-            Statistic = new MediaStatistic(this);
+            Statistics = new MediaStatistics(this);
         }
 
         internal IntPtr VlcMedia { get; set; }
@@ -315,13 +315,13 @@ namespace Vlc.DotNet.Core.Medias
             }
         }
 
-        public State State
+        public MediaStates State
         {
             get
             {
                 if (IsAttachedToControl)
-                    return (State) LibVlcMethods.libvlc_media_get_state(VlcMedia);
-                return State.NothingSpecial;
+                    return (MediaStates) LibVlcMethods.libvlc_media_get_state(VlcMedia);
+                return MediaStates.NothingSpecial;
             }
         }
 
@@ -335,21 +335,21 @@ namespace Vlc.DotNet.Core.Medias
             }
         }
 
-        public MediaStatistic Statistic { get; private set; }
+        public MediaStatistics Statistics { get; private set; }
 
-        public MediaTrackInfo[] TrackInfo
+        public MediaTrackInfos[] TrackInfos
         {
             get
             {
                 if (VlcMedia == IntPtr.Zero)
-                    return new MediaTrackInfo[0];
+                    return new MediaTrackInfos[0];
                 var infos = new libvlc_media_track_info_t[1];
                 var cpt = LibVlcMethods.libvlc_media_get_tracks_info(VlcMedia, infos);
-                var result = new MediaTrackInfo[infos.Length];
+                var result = new MediaTrackInfos[infos.Length];
                 for (var index = 0; index < cpt; index++)
                 {
                     var info = infos[index];
-                    result[index] = new MediaTrackInfo(info);
+                    result[index] = new MediaTrackInfos(info);
                 }
                 return result;
             }
@@ -405,7 +405,7 @@ namespace Vlc.DotNet.Core.Medias
             if (IsAttachedToControl)
                 LibVlcMethods.libvlc_media_parse(VlcMedia);
             else
-                throw new MediaNotAttachedToVlcControl();
+                throw new MediaNotAttachedToVlcControlException();
         }
 
         public void ParseMetaAsynch()
@@ -413,7 +413,7 @@ namespace Vlc.DotNet.Core.Medias
             if (IsAttachedToControl)
                 LibVlcMethods.libvlc_media_parse_async(VlcMedia);
             else
-                throw new MediaNotAttachedToVlcControl();
+                throw new MediaNotAttachedToVlcControlException();
         }
 
         public void SaveMeta()
@@ -421,37 +421,37 @@ namespace Vlc.DotNet.Core.Medias
             if (IsAttachedToControl)
                 LibVlcMethods.libvlc_media_save_meta(VlcMedia);
             else
-                throw new MediaNotAttachedToVlcControl();
+                throw new MediaNotAttachedToVlcControlException();
         }
 
         #region Events
 
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public event VlcEventHandler<MetaData> MetaChanged;
+        public event VlcEventHandler<MediaBase, MetaTypes> MetaChanged;
 
         //TODO
         //[Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         //public event VlcEventHandler<MediaBase> SubItemAdded;
 
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public event VlcEventHandler<long> DurationChanged;
+        public event VlcEventHandler<MediaBase, long> DurationChanged;
 
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public event VlcEventHandler<int> ParsedChanged;
+        public event VlcEventHandler<MediaBase, int> ParsedChanged;
 
         //TODO
         //[Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         //public event VlcEventHandler<MediaBase> Freed;
 
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public event VlcEventHandler<State> StateChanged;
+        public event VlcEventHandler<MediaBase, MediaStates> StateChanged;
 
         private void OnVlcEvent(ref libvlc_event_t type, IntPtr userdata)
         {
             switch (type.type)
             {
                 case libvlc_event_e.MediaMetaChanged:
-                    EventsHelper.RaiseEvent(MetaChanged, this, new VlcEventArgs<MetaData>((MetaData) type.media_meta_changed.meta_type));
+                    EventsHelper.RaiseEvent(MetaChanged, this, new VlcEventArgs<MetaTypes>((MetaTypes) type.media_meta_changed.meta_type));
                     break;
                 case libvlc_event_e.MediaSubItemAdded:
                     //TODO
@@ -468,7 +468,7 @@ namespace Vlc.DotNet.Core.Medias
                     //EventsHelper.RaiseEvent(Freed, this, new VlcEventArgs<MediaBase>(type.media_freed.md));
                     break;
                 case libvlc_event_e.MediaStateChanged:
-                    EventsHelper.RaiseEvent(StateChanged, this, new VlcEventArgs<State>((State) type.media_state_changed.new_state));
+                    EventsHelper.RaiseEvent(StateChanged, this, new VlcEventArgs<MediaStates>((MediaStates) type.media_state_changed.new_state));
                     break;
             }
         }
