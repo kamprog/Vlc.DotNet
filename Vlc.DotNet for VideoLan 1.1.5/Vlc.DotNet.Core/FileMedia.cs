@@ -1,7 +1,7 @@
 ﻿using System;
 using Vlc.DotNet.Core.Interop;
 
-namespace Vlc.DotNet.Core.Medias
+namespace Vlc.DotNet.Core
 {
     public class FileMedia : MediaBase
     {

@@ -15,7 +15,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Vlc.DotNet.Core.MrlMedia">
-    <Position X="4.5" Y="10.5" Width="3.75" />
+    <Position X="4.5" Y="8" Width="3.75" />
     <Compartments>
       <Compartment Name="ProtectedInternal" Collapsed="true" />
       <Compartment Name="Private" Collapsed="true" />
@@ -25,8 +25,8 @@
       <FileName>MrlMedia.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Vlc.DotNet.Core.Medias.FileMedia">
-    <Position X="0.5" Y="10.5" Width="3.75" />
+  <Class Name="Vlc.DotNet.Core.FileMedia">
+    <Position X="0.5" Y="8" Width="3.75" />
     <Compartments>
       <Compartment Name="ProtectedInternal" Collapsed="true" />
       <Compartment Name="Private" Collapsed="true" />

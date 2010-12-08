@@ -13,7 +13,10 @@ namespace Vlc.DotNet.Core.Helpers
             {
                 var syncInvoke = singleInvoke.Target as ISynchronizeInvoke;
                 if (syncInvoke == null)
+                {
+                    singleInvoke.DynamicInvoke(new object[] {sender, arg});
                     continue;
+                }
                 //if (syncInvoke is Control && ((Control)syncInvoke).IsDisposed)
                 //    continue;
                 try

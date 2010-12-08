@@ -34,6 +34,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Vlc.DotNet.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Design" />
@@ -51,13 +57,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Vlc.DotNet.pfx" />
+    <None Include="WinformClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Vlc.DotNet.Core\Vlc.DotNet.Core.csproj">
       <Project>{4CBEC810-E46A-4CC1-80D0-9A31F4AE884A}</Project>
       <Name>Vlc.DotNet.Core</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="WinformClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

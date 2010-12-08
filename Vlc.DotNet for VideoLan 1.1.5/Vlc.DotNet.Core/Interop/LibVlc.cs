@@ -7,9 +7,16 @@ namespace Vlc.DotNet.Core.Interop
     {
         #region LibVLC error handling
 
+        /// <summary>
+        /// A human-readable error message for the last LibVLC error in the calling thread. The resulting string is valid until another error occurs (at least until the next LibVLC call).
+        /// </summary>
+        /// <returns>NULL if there was no error</returns>
         [DllImport("libvlc")]
         public static extern string libvlc_errmsg();
 
+        /// <summary>
+        /// Clears the LibVLC error status for the current thread. This is optional. By default, the error status is automatically overridden when a new error occurs, and destroyed when the thread exits.
+        /// </summary>
         [DllImport("libvlc")]
         public static extern void libvlc_clearerr();
 
@@ -17,6 +24,12 @@ namespace Vlc.DotNet.Core.Interop
 
         #endregion
 
+        /// <summary>
+        /// Create and initialize a libvlc instance. This functions accept a list of "command line" arguments similar to the main(). These arguments affect the LibVLC instance default configuration.
+        /// </summary>
+        /// <param name="argc"></param>
+        /// <param name="argv"></param>
+        /// <returns></returns>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr libvlc_new(int argc, string[] argv);
 

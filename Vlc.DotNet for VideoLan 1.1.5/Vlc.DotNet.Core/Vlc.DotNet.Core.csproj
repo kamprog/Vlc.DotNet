@@ -35,15 +35,20 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Vlc.DotNet.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AudioChannels.cs" />
     <Compile Include="AudioDeviceTypes.cs" />
     <Compile Include="CommonStrings.cs" />
+    <Compile Include="VideoLogoOptions.cs" />
     <Compile Include="Extensions\IntPtrExtensions.cs" />
     <Compile Include="Helpers\EventsHelper.cs" />
     <Compile Include="Interop\LibVlc.cs" />
@@ -62,15 +67,15 @@
     <Compile Include="MetaTypes.cs" />
     <Compile Include="MediaStates.cs" />
     <Compile Include="MediaNotAttachedToVlcControlException.cs" />
+    <Compile Include="VideoAdjustOptions.cs" />
     <Compile Include="VlcEventHandler%27.cs" />
     <Compile Include="VlcEventArgs%27.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Medias\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="MediaClassDiagram.cd" />
+    <None Include="Vlc.DotNet.pfx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

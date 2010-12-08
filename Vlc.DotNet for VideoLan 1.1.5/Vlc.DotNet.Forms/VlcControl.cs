@@ -47,6 +47,7 @@ namespace Vlc.DotNet.Forms
         /// Get movie fps rate
         /// </summary>
         [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public float FramesPerSecond
         {
             get
@@ -61,6 +62,7 @@ namespace Vlc.DotNet.Forms
         /// Can this media player be paused?
         /// </summary>
         [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool CanPause
         {
             get
@@ -75,6 +77,7 @@ namespace Vlc.DotNet.Forms
         /// Is this media player playing?
         /// </summary>
         [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool IsPlaying
         {
             get
@@ -89,6 +92,7 @@ namespace Vlc.DotNet.Forms
         /// Is this media player seekable?
         /// </summary>
         [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool IsSeekable
         {
             get
@@ -105,6 +109,7 @@ namespace Vlc.DotNet.Forms
         /// Audio device type
         /// </summary>
         [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public AudioDeviceTypes AudioDeviceType
         {
             get
@@ -126,6 +131,7 @@ namespace Vlc.DotNet.Forms
         /// Get mute status of audio
         /// </summary>
         [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool IsMute
         {
             get
@@ -147,6 +153,7 @@ namespace Vlc.DotNet.Forms
         /// Volume level
         /// </summary>
         [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int VolumeLevel
         {
             get
@@ -168,6 +175,7 @@ namespace Vlc.DotNet.Forms
         /// Get number of available audio tracks.
         /// </summary>
         [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int AudioTrackCount
         {
             get
@@ -182,6 +190,7 @@ namespace Vlc.DotNet.Forms
         /// Get the description of available audio tracks
         /// </summary>
         [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string AudioTrackDescription
         {
             get
@@ -196,6 +205,7 @@ namespace Vlc.DotNet.Forms
         /// Audio track
         /// </summary>
         [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int AudioTrack
         {
             get
@@ -217,6 +227,7 @@ namespace Vlc.DotNet.Forms
         /// Current audio channel
         /// </summary>
         [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public AudioChannels AudioChannel
         {
             get
@@ -238,6 +249,7 @@ namespace Vlc.DotNet.Forms
         /// Current audio delay
         /// </summary>
         [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public long AudioDelay
         {
             get
@@ -255,6 +267,61 @@ namespace Vlc.DotNet.Forms
             }
         }
 
+        #endregion
+
+        #region Video Properties
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public bool IsFullScrren
+        {
+            get
+            {
+                if (VlcMediaPlayer != IntPtr.Zero)
+                    return LibVlcMethods.libvlc_get_fullscreen(VlcMediaPlayer) == 1;
+                return false;
+            }
+            set
+            {
+                if (VlcMediaPlayer != IntPtr.Zero)
+                    LibVlcMethods.libvlc_set_fullscreen(VlcMediaPlayer, value ? 1 : 0);
+                else
+                    throw new PlayerNotAttachedToVlcControlException();
+            }
+        }
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public Size VideoSize
+        {
+            get
+            {
+                if (VlcMediaPlayer == IntPtr.Zero)
+                    return Size.Empty;
+                uint x = 0, y = 0;
+                if(LibVlcMethods.libvlc_video_get_size(VlcMediaPlayer, 0, ref x, ref y) == 0)
+                    return new Size((int)x, (int)y);
+                return Size.Empty;
+            }
+        }
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public float VideoScale
+        {
+            get
+            {
+                if (VlcMediaPlayer == IntPtr.Zero)
+                    return 1;
+                return LibVlcMethods.libvlc_video_get_scale(VlcMediaPlayer);
+            }
+            set
+            {
+                if (VlcMediaPlayer != IntPtr.Zero)
+                    LibVlcMethods.libvlc_video_set_scale(VlcMediaPlayer, value);
+                else
+                    throw new PlayerNotAttachedToVlcControlException();
+            }
+        }
         #endregion
 
         protected override void Dispose(bool disposing)
@@ -367,6 +434,12 @@ namespace Vlc.DotNet.Forms
             if (VlcMediaPlayer == IntPtr.Zero)
                 return;
             LibVlcMethods.libvlc_media_player_pause(VlcMediaPlayer);
+        }
+
+        public void ToggleFullScreen()
+        {
+            if (VlcMediaPlayer != IntPtr.Zero)
+                LibVlcMethods.libvlc_toggle_fullscreen(VlcMediaPlayer);
         }
 
         public void ToggleMute()

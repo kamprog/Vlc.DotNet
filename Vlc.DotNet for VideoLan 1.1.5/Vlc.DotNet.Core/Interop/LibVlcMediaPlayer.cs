@@ -119,7 +119,7 @@ namespace Vlc.DotNet.Core.Interop
         /// <summary>
         /// Set movie title
         /// </summary>
-        /// <param name="player">The Media Player</param>
+        /// <param name="playerInstance">The Media Player</param>
         /// <param name="title">Title number to play</param>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
         public static extern void libvlc_media_player_set_title(IntPtr playerInstance, int title);
@@ -127,7 +127,7 @@ namespace Vlc.DotNet.Core.Interop
         /// <summary>
         /// Get movie title
         /// </summary>
-        /// <param name="player">The Media Player</param>
+        /// <param name="playerInstance">The Media Player</param>
         /// <returns>Title number currently playing, or -1</returns>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
         public static extern int libvlc_media_player_get_title(IntPtr playerInstance);
@@ -235,55 +235,143 @@ namespace Vlc.DotNet.Core.Interop
 
         #endregion
 
+        /// <summary>
+        /// Toggle fullscreen status on non-embedded video outputs.
+        /// </summary>
+        /// <param name="playerInstance">Media player instance</param>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
         public static extern void libvlc_toggle_fullscreen(IntPtr playerInstance);
 
+        /// <summary>
+        /// Enable or disable fullscreen.
+        /// </summary>
+        /// <param name="playerInstance">Media player instance</param>
+        /// <param name="fullscreen">Fullscreen status</param>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void libvlc_set_fullscreen(IntPtr playerInstance);
+        public static extern void libvlc_set_fullscreen(IntPtr playerInstance, int fullscreen);
 
+        /// <summary>
+        /// Get current fullscreen status.
+        /// </summary>
+        /// <param name="playerInstance">Media player instance</param>
+        /// <returns>Fullscreen status</returns>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
         public static extern int libvlc_get_fullscreen(IntPtr playerInstance);
 
         // libvlc_video_set_key_input
         // libvlc_video_set_mouse_input
 
+        /// <summary>
+        /// Get the pixel dimensions of a video.
+        /// </summary>
+        /// <param name="playerInstance">Media player instance</param>
+        /// <param name="num">Number of the video (starting from, and most commonly 0)</param>
+        /// <param name="x">Pixel width</param>
+        /// <param name="y">Pixel height</param>
+        /// <returns>0 on success, -1 if the specified video does not exist</returns>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
         public static extern int libvlc_video_get_size(IntPtr playerInstance, uint num, ref uint x, ref uint y);
 
-        // libvlc_video_get_height
-        // libvlc_video_get_width
-        // libvlc_video_get_cursor
+        /// <summary>
+        /// Get the mouse pointer coordinates over a video. Coordinates are expressed in terms of the decoded video resolution, not in terms of pixels on the screen/viewport (to get the latter, you can query your windowing system directly).
+        /// </summary>
+        /// <param name="playerInstance">Media player instance</param>
+        /// <param name="num">Number of the video (starting from, and most commonly 0)</param>
+        /// <param name="x">Pixel width</param>
+        /// <param name="y">Pixel height</param>
+        /// <returns>0 on success, -1 if the specified video does not exist</returns>
+        [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int libvlc_video_get_cursor(IntPtr playerInstance, uint num, ref uint x, ref uint y);
 
+        /// <summary>
+        /// Get the current video scaling factor.
+        /// </summary>
+        /// <param name="playerInstance">Media player instance</param>
+        /// <returns>currently configured zoom factor, or 0. if the video is set to fit to the output window/drawable automatically</returns>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
         public static extern float libvlc_video_get_scale(IntPtr playerInstance);
 
+        /// <summary>
+        /// Set the video scaling factor. That is the ratio of the number of pixels on screen to the number of pixels in the original decoded video in each dimension. Zero is a special value; it will adjust the video to the output window/drawable (in windowed mode) or the entire screen.
+        /// </summary>
+        /// <param name="playerInstance">Media player instance</param>
+        /// <param name="factor">Scaling factor, or zero</param>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
         public static extern void libvlc_video_set_scale(IntPtr playerInstance, float factor);
 
+        /// <summary>
+        /// Get current video aspect ratio.
+        /// </summary>
+        /// <param name="playerInstance">Media player instance</param>
+        /// <returns>Video aspect ratio or NULL if unspecified (the result must be released with free() or libvlc_free())</returns>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
-        public static extern String libvlc_video_get_aspect_ratio(IntPtr playerInstance);
+        public static extern string libvlc_video_get_aspect_ratio(IntPtr playerInstance);
 
+        /// <summary>
+        /// Set new video aspect ratio.
+        /// </summary>
+        /// <param name="playerInstance">Media player instance</param>
+        /// <param name="aspect">new video aspect-ratio or NULL to reset to default</param>
+        /// <remarks>Invalid aspect ratios are ignored.</remarks>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
         public static extern void libvlc_video_set_aspect_ratio(IntPtr playerInstance, string aspect);
 
+        /// <summary>
+        /// Get current video subtitle.
+        /// </summary>
+        /// <param name="playerInstance">Media player instance</param>
+        /// <returns>Video subtitle selected, or -1 if none</returns>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
         public static extern int libvlc_video_get_spu(IntPtr playerInstance);
 
+        /// <summary>
+        /// Get the number of available video subtitles.
+        /// </summary>
+        /// <param name="playerInstance">Media player instance</param>
+        /// <returns>Number of available video subtitles</returns>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
         public static extern int libvlc_video_get_spu_count(IntPtr playerInstance);
 
+        /// <summary>
+        /// Get the description of available video subtitles.
+        /// </summary>
+        /// <param name="playerInstance">Media player instance</param>
+        /// <returns>List containing description of available video subtitles</returns>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
         public static extern IntPtr libvlc_video_get_spu_description(IntPtr playerInstance);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="playerInstance">Media player instance</param>
+        /// <param name="spu">new video subtitle to select</param>
+        /// <returns>Success status</returns>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int libvlc_video_set_spu(IntPtr playerInstance, uint i_spu);
+        public static extern int libvlc_video_set_spu(IntPtr playerInstance, uint spu);
 
+        /// <summary>
+        /// Set new video subtitle.
+        /// </summary>
+        /// <param name="playerInstance">Media player instance</param>
+        /// <param name="subtitleFile">New video subtitle file</param>
+        /// <returns>0 on success, -1 if out of range</returns>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int libvlc_video_set_subtitle_file(IntPtr playerInstance, string subtitle_file);
+        public static extern int libvlc_video_set_subtitle_file(IntPtr playerInstance, string subtitleFile);
 
+        /// <summary>
+        /// Get the description of available titles.
+        /// </summary>
+        /// <param name="playerInstance">Media player instance</param>
+        /// <returns>Success status</returns>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr libvlc_video_get_title_description(IntPtr playerInstance);
 
+        /// <summary>
+        /// Get the description of available chapters for specific title.
+        /// </summary>
+        /// <param name="playerInstance">Media player instance</param>
+        /// <param name="title">Selected title</param>
+        /// <returns>List containing description of available chapter for title title</returns>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr libvlc_video_get_chapter_description(IntPtr playerInstance, int title);
 
@@ -293,41 +381,112 @@ namespace Vlc.DotNet.Core.Interop
         // libvlc_video_set_teletext
         // libvlc_toggle_teletext
 
+        /// <summary>
+        /// Get number of available video tracks.
+        /// </summary>
+        /// <param name="playerInstance">Media player instance</param>
+        /// <returns>Number of available video tracks</returns>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
         public static extern int libvlc_video_get_track_count(IntPtr playerInstance);
 
+        /// <summary>
+        /// Get the description of available video tracks.
+        /// </summary>
+        /// <param name="playerInstance">Media player instance</param>
+        /// <returns>List with description of available video tracks, or NULL on error</returns>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr libvlc_video_get_track_description(IntPtr playerInstance);
 
+        /// <summary>
+        /// Get current video track.
+        /// </summary>
+        /// <param name="playerInstance">Media player instance</param>
+        /// <returns>Video track or -1 if none</returns>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
         public static extern int libvlc_video_get_track(IntPtr playerInstance);
 
+        /// <summary>
+        /// Set video track.
+        /// </summary>
+        /// <param name="playerInstance">Media player instance</param>
+        /// <param name="track">Track</param>
+        /// <returns>0 on success, -1 if out of range</returns>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void libvlc_video_set_track(IntPtr playerInstance, int track);
+        public static extern int libvlc_video_set_track(IntPtr playerInstance, int track);
 
+        /// <summary>
+        /// Take a snapshot of the current video window.
+        /// </summary>
+        /// <param name="playerInstance">Media player instance</param>
+        /// <param name="num">Number of video output (typically 0 for the first/only one)</param>
+        /// <param name="path">Path where to save the screenshot to</param>
+        /// <param name="width">Snapshot's width</param>
+        /// <param name="height">Snapshot's height</param>
+        /// <returns>0 on success, -1 if the video was not found</returns>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
         public static extern int libvlc_video_take_snapshot(IntPtr playerInstance, uint num, string path, uint width, uint height);
 
+        /// <summary>
+        /// Enable or disable deinterlace filter
+        /// </summary>
+        /// <param name="playerInstance">Media player instance</param>
+        /// <param name="mode">Type of deinterlace filter, NULL to disable</param>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
         public static extern void libvlc_video_set_deinterlace(IntPtr playerInstance, string mode);
 
+        /// <summary>
+        /// Get an integer marquee option value
+        /// </summary>
+        /// <param name="playerInstance">Media player instance</param>
+        /// <param name="option">Marq option to get</param>
+        /// <returns></returns>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
         public static extern int libvlc_video_get_marquee_int(IntPtr playerInstance, libvlc_video_marquee_option_t option);
 
+        /// <summary>
+        /// Get a string marquee option value
+        /// </summary>
+        /// <param name="playerInstance">Media player instance</param>
+        /// <param name="option">Marq option to get</param>
+        /// <returns></returns>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr libvlc_video_marquee_string(IntPtr playerInstance, uint option);
 
+        /// <summary>
+        /// Enable, disable or set an integer marquee option
+        /// </summary>
+        /// <param name="playerInstance">Media player instance</param>
+        /// <param name="option">Marq option to set</param>
+        /// <param name="value">Marq option value</param>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
         public static extern void libvlc_video_set_marquee_int(IntPtr playerInstance, uint option, int value);
 
+        /// <summary>
+        /// Set a marquee string option
+        /// </summary>
+        /// <param name="playerInstance">Media player instance</param>
+        /// <param name="option">Marq option to set</param>
+        /// <param name="value">Marq option value</param>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
         public static extern void libvlc_video_set_marquee_string(IntPtr playerInstance, uint option, string value);
 
+        /// <summary>
+        /// Get integer logo option
+        /// </summary>
+        /// <param name="playerInstance">Media player instance</param>
+        /// <param name="option">Logo option to get, values of libvlc_video_logo_option_t</param>
+        /// <returns></returns>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int libvlc_video_get_logo_int(IntPtr playerInstance, uint option);
+        public static extern int libvlc_video_get_logo_int(IntPtr playerInstance, libvlc_video_logo_option_t option);
 
+        /// <summary>
+        /// Set logo option as integer. Options that take a different type value are ignored.
+        /// </summary>
+        /// <param name="playerInstance">Media player instance</param>
+        /// <param name="option">Logo option to set, values of libvlc_video_logo_option_t</param>
+        /// <param name="value">Logo option value</param>
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void libvlc_video_set_logo_int(IntPtr playerInstance, uint option, int value);
+        public static extern void libvlc_video_set_logo_int(IntPtr playerInstance, libvlc_video_logo_option_t option, int value);
 
         // libvlc_video_get_adjust_int
         // libvlc_video_set_adjust_int

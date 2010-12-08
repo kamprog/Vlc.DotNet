@@ -5,6 +5,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vlc.DotNet.Core", "Vlc.DotN
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vlc.DotNet.Forms", "Vlc.DotNet.Forms\Vlc.DotNet.Forms.csproj", "{662137FD-8F2F-464C-B34E-CD14E92BD591}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{58AB2BF2-3CD1-4130-B2FA-F41AC8D770A7}"
+	ProjectSection(SolutionItems) = preProject
+		Common\Vlc.DotNet.pfx = Common\Vlc.DotNet.pfx
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 3
