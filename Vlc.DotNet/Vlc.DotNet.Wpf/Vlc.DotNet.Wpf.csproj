@@ -74,8 +74,14 @@
     <Compile Include="..\Common\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
+    <Compile Include="..\Vlc.DotNet.Forms\VlcAudioProperties.Common.cs">
+      <Link>VlcAudioProperties.Common.cs</Link>
+    </Compile>
     <Compile Include="..\Vlc.DotNet.Forms\VlcControl.Common.cs">
       <Link>VlcControl.Common.cs</Link>
+    </Compile>
+    <Compile Include="..\Vlc.DotNet.Forms\VlcVideoProperties.Common.cs">
+      <Link>VlcVideoProperties.Common.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
