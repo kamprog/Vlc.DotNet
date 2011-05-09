@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 using Vlc.DotNet.Core.Interops.Signatures.LibVlc;
 
 namespace Vlc.DotNet.Core.Interops
@@ -113,8 +114,10 @@ namespace Vlc.DotNet.Core.Interops
 
             GetVersion = new LibVlcFunction<GetVersion>(myLibVlcDllHandle);
 
-            var vlcVersion = new Version(GetVersion.Invoke().Split(new[] { "-" }, StringSplitOptions.None)[0]);
-
+            var reg = new Regex("^[0-9.]*");
+            var match = reg.Match(GetVersion.Invoke());
+            var vlcVersion = new Version(match.Groups[0].Value); 
+            
             NewInstance = new LibVlcFunction<NewInstance>(myLibVlcDllHandle, vlcVersion);
             ReleaseInstance = new LibVlcFunction<ReleaseInstance>(myLibVlcDllHandle, vlcVersion);
             RetainInstance = new LibVlcFunction<RetainInstance>(myLibVlcDllHandle, vlcVersion);
