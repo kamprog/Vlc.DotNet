@@ -19,6 +19,8 @@ namespace Vlc.DotNet.Forms
             VlcContext.HandleManager.MediaPlayerHandles[this] =
                 VlcContext.InteropManager.MediaPlayerInterops.NewInstance.Invoke(
                     VlcContext.HandleManager.LibVlcHandle);
+            AudioProperties = new VlcAudioProperties(this);
+            VideoProperties = new VlcVideoProperties(this);
             InitEvents();
             HandleCreated += OnHandleCreated;
         }

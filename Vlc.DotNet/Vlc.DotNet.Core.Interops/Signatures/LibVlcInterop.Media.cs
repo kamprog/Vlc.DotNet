@@ -54,10 +54,10 @@ namespace Vlc.DotNet.Core.Interops.Signatures
 
             public enum TrackTypes
             {
-                TrackUnknown = -1,
-                TrackAudio = 0,
-                TrackVideo = 1,
-                TrackText = 2
+                Unknown = -1,
+                Audio = 0,
+                Video = 1,
+                Text = 2
             }
 
             public struct Stats

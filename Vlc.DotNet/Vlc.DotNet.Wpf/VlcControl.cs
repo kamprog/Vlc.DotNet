@@ -73,6 +73,8 @@ namespace Vlc.DotNet.Wpf
             VlcContext.HandleManager.MediaPlayerHandles[this] =
                 VlcContext.InteropManager.MediaPlayerInterops.NewInstance.Invoke(
                     VlcContext.HandleManager.LibVlcHandle);
+            AudioProperties = new VlcAudioProperties(this);
+            VideoProperties = new VlcVideoProperties(this);
             InitEvents();
 
             myVideoLockCallback = LockCallback;

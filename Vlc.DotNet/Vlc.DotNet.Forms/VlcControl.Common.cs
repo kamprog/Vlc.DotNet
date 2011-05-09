@@ -91,7 +91,7 @@ namespace Vlc.DotNet.Forms
         /// Play the current media
         /// </summary>
         public void Play()
-        {           
+        {
             if (VlcContext.InteropManager != null &&
                 VlcContext.InteropManager.MediaPlayerInterops != null &&
                 VlcContext.InteropManager.MediaPlayerInterops.Play.IsAvailable &&
@@ -307,5 +307,123 @@ namespace Vlc.DotNet.Forms
         public event VlcEventHandler<VlcControl, long> TitleChanged;
 
         #endregion
+
+        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
+        public VlcAudioProperties AudioProperties { get; private set; }
+        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
+        public VlcVideoProperties VideoProperties { get; private set; }
+
+        public sealed class VlcAudioProperties
+        {
+            private readonly VlcControl myHostVlcControl;
+
+            /// <summary>
+            /// Check / Set mute
+            /// </summary>
+            public bool IsMute
+            {
+                get
+                {
+                    if (VlcContext.InteropManager != null &&
+                        VlcContext.InteropManager.MediaPlayerInterops != null &&
+                        VlcContext.InteropManager.MediaPlayerInterops.AudioInterops != null &&
+                        VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.GetMute.IsAvailable &&
+                        VlcContext.HandleManager != null &&
+                        VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(myHostVlcControl))
+                    {
+                        return VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.GetMute.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl]) == 1;
+                    }
+                    return false;
+                }
+                set
+                {
+                    if (VlcContext.InteropManager != null &&
+                        VlcContext.InteropManager.MediaPlayerInterops != null &&
+                        VlcContext.InteropManager.MediaPlayerInterops.AudioInterops != null &&
+                        VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.SetMute.IsAvailable &&
+                        VlcContext.HandleManager != null &&
+                        VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(myHostVlcControl))
+                    {
+                        VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.SetMute.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl], value ? 1 : 0);
+                    }
+                }
+            }
+            /// <summary>
+            /// Get / Set volume
+            /// </summary>
+            public int Volume
+            {
+                get
+                {
+                    if (VlcContext.InteropManager != null &&
+                        VlcContext.InteropManager.MediaPlayerInterops != null &&
+                        VlcContext.InteropManager.MediaPlayerInterops.AudioInterops != null &&
+                        VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.GetVolume.IsAvailable &&
+                        VlcContext.HandleManager != null &&
+                        VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(myHostVlcControl))
+                    {
+                        return VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.GetVolume.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl]);
+                    }
+                    return -1;
+                }
+                set
+                {
+                    if (VlcContext.InteropManager != null &&
+                        VlcContext.InteropManager.MediaPlayerInterops != null &&
+                        VlcContext.InteropManager.MediaPlayerInterops.AudioInterops != null &&
+                        VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.SetVolume.IsAvailable &&
+                        VlcContext.HandleManager != null &&
+                        VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(myHostVlcControl))
+                    {
+                        VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.SetVolume.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl], value);
+                    }
+                }
+            }
+            /// <summary>
+            /// Get / Set delay
+            /// </summary>
+            public long Delay
+            {
+                get
+                {
+                    if (VlcContext.InteropManager != null &&
+                        VlcContext.InteropManager.MediaPlayerInterops != null &&
+                        VlcContext.InteropManager.MediaPlayerInterops.AudioInterops != null &&
+                        VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.GetDelay.IsAvailable &&
+                        VlcContext.HandleManager != null &&
+                        VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(myHostVlcControl))
+                    {
+                        return VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.GetDelay.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl]);
+                    }
+                    return 0;
+                }
+                set
+                {
+                    if (VlcContext.InteropManager != null &&
+                        VlcContext.InteropManager.MediaPlayerInterops != null &&
+                        VlcContext.InteropManager.MediaPlayerInterops.AudioInterops != null &&
+                        VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.SetDelay.IsAvailable &&
+                        VlcContext.HandleManager != null &&
+                        VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(myHostVlcControl))
+                    {
+                        VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.SetDelay.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl], value);
+                    }
+                }
+            }
+
+            internal VlcAudioProperties(VlcControl vlcControl)
+            {
+                myHostVlcControl = vlcControl;
+            }
+        }
+        public sealed class VlcVideoProperties
+        {
+            private readonly VlcControl myHostVlcControl;
+
+            internal VlcVideoProperties(VlcControl vlcControl)
+            {
+                myHostVlcControl = vlcControl;
+            }
+        }
     }
 }

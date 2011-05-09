@@ -478,12 +478,17 @@ namespace Vlc.DotNet.Core.Interops.Signatures
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
                 public delegate int GetFullscreen(IntPtr playerInstance);
 
-
-
+                [LibVlcFunction("libvlc_video_set_key_input")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate void SetKeyInput(IntPtr playerInstance, int on);
 
                 [LibVlcFunction("libvlc_video_get_size")]
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
                 public delegate int GetSize(IntPtr playerInstance, uint num, out uint x, out uint y);
+
+                [LibVlcFunction("libvlc_video_get_cursor")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate int GetCursor(IntPtr playerInstance, uint num, out uint x, out uint y);
 
                 [LibVlcFunction("libvlc_video_get_scale")]
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
@@ -492,11 +497,511 @@ namespace Vlc.DotNet.Core.Interops.Signatures
                 [LibVlcFunction("libvlc_video_set_scale")]
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
                 public delegate int SetScale(IntPtr playerInstance, float scale);
+
+                [LibVlcFunction("libvlc_video_set_aspect_ratio")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate void SetAspectRatio(IntPtr playerInstance, string aspect);
+
+                /// <summary>
+                /// Get current video subtitle.
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <returns>Video subtitle selected, or -1 if none.</returns>
+                [LibVlcFunction("libvlc_video_get_spu")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate int GetSpu(IntPtr playerInstance);
+
+                /// <summary>
+                /// Get the number of available video subtitles.
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <returns>Number of available video subtitles.</returns>
+                [LibVlcFunction("libvlc_video_get_spu_count")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate int GetSpuCount(IntPtr playerInstance);
+
+                //TODO
+                //[LibVlcFunction("libvlc_video_get_spu_description")]
+                //[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                //public delegate TrackDescription GetSpuDescription(IntPtr playerInstance);
+
+                /// <summary>
+                /// Set new video subtitle.
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <param name="spu">New video subtitle to select.</param>
+                /// <returns>0 on success, -1 if out of range.</returns>
+                [LibVlcFunction("libvlc_video_set_spu")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate int SetSpu(IntPtr playerInstance, int spu);
+
+                /// <summary>
+                /// Set new video subtitle file.
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <param name="subtitleFile">New video subtitle file</param>
+                /// <returns>success status (boolean)</returns>
+                [LibVlcFunction("libvlc_video_set_subtitle_file")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate int SetSubtitleFile(IntPtr playerInstance, string subtitleFile);
+
+                //TODO
+                //[LibVlcFunction("libvlc_video_get_title_description")]
+                //[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                //public delegate TrackDescription GetTitleDescription(IntPtr playerInstance);
+
+                //TODO
+                //[LibVlcFunction("libvlc_video_get_chapter_description")]
+                //[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                //public delegate TrackDescription GetChapterDescription(IntPtr playerInstance, int title);
+
+                //TODO
+                //[LibVlcFunction("libvlc_video_get_crop_geometry")]
+                //[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                //public delegate string GetCropGeometry(IntPtr playerInstance);
+
+                //TODO
+                //[LibVlcFunction("libvlc_video_set_crop_geometry")]
+                //[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                //public delegate void SetCropGeometry(IntPtr playerInstance, string geometry);
+
+                /// <summary>
+                /// Get current teletext page requested.
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <returns>Current teletext page requested.</returns>
+                [LibVlcFunction("libvlc_video_get_teletext")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate int GetTeletext(IntPtr playerInstance);
+
+                /// <summary>
+                /// Set new teletext page to retrieve.
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <param name="teletextPage">Teletex page number requested</param>
+                [LibVlcFunction("libvlc_video_set_teletext")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate void SetTeletext(IntPtr playerInstance, int teletextPage);
+
+                /// <summary>
+                /// Toggle teletext transparent status on video output.
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                [LibVlcFunction("libvlc_toggle_teletext")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate void ToggleTeletext(IntPtr playerInstance);
+
+                /// <summary>
+                /// Get number of available video tracks.
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <returns>Number of available video tracks</returns>
+                [LibVlcFunction("libvlc_video_get_track_count")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate int GetTrackCount(IntPtr playerInstance);
+
+                //TODO
+                //[LibVlcFunction("libvlc_video_get_track_description")]
+                //[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                //public delegate TrackDescription GetTrackDescription(IntPtr playerInstance);
+
+                /// <summary>
+                /// Get current video track.
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <returns>Video track (int) or -1 if none</returns>
+                [LibVlcFunction("libvlc_video_get_track")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate int GetTrack(IntPtr playerInstance);
+
+                /// <summary>
+                /// Set video track.
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <param name="track">The track (int)</param>
+                /// <returns>0 on success, -1 if out of range</returns>
+                [LibVlcFunction("libvlc_video_set_track")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate int SetTrack(IntPtr playerInstance, int track);
+
+                /// <summary>
+                /// Take a snapshot of the current video window.
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <param name="numVideo">Number of video output (typically 0 for the first/only one)</param>
+                /// <param name="filePath">The path where to save the screenshot to</param>
+                /// <param name="width">Snapshot's width</param>
+                /// <param name="height">Snapshot's height</param>
+                /// <returns>0 on success, -1 if the video was not found</returns>
+                [LibVlcFunction("libvlc_video_take_snapshot")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate int TakeSnapshot(IntPtr playerInstance, uint numVideo, string filePath, uint width, uint height);
+
+                /// <summary>
+                /// Enable or disable deinterlace filter
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <param name="mode">Type of deinterlace filter, NULL to disable</param>
+                [LibVlcFunction("libvlc_video_set_deinterlace")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate void SetDeinterlace(IntPtr playerInstance, string mode);
+
+                /// <summary>
+                /// Get an integer marquee option value
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <param name="option">Option</param>
+                /// <returns>The value</returns>
+                [LibVlcFunction("libvlc_video_get_marquee_int")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate int GetIntegerMarquee(IntPtr playerInstance, VideoMarqueeOption option);
+
+                /// <summary>
+                /// Get an string marquee option value
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <param name="option">Option</param>
+                /// <returns>The value</returns>
+                [LibVlcFunction("libvlc_video_get_marquee_string")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate int GetStringMarquee(IntPtr playerInstance, VideoMarqueeOption option);
+
+                /// <summary>
+                /// Enable, disable or set an integer marquee option
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <param name="option">Option</param>
+                /// <param name="value">The integer value</param>
+                [LibVlcFunction("libvlc_video_set_marquee_int")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate void SetIntegerMarquee(IntPtr playerInstance, VideoMarqueeOption option, int value);
+
+                /// <summary>
+                /// Set a marquee string option
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <param name="option">Option</param>
+                /// <param name="value">The string value</param>
+                [LibVlcFunction("libvlc_video_set_marquee_string")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate void SetStringMarquee(IntPtr playerInstance, VideoMarqueeOption option, string value);
+
+                public enum LogoOption
+                {
+                    Enable,
+                    File,
+                    X,
+                    Y,
+                    Delay,
+                    Repeat,
+                    Opacity,
+                    Position
+                }
+
+                /// <summary>
+                /// Get integer logo option.
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <param name="option">Option</param>
+                /// <returns>The interger value</returns>
+                [LibVlcFunction("libvlc_video_get_logo_int")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate int GetIntegerLogoOption(IntPtr playerInstance, LogoOption option);
+
+                /// <summary>
+                /// Set logo option as integer. Options that take a different type value are ignored.
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <param name="option">Option</param>
+                /// <param name="value">The interger value</param>
+                [LibVlcFunction("libvlc_video_set_logo_int")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate void SetIntegerLogoOption(IntPtr playerInstance, LogoOption option, int value);
+
+                /// <summary>
+                /// Set logo option as string. Options that take a different type value are ignored.
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <param name="option">Option</param>
+                /// <param name="value">The string value</param>
+                [LibVlcFunction("libvlc_video_set_logo_string")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate void SetStringLogoOption(IntPtr playerInstance, LogoOption option, string value);
+
+                public enum AdjustOption
+                {
+                    Enable = 0,
+                    Contrast,
+                    Brightness,
+                    Hue,
+                    Saturation,
+                    Gamma
+                }
+
+                /// <summary>
+                /// Get integer adjust option.
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <param name="option">Option</param>
+                /// <returns>The interger value</returns>
+                [LibVlcFunction("libvlc_video_get_adjust_int", "1.1.1")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate int GetIntegerAdjust(IntPtr playerInstance, AdjustOption option);
+
+                /// <summary>
+                /// Set adjust option as integer. Options that take a different type value are ignored
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <param name="option">Option</param>
+                /// <param name="value">The interger value</param>
+                [LibVlcFunction("libvlc_video_set_adjust_int", "1.1.1")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate void SetIntegerAdjust(IntPtr playerInstance, AdjustOption option, int value);
+
+                /// <summary>
+                /// Get float adjust option.
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <param name="option">Option</param>
+                /// <returns>The float value</returns>
+                [LibVlcFunction("libvlc_video_get_adjust_float", "1.1.1")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate float GetFloatAdjust(IntPtr playerInstance, AdjustOption option);
+
+                /// <summary>
+                /// Set adjust option as float. Options that take a different type value are ignored
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <param name="option">Option</param>
+                /// <param name="value">The float value</param>
+                [LibVlcFunction("libvlc_video_set_adjust_int", "1.1.1")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate void SetFloatAdjust(IntPtr playerInstance, AdjustOption option, float value);
+
             }
 
             namespace Audio
             {
+                /// <summary>
+                /// Audio device types
+                /// </summary>
+                public enum OutputDeviceTypes
+                {
+                    Error = -1,
+                    Mono = 1,
+                    Stereo = 2,
+                    _2F2R = 4,
+                    _3F2R = 5,
+                    _5_1 = 6,
+                    _6_1 = 7,
+                    _7_1 = 8,
+                    SPDIF = 10,
+                }
 
+                /// <summary>
+                /// Audio channels
+                /// </summary>
+                public enum OutputChannel
+                {
+                    Error = -1,
+                    Stereo = 1,
+                    RStereo = 2,
+                    Left = 3,
+                    Right = 4,
+                    Dolbys = 5,
+                }
+
+                /// <summary>
+                /// Get the list of available audio outputs
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <returns>List of available audio outputs.</returns>
+                [LibVlcFunction("libvlc_audio_output_list_get")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate IntPtr NewOutputListInstance(IntPtr playerInstance);
+
+                /// <summary>
+                /// Free the list of available audio outputs
+                /// </summary>
+                /// <param name="outputList">The output list</param>
+                [LibVlcFunction("libvlc_audio_output_list_release")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate void ReleaseOutputList(IntPtr outputList);
+
+                /// <summary>
+                /// Get count of devices for audio output, these devices are hardware oriented like analor or digital output of sound card
+                /// </summary>
+                /// <param name="instance">The instance to destroy</param>
+                /// <param name="outputName">Name of audio output</param>
+                /// <returns>Number of devices</returns>
+                [LibVlcFunction("libvlc_audio_output_device_count")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate int OutputDeviceCount(IntPtr instance, string outputName);
+
+                /// <summary>
+                /// Get long name of device, if not available short name given
+                /// </summary>
+                /// <param name="instance">The instance to destroy</param>
+                /// <param name="outputName">Name of audio output</param>
+                /// <param name="deviceIndex">Device index</param>
+                /// <returns>Long name of the devide</returns>
+                [LibVlcFunction("libvlc_audio_output_device_longname")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate string GetOutputDeviceLongName(IntPtr instance, string outputName, int deviceIndex);
+
+                /// <summary>
+                /// Get id name of device
+                /// </summary>
+                /// <param name="instance">The instance to destroy</param>
+                /// <param name="outputName">Name of audio output</param>
+                /// <param name="deviceIndex">Device index</param>
+                /// <returns>Id name of device, use for setting device, need to be free after use</returns>
+                [LibVlcFunction("libvlc_audio_output_device_id")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate string GetOutputDeviceIdName(IntPtr instance, string outputName, int deviceIndex);
+
+                /// <summary>
+                /// Set audio output device. Changes are only effective after stop and play.
+                /// </summary>
+                /// <param name="instance">The instance to destroy</param>
+                /// <param name="outputName">Name of audio output</param>
+                /// <param name="deviceIdName">Id name of device</param>
+                [LibVlcFunction("libvlc_audio_output_device_set")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate void SetOutputDevice(IntPtr instance, string outputName, string deviceIdName);
+
+                /// <summary>
+                /// Get current audio device type. Device type describes something like character of output sound - stereo sound, 2.1, 5.1 etc
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <returns>The audio device type</returns>
+                [LibVlcFunction("libvlc_audio_output_get_device_type")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate OutputDeviceTypes GetOutputDeviceType(IntPtr playerInstance);
+
+                /// <summary>
+                /// Set current audio device type.
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <param name="deviceType">The audio device type</param>
+                [LibVlcFunction("libvlc_audio_output_set_device_type")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate void SetOutputDeviceType(IntPtr playerInstance, OutputDeviceTypes deviceType);
+
+                /// <summary>
+                /// Toggle mute status.
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                [LibVlcFunction("libvlc_audio_toggle_mute")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate void ToggleMute(IntPtr playerInstance);
+
+                /// <summary>
+                /// Get current mute status.
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <returns>The mute status (boolean)</returns>
+                [LibVlcFunction("libvlc_audio_get_mute")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate int GetMute(IntPtr playerInstance);
+
+                /// <summary>
+                /// Set current mute status.
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <param name="status">If status is true then mute, otherwise unmute</param>
+                [LibVlcFunction("libvlc_audio_set_mute")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate void SetMute(IntPtr playerInstance, int status);
+
+                /// <summary>
+                /// Get current audio level.
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <returns>The audio level</returns>
+                [LibVlcFunction("libvlc_audio_get_volume")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate int GetVolume(IntPtr playerInstance);
+
+                /// <summary>
+                /// Set current audio level.
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <param name="level">The audio level</param>
+                [LibVlcFunction("libvlc_audio_set_volume")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate void SetVolume(IntPtr playerInstance, int level);
+
+                /// <summary>
+                /// Get number of available audio tracks.
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <returns>Number of available audio tracks, or -1 if unavailable</returns>
+                [LibVlcFunction("libvlc_audio_get_track_count")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate int GetTrackCount(IntPtr playerInstance);
+
+                //TODO
+                //[LibVlcFunction("libvlc_audio_get_track_description")]
+                //[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                //public delegate TrackDescription GetTrackDescription(IntPtr playerInstance);
+
+                /// <summary>
+                /// Get current audio track.
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <returns>Audio track (int), or -1 if none.</returns>
+                [LibVlcFunction("libvlc_audio_get_track")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate int GetTrack(IntPtr playerInstance);
+
+                /// <summary>
+                /// Set current audio track.
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <param name="audioTrack">Audio track</param>
+                /// <returns>0 on success, -1 on error</returns>
+                [LibVlcFunction("libvlc_audio_set_track")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate int SetTrack(IntPtr playerInstance, int audioTrack);
+
+                /// <summary>
+                /// Get current audio channel.
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <returns>The audio channel</returns>
+                [LibVlcFunction("libvlc_audio_get_channel")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate OutputChannel GetChannel(IntPtr playerInstance);
+
+                /// <summary>
+                ///  current audio channel.
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <param name="channel">The audio channel</param>
+                /// <returns>0 on success, -1 on error</returns>
+                [LibVlcFunction("libvlc_audio_set_channel")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate int SetChannel(IntPtr playerInstance, OutputChannel channel);
+
+                /// <summary>
+                /// Get current audio delay.
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <returns>The audio delay (microseconds)</returns>
+                [LibVlcFunction("libvlc_audio_get_delay", "1.1.1")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate long GetDelay(IntPtr playerInstance);
+
+                /// <summary>
+                /// Set current audio delay. The audio delay will be reset to zero each time the media changes.
+                /// </summary>
+                /// <param name="playerInstance">The Media Player</param>
+                /// <param name="delay">The audio delay (microseconds)</param>
+                /// <returns>0 on success, -1 on error</returns>
+                [LibVlcFunction("libvlc_audio_set_delay", "1.1.1")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate int SetDelay(IntPtr playerInstance, long delay);
             }
         }
     }
