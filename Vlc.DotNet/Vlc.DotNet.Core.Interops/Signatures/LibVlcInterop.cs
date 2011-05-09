@@ -68,7 +68,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
         /// <param name="instance">The LibVLC instance</param>
         /// <param name="callback">Callback to invoke when LibVLC wants to exit</param>
         /// <param name="opaque">Data pointer for the callback</param>
-        [LibVlcFunction("libvlc_set_exit_handler")]
+        [LibVlcFunction("libvlc_set_exit_handler", "1.2")]
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         public delegate void SetExitCallback(IntPtr instance, ExitCallbackDelegate callback, IntPtr opaque);
 
