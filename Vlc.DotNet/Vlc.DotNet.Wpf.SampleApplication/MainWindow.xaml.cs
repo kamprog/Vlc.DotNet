@@ -30,8 +30,8 @@ namespace Vlc.DotNet.Wpf.SampleApplication
 
             InitializeComponent();
 
-            //PathMedia media = new PathMedia(@"c:\test2.flv");
-            LocationMedia media = new LocationMedia(@"http://88.190.232.102:6404");
+            PathMedia media = new PathMedia(@"c:\test2.flv");
+            //LocationMedia media = new LocationMedia(@"http://88.190.232.102:6404");
             myVlcControl.SetMedia(media);
             myVlcControl.PositionChanged += vlcControl1_PositionChanged;
             myVlcControl.Play();
