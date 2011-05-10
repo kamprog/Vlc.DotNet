@@ -137,19 +137,22 @@ namespace Vlc.DotNet.Wpf
 
         public void Dispose()
         {
-            if (IsPlaying)
-                Stop();
+            Dispatcher.Invoke(DispatcherPriority.Normal,
+                (Action)delegate
+                    {
+                        if (IsPlaying)
+                            Stop();
+                        FreeEvents();
+                        VlcContext.InteropManager.MediaPlayerInterops.ReleaseInstance.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]);
+                        VlcContext.HandleManager.MediaPlayerHandles.Remove(this);
 
-            FreeEvents();
-            VlcContext.InteropManager.MediaPlayerInterops.ReleaseInstance.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]);
-            VlcContext.HandleManager.MediaPlayerHandles.Remove(this);
+                        myVideoLockCallbackHandle.Free();
+                        myVideoUnlockCallbackHandle.Free();
+                        myVideoDisplayCallbackHandle.Free();
 
-            myVideoLockCallbackHandle.Free();
-            myVideoUnlockCallbackHandle.Free();
-            myVideoDisplayCallbackHandle.Free();
-
-            myVideoSetFormatHandle.Free();
-            myVideoCleanupHandle.Free();
+                        myVideoSetFormatHandle.Free();
+                        myVideoCleanupHandle.Free();
+                    });
         }
     }
 }

@@ -102,13 +102,6 @@ namespace Vlc.DotNet.Core
         {
             if (HandleManager != null)
             {
-                if (HandleManager.MediaPlayerHandles != null)
-                {
-                    foreach (IVlcControl key in HandleManager.MediaPlayerHandles.Keys)
-                    {
-                        key.Stop();
-                    }
-                }
                 var mediaBases = new MediaBase[HandleManager.MediasHandles.Count];
                 HandleManager.MediasHandles.Keys.CopyTo(mediaBases, 0);
                 foreach (MediaBase mediaBase in mediaBases)
