@@ -368,7 +368,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
             /// <returns>Movie play rate.</returns>
             [LibVlcFunction("libvlc_media_player_get_rate")]
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-            public delegate int GetRate(IntPtr playerInstance);
+            public delegate float GetRate(IntPtr playerInstance);
 
             /// <summary>
             /// Set the requested movie play rate.
@@ -378,7 +378,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
             /// <returns>-1 if an error was detected, 0 otherwise (but even then, it might not actually work depending on the underlying media protocol)</returns>
             [LibVlcFunction("libvlc_media_player_set_rate")]
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-            public delegate int SetRate(IntPtr playerInstance, int rate);
+            public delegate int SetRate(IntPtr playerInstance, float rate);
 
             /// <summary>
             /// Get current movie state.

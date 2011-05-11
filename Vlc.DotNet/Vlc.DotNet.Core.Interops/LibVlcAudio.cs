@@ -2,7 +2,7 @@
 
 namespace Vlc.DotNet.Core.Interops
 {
-    public class LibVlcAudio : IDisposable
+    public sealed class LibVlcAudio : IDisposable
     {
         //public LibVlcFunction<Signatures.LibVlc.Audio.Filter.GetList> GetAvailableAudioFilters { get; private set; }
 

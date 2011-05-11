@@ -3,7 +3,10 @@ using Vlc.DotNet.Core.Interops.Signatures.LibVlc.AsynchronousEvents;
 
 namespace Vlc.DotNet.Core.Interops
 {
-    public class LibVlcAsynchronousEvents : IDisposable
+    /// <summary>
+    /// LibVlcAsynchronousEvents class
+    /// </summary>
+    public sealed class LibVlcAsynchronousEvents : IDisposable
     {
         internal LibVlcAsynchronousEvents(IntPtr libVlcDllHandle, Version vlcVersion)
         {

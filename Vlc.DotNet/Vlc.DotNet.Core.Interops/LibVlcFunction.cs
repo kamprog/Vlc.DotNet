@@ -4,7 +4,11 @@ using System.Runtime.InteropServices;
 
 namespace Vlc.DotNet.Core.Interops
 {
-    public class LibVlcFunction<T>
+    /// <summary>
+    /// LibVlcFunction class
+    /// </summary>
+    /// <typeparam name="T">Function signature type</typeparam>
+    public sealed class LibVlcFunction<T>
     {
         private T myDelegate;
 

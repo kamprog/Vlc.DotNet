@@ -158,5 +158,23 @@ namespace Vlc.DotNet.Wpf
                         myVideoCleanupHandle.Free();
                     });
         }
+
+        /// <summary>
+        /// Take snapshot
+        /// </summary>
+        /// <param name="filePath">The file path</param>
+        /// <param name="width">The width of the snapshot</param>
+        /// <param name="height">The height of the snapshot</param>
+        public void TakeSnapshot(string filePath, uint width, uint height)
+        {
+            if (VlcContext.InteropManager != null &&
+                VlcContext.InteropManager.MediaPlayerInterops != null &&
+                VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.TakeSnapshot.IsAvailable)
+            {
+                Dispatcher.BeginInvoke(DispatcherPriority.Background, 
+                    (Action)(() => VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.TakeSnapshot.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this], 0, filePath, width, height)));
+            }
+        }
+
     }
 }

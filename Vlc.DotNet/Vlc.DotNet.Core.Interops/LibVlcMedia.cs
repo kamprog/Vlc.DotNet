@@ -2,7 +2,7 @@
 
 namespace Vlc.DotNet.Core.Interops
 {
-    public partial class LibVlcMedia
+    public sealed class LibVlcMedia
     {
         public LibVlcFunction<Signatures.LibVlc.Media.NewFromLocation> NewInstanceFromLocation { get; private set; }
         public LibVlcFunction<Signatures.LibVlc.Media.NewFromPath> NewInstanceFromPath { get; private set; }

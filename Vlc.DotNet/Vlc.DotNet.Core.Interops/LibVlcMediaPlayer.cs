@@ -2,7 +2,7 @@
 
 namespace Vlc.DotNet.Core.Interops
 {
-    public partial class LibVlcMediaPlayer : IDisposable
+    public sealed class LibVlcMediaPlayer : IDisposable
     {
         public LibVlcFunction<Signatures.LibVlc.MediaPlayer.NewInstance> NewInstance { get; private set; }
         public LibVlcFunction<Signatures.LibVlc.MediaPlayer.NewInstanceFromMedia> NewInstanceFromMedia { get; private set; }

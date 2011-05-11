@@ -7,11 +7,18 @@ using Vlc.DotNet.Core.Interops.Signatures.LibVlc;
 
 namespace Vlc.DotNet.Core.Interops
 {
+    /// <summary>
+    /// LibVlcInteropsManager class
+    /// </summary>
     public sealed class LibVlcInteropsManager : IDisposable
     {
         private IntPtr myLibVlcCoreDllHandle;
         private IntPtr myLibVlcDllHandle;
 
+        /// <summary>
+        /// LibVlcInteropsManager contructor
+        /// </summary>
+        /// <param name="libVlcDllsDirectory">The path to libvlc.dll and libvlccore.dll</param>
         public LibVlcInteropsManager(string libVlcDllsDirectory)
         {
             if (string.IsNullOrEmpty(libVlcDllsDirectory))
