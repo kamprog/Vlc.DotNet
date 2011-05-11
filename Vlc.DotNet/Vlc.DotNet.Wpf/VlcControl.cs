@@ -129,7 +129,11 @@ namespace Vlc.DotNet.Wpf
 
         private void RenderImage(VlcControlWpfRendererContext context)
         {
-            VideoSource = BitmapSource.Create(context.Width, context.Height, 96, 96, context.PixelFormat, null, context.Data, context.Size, context.Stride);
+            var bitmapSource = BitmapSource.Create(context.Width, context.Height, 96, 96, context.PixelFormat, null, context.Data, context.Size, context.Stride);
+
+            bitmapSource.SetValue(VlcRendererUtility.MemoryUsageProperty, new VlcRendererUtility.MemoryUsage(context.Size));
+
+            VideoSource = bitmapSource;
             VideoBrush.ImageSource = VideoSource;
         }
 
