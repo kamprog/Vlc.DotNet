@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace Vlc.DotNet.Core.Medias
 {
@@ -31,7 +32,7 @@ namespace Vlc.DotNet.Core.Medias
                 VlcContext.HandleManager != null &&
                 VlcContext.HandleManager.LibVlcHandle != IntPtr.Zero)
             {
-                return VlcContext.InteropManager.MediaInterops.NewInstanceFromPath.Invoke(VlcContext.HandleManager.LibVlcHandle, Path);
+                return VlcContext.InteropManager.MediaInterops.NewInstanceFromPath.Invoke(VlcContext.HandleManager.LibVlcHandle, Encoding.UTF8.GetBytes(Path));
             }
             return IntPtr.Zero;
         }

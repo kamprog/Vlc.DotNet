@@ -1,5 +1,8 @@
 ﻿namespace Vlc.DotNet.Core
 {
+    ///<summary>
+    /// CommonString class
+    ///</summary>
     public static class CommonStrings
     {
         /// <summary>

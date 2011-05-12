@@ -126,7 +126,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
 
             [LibVlcFunction("libvlc_media_new_path")]
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-            public delegate IntPtr NewFromPath(IntPtr instance, string path);
+            public delegate IntPtr NewFromPath(IntPtr instance, byte[] path);
 
             [LibVlcFunction("libvlc_media_new_fd", "1.1.5")]
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]

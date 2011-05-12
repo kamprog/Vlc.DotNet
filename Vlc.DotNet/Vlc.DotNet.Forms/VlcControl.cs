@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Text;
 using System.Windows.Forms;
 using Vlc.DotNet.Core;
 
@@ -53,16 +54,17 @@ namespace Vlc.DotNet.Forms
         /// <param name="height">The height of the snapshot</param>
         public void TakeSnapshot(string filePath, uint width, uint height)
         {
-            if (VlcContext.InteropManager != null &&
+            if (!string.IsNullOrEmpty(filePath) &&
+                VlcContext.InteropManager != null &&
                 VlcContext.InteropManager.MediaPlayerInterops != null &&
                 VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.TakeSnapshot.IsAvailable)
             {
                 if(InvokeRequired)
                 {
-                    Invoke((MethodInvoker) (() => VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.TakeSnapshot.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this], 0, filePath, width, height)));
+                    Invoke((MethodInvoker) (() => VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.TakeSnapshot.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this], 0, Encoding.UTF8.GetBytes(filePath), width, height)));
                     return;
                 }
-                VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.TakeSnapshot.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this], 0, filePath, width, height);
+                VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.TakeSnapshot.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this], 0, Encoding.UTF8.GetBytes(filePath), width, height);
             }
         }
     }

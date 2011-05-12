@@ -635,7 +635,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
                 /// <returns>0 on success, -1 if the video was not found</returns>
                 [LibVlcFunction("libvlc_video_take_snapshot")]
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                public delegate int TakeSnapshot(IntPtr playerInstance, uint numVideo, string filePath, uint width, uint height);
+                public delegate int TakeSnapshot(IntPtr playerInstance, uint numVideo, byte[] filePath, uint width, uint height);
 
                 /// <summary>
                 /// Enable or disable deinterlace filter
