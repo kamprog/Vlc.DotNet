@@ -33,6 +33,7 @@ namespace Vlc.DotNet.Forms
                     VlcContext.InteropManager.MediaPlayerInterops.VideoInterops != null &&
                     VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.GetSize.IsAvailable &&
                     VlcContext.HandleManager != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles != null &&
                     VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(myHostVlcControl))
                 {
                     VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.GetSize.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl], 0, out width, out height);
@@ -60,6 +61,7 @@ namespace Vlc.DotNet.Forms
                     VlcContext.InteropManager.MediaPlayerInterops.VideoInterops != null &&
                     VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.GetScale.IsAvailable &&
                     VlcContext.HandleManager != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles != null &&
                     VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(myHostVlcControl))
                 {
                     return VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.GetScale.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl]);
@@ -73,6 +75,7 @@ namespace Vlc.DotNet.Forms
                     VlcContext.InteropManager.MediaPlayerInterops.VideoInterops != null &&
                     VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetScale.IsAvailable &&
                     VlcContext.HandleManager != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles != null &&
                     VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(myHostVlcControl))
                 {
                     VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.SetDelay.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl], value);

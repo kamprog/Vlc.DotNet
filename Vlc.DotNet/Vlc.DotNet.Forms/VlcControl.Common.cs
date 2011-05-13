@@ -375,5 +375,10 @@ namespace Vlc.DotNet.Forms
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public VlcVideoProperties VideoProperties { get; private set; }
 
+        /// <summary>
+        /// Get log properties
+        /// </summary>
+        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
+        public VlcLogProperties LogProperties { get; private set; }
     }
 }

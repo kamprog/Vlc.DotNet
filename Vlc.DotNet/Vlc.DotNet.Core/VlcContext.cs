@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Text;
 using Vlc.DotNet.Core.Interops;
 using Vlc.DotNet.Core.Medias;
 
@@ -61,12 +60,12 @@ namespace Vlc.DotNet.Core
             result.Add("dummy");
             if (StartupOptions.IgnoreConfig)
                 result.Add("--ignore-config");
-            result.Add("--plugin-path=" + Encoding.UTF8.GetBytes(LibVlcPluginsPath));
+            result.Add("--plugin-path=" + LibVlcPluginsPath);
             if (!StartupOptions.ScreenSaverEnabled)
                 result.Add("--disable-screensaver");
             if (!string.IsNullOrEmpty(StartupOptions.UserAgent))
-                result.Add("--user-agent=" + Encoding.UTF8.GetBytes(StartupOptions.UserAgent));
-            if (StartupOptions.LogOptions != null && StartupOptions.LogOptions.Verbosity != VlcLogOptions.Verbosities.None)
+                result.Add("--user-agent=" + StartupOptions.UserAgent);
+            if (StartupOptions.LogOptions != null && StartupOptions.LogOptions.Verbosity != VlcLogVerbosities.None)
             {
                 if (StartupOptions.LogOptions.ShowLoggerConsole)
                     result.Add("--extraintf=logger");
@@ -74,7 +73,7 @@ namespace Vlc.DotNet.Core
                 if (StartupOptions.LogOptions.LogInFile)
                 {
                     result.Add("--file-logging");
-                    result.Add(@"--logfile=" + Encoding.UTF8.GetBytes(StartupOptions.LogOptions.LogInFilePath));
+                    result.Add(@"--logfile=" + StartupOptions.LogOptions.LogInFilePath);
                 }
             }
             return result;
@@ -88,11 +87,9 @@ namespace Vlc.DotNet.Core
             InteropManager = new LibVlcInteropsManager(LibVlcDllsPath);
             if (IsInitialized)
                 throw new ApplicationException("Cannot initialize more than one time.");
-
-            var argsStringCollection = GetBaseVlcInstanceArguments();
-            var args = new string[argsStringCollection.Count];
-            argsStringCollection.CopyTo(args, 0);
-
+            var argsStringfCollection = GetBaseVlcInstanceArguments();
+            var args = new string[argsStringfCollection.Count];
+            argsStringfCollection.CopyTo(args, 0);
             HandleManager.LibVlcHandle = InteropManager.NewInstance.Invoke(args.Length, args);
             if (HandleManager.LibVlcHandle != IntPtr.Zero)
                 IsInitialized = true;

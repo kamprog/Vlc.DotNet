@@ -12,6 +12,7 @@ namespace Vlc.DotNet.Core.Interops
         public LibVlcFunction<Signatures.LibVlc.Logging.Clear> Clear { get; private set; }
         public LibVlcFunction<Signatures.LibVlc.Logging.GetIterator> GetIterator { get; private set; }
         public LibVlcFunction<Signatures.LibVlc.Logging.HasNext> HasNext { get; private set; }
+        public LibVlcFunction<Signatures.LibVlc.Logging.FreeInstance> FreeInstance { get; private set; }
         public LibVlcFunction<Signatures.LibVlc.Logging.Next> Next { get; private set; }
 
         internal LibVlcLogging(IntPtr myLibVlcDllHandle, Version vlcVersion)
@@ -24,6 +25,7 @@ namespace Vlc.DotNet.Core.Interops
             Clear = new LibVlcFunction<Signatures.LibVlc.Logging.Clear>(myLibVlcDllHandle, vlcVersion);
             GetIterator = new LibVlcFunction<Signatures.LibVlc.Logging.GetIterator>(myLibVlcDllHandle, vlcVersion);
             HasNext = new LibVlcFunction<Signatures.LibVlc.Logging.HasNext>(myLibVlcDllHandle, vlcVersion);
+            FreeInstance = new LibVlcFunction<Signatures.LibVlc.Logging.FreeInstance>(myLibVlcDllHandle, vlcVersion);
             Next = new LibVlcFunction<Signatures.LibVlc.Logging.Next>(myLibVlcDllHandle, vlcVersion);
         }
 
@@ -37,6 +39,7 @@ namespace Vlc.DotNet.Core.Interops
             Clear = null;
             GetIterator = null;
             HasNext = null;
+            FreeInstance = null;
             Next = null;
         }
     }

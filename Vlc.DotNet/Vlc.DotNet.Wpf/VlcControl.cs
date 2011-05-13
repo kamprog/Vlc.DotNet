@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -26,7 +25,7 @@ namespace Vlc.DotNet.Wpf
         private readonly Core.Interops.Signatures.LibVlc.MediaPlayer.Video.CleanupCallbackDelegate myVideoCleanup;
         private GCHandle myVideoCleanupHandle;
 
-        private VlcControlWpfRendererContext myVlcControlWpfRendererContext;
+        private VlcControlWpfRendererContext vlcControlWpfRendererContext;
 
         /// <summary>
         /// Identifies the Vlc.DotNet.Wpf.VideoSource dependency property.
@@ -76,6 +75,7 @@ namespace Vlc.DotNet.Wpf
                     VlcContext.HandleManager.LibVlcHandle);
             AudioProperties = new VlcAudioProperties(this);
             VideoProperties = new VlcVideoProperties(this);
+            LogProperties = new VlcLogProperties();
             InitEvents();
 
             myVideoLockCallback = LockCallback;
@@ -114,14 +114,14 @@ namespace Vlc.DotNet.Wpf
         }
         private uint VideoSetFormat(ref IntPtr opaque, ref uint chroma, ref uint width, ref uint height, ref uint pitches, ref uint lines)
         {
-            myVlcControlWpfRendererContext = new VlcControlWpfRendererContext(width, height, PixelFormats.Bgr32);
+            vlcControlWpfRendererContext = new VlcControlWpfRendererContext(width, height, PixelFormats.Bgr32);
 
             chroma = BitConverter.ToUInt32(new[] { (byte)'R', (byte)'V', (byte)'3', (byte)'2' }, 0);
-            width = (uint)myVlcControlWpfRendererContext.Width;
-            height = (uint)myVlcControlWpfRendererContext.Height;
-            pitches = (uint)myVlcControlWpfRendererContext.Stride;
-            lines = (uint)myVlcControlWpfRendererContext.Height;
-            opaque = GCHandle.Alloc(myVlcControlWpfRendererContext, GCHandleType.Pinned).AddrOfPinnedObject();
+            width = (uint)vlcControlWpfRendererContext.Width;
+            height = (uint)vlcControlWpfRendererContext.Height;
+            pitches = (uint)vlcControlWpfRendererContext.Stride;
+            lines = (uint)vlcControlWpfRendererContext.Height;
+            opaque = GCHandle.Alloc(vlcControlWpfRendererContext, GCHandleType.Pinned).AddrOfPinnedObject();
             return 1;
         }
         private void VideoCleanup(IntPtr opaque)
@@ -168,13 +168,12 @@ namespace Vlc.DotNet.Wpf
         /// <param name="height">The height of the snapshot</param>
         public void TakeSnapshot(string filePath, uint width, uint height)
         {
-            if (!string.IsNullOrEmpty(filePath) &&
-                VlcContext.InteropManager != null &&
+            if (VlcContext.InteropManager != null &&
                 VlcContext.InteropManager.MediaPlayerInterops != null &&
                 VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.TakeSnapshot.IsAvailable)
             {
                 Dispatcher.BeginInvoke(DispatcherPriority.Background, 
-                    (Action)(() => VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.TakeSnapshot.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this], 0, Encoding.UTF8.GetBytes(filePath), width, height)));
+                    (Action)(() => VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.TakeSnapshot.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this], 0, filePath, width, height)));
             }
         }
 

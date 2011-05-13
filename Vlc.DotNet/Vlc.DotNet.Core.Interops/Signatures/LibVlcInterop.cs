@@ -215,13 +215,20 @@ namespace Vlc.DotNet.Core.Interops.Signatures
             public delegate bool HasNext(IntPtr logIteratorInstance);
 
             /// <summary>
+            /// Release a previoulsy allocated iterator.
+            /// </summary>
+            /// <param name="logIteratorInstance">Log iterator instance.</param>
+            [LibVlcFunction("libvlc_log_iterator_free")]
+            public delegate void FreeInstance(IntPtr logIteratorInstance);
+
+            /// <summary>
             /// The message contents must not be freed.
             /// </summary>
             /// <param name="logIteratorInstance">Log iterator instance or NULL.</param>
             /// <param name="buffer">Log buffer.</param>
             /// <returns>Log message object or NULL if none left.</returns>
             [LibVlcFunction("libvlc_log_iterator_next")]
-            public delegate void Next(IntPtr logIteratorInstance, LogMessage buffer);
+            public delegate void Next(IntPtr logIteratorInstance, ref LogMessage buffer);
         }
         //TODO
         /*public struct ModuleDescription

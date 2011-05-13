@@ -24,7 +24,7 @@ namespace Vlc.DotNet.Forms.SampleApplication
             VlcContext.StartupOptions.IgnoreConfig = true;
             VlcContext.StartupOptions.LogOptions.LogInFile = true;
             VlcContext.StartupOptions.LogOptions.ShowLoggerConsole = true;
-            VlcContext.StartupOptions.LogOptions.Verbosity = VlcLogOptions.Verbosities.Debug;
+            VlcContext.StartupOptions.LogOptions.Verbosity = VlcLogVerbosities.Debug;
 
             //Initialize the VlcContext
             VlcContext.Initialize();

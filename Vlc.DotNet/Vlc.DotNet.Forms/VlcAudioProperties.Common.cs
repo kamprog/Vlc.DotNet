@@ -27,6 +27,7 @@ namespace Vlc.DotNet.Forms
                     VlcContext.InteropManager.MediaPlayerInterops.AudioInterops != null &&
                     VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.GetMute.IsAvailable &&
                     VlcContext.HandleManager != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles != null &&
                     VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(myHostVlcControl))
                 {
                     return VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.GetMute.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl]) == 1;
@@ -40,6 +41,7 @@ namespace Vlc.DotNet.Forms
                     VlcContext.InteropManager.MediaPlayerInterops.AudioInterops != null &&
                     VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.SetMute.IsAvailable &&
                     VlcContext.HandleManager != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles != null &&
                     VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(myHostVlcControl))
                 {
                     VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.SetMute.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl], value ? 1 : 0);
@@ -59,6 +61,7 @@ namespace Vlc.DotNet.Forms
                     VlcContext.InteropManager.MediaPlayerInterops.AudioInterops != null &&
                     VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.GetVolume.IsAvailable &&
                     VlcContext.HandleManager != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles != null &&
                     VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(myHostVlcControl))
                 {
                     return VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.GetVolume.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl]);
@@ -72,6 +75,7 @@ namespace Vlc.DotNet.Forms
                     VlcContext.InteropManager.MediaPlayerInterops.AudioInterops != null &&
                     VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.SetVolume.IsAvailable &&
                     VlcContext.HandleManager != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles != null &&
                     VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(myHostVlcControl))
                 {
                     VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.SetVolume.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl], value);
@@ -91,6 +95,7 @@ namespace Vlc.DotNet.Forms
                     VlcContext.InteropManager.MediaPlayerInterops.AudioInterops != null &&
                     VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.GetDelay.IsAvailable &&
                     VlcContext.HandleManager != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles != null &&
                     VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(myHostVlcControl))
                 {
                     return VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.GetDelay.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl]);
@@ -104,6 +109,7 @@ namespace Vlc.DotNet.Forms
                     VlcContext.InteropManager.MediaPlayerInterops.AudioInterops != null &&
                     VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.SetDelay.IsAvailable &&
                     VlcContext.HandleManager != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles != null &&
                     VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(myHostVlcControl))
                 {
                     VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.SetDelay.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl], value);
