@@ -147,6 +147,7 @@ namespace Vlc.DotNet.Wpf
                     {
                         if (IsPlaying)
                             Stop();
+                        LogProperties.Dispose();
                         FreeEvents();
                         VlcContext.InteropManager.MediaPlayerInterops.ReleaseInstance.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]);
                         VlcContext.HandleManager.MediaPlayerHandles.Remove(this);
