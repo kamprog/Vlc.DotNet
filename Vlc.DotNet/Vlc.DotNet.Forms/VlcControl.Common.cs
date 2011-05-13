@@ -229,6 +229,7 @@ namespace Vlc.DotNet.Forms
             VlcContext.InteropManager.EventInterops.Attach.Invoke(VlcContext.HandleManager.EventManagerHandles[this], EventTypes.MediaPlayerOpening, myEventCallback, IntPtr.Zero);
             VlcContext.InteropManager.EventInterops.Attach.Invoke(VlcContext.HandleManager.EventManagerHandles[this], EventTypes.MediaPlayerPausableChanged, myEventCallback, IntPtr.Zero);
             VlcContext.InteropManager.EventInterops.Attach.Invoke(VlcContext.HandleManager.EventManagerHandles[this], EventTypes.MediaPlayerPaused, myEventCallback, IntPtr.Zero);
+            VlcContext.InteropManager.EventInterops.Attach.Invoke(VlcContext.HandleManager.EventManagerHandles[this], EventTypes.MediaPlayerPlaying, myEventCallback, IntPtr.Zero);
             VlcContext.InteropManager.EventInterops.Attach.Invoke(VlcContext.HandleManager.EventManagerHandles[this], EventTypes.MediaPlayerPositionChanged, myEventCallback, IntPtr.Zero);
             VlcContext.InteropManager.EventInterops.Attach.Invoke(VlcContext.HandleManager.EventManagerHandles[this], EventTypes.MediaPlayerSeekableChanged, myEventCallback, IntPtr.Zero);
             VlcContext.InteropManager.EventInterops.Attach.Invoke(VlcContext.HandleManager.EventManagerHandles[this], EventTypes.MediaPlayerSnapshotTaken, myEventCallback, IntPtr.Zero);
@@ -248,6 +249,7 @@ namespace Vlc.DotNet.Forms
             VlcContext.InteropManager.EventInterops.Detach.Invoke(VlcContext.HandleManager.EventManagerHandles[this], EventTypes.MediaPlayerOpening, myEventCallback, IntPtr.Zero);
             VlcContext.InteropManager.EventInterops.Detach.Invoke(VlcContext.HandleManager.EventManagerHandles[this], EventTypes.MediaPlayerPausableChanged, myEventCallback, IntPtr.Zero);
             VlcContext.InteropManager.EventInterops.Detach.Invoke(VlcContext.HandleManager.EventManagerHandles[this], EventTypes.MediaPlayerPaused, myEventCallback, IntPtr.Zero);
+            VlcContext.InteropManager.EventInterops.Detach.Invoke(VlcContext.HandleManager.EventManagerHandles[this], EventTypes.MediaPlayerPlaying, myEventCallback, IntPtr.Zero);
             VlcContext.InteropManager.EventInterops.Detach.Invoke(VlcContext.HandleManager.EventManagerHandles[this], EventTypes.MediaPlayerPositionChanged, myEventCallback, IntPtr.Zero);
             VlcContext.InteropManager.EventInterops.Detach.Invoke(VlcContext.HandleManager.EventManagerHandles[this], EventTypes.MediaPlayerSeekableChanged, myEventCallback, IntPtr.Zero);
             VlcContext.InteropManager.EventInterops.Detach.Invoke(VlcContext.HandleManager.EventManagerHandles[this], EventTypes.MediaPlayerSnapshotTaken, myEventCallback, IntPtr.Zero);
@@ -293,6 +295,9 @@ namespace Vlc.DotNet.Forms
                     break;
                 case EventTypes.MediaPlayerPaused:
                     EventsHelper.RaiseEvent(Paused, this, new VlcEventArgs<EventArgs>(EventArgs.Empty));
+                    break;
+                case EventTypes.MediaPlayerPlaying:
+                    EventsHelper.RaiseEvent(Playing, this, new VlcEventArgs<EventArgs>(EventArgs.Empty));
                     break;
                 case EventTypes.MediaPlayerPositionChanged:
                     EventsHelper.RaiseEvent(PositionChanged, this, new VlcEventArgs<float>(eventData.MediaPlayerPositionChanged.NewPosition));
@@ -342,6 +347,9 @@ namespace Vlc.DotNet.Forms
 
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public event VlcEventHandler<VlcControl, EventArgs> Paused;
+
+        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
+        public event VlcEventHandler<VlcControl, EventArgs> Playing;
 
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public event VlcEventHandler<VlcControl, float> PositionChanged;
