@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 using Vlc.DotNet.Core;
@@ -388,5 +389,11 @@ namespace Vlc.DotNet.Forms
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public VlcLogProperties LogProperties { get; private set; }
+
+        /// <summary>
+        /// Get available output devices
+        /// </summary>
+        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
+        public VlcAudioOutputDevices AudioOutputDevices { get; private set; }
     }
 }

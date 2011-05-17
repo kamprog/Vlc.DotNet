@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using Vlc.DotNet.Core;
 
 #if WPF
@@ -80,6 +81,40 @@ namespace Vlc.DotNet.Forms
                 {
                     VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.SetDelay.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl], value);
                 }
+            }
+        }
+
+        /// <summary>
+        /// Set deinterlace mode
+        /// </summary>
+        /// <param name="mode">Mode of deinterlace</param>
+        public void SetDeinterlaceMode(string mode)
+        {
+            if (VlcContext.HandleManager.LibVlcHandle != IntPtr.Zero &&
+                VlcContext.InteropManager != null &&
+                VlcContext.InteropManager.MediaPlayerInterops != null &&
+                VlcContext.InteropManager.MediaPlayerInterops.VideoInterops != null &&
+                VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetDeinterlace.IsAvailable)
+            {
+                VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetDeinterlace.Invoke(VlcContext.HandleManager.LibVlcHandle, mode);
+            }
+        }
+        /// <summary>
+        /// Set aspect ration
+        /// </summary>
+        /// <param name="aspect">Aspect to define</param>
+        public void SetAspectRatio(string aspect)
+        {
+            if(!string.IsNullOrEmpty(aspect) &&
+                VlcContext.InteropManager != null &&
+                VlcContext.InteropManager.MediaPlayerInterops != null &&
+                VlcContext.InteropManager.MediaPlayerInterops.VideoInterops != null &&
+                VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetAspectRatio.IsAvailable &&
+                VlcContext.HandleManager != null &&
+                VlcContext.HandleManager.MediaPlayerHandles != null &&
+                VlcContext.HandleManager.EventManagerHandles.ContainsKey(myHostVlcControl))
+            {
+                VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetAspectRatio.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl], aspect);
             }
         }
 

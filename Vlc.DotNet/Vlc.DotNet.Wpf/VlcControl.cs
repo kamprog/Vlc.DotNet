@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -76,6 +77,7 @@ namespace Vlc.DotNet.Wpf
             AudioProperties = new VlcAudioProperties(this);
             VideoProperties = new VlcVideoProperties(this);
             LogProperties = new VlcLogProperties();
+            AudioOutputDevices = new VlcAudioOutputDevices();
             InitEvents();
 
             myVideoLockCallback = LockCallback;
@@ -174,7 +176,7 @@ namespace Vlc.DotNet.Wpf
                 VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.TakeSnapshot.IsAvailable)
             {
                 Dispatcher.BeginInvoke(DispatcherPriority.Background, 
-                    (Action)(() => VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.TakeSnapshot.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this], 0, filePath, width, height)));
+                    (Action)(() => VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.TakeSnapshot.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this], 0, Encoding.UTF8.GetBytes(filePath), width, height)));
             }
         }
 

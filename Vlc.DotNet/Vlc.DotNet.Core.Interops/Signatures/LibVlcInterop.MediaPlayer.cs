@@ -8,18 +8,20 @@ namespace Vlc.DotNet.Core.Interops.Signatures
     {
         namespace MediaPlayer
         {
-            public class TrackDescription
+            [StructLayout(LayoutKind.Sequential)]
+            public struct TrackDescription
             {
                 public int id;
-                public string name;
-                public TrackDescription Next;
+                public IntPtr name;
+                public IntPtr next;
             }
 
-            public class AudioOutput
+            [StructLayout(LayoutKind.Sequential)]
+            public struct AudioOutput
             {
-                public string name;
-                public string description;
-                public AudioOutput next;
+                public IntPtr name;
+                public IntPtr description;
+                public IntPtr next;
             }
 
             public struct Rectangle
@@ -520,10 +522,9 @@ namespace Vlc.DotNet.Core.Interops.Signatures
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
                 public delegate int GetSpuCount(IntPtr playerInstance);
 
-                //TODO
-                //[LibVlcFunction("libvlc_video_get_spu_description")]
-                //[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                //public delegate TrackDescription GetSpuDescription(IntPtr playerInstance);
+                [LibVlcFunction("libvlc_video_get_spu_description")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate IntPtr GetSpuDescription(IntPtr playerInstance);
 
                 /// <summary>
                 /// Set new video subtitle.
@@ -545,15 +546,13 @@ namespace Vlc.DotNet.Core.Interops.Signatures
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
                 public delegate int SetSubtitleFile(IntPtr playerInstance, string subtitleFile);
 
-                //TODO
-                //[LibVlcFunction("libvlc_video_get_title_description")]
-                //[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                //public delegate TrackDescription GetTitleDescription(IntPtr playerInstance);
+                [LibVlcFunction("libvlc_video_get_title_description")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate IntPtr GetTitleDescription(IntPtr playerInstance);
 
-                //TODO
-                //[LibVlcFunction("libvlc_video_get_chapter_description")]
-                //[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                //public delegate TrackDescription GetChapterDescription(IntPtr playerInstance, int title);
+                [LibVlcFunction("libvlc_video_get_chapter_description")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate IntPtr GetChapterDescription(IntPtr playerInstance, int title);
 
                 //TODO
                 //[LibVlcFunction("libvlc_video_get_crop_geometry")]
@@ -600,10 +599,9 @@ namespace Vlc.DotNet.Core.Interops.Signatures
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
                 public delegate int GetTrackCount(IntPtr playerInstance);
 
-                //TODO
-                //[LibVlcFunction("libvlc_video_get_track_description")]
-                //[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                //public delegate TrackDescription GetTrackDescription(IntPtr playerInstance);
+                [LibVlcFunction("libvlc_video_get_track_description")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate IntPtr GetTrackDescription(IntPtr playerInstance);
 
                 /// <summary>
                 /// Get current video track.
@@ -814,11 +812,11 @@ namespace Vlc.DotNet.Core.Interops.Signatures
                 /// <summary>
                 /// Get the list of available audio outputs
                 /// </summary>
-                /// <param name="playerInstance">The Media Player</param>
+                /// <param name="instance">The LibVlc Player</param>
                 /// <returns>List of available audio outputs.</returns>
                 [LibVlcFunction("libvlc_audio_output_list_get")]
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                public delegate IntPtr NewOutputListInstance(IntPtr playerInstance);
+                public delegate IntPtr NewOutputListInstance(IntPtr instance);
 
                 /// <summary>
                 /// Free the list of available audio outputs
@@ -831,7 +829,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
                 /// <summary>
                 /// Get count of devices for audio output, these devices are hardware oriented like analor or digital output of sound card
                 /// </summary>
-                /// <param name="instance">The instance to destroy</param>
+                /// <param name="instance">The LibVlc Player</param>
                 /// <param name="outputName">Name of audio output</param>
                 /// <returns>Number of devices</returns>
                 [LibVlcFunction("libvlc_audio_output_device_count")]
@@ -841,7 +839,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
                 /// <summary>
                 /// Get long name of device, if not available short name given
                 /// </summary>
-                /// <param name="instance">The instance to destroy</param>
+                /// <param name="instance">The LibVlc Player</param>
                 /// <param name="outputName">Name of audio output</param>
                 /// <param name="deviceIndex">Device index</param>
                 /// <returns>Long name of the devide</returns>
@@ -852,7 +850,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
                 /// <summary>
                 /// Get id name of device
                 /// </summary>
-                /// <param name="instance">The instance to destroy</param>
+                /// <param name="instance">The LibVlc Player</param>
                 /// <param name="outputName">Name of audio output</param>
                 /// <param name="deviceIndex">Device index</param>
                 /// <returns>Id name of device, use for setting device, need to be free after use</returns>
@@ -863,7 +861,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
                 /// <summary>
                 /// Set audio output device. Changes are only effective after stop and play.
                 /// </summary>
-                /// <param name="instance">The instance to destroy</param>
+                /// <param name="instance">The LibVlc Player</param>
                 /// <param name="outputName">Name of audio output</param>
                 /// <param name="deviceIdName">Id name of device</param>
                 [LibVlcFunction("libvlc_audio_output_device_set")]
@@ -941,10 +939,9 @@ namespace Vlc.DotNet.Core.Interops.Signatures
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
                 public delegate int GetTrackCount(IntPtr playerInstance);
 
-                //TODO
-                //[LibVlcFunction("libvlc_audio_get_track_description")]
-                //[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                //public delegate TrackDescription GetTrackDescription(IntPtr playerInstance);
+                [LibVlcFunction("libvlc_audio_get_track_description")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate TrackDescription GetTrackDescription(IntPtr playerInstance);
 
                 /// <summary>
                 /// Get current audio track.
