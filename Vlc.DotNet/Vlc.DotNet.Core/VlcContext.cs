@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
 using Vlc.DotNet.Core.Interops;
 using Vlc.DotNet.Core.Medias;
@@ -58,6 +57,7 @@ namespace Vlc.DotNet.Core
             var result = new StringCollection();
             result.Add("-I");
             result.Add("dummy");
+            result.Add("--no-snapshot-preview");
             if (StartupOptions.IgnoreConfig)
                 result.Add("--ignore-config");
             result.Add("--plugin-path=" + LibVlcPluginsPath);

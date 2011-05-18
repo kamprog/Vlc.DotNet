@@ -8,12 +8,16 @@ namespace Vlc.DotNet.Core
     /// <summary>
     /// VlcOutputDevices class
     /// </summary>
-    public sealed class VlcAudioOutputDevices : IEnumerable<VlcAudioOutputDevice>
+    public sealed class VlcAudioOutputDevices : IEnumerable<VlcAudioOutputDevice>, IDisposable
     {
         /// <summary>
         /// VlcOutputDevices constructor
         /// </summary>
         internal VlcAudioOutputDevices()
+        {
+        }
+
+        public void Dispose()
         {
         }
 

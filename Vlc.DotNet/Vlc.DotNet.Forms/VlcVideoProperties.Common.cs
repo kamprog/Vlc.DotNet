@@ -15,7 +15,7 @@ namespace Vlc.DotNet.Forms
     /// <summary>
     /// VlcVideoProperties class
     /// </summary>
-    public sealed class VlcVideoProperties
+    public sealed class VlcVideoProperties : IDisposable
     {
         private readonly IVlcControl myHostVlcControl;
 
@@ -121,6 +121,10 @@ namespace Vlc.DotNet.Forms
         internal VlcVideoProperties(IVlcControl vlcControl)
         {
             myHostVlcControl = vlcControl;
+        }
+
+        public void Dispose()
+        {
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -92,10 +91,8 @@ namespace Vlc.DotNet.Wpf
             myVideoCleanup = VideoCleanup;
             myVideoCleanupHandle = GCHandle.Alloc(myVideoCleanup);
 
-            VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetFormatCallbacks.Invoke(
-                VlcContext.HandleManager.MediaPlayerHandles[this], myVideoSetFormat, myVideoCleanup);
-            VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetCallbacks.Invoke(
-                VlcContext.HandleManager.MediaPlayerHandles[this], myVideoLockCallback, myVideoUnlockCallback, myVideoDisplayCallback, IntPtr.Zero);
+            VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetFormatCallbacks.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this], myVideoSetFormat, myVideoCleanup);
+            VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetCallbacks.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this], myVideoLockCallback, myVideoUnlockCallback, myVideoDisplayCallback, IntPtr.Zero);
         }
 
         #region Vlc Display
@@ -147,9 +144,10 @@ namespace Vlc.DotNet.Wpf
             Dispatcher.Invoke(DispatcherPriority.Normal,
                 (Action)delegate
                     {
-                        if (IsPlaying)
-                            Stop();
+                        AudioProperties.Dispose();
+                        VideoProperties.Dispose();
                         LogProperties.Dispose();
+                        AudioOutputDevices.Dispose();
                         FreeEvents();
                         VlcContext.InteropManager.MediaPlayerInterops.ReleaseInstance.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]);
                         VlcContext.HandleManager.MediaPlayerHandles.Remove(this);
@@ -162,23 +160,5 @@ namespace Vlc.DotNet.Wpf
                         myVideoCleanupHandle.Free();
                     });
         }
-
-        /// <summary>
-        /// Take snapshot
-        /// </summary>
-        /// <param name="filePath">The file path</param>
-        /// <param name="width">The width of the snapshot</param>
-        /// <param name="height">The height of the snapshot</param>
-        public void TakeSnapshot(string filePath, uint width, uint height)
-        {
-            if (VlcContext.InteropManager != null &&
-                VlcContext.InteropManager.MediaPlayerInterops != null &&
-                VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.TakeSnapshot.IsAvailable)
-            {
-                Dispatcher.BeginInvoke(DispatcherPriority.Background, 
-                    (Action)(() => VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.TakeSnapshot.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this], 0, Encoding.UTF8.GetBytes(filePath), width, height)));
-            }
-        }
-
     }
 }

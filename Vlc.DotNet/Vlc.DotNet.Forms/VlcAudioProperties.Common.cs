@@ -12,7 +12,7 @@ namespace Vlc.DotNet.Forms
     /// <summary>
     /// VlcAudioProperties class
     /// </summary>
-    public sealed class VlcAudioProperties
+    public sealed class VlcAudioProperties : IDisposable
     {
         private readonly IVlcControl myHostVlcControl;
 
@@ -257,11 +257,13 @@ namespace Vlc.DotNet.Forms
             return null;
         }
 
-
         internal VlcAudioProperties(IVlcControl vlcControl)
         {
             myHostVlcControl = vlcControl;
         }
 
+        public void Dispose()
+        {
+        }
     }
 }

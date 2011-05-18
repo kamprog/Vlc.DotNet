@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading;
 using Vlc.DotNet.Core;
 using Vlc.DotNet.Core.Interops.Signatures.LibVlc.AsynchronousEvents;
+using Vlc.DotNet.Core.Interops.Signatures.LibVlc.Media;
 using Vlc.DotNet.Core.Medias;
 
 #if WPF
@@ -211,6 +214,42 @@ namespace Vlc.DotNet.Forms
                 VlcContext.InteropManager.MediaPlayerInterops.Stop.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]);
             }
         } 
+        /// <summary>
+        /// Get media player state
+        /// </summary>
+        public States State
+        {
+            get
+            {
+                if (IsPlaying &&
+                    VlcContext.InteropManager != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops.GetState.IsAvailable &&
+                    VlcContext.HandleManager != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(this))
+                {
+                    return VlcContext.InteropManager.MediaPlayerInterops.GetState.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]);
+                }
+                return States.NothingSpecial;
+            }
+        }
+        /// <summary>
+        /// Take snapshot
+        /// </summary>
+        /// <param name="filePath">The file path</param>
+        /// <param name="width">The width of the snapshot</param>
+        /// <param name="height">The height of the snapshot</param>
+        public void TakeSnapshot(string filePath, uint width, uint height)
+        {
+            if (VlcContext.InteropManager != null &&
+                VlcContext.InteropManager.MediaPlayerInterops != null &&
+                VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.TakeSnapshot.IsAvailable &&
+                (State == States.Playing || State == States.Paused))
+            {
+                new Thread(() => VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.TakeSnapshot.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this], 0, Encoding.UTF8.GetBytes(filePath), width, height)).Start();
+            }
+        }
 
         #region Events
         private void InitEvents()
