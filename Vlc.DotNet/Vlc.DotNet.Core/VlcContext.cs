@@ -57,7 +57,7 @@ namespace Vlc.DotNet.Core
             var result = new StringCollection();
             result.Add("-I");
             result.Add("dummy");
-            result.Add("--no-snapshot-preview");
+            //result.Add("--no-snapshot-preview");
             if (StartupOptions.IgnoreConfig)
                 result.Add("--ignore-config");
             result.Add("--plugin-path=" + LibVlcPluginsPath);

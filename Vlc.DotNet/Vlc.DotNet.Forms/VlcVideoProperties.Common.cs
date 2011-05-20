@@ -88,7 +88,7 @@ namespace Vlc.DotNet.Forms
         /// Set deinterlace mode
         /// </summary>
         /// <param name="mode">Mode of deinterlace</param>
-        public void SetDeinterlaceMode(string mode)
+        public void SetDeinterlaceMode(VlcDeinterlaceModes mode)
         {
             if (VlcContext.HandleManager.LibVlcHandle != IntPtr.Zero &&
                 VlcContext.InteropManager != null &&
@@ -96,7 +96,10 @@ namespace Vlc.DotNet.Forms
                 VlcContext.InteropManager.MediaPlayerInterops.VideoInterops != null &&
                 VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetDeinterlace.IsAvailable)
             {
-                VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetDeinterlace.Invoke(VlcContext.HandleManager.LibVlcHandle, mode);
+                if (mode != VlcDeinterlaceModes.None)
+                    VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetDeinterlace.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl], mode.ToString().ToLower());
+                else
+                    VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetDeinterlace.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl], null);
             }
         }
         /// <summary>
@@ -105,7 +108,7 @@ namespace Vlc.DotNet.Forms
         /// <param name="aspect">Aspect to define</param>
         public void SetAspectRatio(string aspect)
         {
-            if(!string.IsNullOrEmpty(aspect) &&
+            if (!string.IsNullOrEmpty(aspect) &&
                 VlcContext.InteropManager != null &&
                 VlcContext.InteropManager.MediaPlayerInterops != null &&
                 VlcContext.InteropManager.MediaPlayerInterops.VideoInterops != null &&

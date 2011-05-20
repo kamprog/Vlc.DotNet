@@ -244,8 +244,8 @@ namespace Vlc.DotNet.Forms
         {
             if (VlcContext.InteropManager != null &&
                 VlcContext.InteropManager.MediaPlayerInterops != null &&
-                VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.TakeSnapshot.IsAvailable &&
-                (State == States.Playing || State == States.Paused))
+                VlcContext.InteropManager.MediaPlayerInterops.VideoInterops != null &&
+                VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.TakeSnapshot.IsAvailable)
             {
                 new Thread(() => VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.TakeSnapshot.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this], 0, Encoding.UTF8.GetBytes(filePath), width, height)).Start();
             }
