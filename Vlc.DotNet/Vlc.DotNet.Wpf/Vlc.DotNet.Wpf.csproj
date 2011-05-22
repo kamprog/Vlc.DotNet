@@ -90,7 +90,6 @@
     <Compile Include="VlcControlWpfRendererContext.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="VlcRendererUtility.cs" />
     <None Include="..\Common\Vlc.DotNet.pfx.snk">
       <Link>Vlc.DotNet.pfx.snk</Link>
     </None>

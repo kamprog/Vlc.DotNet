@@ -2,10 +2,11 @@
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Interop;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using Vlc.DotNet.Core;
+using Vlc.DotNet.Core.Interops;
 
 namespace Vlc.DotNet.Wpf
 {
@@ -25,7 +26,10 @@ namespace Vlc.DotNet.Wpf
         private readonly Core.Interops.Signatures.LibVlc.MediaPlayer.Video.CleanupCallbackDelegate myVideoCleanup;
         private GCHandle myVideoCleanupHandle;
 
-        private VlcControlWpfRendererContext vlcControlWpfRendererContext;
+        private InteropBitmap myBitmap;
+        private IntPtr myBitmapSectionPointer;
+
+        //private VlcControlWpfRendererContext vlcControlWpfRendererContext;
 
         /// <summary>
         /// Identifies the Vlc.DotNet.Wpf.VideoSource dependency property.
@@ -64,7 +68,7 @@ namespace Vlc.DotNet.Wpf
         {
             if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
                 return;
-
+            //RenderImage = new Action(() => Bitmap.Invalidate());
             VideoBrush = new ImageBrush();
 
             if (!VlcContext.IsInitialized)
@@ -99,42 +103,40 @@ namespace Vlc.DotNet.Wpf
 
         private void LockCallback(IntPtr opaque, ref IntPtr plane)
         {
-            var context = (VlcControlWpfRendererContext)Marshal.PtrToStructure(opaque, typeof(VlcControlWpfRendererContext));
-            plane = context.Data;
+            plane = opaque;
         }
         private void UnlockCallback(IntPtr opaque, IntPtr picture, ref IntPtr plane)
         {
-
         }
         private void DisplayCallback(IntPtr opaque, IntPtr picture)
         {
-            var wpfVlcControlRendererContext = (VlcControlWpfRendererContext)Marshal.PtrToStructure(opaque, typeof(VlcControlWpfRendererContext));
-            Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action<VlcControlWpfRendererContext>(RenderImage), wpfVlcControlRendererContext);
+            Dispatcher.BeginInvoke(DispatcherPriority.Render, (Action) (() => myBitmap.Invalidate()));
         }
         private uint VideoSetFormat(ref IntPtr opaque, ref uint chroma, ref uint width, ref uint height, ref uint pitches, ref uint lines)
         {
-            vlcControlWpfRendererContext = new VlcControlWpfRendererContext(width, height, PixelFormats.Bgr32);
+            var context = new VlcControlWpfRendererContext(width, height, PixelFormats.Bgr32);
 
             chroma = BitConverter.ToUInt32(new[] { (byte)'R', (byte)'V', (byte)'3', (byte)'2' }, 0);
-            width = (uint)vlcControlWpfRendererContext.Width;
-            height = (uint)vlcControlWpfRendererContext.Height;
-            pitches = (uint)vlcControlWpfRendererContext.Stride;
-            lines = (uint)vlcControlWpfRendererContext.Height;
-            opaque = GCHandle.Alloc(vlcControlWpfRendererContext, GCHandleType.Pinned).AddrOfPinnedObject();
+            width = (uint)context.Width;
+            height = (uint)context.Height;
+            pitches = (uint)context.Stride;
+            lines = (uint)context.Height;
+
+            myBitmapSectionPointer = Win32Interop.CreateFileMapping(new IntPtr(-1), IntPtr.Zero, 0x04, 0, context.Size, null);
+            opaque = Win32Interop.MapViewOfFile(myBitmapSectionPointer, 0xF001F, 0, 0, (uint)context.Size);
+
+            Dispatcher.BeginInvoke((Action)(() =>
+            {
+                myBitmap = (InteropBitmap)Imaging.CreateBitmapSourceFromMemorySection(myBitmapSectionPointer, context.Width, context.Height, context.PixelFormat, context.Stride, 0);
+                VideoSource = myBitmap;
+                VideoBrush.ImageSource = myBitmap;
+            }));
+
             return 1;
         }
         private void VideoCleanup(IntPtr opaque)
         {
-        }
-
-        private void RenderImage(VlcControlWpfRendererContext context)
-        {
-            var bitmapSource = BitmapSource.Create(context.Width, context.Height, 96, 96, context.PixelFormat, null, context.Data, context.Size, context.Stride);
-
-            bitmapSource.SetValue(VlcRendererUtility.MemoryUsageProperty, new VlcRendererUtility.MemoryUsage(context.Size));
-
-            VideoSource = bitmapSource;
-            VideoBrush.ImageSource = VideoSource;
+            Win32Interop.CloseHandle(myBitmapSectionPointer);
         }
 
         #endregion

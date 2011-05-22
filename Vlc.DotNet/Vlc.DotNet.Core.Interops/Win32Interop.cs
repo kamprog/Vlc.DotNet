@@ -32,5 +32,14 @@ namespace Vlc.DotNet.Core.Interops
         /// <returns>If the function succeeds, the return value is a handle to the module. If the function fails, the return value is NULL. To get extended error information, call GetLastError.</returns>
         [DllImport("kernel32", SetLastError = true)]
         public static extern IntPtr LoadLibrary(string lpFileName);
+
+        [DllImport("kernel32", SetLastError = true)]
+        public static extern IntPtr CreateFileMapping(IntPtr hFile, IntPtr lpAttributes, int flProtect, int dwMaximumSizeLow, int dwMaximumSizeHigh, string lpName);
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        public static extern IntPtr MapViewOfFile(IntPtr hFileMappingObject, uint dwDesiredAccess, uint dwFileOffsetHigh, uint dwFileOffsetLow, uint dwNumberOfBytesToMap);
+
+        [DllImport("kernel32", SetLastError = true)]
+        public static extern bool CloseHandle(IntPtr handle);
     }
 }
