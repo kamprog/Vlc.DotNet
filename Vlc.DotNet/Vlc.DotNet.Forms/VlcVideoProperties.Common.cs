@@ -12,6 +12,7 @@ using Vlc.DotNet.Core.Interops.Signatures.LibVlc.MediaPlayer;
 namespace Vlc.DotNet.Wpf
 #else
 using System.Drawing;
+using Vlc.DotNet.Core.Interops.Signatures.LibVlc.MediaPlayer;
 
 namespace Vlc.DotNet.Forms
 #endif

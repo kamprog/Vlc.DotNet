@@ -115,6 +115,14 @@ namespace Vlc.DotNet.Core.Interops.Signatures
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         public delegate string GetChangeSet();
 
+        /// <summary>
+        /// Frees an heap allocation returned by a LibVLC function.
+        /// </summary>
+        /// <param name="pointer">Pointer to memory.</param>
+        [LibVlcFunction("libvlc_free", "1.2")]
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate void FreeMemory(IntPtr pointer);
+
         namespace AsynchronousEvents
         {
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]

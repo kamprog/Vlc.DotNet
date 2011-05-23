@@ -37,6 +37,8 @@ namespace Vlc.DotNet.Core.Interops
         public LibVlcFunction<GetVersion> GetVersion { get; private set; }
         public LibVlcFunction<GetCompiler> GetCompiler { get; private set; }
         public LibVlcFunction<GetChangeSet> GetChangeSet { get; private set; }
+        public LibVlcFunction<FreeMemory> FreeMemory { get; private set; }
+
         //public LibVlcFunction<GetModuleDescriptionList> GetModuleDescriptionList { get; private set; }
         //public LibVlcFunction<ReleaseModuleDescription> ReleaseModule { get; private set; }
 
@@ -72,6 +74,7 @@ namespace Vlc.DotNet.Core.Interops
             GetVersion = null;
             GetCompiler = null;
             GetChangeSet = null;
+            FreeMemory = null;
             //GetModuleDescriptionList = null;
             //ReleaseModule = null;
 
@@ -134,6 +137,7 @@ namespace Vlc.DotNet.Core.Interops
             SetUserAgent = new LibVlcFunction<SetUserAgent>(myLibVlcDllHandle, vlcVersion);
             GetCompiler = new LibVlcFunction<GetCompiler>(myLibVlcDllHandle, vlcVersion);
             GetChangeSet = new LibVlcFunction<GetChangeSet>(myLibVlcDllHandle, vlcVersion);
+            FreeMemory = new LibVlcFunction<FreeMemory>(myLibVlcDllHandle, vlcVersion);
             //GetModuleDescriptionList = new LibVlcFunction<GetModuleDescriptionList>(myLibVlcDllHandle, vlcVersion);
             //ReleaseModule = new LibVlcFunction<ReleaseModuleDescription>(myLibVlcDllHandle, vlcVersion);
 

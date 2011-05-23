@@ -86,22 +86,26 @@ namespace Vlc.DotNet.Core.Medias
                     if (count <= 0)
                         return mediaTrackInfos;
 
-                    int size = Marshal.SizeOf(typeof(MediaTrackInfo));
+                    var currentMediaTrackInfosPtr = mediaInfoPtr;
+                    var size = Marshal.SizeOf(typeof(MediaTrackInfo));
 
-                    if (mediaInfoPtr != IntPtr.Zero)
+                    if (currentMediaTrackInfosPtr != IntPtr.Zero)
                     {
                         for (int i = 0; i < count; i++)
                         {
-                            var mediaTrackInfoItem = (MediaTrackInfo)Marshal.PtrToStructure(mediaInfoPtr, typeof(MediaTrackInfo));
+                            var mediaTrackInfoItem = (MediaTrackInfo)Marshal.PtrToStructure(currentMediaTrackInfosPtr, typeof(MediaTrackInfo));
 
                             mediaTrackInfos.Add(mediaTrackInfoItem);
-                            mediaInfoPtr = new IntPtr(mediaInfoPtr.ToInt64() + size);
+                            currentMediaTrackInfosPtr = new IntPtr(currentMediaTrackInfosPtr.ToInt64() + size);
                         }
                     }
                 }
                 finally
                 {
-                    VlcContext.InteropManager.MediaInterops.FreeMemory.Invoke(mediaInfoPtr);
+                    if (VlcContext.InteropManager.FreeMemory.IsAvailable)
+                        VlcContext.InteropManager.FreeMemory.Invoke(mediaInfoPtr);
+                    else
+                        GCHandle.FromIntPtr(mediaInfoPtr).Free();
                 }
 
                 return mediaTrackInfos;

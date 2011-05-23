@@ -365,14 +365,6 @@ namespace Vlc.DotNet.Core.Interops.Signatures
             [LibVlcFunction("libvlc_media_get_tracks_info")]
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
             public delegate int GetTrackInfo(IntPtr mediaInstance, out IntPtr trackInfo);
-
-            /// <summary>
-            /// Frees an heap allocation returned by a LibVLC function.
-            /// </summary>
-            /// <param name="pointer">Pointer to memory.</param>
-            [LibVlcFunction("libvlc_free")]
-            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-            public delegate void FreeMemory(IntPtr pointer);
         }
     }
 }
