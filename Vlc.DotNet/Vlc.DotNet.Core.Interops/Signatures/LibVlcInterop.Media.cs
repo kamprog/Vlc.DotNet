@@ -91,32 +91,103 @@ namespace Vlc.DotNet.Core.Interops.Signatures
                 public float SendBitrate;
             }
 
+            /// <summary>
+            /// Information of Media Track
+            /// </summary>
+            [StructLayout(LayoutKind.Explicit, Size = 28)]
             public struct MediaTrackInfo
             {
-                /* Codec fourcc */
-                public uint Codec;
+                /// <summary>
+                /// Codec Int32 Value
+                /// </summary>
+                [FieldOffset(0)]
+                public uint CodecFourcc;
+
+                /// <summary>
+                /// Codec Id
+                /// </summary>
+                [FieldOffset(4)]
                 public int Id;
+
+                /// <summary>
+                /// Type of Track
+                /// </summary>
+                [FieldOffset(8)]
                 public TrackTypes Type;
+
+                /// <summary>
+                /// Codec Profile
+                /// </summary>
+                [FieldOffset(12)]
                 public int Profile;
+
+                /// <summary>
+                /// Codec Level
+                /// </summary>
+                [FieldOffset(16)]
                 public int Level;
 
+                /// <summary>
+                /// Audio Track Info
+                /// </summary>
+                [FieldOffset(20)]
                 public AudioStruct Audio;
+
+                /// <summary>
+                /// Video Track Info
+                /// </summary>
+                [FieldOffset(20)]
                 public VideoStruct Video;
+
+                /// <summary>
+                /// Codec Abbreviation
+                /// </summary>
+                public string CodecName
+                {
+                    get
+                    {
+                        return string.Format(
+                            "{0}{1}{2}{3}",
+                            (char)(CodecFourcc & 0xff),
+                            (char)(CodecFourcc >> 8 & 0xff),
+                            (char)(CodecFourcc >> 16 & 0xff),
+                            (char)(CodecFourcc >> 24 & 0xff));
+                    }
+                }
             }
 
+            /// <summary>
+            /// Audio information of Media Track
+            /// </summary>
             public struct AudioStruct
             {
-                /* Audio specific */
+                /// <summary>
+                /// Number of Channels
+                /// </summary>
                 public uint Channels;
+
+                /// <summary>
+                /// Audio Sampling Rate
+                /// </summary>
                 public uint Rate;
             }
 
+            /// <summary>
+            /// Video information of Media Track
+            /// </summary>
             public struct VideoStruct
             {
-                /* Video specific */
+                /// <summary>
+                /// Height of Video
+                /// </summary>
                 public uint Height;
+
+                /// <summary>
+                /// Width of Video
+                /// </summary>
                 public uint Width;
             }
+
 
             #endregion
 
@@ -293,7 +364,15 @@ namespace Vlc.DotNet.Core.Interops.Signatures
             /// <returns>Number of Elementary Streams.</returns>
             [LibVlcFunction("libvlc_media_get_tracks_info")]
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-            public delegate int GetTrackInfo(IntPtr mediaInstance, MediaTrackInfo trackInfo);
+            public delegate int GetTrackInfo(IntPtr mediaInstance, out IntPtr trackInfo);
+
+            /// <summary>
+            /// Frees an heap allocation returned by a LibVLC function.
+            /// </summary>
+            /// <param name="pointer">Pointer to memory.</param>
+            [LibVlcFunction("libvlc_free")]
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            public delegate void FreeMemory(IntPtr pointer);
         }
     }
 }

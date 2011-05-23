@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Specialized;
+using System.ComponentModel;
 
 namespace Vlc.DotNet.Core
 {
@@ -7,6 +8,11 @@ namespace Vlc.DotNet.Core
     /// </summary>
     public sealed class VlcStartupOptions
     {
+        /// <summary>
+        /// List of options
+        /// </summary>
+        internal readonly StringCollection Options;
+
         /// <summary>
         /// Constructor of VlcStartupOptions
         /// </summary>
@@ -17,6 +23,7 @@ namespace Vlc.DotNet.Core
             UserAgent = "";
             LogOptions = new VlcLogOptions();
             ShowLoggerConsole = false;
+            Options = new StringCollection();
         }
 
         /// <summary>
@@ -52,5 +59,15 @@ namespace Vlc.DotNet.Core
         [DefaultValue(false)]
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public bool ShowLoggerConsole { get; set; }
+
+        /// <summary>
+        /// Add startup vlc command line option
+        /// </summary>
+        /// <param name="option">Option value</param>
+        public void AddOption(string option)
+        {
+            Options.Add(option);
+        }
+
     }
 }

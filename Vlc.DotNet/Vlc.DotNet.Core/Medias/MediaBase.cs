@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 using Vlc.DotNet.Core.Interops.Signatures.LibVlc.AsynchronousEvents;
@@ -28,7 +29,7 @@ namespace Vlc.DotNet.Core.Medias
                 long duration = VlcContext.InteropManager.MediaInterops.GetDuration.Invoke(VlcContext.HandleManager.MediasHandles[this]);
                 if (duration == -1)
                     return TimeSpan.Zero;
-                return new TimeSpan(0, 0, 0, 0, (int) duration);
+                return new TimeSpan(0, 0, 0, 0, (int)duration);
             }
         }
 
@@ -45,6 +46,7 @@ namespace Vlc.DotNet.Core.Medias
                 return VlcContext.InteropManager.MediaInterops.GetMrl.Invoke(VlcContext.HandleManager.MediasHandles[this]);
             }
         }
+
         /// <summary>
         /// Retreive the current state of the media
         /// </summary>
@@ -55,6 +57,54 @@ namespace Vlc.DotNet.Core.Medias
                 if (!VlcContext.HandleManager.MediasHandles.ContainsKey(this))
                     return States.NothingSpecial;
                 return VlcContext.InteropManager.MediaInterops.GetState.Invoke(VlcContext.HandleManager.MediasHandles[this]);
+            }
+        }
+
+        /// <summary>
+        /// Retrieve the current media track informations
+        /// </summary>
+        public IList<MediaTrackInfo> TrackInfos
+        {
+            get
+            {
+                if (VlcContext.InteropManager.MediaInterops.IsParsed.Invoke(VlcContext.HandleManager.MediasHandles[this]) == 0)
+                {
+                    VlcContext.InteropManager.MediaInterops.Parse.Invoke(VlcContext.HandleManager.MediasHandles[this]);
+                }
+
+                var mediaTrackInfos = new List<MediaTrackInfo>();
+                if (!VlcContext.HandleManager.MediasHandles.ContainsKey(this))
+                {
+                    return mediaTrackInfos;
+                }
+
+                IntPtr mediaInfoPtr;
+
+                var count = VlcContext.InteropManager.MediaInterops.GetTrackInfo.Invoke(VlcContext.HandleManager.MediasHandles[this], out mediaInfoPtr);
+                try
+                {
+                    if (count <= 0)
+                        return mediaTrackInfos;
+
+                    int size = Marshal.SizeOf(typeof(MediaTrackInfo));
+
+                    if (mediaInfoPtr != IntPtr.Zero)
+                    {
+                        for (int i = 0; i < count; i++)
+                        {
+                            var mediaTrackInfoItem = (MediaTrackInfo)Marshal.PtrToStructure(mediaInfoPtr, typeof(MediaTrackInfo));
+
+                            mediaTrackInfos.Add(mediaTrackInfoItem);
+                            mediaInfoPtr = new IntPtr(mediaInfoPtr.ToInt64() + size);
+                        }
+                    }
+                }
+                finally
+                {
+                    VlcContext.InteropManager.MediaInterops.FreeMemory.Invoke(mediaInfoPtr);
+                }
+
+                return mediaTrackInfos;
             }
         }
 
@@ -94,6 +144,7 @@ namespace Vlc.DotNet.Core.Medias
         {
             if (!VlcContext.HandleManager.MediasHandles.ContainsKey(this))
                 throw new Exception("Cannot set option while media is not initialized yet.");
+
             VlcContext.InteropManager.MediaInterops.AddOption.Invoke(VlcContext.HandleManager.MediasHandles[this], option);
         }
 
@@ -147,11 +198,11 @@ namespace Vlc.DotNet.Core.Medias
                 case EventTypes.MediaStateChanged:
                     EventsHelper.RaiseEvent(MediaStateChanged, this, new VlcEventArgs<States>(eventData.MediaStateChanged.NewState));
                     break;
-                    //TODO
-                    //case EventTypes.MediaSubItemAdded:
-                    //    //eventData.MediaSubitemAdded.NewChild
-                    //    EventsHelper.RaiseEvent(MediaSubItemAdded, this, new VlcEventArgs<EventArgs>(EventArgs.Empty));
-                    //    break;
+                //TODO
+                //case EventTypes.MediaSubItemAdded:
+                //    //eventData.MediaSubitemAdded.NewChild
+                //    EventsHelper.RaiseEvent(MediaSubItemAdded, this, new VlcEventArgs<EventArgs>(EventArgs.Empty));
+                //    break;
             }
         }
 

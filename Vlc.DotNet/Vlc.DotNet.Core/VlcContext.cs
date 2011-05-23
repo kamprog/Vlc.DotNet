@@ -72,13 +72,19 @@ namespace Vlc.DotNet.Core
             {
                 if (StartupOptions.LogOptions.ShowLoggerConsole)
                     result.Add("--extraintf=logger");
-                result.Add("--verbose=" + (int) StartupOptions.LogOptions.Verbosity);
+                result.Add("--verbose=" + (int)StartupOptions.LogOptions.Verbosity);
                 if (StartupOptions.LogOptions.LogInFile)
                 {
                     result.Add("--file-logging");
                     result.Add(@"--logfile=" + StartupOptions.LogOptions.LogInFilePath);
                 }
             }
+            foreach (var vlcStartupOption in StartupOptions.Options)
+            {
+                if (!result.Contains(vlcStartupOption))
+                    result.Add(vlcStartupOption);
+            }
+
             return result;
         }
 
@@ -127,7 +133,7 @@ namespace Vlc.DotNet.Core
                     InteropManager.ReleaseInstance.Invoke(HandleManager.LibVlcHandle);
                 HandleManager.LibVlcHandle = IntPtr.Zero;
             }
-            if (InteropManager == null) 
+            if (InteropManager == null)
                 return;
             InteropManager.Dispose();
             InteropManager = null;

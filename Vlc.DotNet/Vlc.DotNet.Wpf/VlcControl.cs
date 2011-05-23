@@ -29,8 +29,6 @@ namespace Vlc.DotNet.Wpf
         private InteropBitmap myBitmap;
         private IntPtr myBitmapSectionPointer;
 
-        //private VlcControlWpfRendererContext vlcControlWpfRendererContext;
-
         /// <summary>
         /// Identifies the Vlc.DotNet.Wpf.VideoSource dependency property.
         /// </summary>
@@ -68,7 +66,7 @@ namespace Vlc.DotNet.Wpf
         {
             if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
                 return;
-            //RenderImage = new Action(() => Bitmap.Invalidate());
+
             VideoBrush = new ImageBrush();
 
             if (!VlcContext.IsInitialized)
@@ -110,10 +108,11 @@ namespace Vlc.DotNet.Wpf
         }
         private void DisplayCallback(IntPtr opaque, IntPtr picture)
         {
-            Dispatcher.BeginInvoke(DispatcherPriority.Render, (Action) (() => myBitmap.Invalidate()));
+            Dispatcher.BeginInvoke(DispatcherPriority.Render, (Action)(() => myBitmap.Invalidate()));
         }
         private uint VideoSetFormat(ref IntPtr opaque, ref uint chroma, ref uint width, ref uint height, ref uint pitches, ref uint lines)
         {
+
             var context = new VlcControlWpfRendererContext(width, height, PixelFormats.Bgr32);
 
             chroma = BitConverter.ToUInt32(new[] { (byte)'R', (byte)'V', (byte)'3', (byte)'2' }, 0);

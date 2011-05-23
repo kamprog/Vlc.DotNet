@@ -27,6 +27,7 @@ namespace Vlc.DotNet.Core.Interops
         public LibVlcFunction<Signatures.LibVlc.Media.SetUserData> SetUserData { get; private set; }
         public LibVlcFunction<Signatures.LibVlc.Media.GetUserData> GetUserData { get; private set; }
         public LibVlcFunction<Signatures.LibVlc.Media.GetTrackInfo> GetTrackInfo { get; private set; }
+        public LibVlcFunction<Signatures.LibVlc.Media.FreeMemory> FreeMemory { get; private set; }
 
         internal LibVlcMedia(IntPtr libVlcDllHandle, Version vlcVersion)
         {
@@ -53,6 +54,7 @@ namespace Vlc.DotNet.Core.Interops
             SetUserData = new LibVlcFunction<Signatures.LibVlc.Media.SetUserData>(libVlcDllHandle, vlcVersion);
             GetUserData = new LibVlcFunction<Signatures.LibVlc.Media.GetUserData>(libVlcDllHandle, vlcVersion);
             GetTrackInfo = new LibVlcFunction<Signatures.LibVlc.Media.GetTrackInfo>(libVlcDllHandle, vlcVersion);
+            FreeMemory = new LibVlcFunction<Signatures.LibVlc.Media.FreeMemory>(libVlcDllHandle, vlcVersion);
         }
 
         #region IDisposable Members
@@ -82,6 +84,7 @@ namespace Vlc.DotNet.Core.Interops
             SetUserData = null;
             GetUserData = null;
             GetTrackInfo = null;
+            FreeMemory = null;
         }
 
         #endregion
