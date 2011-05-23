@@ -105,7 +105,7 @@ namespace Vlc.DotNet.Core.Medias
                     if (VlcContext.InteropManager.FreeMemory.IsAvailable)
                         VlcContext.InteropManager.FreeMemory.Invoke(mediaInfoPtr);
                     else
-                        GCHandle.FromIntPtr(mediaInfoPtr).Free();
+                        Marshal.FreeHGlobal(mediaInfoPtr);
                 }
 
                 return mediaTrackInfos;
