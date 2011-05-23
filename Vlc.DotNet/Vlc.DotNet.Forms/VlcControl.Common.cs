@@ -64,6 +64,26 @@ namespace Vlc.DotNet.Forms
                 return false;
             }
         }
+        /// <summary>
+        /// Check if is paused
+        /// </summary>
+        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
+        public bool IsPaused
+        {
+            get
+            {
+                if (VlcContext.InteropManager != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops.GetState.IsAvailable &&
+                    VlcContext.HandleManager != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(this))
+                {
+                    return VlcContext.InteropManager.MediaPlayerInterops.GetState.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]) == States.Paused;
+                }
+                return false;
+            }
+        }
 
         /// <summary>
         /// Display the next frame if supported
@@ -204,7 +224,7 @@ namespace Vlc.DotNet.Forms
         /// </summary>
         public void Stop()
         {
-            if (IsPlaying &&
+            if ((IsPlaying || IsPaused) &&
                 VlcContext.InteropManager != null &&
                 VlcContext.InteropManager.MediaPlayerInterops != null &&
                 VlcContext.HandleManager != null &&
