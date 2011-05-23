@@ -16,17 +16,20 @@ namespace Vlc.DotNet.Core
             HandleManager = new VlcHandleManager();
             IsInitialized = false;
 
-            if(Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE") == "X86")
+            var processorArchitecture = Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE");
+            var processorArchiteW6432 = Environment.GetEnvironmentVariable("PROCESSOR_ARCHITEW6432");
+
+            if ((!string.IsNullOrEmpty(processorArchitecture) && processorArchitecture.ToUpper() == "AMD64") ||
+                (!string.IsNullOrEmpty(processorArchiteW6432) && processorArchiteW6432.ToUpper() == "AMD64"))
+            {
+                LibVlcPluginsPath = CommonStrings.PLUGINS_PATH_DEFAULT_VALUE_AMD64;
+                LibVlcDllsPath = CommonStrings.LIBVLC_DLLS_PATH_DEFAULT_VALUE_AMD64;
+            }
+            else
             {
                 LibVlcPluginsPath = CommonStrings.PLUGINS_PATH_DEFAULT_VALUE_X86;
                 LibVlcDllsPath = CommonStrings.LIBVLC_DLLS_PATH_DEFAULT_VALUE_X86;
             }
-            else
-            {
-                LibVlcPluginsPath = CommonStrings.PLUGINS_PATH_DEFAULT_VALUE_AMD64;
-                LibVlcDllsPath = CommonStrings.LIBVLC_DLLS_PATH_DEFAULT_VALUE_AMD64;                
-            }
-
         }
 
         internal static LibVlcInteropsManager InteropManager { get; private set; }
