@@ -22,6 +22,7 @@ namespace Vlc.DotNet.Core.Interops
         public LibVlcFunction<Signatures.LibVlc.MediaPlayer.Video.SetAspectRatio> SetAspectRatio { get; private set; }
         public LibVlcFunction<Signatures.LibVlc.MediaPlayer.Video.GetSpu> GetSpu { get; private set; }
         public LibVlcFunction<Signatures.LibVlc.MediaPlayer.Video.GetSpuCount> GetSpuCount { get; private set; }
+        public LibVlcFunction<Signatures.LibVlc.MediaPlayer.Video.GetSpuDescription> GetSpuDescription { get; private set; }
         public LibVlcFunction<Signatures.LibVlc.MediaPlayer.Video.SetSpu> SetSpu { get; private set; }
         public LibVlcFunction<Signatures.LibVlc.MediaPlayer.Video.SetSubtitleFile> SetSubtitleFile { get; private set; }
         public LibVlcFunction<Signatures.LibVlc.MediaPlayer.Video.GetTeletext> GetTeletext { get; private set; }
@@ -61,6 +62,7 @@ namespace Vlc.DotNet.Core.Interops
             SetAspectRatio = new LibVlcFunction<Signatures.LibVlc.MediaPlayer.Video.SetAspectRatio>(libVlcDllHandle, vlcVersion);
             GetSpu = new LibVlcFunction<Signatures.LibVlc.MediaPlayer.Video.GetSpu>(libVlcDllHandle, vlcVersion);
             GetSpuCount = new LibVlcFunction<Signatures.LibVlc.MediaPlayer.Video.GetSpuCount>(libVlcDllHandle, vlcVersion);
+            GetSpuDescription = new LibVlcFunction<Signatures.LibVlc.MediaPlayer.Video.GetSpuDescription>(libVlcDllHandle, vlcVersion);
             SetSpu = new LibVlcFunction<Signatures.LibVlc.MediaPlayer.Video.SetSpu>(libVlcDllHandle, vlcVersion);
             SetSubtitleFile = new LibVlcFunction<Signatures.LibVlc.MediaPlayer.Video.SetSubtitleFile>(libVlcDllHandle, vlcVersion);
             GetTeletext = new LibVlcFunction<Signatures.LibVlc.MediaPlayer.Video.GetTeletext>(libVlcDllHandle, vlcVersion);
@@ -101,6 +103,7 @@ namespace Vlc.DotNet.Core.Interops
             SetAspectRatio = null;
             GetSpu = null;
             GetSpuCount = null;
+            GetSpuDescription = null;
             SetSpu = null;
             SetSubtitleFile = null;
             GetTeletext = null;

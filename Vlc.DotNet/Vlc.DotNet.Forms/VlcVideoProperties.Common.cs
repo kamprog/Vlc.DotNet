@@ -1,9 +1,13 @@
 ﻿using System;
 using System.ComponentModel;
+using System.IO;
+using System.Runtime.InteropServices;
+using System.Text;
 using Vlc.DotNet.Core;
 
 #if WPF
 using System.Windows;
+using Vlc.DotNet.Core.Interops.Signatures.LibVlc.MediaPlayer;
 
 namespace Vlc.DotNet.Wpf
 #else
@@ -81,6 +85,99 @@ namespace Vlc.DotNet.Forms
                 {
                     VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.SetDelay.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl], value);
                 }
+            }
+        }
+
+        /// <summary>
+        /// Set subtitle file
+        /// </summary>
+        /// <param name="subtitleFile">The subtitle file</param>
+        public void SetSubtitleFile(string subtitleFile)
+        {
+            if (!string.IsNullOrEmpty(subtitleFile) &&
+                File.Exists(subtitleFile) &&
+                VlcContext.InteropManager != null &&
+                VlcContext.InteropManager.MediaPlayerInterops != null &&
+                VlcContext.InteropManager.MediaPlayerInterops.VideoInterops != null &&
+                VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetSubtitleFile.IsAvailable &&
+                VlcContext.HandleManager.MediaPlayerHandles != null &&
+                VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(myHostVlcControl))
+            {
+                VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetSubtitleFile.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl], subtitleFile);
+            }
+        }
+        /// <summary>
+        /// Get / Set video subtitle.
+        /// </summary>
+        public int CurrentSpuIndex
+        {
+            get
+            {
+                if (VlcContext.InteropManager != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops.VideoInterops != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.GetSpu.IsAvailable &&
+                    VlcContext.HandleManager.MediaPlayerHandles != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(myHostVlcControl))
+                {
+                    return VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.GetSpu.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl]);
+                }
+                return -1;
+            }
+            set
+            {
+                if (VlcContext.InteropManager != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops.VideoInterops != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetSpu.IsAvailable &&
+                    VlcContext.HandleManager.MediaPlayerHandles != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(myHostVlcControl))
+                {
+                    VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetSpu.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl], value);
+                }
+            }
+        }
+        /// <summary>
+        /// Get the number of available video subtitles.
+        /// </summary>
+        public int SpuCount
+        {
+            get
+            {
+                if (VlcContext.InteropManager != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops.VideoInterops != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.GetSpuCount.IsAvailable &&
+                    VlcContext.HandleManager.MediaPlayerHandles != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(myHostVlcControl))
+                {
+                    VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.GetSpuCount.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl]);
+                }
+                return 0;
+            }
+        }
+        /// <summary>
+        /// Get the description of available video subtitles.
+        /// </summary>
+        public VlcTrackDescription SpuDescription
+        {
+            get
+            {
+                if (VlcContext.InteropManager != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops.VideoInterops != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.GetSpuDescription.IsAvailable &&
+                    VlcContext.HandleManager.MediaPlayerHandles != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(myHostVlcControl))
+                {
+                    var ptr = VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.GetSpuDescription.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl]);
+                    if(ptr != IntPtr.Zero)
+                    {
+                        var td = (TrackDescription)Marshal.PtrToStructure(ptr, typeof(TrackDescription));
+                        return new VlcTrackDescription(td);
+                    }
+                }
+                return null;
             }
         }
 
