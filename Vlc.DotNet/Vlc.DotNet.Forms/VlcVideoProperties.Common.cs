@@ -152,7 +152,7 @@ namespace Vlc.DotNet.Forms
                     VlcContext.HandleManager.MediaPlayerHandles != null &&
                     VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(myHostVlcControl))
                 {
-                    VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.GetSpuCount.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl]);
+                    return VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.GetSpuCount.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl]);
                 }
                 return 0;
             }
