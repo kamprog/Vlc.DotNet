@@ -17,7 +17,7 @@ namespace Vlc.DotNet.Forms
         private readonly IVlcControl myHostVlcControl;
 
         /// <summary>
-        /// Check / Set mute
+        /// Gets or sets a value indicating whether audio is muted
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public bool IsMute
@@ -34,8 +34,10 @@ namespace Vlc.DotNet.Forms
                 {
                     return VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.GetMute.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl]) == 1;
                 }
+
                 return false;
             }
+
             set
             {
                 if (VlcContext.InteropManager != null &&
@@ -50,8 +52,9 @@ namespace Vlc.DotNet.Forms
                 }
             }
         }
+
         /// <summary>
-        /// Get / Set volume
+        /// Gets or sets volume level
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public int Volume
@@ -68,8 +71,10 @@ namespace Vlc.DotNet.Forms
                 {
                     return VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.GetVolume.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl]);
                 }
+
                 return -1;
             }
+
             set
             {
                 if (VlcContext.InteropManager != null &&
@@ -84,8 +89,9 @@ namespace Vlc.DotNet.Forms
                 }
             }
         }
+
         /// <summary>
-        /// Get / Set delay
+        /// Gets or sets audio delay in microseconds
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public long Delay
@@ -102,8 +108,10 @@ namespace Vlc.DotNet.Forms
                 {
                     return VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.GetDelay.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl]);
                 }
+
                 return 0;
             }
+
             set
             {
                 if (VlcContext.InteropManager != null &&
@@ -118,8 +126,9 @@ namespace Vlc.DotNet.Forms
                 }
             }
         }
+
         /// <summary>
-        /// Get / Set output device type
+        /// Gets or sets output device type
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public OutputDeviceTypes OutputDeviceType
@@ -136,8 +145,10 @@ namespace Vlc.DotNet.Forms
                 {
                     return VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.GetOutputDeviceType.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl]);
                 }
+
                 return OutputDeviceTypes.Error;
             }
+
             set
             {
                 if (VlcContext.InteropManager != null &&
@@ -152,8 +163,9 @@ namespace Vlc.DotNet.Forms
                 }
             }
         }
+
         /// <summary>
-        /// Get / Set channel
+        /// Gets or sets channel
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public OutputChannel Channel
@@ -170,8 +182,10 @@ namespace Vlc.DotNet.Forms
                 {
                     return VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.GetChannel.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl]);
                 }
+
                 return OutputChannel.Error;
             }
+
             set
             {
                 if (VlcContext.InteropManager != null &&
@@ -186,8 +200,9 @@ namespace Vlc.DotNet.Forms
                 }
             }
         }
+
         /// <summary>
-        /// Get / Set track
+        /// Gets or sets track
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public int Track
@@ -204,8 +219,10 @@ namespace Vlc.DotNet.Forms
                 {
                     return VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.GetTrack.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl]);
                 }
+
                 return -1;
             }
+
             set
             {
                 if (VlcContext.InteropManager != null &&
@@ -220,8 +237,9 @@ namespace Vlc.DotNet.Forms
                 }
             }
         }
+
         /// <summary>
-        /// retreive the number of tracks
+        /// Gets the number of tracks
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public int TrackCount
@@ -238,10 +256,17 @@ namespace Vlc.DotNet.Forms
                 {
                     return VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.GetTrackCount.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl]);
                 }
+
                 return 0;
             }
         }
 
+        /// <summary>
+        /// Gets output device name
+        /// </summary>
+        /// <param name="outputName"></param>
+        /// <param name="deviceIndex"></param>
+        /// <returns></returns>
         public string GetOutputDeviceIdName(string outputName, int deviceIndex)
         {
             if (VlcContext.InteropManager != null &&
@@ -254,6 +279,7 @@ namespace Vlc.DotNet.Forms
             {
                 return VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.GetOutputDeviceIdName.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl], outputName, deviceIndex);
             }
+
             return null;
         }
 

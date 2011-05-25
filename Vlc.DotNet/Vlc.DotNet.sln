@@ -7,7 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vlc.DotNet.Forms", "Vlc.Dot
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{239597EA-35A4-4D44-9531-B4B420FA318D}"
 	ProjectSection(SolutionItems) = preProject
-		Common\AssemblyInfoCommon.cs = Common\AssemblyInfoCommon.cs
 		Common\Vlc.DotNet.pfx.snk = Common\Vlc.DotNet.pfx.snk
 	EndProjectSection
 EndProject
@@ -121,9 +120,9 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		BuildVersion_UpdateFileVersion = True
-		BuildVersion_BuildVersioningStyle = YearStamp.MonthStamp.DayStamp.None
-		BuildVersion_UseGlobalSettings = False
 		BuildVersion_AssemblyInfoFilename = Common\AssemblyInfoCommon.cs
+		BuildVersion_UseGlobalSettings = False
+		BuildVersion_BuildVersioningStyle = YearStamp.MonthStamp.DayStamp.None
+		BuildVersion_UpdateFileVersion = True
 	EndGlobalSection
 EndGlobal

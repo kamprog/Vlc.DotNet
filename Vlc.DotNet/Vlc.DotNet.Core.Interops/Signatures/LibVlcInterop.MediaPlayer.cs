@@ -494,11 +494,15 @@ namespace Vlc.DotNet.Core.Interops.Signatures
 
                 [LibVlcFunction("libvlc_video_get_scale")]
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                public delegate int GetScale(IntPtr playerInstance);
+                public delegate float GetScale(IntPtr playerInstance);
 
                 [LibVlcFunction("libvlc_video_set_scale")]
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
                 public delegate int SetScale(IntPtr playerInstance, float scale);
+
+                [LibVlcFunction("libvlc_video_get_aspect_ratio")]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate string GetAspectRatio(IntPtr playerInstance);
 
                 [LibVlcFunction("libvlc_video_set_aspect_ratio")]
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
@@ -772,7 +776,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
                 /// <param name="playerInstance">The Media Player</param>
                 /// <param name="option">Option</param>
                 /// <param name="value">The float value</param>
-                [LibVlcFunction("libvlc_video_set_adjust_int", "1.1.1")]
+                [LibVlcFunction("libvlc_video_set_adjust_float", "1.1.1")]
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
                 public delegate void SetFloatAdjust(IntPtr playerInstance, AdjustOption option, float value);
 

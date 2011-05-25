@@ -19,6 +19,7 @@ namespace Vlc.DotNet.Core.Interops
         public LibVlcFunction<Signatures.LibVlc.MediaPlayer.Video.GetCursor> GetCursor { get; private set; }
         public LibVlcFunction<Signatures.LibVlc.MediaPlayer.Video.GetScale> GetScale { get; private set; }
         public LibVlcFunction<Signatures.LibVlc.MediaPlayer.Video.SetScale> SetScale { get; private set; }
+        public LibVlcFunction<Signatures.LibVlc.MediaPlayer.Video.GetAspectRatio> GetAspectRatio { get; private set; }
         public LibVlcFunction<Signatures.LibVlc.MediaPlayer.Video.SetAspectRatio> SetAspectRatio { get; private set; }
         public LibVlcFunction<Signatures.LibVlc.MediaPlayer.Video.GetSpu> GetSpu { get; private set; }
         public LibVlcFunction<Signatures.LibVlc.MediaPlayer.Video.GetSpuCount> GetSpuCount { get; private set; }
@@ -59,6 +60,7 @@ namespace Vlc.DotNet.Core.Interops
             GetCursor = new LibVlcFunction<Signatures.LibVlc.MediaPlayer.Video.GetCursor>(libVlcDllHandle, vlcVersion);
             GetScale = new LibVlcFunction<Signatures.LibVlc.MediaPlayer.Video.GetScale>(libVlcDllHandle, vlcVersion);
             SetScale = new LibVlcFunction<Signatures.LibVlc.MediaPlayer.Video.SetScale>(libVlcDllHandle, vlcVersion);
+            GetAspectRatio = new LibVlcFunction<Signatures.LibVlc.MediaPlayer.Video.GetAspectRatio>(libVlcDllHandle, vlcVersion);
             SetAspectRatio = new LibVlcFunction<Signatures.LibVlc.MediaPlayer.Video.SetAspectRatio>(libVlcDllHandle, vlcVersion);
             GetSpu = new LibVlcFunction<Signatures.LibVlc.MediaPlayer.Video.GetSpu>(libVlcDllHandle, vlcVersion);
             GetSpuCount = new LibVlcFunction<Signatures.LibVlc.MediaPlayer.Video.GetSpuCount>(libVlcDllHandle, vlcVersion);
@@ -100,6 +102,7 @@ namespace Vlc.DotNet.Core.Interops
             GetCursor = null;
             GetScale = null;
             SetScale = null;
+            GetAspectRatio = null;
             SetAspectRatio = null;
             GetSpu = null;
             GetSpuCount = null;

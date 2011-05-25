@@ -16,7 +16,7 @@ namespace Vlc.DotNet.Forms.SampleApplication
             if (openFileDialog1.ShowDialog(this) == DialogResult.OK)
             {
                 var media = new PathMedia(openFileDialog1.FileName);
-                vlcControl1.SetMedia(media);
+                vlcControl1.Media = media;
             }
         }
 
@@ -32,7 +32,7 @@ namespace Vlc.DotNet.Forms.SampleApplication
 
         private void vlcControl1_PositionChanged(VlcControl sender, Vlc.DotNet.Core.VlcEventArgs<float> e)
         {
-            label1.Text = (e.Data*100).ToString("000") + " %";
+            label1.Text = (e.Data * 100).ToString("000") + " %";
         }
 
         private void button3_Click(object sender, EventArgs e)

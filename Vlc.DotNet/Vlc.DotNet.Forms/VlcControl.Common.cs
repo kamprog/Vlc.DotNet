@@ -24,7 +24,7 @@ namespace Vlc.DotNet.Forms
         private GCHandle myEventCallbackHandle;
 
         /// <summary>
-        /// Retreive the FPS of the video
+        /// Gets the FPS of the video
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public float FPS
@@ -41,11 +41,79 @@ namespace Vlc.DotNet.Forms
                 {
                     return VlcContext.InteropManager.MediaPlayerInterops.GetFPS.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]);
                 }
+
                 return 0;
             }
         }
+
         /// <summary>
-        /// Check if is playing
+        /// Gets a value indicating whether player able to play
+        /// </summary>
+        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
+        public bool WillPlay
+        {
+            get
+            {
+                if (VlcContext.InteropManager != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops.WillPlay.IsAvailable &&
+                    VlcContext.HandleManager != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(this))
+                {
+                    return VlcContext.InteropManager.MediaPlayerInterops.WillPlay.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]) != 0;
+                }
+
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether this media player seekable
+        /// </summary>
+        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
+        public bool IsSeekable
+        {
+            get
+            {
+                if (VlcContext.InteropManager != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops.IsSeekable.IsAvailable &&
+                    VlcContext.HandleManager != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(this))
+                {
+                    return VlcContext.InteropManager.MediaPlayerInterops.IsSeekable.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]) != 0;
+                }
+
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether this media player can be paused
+        /// </summary>
+        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
+        public bool IsPausable
+        {
+            get
+            {
+                if (VlcContext.InteropManager != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops.IsPausable.IsAvailable &&
+                    VlcContext.HandleManager != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(this))
+                {
+                    return VlcContext.InteropManager.MediaPlayerInterops.IsPausable.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]) != 0;
+                }
+
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether media is playing
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public bool IsPlaying
@@ -61,11 +129,13 @@ namespace Vlc.DotNet.Forms
                 {
                     return VlcContext.InteropManager.MediaPlayerInterops.IsPlaying.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]) == 1;
                 }
+
                 return false;
             }
         }
+
         /// <summary>
-        /// Check if is paused
+        /// Gets a value indicating whether media is paused
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public bool IsPaused
@@ -81,7 +151,202 @@ namespace Vlc.DotNet.Forms
                 {
                     return VlcContext.InteropManager.MediaPlayerInterops.GetState.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]) == States.Paused;
                 }
+
                 return false;
+            }
+        }
+
+        /// <summary>
+        /// Gets / Sets the current position of the playing media
+        /// </summary>
+        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
+        public float Position
+        {
+            get
+            {
+                if (VlcContext.InteropManager != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops.GetPosition.IsAvailable &&
+                    VlcContext.HandleManager != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(this))
+                {
+                    return VlcContext.InteropManager.MediaPlayerInterops.GetPosition.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]);
+                }
+
+                return 0;
+            }
+
+            set
+            {
+                if (VlcContext.InteropManager != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops.SetPosition.IsAvailable &&
+                    VlcContext.HandleManager != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(this))
+                {
+                    VlcContext.InteropManager.MediaPlayerInterops.SetPosition.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this], value);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Get / Set the current time of the playing media
+        /// </summary>
+        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
+        public TimeSpan Time
+        {
+            get
+            {
+                if (VlcContext.InteropManager != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops.GetTime.IsAvailable &&
+                    VlcContext.HandleManager != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(this))
+                {
+                    return TimeSpan.FromMilliseconds(VlcContext.InteropManager.MediaPlayerInterops.GetTime.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]));
+                }
+
+                return TimeSpan.Zero;
+            }
+
+            set
+            {
+                if (VlcContext.InteropManager != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops.SetTime.IsAvailable &&
+                    VlcContext.HandleManager != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(this))
+                {
+                    VlcContext.InteropManager.MediaPlayerInterops.SetTime.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this], Convert.ToUInt32(value.TotalMilliseconds));
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets / Sets rate of playing
+        /// </summary>
+        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
+        public float Rate
+        {
+            get
+            {
+                if (VlcContext.InteropManager != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops.GetRate.IsAvailable &&
+                    VlcContext.HandleManager != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles != null)
+                {
+                    return VlcContext.InteropManager.MediaPlayerInterops.GetRate.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]);
+                }
+
+                return 0;
+            }
+
+            set
+            {
+                if (VlcContext.InteropManager != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops.SetRate.IsAvailable &&
+                    VlcContext.HandleManager != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles != null)
+                {
+                    VlcContext.InteropManager.MediaPlayerInterops.SetRate.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this], value);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Sets / Gets the current media
+        /// </summary>
+        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
+        public MediaBase Media
+        {
+            get
+            {
+                if (VlcContext.InteropManager != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops.GetMedia.IsAvailable &&
+                    VlcContext.HandleManager != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(this) &&
+                    VlcContext.HandleManager.MediasHandles != null)
+                {
+                    var media = VlcContext.InteropManager.MediaPlayerInterops.GetMedia.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]);
+                    if (VlcContext.HandleManager.MediasHandles.ContainsValue(media))
+                    {
+                        foreach (var mediasHandle in VlcContext.HandleManager.MediasHandles)
+                        {
+                            if (mediasHandle.Value == media)
+                            {
+                                return mediasHandle.Key;
+                            }
+                        }
+                    }
+                }
+
+                return null;
+            }
+
+            set
+            {
+                if (VlcContext.InteropManager != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops.SetMedia.IsAvailable &&
+                    VlcContext.HandleManager != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(this) &&
+                    VlcContext.HandleManager.MediasHandles != null &&
+                    VlcContext.HandleManager.MediasHandles.ContainsKey(value))
+                {
+                    VlcContext.InteropManager.MediaPlayerInterops.SetMedia.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this], VlcContext.HandleManager.MediasHandles[value]);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets media player state
+        /// </summary>
+        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
+        public States State
+        {
+            get
+            {
+                if (VlcContext.InteropManager != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops.GetState.IsAvailable &&
+                    VlcContext.HandleManager != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(this))
+                {
+                    return VlcContext.InteropManager.MediaPlayerInterops.GetState.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]);
+                }
+                return States.NothingSpecial;
+            }
+        }
+
+        /// <summary>
+        /// Get media duration
+        /// </summary>
+        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
+        public TimeSpan Duration
+        {
+            get
+            {
+                if (VlcContext.InteropManager != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops != null &&
+                    VlcContext.InteropManager.MediaPlayerInterops.GetLength.IsAvailable &&
+                    VlcContext.HandleManager != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles != null &&
+                    VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(this))
+                {
+                    return TimeSpan.FromMilliseconds(VlcContext.InteropManager.MediaPlayerInterops.GetLength.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]));
+                }
+
+                return TimeSpan.Zero;
             }
         }
 
@@ -100,21 +365,7 @@ namespace Vlc.DotNet.Forms
                 VlcContext.InteropManager.MediaPlayerInterops.NextFrame.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]);
             }
         }
-        /// <summary>
-        /// Pause the current media
-        /// </summary>
-        public void Pause()
-        {
-            if (VlcContext.InteropManager != null &&
-                VlcContext.InteropManager.MediaPlayerInterops != null &&
-                VlcContext.InteropManager.MediaPlayerInterops.Pause.IsAvailable &&
-                VlcContext.HandleManager != null &&
-                VlcContext.HandleManager.MediaPlayerHandles != null &&
-                VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(this))
-            {
-                VlcContext.InteropManager.MediaPlayerInterops.Pause.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]);
-            }
-        }
+
         /// <summary>
         /// Play the current media
         /// </summary>
@@ -130,95 +381,33 @@ namespace Vlc.DotNet.Forms
                 VlcContext.InteropManager.MediaPlayerInterops.Play.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]);
             }
         }
+
         /// <summary>
         /// Play the media
         /// </summary>
         /// <param name="media">Media to play</param>
         public void Play(MediaBase media)
         {
-            SetMedia(media);
+            Media = media;
             Play();
         }
+
         /// <summary>
-        /// Get / Set the current position of the playing media
+        /// Pause the current media
         /// </summary>
-        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public float Position
-        {
-            get
-            {
-                if (VlcContext.InteropManager != null &&
-                    VlcContext.InteropManager.MediaPlayerInterops != null &&
-                    VlcContext.InteropManager.MediaPlayerInterops.GetPosition.IsAvailable &&
-                    VlcContext.HandleManager != null &&
-                    VlcContext.HandleManager.MediaPlayerHandles != null &&
-                    VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(this))
-                {
-                    return VlcContext.InteropManager.MediaPlayerInterops.GetPosition.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]);
-                }
-                return 0;
-            }
-            set
-            {
-                if (VlcContext.InteropManager != null &&
-                    VlcContext.InteropManager.MediaPlayerInterops != null &&
-                    VlcContext.InteropManager.MediaPlayerInterops.SetPosition.IsAvailable &&
-                    VlcContext.HandleManager != null &&
-                    VlcContext.HandleManager.MediaPlayerHandles != null &&
-                    VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(this))
-                {
-                    VlcContext.InteropManager.MediaPlayerInterops.SetPosition.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this], value);
-                }
-            }
-        }
-        /// <summary>
-        /// Get / Set rate of playing
-        /// </summary>
-        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public float Rate
-        {
-            get
-            {
-                if (VlcContext.InteropManager != null &&
-                    VlcContext.InteropManager.MediaPlayerInterops != null &&
-                    VlcContext.InteropManager.MediaPlayerInterops.SetRate.IsAvailable &&
-                    VlcContext.HandleManager != null &&
-                    VlcContext.HandleManager.MediaPlayerHandles != null)
-                {
-                    return VlcContext.InteropManager.MediaPlayerInterops.GetRate.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]);
-                }
-                return 0;
-            }
-            set
-            {
-                if (VlcContext.InteropManager != null &&
-                    VlcContext.InteropManager.MediaPlayerInterops != null &&
-                    VlcContext.InteropManager.MediaPlayerInterops.SetRate.IsAvailable &&
-                    VlcContext.HandleManager != null &&
-                    VlcContext.HandleManager.MediaPlayerHandles != null)
-                {
-                    VlcContext.InteropManager.MediaPlayerInterops.SetRate.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this], value);
-                }
-            }
-        }
-        /// <summary>
-        /// Set the current media
-        /// </summary>
-        /// <param name="media"></param>
-        public void SetMedia(MediaBase media)
+        public void Pause()
         {
             if (VlcContext.InteropManager != null &&
                 VlcContext.InteropManager.MediaPlayerInterops != null &&
-                VlcContext.InteropManager.MediaPlayerInterops.SetPosition.IsAvailable &&
+                VlcContext.InteropManager.MediaPlayerInterops.Pause.IsAvailable &&
                 VlcContext.HandleManager != null &&
                 VlcContext.HandleManager.MediaPlayerHandles != null &&
-                VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(this) &&
-                VlcContext.HandleManager.MediasHandles != null &&
-                VlcContext.HandleManager.MediasHandles.ContainsKey(media))
+                VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(this))
             {
-                VlcContext.InteropManager.MediaPlayerInterops.SetMedia.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this], VlcContext.HandleManager.MediasHandles[media]);
+                VlcContext.InteropManager.MediaPlayerInterops.Pause.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]);
             }
         }
+
         /// <summary>
         /// Stop the current media
         /// </summary>
@@ -227,33 +416,15 @@ namespace Vlc.DotNet.Forms
             if ((IsPlaying || IsPaused) &&
                 VlcContext.InteropManager != null &&
                 VlcContext.InteropManager.MediaPlayerInterops != null &&
+                VlcContext.InteropManager.MediaPlayerInterops.Stop.IsAvailable &&
                 VlcContext.HandleManager != null &&
                 VlcContext.HandleManager.MediaPlayerHandles != null &&
                 VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(this))
             {
                 VlcContext.InteropManager.MediaPlayerInterops.Stop.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]);
             }
-        } 
-        /// <summary>
-        /// Get media player state
-        /// </summary>
-        public States State
-        {
-            get
-            {
-                if (IsPlaying &&
-                    VlcContext.InteropManager != null &&
-                    VlcContext.InteropManager.MediaPlayerInterops != null &&
-                    VlcContext.InteropManager.MediaPlayerInterops.GetState.IsAvailable &&
-                    VlcContext.HandleManager != null &&
-                    VlcContext.HandleManager.MediaPlayerHandles != null &&
-                    VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(this))
-                {
-                    return VlcContext.InteropManager.MediaPlayerInterops.GetState.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]);
-                }
-                return States.NothingSpecial;
-            }
         }
+
         /// <summary>
         /// Take snapshot
         /// </summary>
