@@ -235,6 +235,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
             /// <returns>String with mrl of media descriptor object.</returns>
             [LibVlcFunction("libvlc_media_get_mrl")]
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            [return: MarshalAs(UnmanagedType.AnsiBStr)]
             public delegate string GetMrl(IntPtr mediaInstance);
 
             /// <summary>
@@ -254,6 +255,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
             /// <returns>The media's meta value.</returns>
             [LibVlcFunction("libvlc_media_get_meta")]
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            [return: MarshalAs(UnmanagedType.AnsiBStr)]
             public delegate string GetMetadata(IntPtr mediaInstance, Metadatas metadata);
 
             /// <summary>
@@ -291,7 +293,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
             /// <returns>True if the statistics are available, false otherwise.</returns>
             [LibVlcFunction("libvlc_media_get_stats")]
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-            public delegate int GetStats(IntPtr mediaInstance, Stats stats);
+            public delegate int GetStats(IntPtr mediaInstance, out Stats stats);
 
             //TODO : libvlc_media_subitems
 

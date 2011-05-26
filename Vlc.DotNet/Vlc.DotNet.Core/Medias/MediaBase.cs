@@ -17,6 +17,15 @@ namespace Vlc.DotNet.Core.Medias
         private IntPtr myEventManagerHandle;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="MediaBase"/> class. 
+        /// </summary>
+        protected MediaBase()
+        {
+            Metadatas = new VlcMediaMetadatas(this);
+            TrackInfos = new VlcMediaTrackInfos(this);
+        }
+
+        /// <summary>
         /// Retreive the duration of the media
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
@@ -34,7 +43,7 @@ namespace Vlc.DotNet.Core.Medias
         }
 
         /// <summary>
-        /// Retreive the Media Resource Locator
+        /// Gets Media Resource Locator
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public string MRL
@@ -48,7 +57,7 @@ namespace Vlc.DotNet.Core.Medias
         }
 
         /// <summary>
-        /// Retreive the current state of the media
+        /// Gets the current state of the media
         /// </summary>
         public States State
         {
@@ -61,54 +70,35 @@ namespace Vlc.DotNet.Core.Medias
         }
 
         /// <summary>
-        /// Retrieve the current media track informations
+        /// Gets the current statistics about the media
         /// </summary>
-        public IList<MediaTrackInfo> TrackInfos
+        public Stats Statistics
         {
             get
             {
-                if (VlcContext.InteropManager.MediaInterops.IsParsed.Invoke(VlcContext.HandleManager.MediasHandles[this]) == 0)
+                var stats = new Stats();
+                if (VlcContext.HandleManager.MediasHandles.ContainsKey(this) &&
+                    VlcContext.InteropManager.MediaInterops.GetStats.IsAvailable)
                 {
-                    VlcContext.InteropManager.MediaInterops.Parse.Invoke(VlcContext.HandleManager.MediasHandles[this]);
+                    VlcContext.InteropManager.MediaInterops.GetStats.Invoke(VlcContext.HandleManager.MediasHandles[this], out stats);
                 }
 
-                var mediaTrackInfos = new List<MediaTrackInfo>();
-                if (!VlcContext.HandleManager.MediasHandles.ContainsKey(this))
-                {
-                    return mediaTrackInfos;
-                }
-
-                IntPtr mediaInfoPtr;
-
-                var count = VlcContext.InteropManager.MediaInterops.GetTrackInfo.Invoke(VlcContext.HandleManager.MediasHandles[this], out mediaInfoPtr);
-                try
-                {
-                    if (count <= 0)
-                        return mediaTrackInfos;
-
-                    var currentMediaTrackInfosPtr = mediaInfoPtr;
-                    var size = Marshal.SizeOf(typeof(MediaTrackInfo));
-
-                    if (currentMediaTrackInfosPtr != IntPtr.Zero)
-                    {
-                        for (int i = 0; i < count; i++)
-                        {
-                            var mediaTrackInfoItem = (MediaTrackInfo)Marshal.PtrToStructure(currentMediaTrackInfosPtr, typeof(MediaTrackInfo));
-
-                            mediaTrackInfos.Add(mediaTrackInfoItem);
-                            currentMediaTrackInfosPtr = new IntPtr(currentMediaTrackInfosPtr.ToInt64() + size);
-                        }
-                    }
-                }
-                finally
-                {
-                    if (VlcContext.InteropManager.FreeMemory.IsAvailable)
-                        VlcContext.InteropManager.FreeMemory.Invoke(mediaInfoPtr);
-                }
-
-                return mediaTrackInfos;
+                return stats;
             }
         }
+
+        /// <summary>
+        /// Gets media descriptor's elementary streams description
+        /// </summary>
+        public VlcMediaTrackInfos TrackInfos { get; internal set; }
+
+        /// <summary>
+        /// Gets the meta of the media
+        /// </summary>
+        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
+        public VlcMediaMetadatas Metadatas { get; private set; }
+
+        protected abstract IntPtr GetNewMediaInstance();
 
         #region IDisposable Members
 
@@ -123,8 +113,6 @@ namespace Vlc.DotNet.Core.Medias
         }
 
         #endregion
-
-        protected abstract IntPtr GetNewMediaInstance();
 
         /// <summary>
         /// Initialize media
@@ -141,13 +129,26 @@ namespace Vlc.DotNet.Core.Medias
         /// <summary>
         /// Add option for media
         /// </summary>
-        /// <param name="option"></param>
+        /// <param name="option">The options (as a string)</param>
         public void AddOption(string option)
         {
             if (!VlcContext.HandleManager.MediasHandles.ContainsKey(this))
                 throw new Exception("Cannot set option while media is not initialized yet.");
 
             VlcContext.InteropManager.MediaInterops.AddOption.Invoke(VlcContext.HandleManager.MediasHandles[this], option);
+        }
+
+        /// <summary>
+        /// Add option for media
+        /// </summary>
+        /// <param name="option">The options (as a string)</param>
+        /// <param name="flag">The flags for this option</param>
+        public void AddOption(string option, Option flag)
+        {
+            if (!VlcContext.HandleManager.MediasHandles.ContainsKey(this))
+                throw new Exception("Cannot set option while media is not initialized yet.");
+
+            VlcContext.InteropManager.MediaInterops.AddOptionFlag.Invoke(VlcContext.HandleManager.MediasHandles[this], option, flag);
         }
 
         #region Events
@@ -225,213 +226,6 @@ namespace Vlc.DotNet.Core.Medias
 
         //[Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         //public event VlcEventHandler<MediaBase, EventArgs> MediaSubItemAdded;
-
-        #endregion
-
-        #region Metadatas
-
-        /// <summary>
-        /// Get / Set the Album metadata
-        /// </summary>
-        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public string Album
-        {
-            get { return GetMetadata(Metadatas.Album); }
-            set { SetMetadata(Metadatas.Album, value); }
-        }
-
-        /// <summary>
-        /// Get / Set the Artist metadata
-        /// </summary>
-        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public string Artist
-        {
-            get { return GetMetadata(Metadatas.Artist); }
-            set { SetMetadata(Metadatas.Artist, value); }
-        }
-
-        /// <summary>
-        /// Get / Set the ArtworkURL metadata
-        /// </summary>
-        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public string ArtworkURL
-        {
-            get { return GetMetadata(Metadatas.ArtworkURL); }
-            set { SetMetadata(Metadatas.ArtworkURL, value); }
-        }
-
-        /// <summary>
-        /// Get / Set the Copyright metadata
-        /// </summary>
-        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public string Copyright
-        {
-            get { return GetMetadata(Metadatas.Copyright); }
-            set { SetMetadata(Metadatas.Copyright, value); }
-        }
-
-        /// <summary>
-        /// Get / Set the Date metadata
-        /// </summary>
-        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public string Date
-        {
-            get { return GetMetadata(Metadatas.Date); }
-            set { SetMetadata(Metadatas.Date, value); }
-        }
-
-        /// <summary>
-        /// Get / Set the Description metadata
-        /// </summary>
-        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public string Description
-        {
-            get { return GetMetadata(Metadatas.Description); }
-            set { SetMetadata(Metadatas.Description, value); }
-        }
-
-        /// <summary>
-        /// Get / Set the EncodedBy metadata
-        /// </summary>
-        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public string EncodedBy
-        {
-            get { return GetMetadata(Metadatas.EncodedBy); }
-            set { SetMetadata(Metadatas.EncodedBy, value); }
-        }
-
-        /// <summary>
-        /// Get / Set the Genre metadata
-        /// </summary>
-        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public string Genre
-        {
-            get { return GetMetadata(Metadatas.Genre); }
-            set { SetMetadata(Metadatas.Genre, value); }
-        }
-
-        /// <summary>
-        /// Get / Set the Language metadata
-        /// </summary>
-        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public string Language
-        {
-            get { return GetMetadata(Metadatas.Language); }
-            set { SetMetadata(Metadatas.Language, value); }
-        }
-
-        /// <summary>
-        /// Get / Set the NowPlaying metadata
-        /// </summary>
-        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public string NowPlaying
-        {
-            get { return GetMetadata(Metadatas.NowPlaying); }
-            set { SetMetadata(Metadatas.NowPlaying, value); }
-        }
-
-        /// <summary>
-        /// Get / Set the Publisher metadata
-        /// </summary>
-        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public string Publisher
-        {
-            get { return GetMetadata(Metadatas.Publisher); }
-            set { SetMetadata(Metadatas.Publisher, value); }
-        }
-
-        /// <summary>
-        /// Get / Set the Rating metadata
-        /// </summary>
-        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public string Rating
-        {
-            get { return GetMetadata(Metadatas.Rating); }
-            set { SetMetadata(Metadatas.Rating, value); }
-        }
-
-        /// <summary>
-        /// Get / Set the Setting metadata
-        /// </summary>
-        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public string Setting
-        {
-            get { return GetMetadata(Metadatas.Setting); }
-            set { SetMetadata(Metadatas.Setting, value); }
-        }
-
-        /// <summary>
-        /// Get / Set the Title metadata
-        /// </summary>
-        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public string Title
-        {
-            get { return GetMetadata(Metadatas.Title); }
-            set { SetMetadata(Metadatas.Title, value); }
-        }
-
-        /// <summary>
-        /// Get / Set the TrackID metadata
-        /// </summary>
-        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public string TrackID
-        {
-            get { return GetMetadata(Metadatas.TrackID); }
-            set { SetMetadata(Metadatas.TrackID, value); }
-        }
-
-        /// <summary>
-        /// Get / Set the TrackNumber metadata
-        /// </summary>
-        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public string TrackNumber
-        {
-            get { return GetMetadata(Metadatas.TrackNumber); }
-            set { SetMetadata(Metadatas.TrackNumber, value); }
-        }
-
-        /// <summary>
-        /// Get / Set the URL metadata
-        /// </summary>
-        [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public string URL
-        {
-            get { return GetMetadata(Metadatas.URL); }
-            set { SetMetadata(Metadatas.URL, value); }
-        }
-
-        private string GetMetadata(Metadatas metadata)
-        {
-            if (!VlcContext.HandleManager.MediasHandles.ContainsKey(this))
-                return null;
-            if (VlcContext.InteropManager.MediaInterops.IsParsed.Invoke(VlcContext.HandleManager.MediasHandles[this]) == 0)
-                VlcContext.InteropManager.MediaInterops.Parse.Invoke(VlcContext.HandleManager.MediasHandles[this]);
-            try
-            {
-                return VlcContext.InteropManager.MediaInterops.GetMetadata.Invoke(VlcContext.HandleManager.MediasHandles[this], metadata);
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        private void SetMetadata(Metadatas metadata, string value)
-        {
-            if (!VlcContext.HandleManager.MediasHandles.ContainsKey(this))
-                return;
-            VlcContext.InteropManager.MediaInterops.SetMetadata.Invoke(VlcContext.HandleManager.MediasHandles[this], metadata, value);
-        }
-
-        /// <summary>
-        /// Save the metadatas
-        /// </summary>
-        public void SaveMetadatas()
-        {
-            if (!VlcContext.HandleManager.MediasHandles.ContainsKey(this))
-                return;
-            VlcContext.InteropManager.MediaInterops.SaveMetadatas.Invoke(VlcContext.HandleManager.MediasHandles[this]);
-        }
 
         #endregion
     }

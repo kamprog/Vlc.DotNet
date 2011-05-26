@@ -157,7 +157,7 @@ namespace Vlc.DotNet.Forms
         }
 
         /// <summary>
-        /// Gets / Sets the current position of the playing media
+        /// Gets or sets the current position of the playing media
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public float Position
@@ -192,7 +192,7 @@ namespace Vlc.DotNet.Forms
         }
 
         /// <summary>
-        /// Get / Set the current time of the playing media
+        /// Gets or sets the current time of the playing media
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public TimeSpan Time
@@ -206,7 +206,10 @@ namespace Vlc.DotNet.Forms
                     VlcContext.HandleManager.MediaPlayerHandles != null &&
                     VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(this))
                 {
-                    return TimeSpan.FromMilliseconds(VlcContext.InteropManager.MediaPlayerInterops.GetTime.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]));
+                    long duration = VlcContext.InteropManager.MediaPlayerInterops.GetTime.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]);
+                    if (duration == -1)
+                        return TimeSpan.Zero;
+                    return new TimeSpan(0, 0, 0, 0, (int)duration);
                 }
 
                 return TimeSpan.Zero;
@@ -227,7 +230,7 @@ namespace Vlc.DotNet.Forms
         }
 
         /// <summary>
-        /// Gets / Sets rate of playing
+        /// Gets or sets rate of playing
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public float Rate
@@ -260,7 +263,7 @@ namespace Vlc.DotNet.Forms
         }
 
         /// <summary>
-        /// Sets / Gets the current media
+        /// Gets or sets the current media
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public MediaBase Media
@@ -329,7 +332,7 @@ namespace Vlc.DotNet.Forms
         }
 
         /// <summary>
-        /// Get media duration
+        /// Gets current media duration
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public TimeSpan Duration
@@ -343,7 +346,10 @@ namespace Vlc.DotNet.Forms
                     VlcContext.HandleManager.MediaPlayerHandles != null &&
                     VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(this))
                 {
-                    return TimeSpan.FromMilliseconds(VlcContext.InteropManager.MediaPlayerInterops.GetLength.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]));
+                    long duration = VlcContext.InteropManager.MediaPlayerInterops.GetLength.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]);
+                    if (duration == -1)
+                        return TimeSpan.Zero;
+                    return new TimeSpan(0, 0, 0, 0, (int)duration);
                 }
 
                 return TimeSpan.Zero;

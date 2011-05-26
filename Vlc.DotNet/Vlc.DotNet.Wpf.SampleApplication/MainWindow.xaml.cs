@@ -91,6 +91,7 @@ namespace Vlc.DotNet.Wpf.SampleApplication
         private void ButtonStopClick(object sender, RoutedEventArgs e)
         {
             myVlcControl.Stop();
+            sliderPosition.Value = 0;
         }
 
         /// <summary>
@@ -155,7 +156,6 @@ namespace Vlc.DotNet.Wpf.SampleApplication
         /// <param name="e"></param>
         private void VlcControlPositionChanged(VlcControl sender, VlcEventArgs<float> e)
         {
-
             Dispatcher.Invoke(
                 DispatcherPriority.Normal,
                 (Action)delegate
@@ -236,7 +236,5 @@ namespace Vlc.DotNet.Wpf.SampleApplication
         }
 
         #endregion
-
-
     }
 }

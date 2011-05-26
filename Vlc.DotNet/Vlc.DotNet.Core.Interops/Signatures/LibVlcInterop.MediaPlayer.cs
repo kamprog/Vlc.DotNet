@@ -236,7 +236,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
             /// <param name="playerInstance">The Media Player</param>
             /// <returns>Movie length (in ms), or -1 if there is no media.</returns>
             [LibVlcFunction("libvlc_media_player_get_length")]
-            public delegate uint GetLength(IntPtr playerInstance);
+            public delegate long GetLength(IntPtr playerInstance);
 
             /// <summary>
             /// Get the current movie time (in ms).
@@ -245,7 +245,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
             /// <returns>Movie time (in ms), or -1 if there is no media.</returns>
             [LibVlcFunction("libvlc_media_player_get_time")]
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-            public delegate uint GetTime(IntPtr playerInstance);
+            public delegate long GetTime(IntPtr playerInstance);
 
             /// <summary>
             /// Set the movie time (in ms). This has no effect if no media is being played. Not all formats and protocols support this.
@@ -254,7 +254,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
             /// <param name="time">The movie time (in ms).</param>
             [LibVlcFunction("libvlc_media_player_set_time")]
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-            public delegate void SetTime(IntPtr playerInstance, uint time);
+            public delegate void SetTime(IntPtr playerInstance, long time);
 
             /// <summary>
             /// Get movie position.

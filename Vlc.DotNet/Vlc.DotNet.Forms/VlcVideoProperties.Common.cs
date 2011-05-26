@@ -4,16 +4,13 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using Vlc.DotNet.Core;
+using Vlc.DotNet.Core.Interops.Signatures.LibVlc.MediaPlayer;
 
 #if WPF
 using System.Windows;
-using Vlc.DotNet.Core.Interops.Signatures.LibVlc.MediaPlayer;
-
 namespace Vlc.DotNet.Wpf
 #else
 using System.Drawing;
-using Vlc.DotNet.Core.Interops.Signatures.LibVlc.MediaPlayer;
-
 namespace Vlc.DotNet.Forms
 #endif
 {
@@ -25,7 +22,7 @@ namespace Vlc.DotNet.Forms
         private readonly IVlcControl myHostVlcControl;
 
         /// <summary>
-        /// Get video size
+        /// Gets video size
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public Size Size
@@ -41,15 +38,23 @@ namespace Vlc.DotNet.Forms
                     VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(myHostVlcControl))
                 {
                     uint width, height;
-                    VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.GetSize.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl], 0, out width, out height);
+                    VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.GetSize.Invoke(
+                        VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl],
+                        0,
+                        out width,
+                        out height);
+
                     if (width <= 0 && height <= 0)
+                    {
                         return Size.Empty;
+                    }
 #if WPF
                     return new Size(width, height);
 #else
                     return new Size((int)width, (int)height);
 #endif
                 }
+
                 return Size.Empty;
             }
         }
@@ -70,7 +75,8 @@ namespace Vlc.DotNet.Forms
                     VlcContext.HandleManager.MediaPlayerHandles != null &&
                     VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(myHostVlcControl))
                 {
-                    return VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.GetFullscreen.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl]) != 0;
+                    return VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.GetFullscreen.Invoke(
+                        VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl]) != 0;
                 }
 
                 return false;
@@ -86,7 +92,9 @@ namespace Vlc.DotNet.Forms
                     VlcContext.HandleManager.MediaPlayerHandles != null &&
                     VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(myHostVlcControl))
                 {
-                    VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetFullscreen.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl], value ? 1 : 0);
+                    VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetFullscreen.Invoke(
+                        VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl],
+                        value ? 1 : 0);
                 }
             }
         }
@@ -107,7 +115,8 @@ namespace Vlc.DotNet.Forms
                     VlcContext.HandleManager.MediaPlayerHandles != null &&
                     VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(myHostVlcControl))
                 {
-                    return VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.GetScale.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl]);
+                    return VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.GetScale.Invoke(
+                        VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl]);
                 }
 
                 return 0;
@@ -123,32 +132,15 @@ namespace Vlc.DotNet.Forms
                     VlcContext.HandleManager.MediaPlayerHandles != null &&
                     VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(myHostVlcControl))
                 {
-                    VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetScale.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl], value);
+                    VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetScale.Invoke(
+                        VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl],
+                        value);
                 }
             }
         }
 
         /// <summary>
-        /// Set subtitle file
-        /// </summary>
-        /// <param name="subtitleFile">The subtitle file</param>
-        public void SetSubtitleFile(string subtitleFile)
-        {
-            if (!string.IsNullOrEmpty(subtitleFile) &&
-                File.Exists(subtitleFile) &&
-                VlcContext.InteropManager != null &&
-                VlcContext.InteropManager.MediaPlayerInterops != null &&
-                VlcContext.InteropManager.MediaPlayerInterops.VideoInterops != null &&
-                VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetSubtitleFile.IsAvailable &&
-                VlcContext.HandleManager.MediaPlayerHandles != null &&
-                VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(myHostVlcControl))
-            {
-                VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetSubtitleFile.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl], subtitleFile);
-            }
-        }
-
-        /// <summary>
-        /// Get / Set video subtitle.
+        /// Gets or sets video subtitle
         /// </summary>
         public int CurrentSpuIndex
         {
@@ -161,7 +153,8 @@ namespace Vlc.DotNet.Forms
                     VlcContext.HandleManager.MediaPlayerHandles != null &&
                     VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(myHostVlcControl))
                 {
-                    return VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.GetSpu.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl]);
+                    return VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.GetSpu.Invoke(
+                        VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl]);
                 }
 
                 return -1;
@@ -176,13 +169,15 @@ namespace Vlc.DotNet.Forms
                     VlcContext.HandleManager.MediaPlayerHandles != null &&
                     VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(myHostVlcControl))
                 {
-                    VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetSpu.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl], value);
+                    VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetSpu.Invoke(
+                        VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl],
+                        value);
                 }
             }
         }
 
         /// <summary>
-        /// Get the number of available video subtitles.
+        /// Gets the number of available video subtitles.
         /// </summary>
         public int SpuCount
         {
@@ -195,7 +190,8 @@ namespace Vlc.DotNet.Forms
                     VlcContext.HandleManager.MediaPlayerHandles != null &&
                     VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(myHostVlcControl))
                 {
-                    VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.GetSpuCount.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl]);
+                    VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.GetSpuCount.Invoke(
+                        VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl]);
                 }
 
                 return 0;
@@ -223,26 +219,8 @@ namespace Vlc.DotNet.Forms
                         return new VlcTrackDescription(td);
                     }
                 }
-                return null;
-            }
-        }
 
-        /// <summary>
-        /// Set deinterlace mode
-        /// </summary>
-        /// <param name="mode">Mode of deinterlace</param>
-        public void SetDeinterlaceMode(VlcDeinterlaceModes mode)
-        {
-            if (VlcContext.HandleManager.LibVlcHandle != IntPtr.Zero &&
-                VlcContext.InteropManager != null &&
-                VlcContext.InteropManager.MediaPlayerInterops != null &&
-                VlcContext.InteropManager.MediaPlayerInterops.VideoInterops != null &&
-                VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetDeinterlace.IsAvailable)
-            {
-                if (mode != VlcDeinterlaceModes.None)
-                    VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetDeinterlace.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl], mode.ToString().ToLower());
-                else
-                    VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetDeinterlace.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl], null);
+                return null;
             }
         }
 
@@ -281,8 +259,48 @@ namespace Vlc.DotNet.Forms
                     VlcContext.HandleManager.EventManagerHandles.ContainsKey(myHostVlcControl))
                 {
                     VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetAspectRatio.Invoke(
-                        VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl], value);
+                        VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl],
+                        value);
                 }
+            }
+        }
+
+        /// <summary>
+        /// Set subtitle file
+        /// </summary>
+        /// <param name="subtitleFile">The subtitle file</param>
+        public void SetSubtitleFile(string subtitleFile)
+        {
+            if (!string.IsNullOrEmpty(subtitleFile) &&
+                File.Exists(subtitleFile) &&
+                VlcContext.InteropManager != null &&
+                VlcContext.InteropManager.MediaPlayerInterops != null &&
+                VlcContext.InteropManager.MediaPlayerInterops.VideoInterops != null &&
+                VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetSubtitleFile.IsAvailable &&
+                VlcContext.HandleManager.MediaPlayerHandles != null &&
+                VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(myHostVlcControl))
+            {
+                VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetSubtitleFile.Invoke(
+                    VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl],
+                    subtitleFile);
+            }
+        }
+
+        /// <summary>
+        /// Set deinterlace mode
+        /// </summary>
+        /// <param name="mode">Mode of deinterlace</param>
+        public void SetDeinterlaceMode(VlcDeinterlaceModes mode)
+        {
+            if (VlcContext.HandleManager.LibVlcHandle != IntPtr.Zero &&
+                VlcContext.InteropManager != null &&
+                VlcContext.InteropManager.MediaPlayerInterops != null &&
+                VlcContext.InteropManager.MediaPlayerInterops.VideoInterops != null &&
+                VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetDeinterlace.IsAvailable)
+            {
+                VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetDeinterlace.Invoke(
+                    VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl],
+                    mode != VlcDeinterlaceModes.None ? mode.ToString().ToLower() : null);
             }
         }
 
