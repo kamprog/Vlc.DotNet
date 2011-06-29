@@ -33,12 +33,36 @@ namespace Vlc.DotNet.Core.Interops
         [DllImport("kernel32", SetLastError = true)]
         public static extern IntPtr LoadLibrary(string lpFileName);
 
+        /// <summary>
+        /// Creates or opens a named or unnamed file mapping object for a specified file.
+        /// </summary>
+        /// <param name="hFile">A handle to the file from which to create a file mapping object.</param>
+        /// <param name="lpAttributes">A pointer to a SECURITY_ATTRIBUTES structure that determines whether a returned handle can be inherited by child processes. The lpSecurityDescriptor member of the SECURITY_ATTRIBUTES structure specifies a security descriptor for a new file mapping object.</param>
+        /// <param name="flProtect">Specifies the page protection of the file mapping object. All mapped views of the object must be compatible with this protection.</param>
+        /// <param name="dwMaximumSizeLow">The high-order DWORD of the maximum size of the file mapping object.</param>
+        /// <param name="dwMaximumSizeHigh">The low-order DWORD of the maximum size of the file mapping object.</param>
+        /// <param name="lpName">The name of the file mapping object.</param>
+        /// <returns>The value is a handle to the newly created file mapping object.</returns>
         [DllImport("kernel32", SetLastError = true)]
         public static extern IntPtr CreateFileMapping(IntPtr hFile, IntPtr lpAttributes, int flProtect, int dwMaximumSizeLow, int dwMaximumSizeHigh, string lpName);
 
+        /// <summary>
+        /// Maps a view of a file mapping into the address space of a calling process.
+        /// </summary>
+        /// <param name="hFileMappingObject">A handle to a file mapping object. The CreateFileMapping and OpenFileMapping functions return this handle.</param>
+        /// <param name="dwDesiredAccess">The type of access to a file mapping object, which determines the protection of the pages. This parameter can be one of the following values.</param>
+        /// <param name="dwFileOffsetHigh">A high-order DWORD of the file offset where the view begins.</param>
+        /// <param name="dwFileOffsetLow">A low-order DWORD of the file offset where the view is to begin. The combination of the high and low offsets must specify an offset within the file mapping.</param>
+        /// <param name="dwNumberOfBytesToMap">The number of bytes of a file mapping to map to the view. All bytes must be within the maximum size specified by CreateFileMapping. If this parameter is 0 (zero), the mapping extends from the specified offset to the end of the file mapping.</param>
+        /// <returns>The value is the starting address of the mapped view.</returns>
         [DllImport("kernel32.dll", SetLastError = true)]
         public static extern IntPtr MapViewOfFile(IntPtr hFileMappingObject, uint dwDesiredAccess, uint dwFileOffsetHigh, uint dwFileOffsetLow, uint dwNumberOfBytesToMap);
 
+        /// <summary>
+        /// Closes an open object handle.
+        /// </summary>
+        /// <param name="handle">A valid handle to an open object.</param>
+        /// <returns></returns>
         [DllImport("kernel32", SetLastError = true)]
         public static extern bool CloseHandle(IntPtr handle);
     }

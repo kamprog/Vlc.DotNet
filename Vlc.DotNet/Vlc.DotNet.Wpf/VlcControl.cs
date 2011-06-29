@@ -17,10 +17,6 @@ namespace Vlc.DotNet.Wpf
     {
         private readonly Core.Interops.Signatures.LibVlc.MediaPlayer.Video.LockCallbackDelegate myVideoLockCallback;
         private GCHandle myVideoLockCallbackHandle;
-        private readonly Core.Interops.Signatures.LibVlc.MediaPlayer.Video.UnlockCallbackDelegate myVideoUnlockCallback;
-        private GCHandle myVideoUnlockCallbackHandle;
-        private readonly Core.Interops.Signatures.LibVlc.MediaPlayer.Video.DisplayCallbackDelegate myVideoDisplayCallback;
-        private GCHandle myVideoDisplayCallbackHandle;
         private readonly Core.Interops.Signatures.LibVlc.MediaPlayer.Video.FormatCallbackDelegate myVideoSetFormat;
         private GCHandle myVideoSetFormatHandle;
         private readonly Core.Interops.Signatures.LibVlc.MediaPlayer.Video.CleanupCallbackDelegate myVideoCleanup;
@@ -83,18 +79,16 @@ namespace Vlc.DotNet.Wpf
 
             myVideoLockCallback = LockCallback;
             myVideoLockCallbackHandle = GCHandle.Alloc(myVideoLockCallback);
-            myVideoUnlockCallback = UnlockCallback;
-            myVideoUnlockCallbackHandle = GCHandle.Alloc(myVideoUnlockCallback);
-            myVideoDisplayCallback = DisplayCallback;
-            myVideoDisplayCallbackHandle = GCHandle.Alloc(myVideoDisplayCallback);
 
             myVideoSetFormat = VideoSetFormat;
             myVideoSetFormatHandle = GCHandle.Alloc(myVideoSetFormat);
             myVideoCleanup = VideoCleanup;
             myVideoCleanupHandle = GCHandle.Alloc(myVideoCleanup);
 
+            CompositionTarget.Rendering += CompositionTargetRendering;
+
             VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetFormatCallbacks.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this], myVideoSetFormat, myVideoCleanup);
-            VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetCallbacks.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this], myVideoLockCallback, myVideoUnlockCallback, myVideoDisplayCallback, IntPtr.Zero);
+            VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetCallbacks.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this], myVideoLockCallback, null, null, IntPtr.Zero);
         }
 
         #region Vlc Display
@@ -103,16 +97,14 @@ namespace Vlc.DotNet.Wpf
         {
             plane = opaque;
         }
-        private void UnlockCallback(IntPtr opaque, IntPtr picture, ref IntPtr plane)
+
+        private void CompositionTargetRendering(object sender, EventArgs e)
         {
+            if (myBitmap != null) { myBitmap.Invalidate(); }
         }
-        private void DisplayCallback(IntPtr opaque, IntPtr picture)
-        {
-            Dispatcher.BeginInvoke(DispatcherPriority.Render, (Action)(() => myBitmap.Invalidate()));
-        }
+
         private uint VideoSetFormat(ref IntPtr opaque, ref uint chroma, ref uint width, ref uint height, ref uint pitches, ref uint lines)
         {
-
             var context = new VlcControlWpfRendererContext(width, height, PixelFormats.Bgr32);
 
             chroma = BitConverter.ToUInt32(new[] { (byte)'R', (byte)'V', (byte)'3', (byte)'2' }, 0);
@@ -124,7 +116,7 @@ namespace Vlc.DotNet.Wpf
             myBitmapSectionPointer = Win32Interop.CreateFileMapping(new IntPtr(-1), IntPtr.Zero, 0x04, 0, context.Size, null);
             opaque = Win32Interop.MapViewOfFile(myBitmapSectionPointer, 0xF001F, 0, 0, (uint)context.Size);
 
-            Dispatcher.BeginInvoke((Action)(() =>
+            Dispatcher.Invoke((Action)(() =>
             {
                 myBitmap = (InteropBitmap)Imaging.CreateBitmapSourceFromMemorySection(myBitmapSectionPointer, context.Width, context.Height, context.PixelFormat, context.Stride, 0);
                 VideoSource = myBitmap;
@@ -133,33 +125,34 @@ namespace Vlc.DotNet.Wpf
 
             return 1;
         }
+
         private void VideoCleanup(IntPtr opaque)
         {
+            myBitmap = null;
             Win32Interop.CloseHandle(myBitmapSectionPointer);
+            GC.Collect();
         }
 
         #endregion
 
         public void Dispose()
         {
-            Dispatcher.Invoke(DispatcherPriority.Normal,
-                (Action)delegate
-                    {
-                        AudioProperties.Dispose();
-                        VideoProperties.Dispose();
-                        LogProperties.Dispose();
-                        AudioOutputDevices.Dispose();
-                        FreeEvents();
-                        VlcContext.InteropManager.MediaPlayerInterops.ReleaseInstance.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]);
-                        VlcContext.HandleManager.MediaPlayerHandles.Remove(this);
+            CompositionTarget.Rendering -= CompositionTargetRendering;
+            Dispatcher.Invoke(DispatcherPriority.Normal, (Action)(() =>
+            {
+                AudioProperties.Dispose();
+                VideoProperties.Dispose();
+                LogProperties.Dispose();
+                AudioOutputDevices.Dispose();
+                FreeEvents();
+                VlcContext.InteropManager.MediaPlayerInterops.ReleaseInstance.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]);
+                VlcContext.HandleManager.MediaPlayerHandles.Remove(this);
 
-                        myVideoLockCallbackHandle.Free();
-                        myVideoUnlockCallbackHandle.Free();
-                        myVideoDisplayCallbackHandle.Free();
+                myVideoLockCallbackHandle.Free();
 
-                        myVideoSetFormatHandle.Free();
-                        myVideoCleanupHandle.Free();
-                    });
+                myVideoSetFormatHandle.Free();
+                myVideoCleanupHandle.Free();
+            }));
         }
     }
 }

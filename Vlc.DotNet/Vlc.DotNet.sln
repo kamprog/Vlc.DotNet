@@ -120,9 +120,9 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		BuildVersion_AssemblyInfoFilename = Common\AssemblyInfoCommon.cs
+		BuildVersion_UpdateFileVersion = False
+		BuildVersion_BuildVersioningStyle = None.None.None.None
 		BuildVersion_UseGlobalSettings = False
-		BuildVersion_BuildVersioningStyle = YearStamp.MonthStamp.DayStamp.None
-		BuildVersion_UpdateFileVersion = True
+		BuildVersion_AssemblyInfoFilename = Common\AssemblyInfoCommon.cs
 	EndGlobalSection
 EndGlobal

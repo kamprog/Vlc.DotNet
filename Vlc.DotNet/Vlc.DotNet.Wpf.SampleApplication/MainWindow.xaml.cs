@@ -26,9 +26,9 @@ namespace Vlc.DotNet.Wpf.SampleApplication
         public MainWindow()
         {
             // Set libvlc.dll and libvlccore.dll directory path
-            //VlcContext.LibVlcDllsPath = CommonStrings.LIBVLC_DLLS_PATH_DEFAULT_VALUE_AMD64;
+            VlcContext.LibVlcDllsPath = @"C:\Projets\vlc-1.2.0-git-20110530-1909";
             // Set the vlc plugins directory path
-            //VlcContext.LibVlcPluginsPath = CommonStrings.PLUGINS_PATH_DEFAULT_VALUE_AMD64;
+            VlcContext.LibVlcPluginsPath = @"C:\Projets\vlc-1.2.0-git-20110530-1909\plugins";
 
             // Set the startup options
             VlcContext.StartupOptions.IgnoreConfig = true;

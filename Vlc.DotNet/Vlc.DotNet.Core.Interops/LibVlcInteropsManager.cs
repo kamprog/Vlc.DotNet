@@ -49,6 +49,7 @@ namespace Vlc.DotNet.Core.Interops
         public LibVlcMediaList MediaListInterops { get; set; }
         public LibVlcAudio AudioInterops { get; private set; }
         public LibVlcVideo VideoInterops { get; private set; }
+        public LibVlcErrorHandling ErrorHandlingInterops { get; private set; } 
 
         #region IDisposable Members
 
@@ -126,8 +127,8 @@ namespace Vlc.DotNet.Core.Interops
 
             var reg = new Regex("^[0-9.]*");
             var match = reg.Match(GetVersion.Invoke());
-            var vlcVersion = new Version(match.Groups[0].Value); 
-            
+            var vlcVersion = new Version(match.Groups[0].Value);
+
             NewInstance = new LibVlcFunction<NewInstance>(myLibVlcDllHandle, vlcVersion);
             ReleaseInstance = new LibVlcFunction<ReleaseInstance>(myLibVlcDllHandle, vlcVersion);
             RetainInstance = new LibVlcFunction<RetainInstance>(myLibVlcDllHandle, vlcVersion);
@@ -148,6 +149,7 @@ namespace Vlc.DotNet.Core.Interops
             AudioInterops = new LibVlcAudio(myLibVlcDllHandle, vlcVersion);
             VideoInterops = new LibVlcVideo(myLibVlcDllHandle, vlcVersion);
             LoggingInterops = new LibVlcLogging(myLibVlcDllHandle, vlcVersion);
+            ErrorHandlingInterops = new LibVlcErrorHandling(myLibVlcDllHandle, vlcVersion);
         }
     }
 }

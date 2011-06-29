@@ -36,6 +36,11 @@ namespace Vlc.DotNet.Core
         internal static VlcHandleManager HandleManager { get; private set; }
 
         /// <summary>
+        /// Error handling of vlc 
+        /// </summary>
+        public VlcErrorHandling ErrorHandling { get; private set; }
+
+        /// <summary>
         /// Get / Set the libvlc.dll and libvlccore.dll path 
         /// </summary>
         public static string LibVlcDllsPath { get; set; }
