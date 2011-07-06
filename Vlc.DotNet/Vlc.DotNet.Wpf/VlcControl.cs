@@ -113,8 +113,8 @@ namespace Vlc.DotNet.Wpf
             pitches = (uint)context.Stride;
             lines = (uint)context.Height;
 
-            myBitmapSectionPointer = Win32Interop.CreateFileMapping(new IntPtr(-1), IntPtr.Zero, 0x04, 0, context.Size, null);
-            opaque = Win32Interop.MapViewOfFile(myBitmapSectionPointer, 0xF001F, 0, 0, (uint)context.Size);
+            myBitmapSectionPointer = Win32Interop.CreateFileMapping(new IntPtr(-1), IntPtr.Zero, Win32Interop.PageAccess.ReadWrite, 0, context.Size, null);
+            opaque = Win32Interop.MapViewOfFile(myBitmapSectionPointer, Win32Interop.FileMapAccess.AllAccess, 0, 0, (uint)context.Size);
 
             Dispatcher.Invoke((Action)(() =>
             {
@@ -129,8 +129,8 @@ namespace Vlc.DotNet.Wpf
         private void VideoCleanup(IntPtr opaque)
         {
             myBitmap = null;
+            Win32Interop.UnmapViewOfFile(opaque);
             Win32Interop.CloseHandle(myBitmapSectionPointer);
-            GC.Collect();
         }
 
         #endregion

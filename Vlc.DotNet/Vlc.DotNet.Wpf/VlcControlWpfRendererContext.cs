@@ -4,10 +4,14 @@ using System.Windows.Media;
 
 namespace Vlc.DotNet.Wpf
 {
-    internal struct VlcControlWpfRendererContext
+    internal class VlcControlWpfRendererContext
     {
-        public IntPtr Data;
-        public int Size;
+        public IntPtr Data { get; private set; }
+        public int Size { get; private set; }
+        public int Width { get; private set; }
+        public int Height { get; private set; }
+        public int Stride { get; private set; }
+        public PixelFormat PixelFormat { get; private set; }
 
         public VlcControlWpfRendererContext(uint width, uint height, PixelFormat format)
             : this((int)width, (int)height, format)
@@ -28,10 +32,10 @@ namespace Vlc.DotNet.Wpf
             PixelFormat = format;
             Stride = width * format.BitsPerPixel / 8;
         }
+        ~VlcControlWpfRendererContext()
+        {
+            Marshal.FreeHGlobal(Data);
+        }
 
-        public int Width;
-        public int Height;
-        public int Stride;
-        public PixelFormat PixelFormat;
     }
 }
