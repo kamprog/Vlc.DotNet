@@ -66,6 +66,7 @@ namespace Vlc.DotNet.Core
             result.Add("-I");
             result.Add("dummy");
             //result.Add("--no-snapshot-preview");
+            result.Add("--video-filter=ripple");
             if (StartupOptions.IgnoreConfig)
                 result.Add("--ignore-config");
             result.Add("--plugin-path=" + LibVlcPluginsPath);
@@ -100,13 +101,16 @@ namespace Vlc.DotNet.Core
         {
             InteropManager = new LibVlcInteropsManager(LibVlcDllsPath);
             if (IsInitialized)
-                throw new ApplicationException("Cannot initialize more than one time.");
+                throw new ApplicationException("Cannot initialize libvlc more than one time.");
             var argsStringfCollection = GetBaseVlcInstanceArguments();
             var args = new string[argsStringfCollection.Count];
             argsStringfCollection.CopyTo(args, 0);
             HandleManager.LibVlcHandle = InteropManager.NewInstance.Invoke(args.Length, args);
             if (HandleManager.LibVlcHandle != IntPtr.Zero)
+            {
                 IsInitialized = true;
+                ErrorHandling = new VlcErrorHandling();
+            }
         }
 
         /// <summary>
@@ -138,6 +142,7 @@ namespace Vlc.DotNet.Core
                     InteropManager.ReleaseInstance.Invoke(HandleManager.LibVlcHandle);
                 HandleManager.LibVlcHandle = IntPtr.Zero;
             }
+            ErrorHandling = null;
             if (InteropManager == null)
                 return;
             InteropManager.Dispose();
