@@ -140,11 +140,13 @@ namespace Vlc.DotNet.Wpf
             CompositionTarget.Rendering -= CompositionTargetRendering;
             Dispatcher.Invoke(DispatcherPriority.Normal, (Action)(() =>
             {
+                FreeEvents();
+                if (IsPlaying)
+                    Stop();
                 AudioProperties.Dispose();
                 VideoProperties.Dispose();
                 LogProperties.Dispose();
                 AudioOutputDevices.Dispose();
-                FreeEvents();
                 VlcContext.InteropManager.MediaPlayerInterops.ReleaseInstance.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]);
                 VlcContext.HandleManager.MediaPlayerHandles.Remove(this);
 

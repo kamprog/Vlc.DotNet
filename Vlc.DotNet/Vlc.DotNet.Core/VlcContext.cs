@@ -66,7 +66,6 @@ namespace Vlc.DotNet.Core
             result.Add("-I");
             result.Add("dummy");
             //result.Add("--no-snapshot-preview");
-            result.Add("--video-filter=ripple");
             if (StartupOptions.IgnoreConfig)
                 result.Add("--ignore-config");
             result.Add("--plugin-path=" + LibVlcPluginsPath);

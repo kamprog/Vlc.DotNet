@@ -105,7 +105,7 @@ namespace Vlc.DotNet.Wpf.SampleApplication
 
             if (myVlcControl.Media != null)
             {
-                myVlcControl.Media.MediaParsedChanged -= MediaParsedChanged;
+                myVlcControl.Media.ParsedChanged -= MediaParsedChanged;
             }
 
             var dlg = new Microsoft.Win32.OpenFileDialog
@@ -122,7 +122,7 @@ namespace Vlc.DotNet.Wpf.SampleApplication
 
                 //media = new LocationMedia(@"http://88.190.232.102:6404");
                 myVlcControl.Media = new PathMedia(dlg.FileName);
-                myVlcControl.Media.MediaParsedChanged += MediaParsedChanged;
+                myVlcControl.Media.ParsedChanged += MediaParsedChanged;
                 myVlcControl.Play();
             }
         }

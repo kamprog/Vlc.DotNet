@@ -203,7 +203,8 @@ namespace Vlc.DotNet.Forms
                     VlcContext.InteropManager.MediaPlayerInterops.GetTime.IsAvailable &&
                     VlcContext.HandleManager != null &&
                     VlcContext.HandleManager.MediaPlayerHandles != null &&
-                    VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(this))
+                    VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(this) &&
+                    IsPlaying)
                 {
                     long duration = VlcContext.InteropManager.MediaPlayerInterops.GetTime.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]);
                     if (duration == -1)
@@ -426,7 +427,9 @@ namespace Vlc.DotNet.Forms
                 VlcContext.HandleManager.MediaPlayerHandles != null &&
                 VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(this))
             {
-                VlcContext.InteropManager.MediaPlayerInterops.Stop.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]);
+                var thread = new Thread(() => VlcContext.InteropManager.MediaPlayerInterops.Stop.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]));
+                thread.Start();
+                thread.Join(500);
             }
         }
 
