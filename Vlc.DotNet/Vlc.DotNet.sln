@@ -18,6 +18,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vlc.DotNet.Wpf.SampleApplic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vlc.DotNet.Core.Interops", "Vlc.DotNet.Core.Interops\Vlc.DotNet.Core.Interops.csproj", "{7506DDE6-1D45-4FE0-8239-985C5F6EB605}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Vlc.DotNet Libraries", "Vlc.DotNet Libraries", "{E13EF559-D858-493A-8247-9C0475FCBFBD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Vlc.DotNet Examples", "Vlc.DotNet Examples", "{7C431E6A-60C5-4FFD-A91A-472C01A1117D}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 7
@@ -25,21 +29,27 @@ Global
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs10
 		SccLocalPath0 = .
 		SccProjectUniqueName1 = Vlc.DotNet.Core\\Vlc.DotNet.Core.csproj
+		SccProjectTopLevelParentUniqueName1 = Vlc.DotNet.sln
 		SccProjectName1 = Vlc.DotNet.Core
 		SccLocalPath1 = Vlc.DotNet.Core
 		SccProjectUniqueName2 = Vlc.DotNet.Forms.SampleApplication\\Vlc.DotNet.Forms.SampleApplication.csproj
+		SccProjectTopLevelParentUniqueName2 = Vlc.DotNet.sln
 		SccProjectName2 = Vlc.DotNet.Forms.SampleApplication
 		SccLocalPath2 = Vlc.DotNet.Forms.SampleApplication
 		SccProjectUniqueName3 = Vlc.DotNet.Forms\\Vlc.DotNet.Forms.csproj
+		SccProjectTopLevelParentUniqueName3 = Vlc.DotNet.sln
 		SccProjectName3 = Vlc.DotNet.Forms
 		SccLocalPath3 = Vlc.DotNet.Forms
 		SccProjectUniqueName4 = Vlc.DotNet.Wpf.SampleApplication\\Vlc.DotNet.Wpf.SampleApplication.csproj
+		SccProjectTopLevelParentUniqueName4 = Vlc.DotNet.sln
 		SccProjectName4 = Vlc.DotNet.Wpf.SampleApplication
 		SccLocalPath4 = Vlc.DotNet.Wpf.SampleApplication
 		SccProjectUniqueName5 = Vlc.DotNet.Wpf\\Vlc.DotNet.Wpf.csproj
+		SccProjectTopLevelParentUniqueName5 = Vlc.DotNet.sln
 		SccProjectName5 = Vlc.DotNet.Wpf
 		SccLocalPath5 = Vlc.DotNet.Wpf
 		SccProjectUniqueName6 = Vlc.DotNet.Core.Interops\\Vlc.DotNet.Core.Interops.csproj
+		SccProjectTopLevelParentUniqueName6 = Vlc.DotNet.sln
 		SccProjectName6 = Vlc.DotNet.Core.Interops
 		SccLocalPath6 = Vlc.DotNet.Core.Interops
 	EndGlobalSection
@@ -119,10 +129,18 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0DC24B0B-6862-4615-B62D-81795D2CDD07} = {E13EF559-D858-493A-8247-9C0475FCBFBD}
+		{7506DDE6-1D45-4FE0-8239-985C5F6EB605} = {E13EF559-D858-493A-8247-9C0475FCBFBD}
+		{A720906B-705B-4666-BBB9-AC54B9208BEB} = {E13EF559-D858-493A-8247-9C0475FCBFBD}
+		{F0657B1B-8F6C-4D9E-978A-021EF77AA0E7} = {E13EF559-D858-493A-8247-9C0475FCBFBD}
+		{62BCF1E6-C3D5-45AB-962D-99563C38614A} = {7C431E6A-60C5-4FFD-A91A-472C01A1117D}
+		{41271969-A6C2-4B68-B111-1A23D1E15B31} = {7C431E6A-60C5-4FFD-A91A-472C01A1117D}
+	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		BuildVersion_UpdateFileVersion = False
-		BuildVersion_BuildVersioningStyle = None.None.None.None
-		BuildVersion_UseGlobalSettings = False
 		BuildVersion_AssemblyInfoFilename = Common\AssemblyInfoCommon.cs
+		BuildVersion_UseGlobalSettings = False
+		BuildVersion_BuildVersioningStyle = None.None.None.None
+		BuildVersion_UpdateFileVersion = False
 	EndGlobalSection
 EndGlobal

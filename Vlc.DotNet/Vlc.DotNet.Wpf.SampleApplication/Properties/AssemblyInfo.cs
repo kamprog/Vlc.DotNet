@@ -1,14 +1,16 @@
-﻿using System.Reflection;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="AssemblyInfo.cs" company="VideoLan DotNet">
+//   See http://vlcdotnet.codeplex.com/license
+// </copyright>
+// <summary></summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+using System.Reflection;
 using System.Windows;
 
 [assembly: AssemblyTitle("Vlc.DotNet.Wpf.SampleApplication")]
 [assembly: AssemblyProduct("Vlc.DotNet.Wpf.SampleApplication")]
 [assembly: ThemeInfo(
-    ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located
-    //(used if a resource is not found in the page, 
-    // or application resource dictionaries)
-    ResourceDictionaryLocation.SourceAssembly //where the generic resource dictionary is located
-    //(used if a resource is not found in the page, 
-    // app, or any theme specific resource dictionaries)
-)]
+    ResourceDictionaryLocation.None, 
+    ResourceDictionaryLocation.SourceAssembly)]
 

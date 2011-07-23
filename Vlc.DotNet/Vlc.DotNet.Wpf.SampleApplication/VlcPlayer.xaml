@@ -1,4 +1,4 @@
-﻿<Window x:Class="Vlc.DotNet.Wpf.SampleApplication.MainWindow"
+﻿<Window x:Class="Vlc.DotNet.Wpf.SampleApplication.VlcPlayer"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
         xmlns:Wpf="clr-namespace:Vlc.DotNet.Wpf;assembly=Vlc.DotNet.Wpf" Title="VLC.NET WPF Media Player Example" Height="500" Width="525">

@@ -1,4 +1,11 @@
-﻿using System.Reflection;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="AssemblyInfoCommon.cs" company="VideoLan DotNet">
+//   See http://vlcdotnet.codeplex.com/license
+// </copyright>
+// <summary></summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyDescription("")]
@@ -9,4 +16,4 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
 [assembly: AssemblyVersion("1.2.0.0")]
-[assembly: AssemblyFileVersion("2011.7.20.0")]
+[assembly: AssemblyFileVersion("2011.7.23.0")]
