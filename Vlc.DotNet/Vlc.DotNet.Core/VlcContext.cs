@@ -60,6 +60,45 @@ namespace Vlc.DotNet.Core
         /// </summary>
         public static bool IsInitialized { get; private set; }
 
+        /// <summary>
+        /// Get the vlc version
+        /// </summary>
+        public static Version Version
+        {
+            get
+            {
+                if (!IsInitialized)
+                    throw new ApplicationException("Vlc must be initailized before getting his version.");
+                return InteropManager != null ? InteropManager.VlcVersion : null;
+            }
+        }
+
+        /// <summary>
+        /// Get the vlc compiler
+        /// </summary>
+        public static string Compiler
+        {
+            get
+            {
+                if (!IsInitialized)
+                    throw new ApplicationException("Vlc must be initailized before getting his compiler.");
+                return InteropManager != null ? InteropManager.GetCompiler.Invoke() : null;
+            }
+        }
+
+        /// <summary>
+        /// Get the vlc change set
+        /// </summary>
+        public static string ChangeSet
+        {
+            get
+            {
+                if (!IsInitialized)
+                    throw new ApplicationException("Vlc must be initailized before getting his change set.");
+                return InteropManager != null ? InteropManager.GetChangeSet.Invoke() : null;
+            }
+        }
+
         internal static StringCollection GetBaseVlcInstanceArguments()
         {
             var result = new StringCollection();

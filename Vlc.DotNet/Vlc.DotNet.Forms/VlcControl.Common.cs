@@ -178,6 +178,10 @@ namespace Vlc.DotNet.Forms
 
             set
             {
+                if (value < 0 || value > 1)
+                {
+                    throw new ArgumentOutOfRangeException("value", "must be between 0 and 1");
+                }
                 if (VlcContext.InteropManager != null &&
                     VlcContext.InteropManager.MediaPlayerInterops != null &&
                     VlcContext.InteropManager.MediaPlayerInterops.SetPosition.IsAvailable &&
@@ -206,12 +210,11 @@ namespace Vlc.DotNet.Forms
                     VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(this) &&
                     IsPlaying)
                 {
-                    long duration = VlcContext.InteropManager.MediaPlayerInterops.GetTime.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]);
-                    if (duration == -1)
+                    long time = VlcContext.InteropManager.MediaPlayerInterops.GetTime.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]);
+                    if (time == -1)
                         return TimeSpan.Zero;
-                    return new TimeSpan(0, 0, 0, 0, (int)duration);
+                    return TimeSpan.FromMilliseconds(time);
                 }
-
                 return TimeSpan.Zero;
             }
 
@@ -427,9 +430,7 @@ namespace Vlc.DotNet.Forms
                 VlcContext.HandleManager.MediaPlayerHandles != null &&
                 VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(this))
             {
-                var thread = new Thread(() => VlcContext.InteropManager.MediaPlayerInterops.Stop.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]));
-                thread.Start();
-                thread.Join(500);
+                VlcContext.InteropManager.MediaPlayerInterops.Stop.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]);
             }
         }
 
@@ -551,7 +552,7 @@ namespace Vlc.DotNet.Forms
                     EventsHelper.RaiseEvent(Stopped, this, new VlcEventArgs<EventArgs>(EventArgs.Empty));
                     break;
                 case EventTypes.MediaPlayerTimeChanged:
-                    EventsHelper.RaiseEvent(TimeChanged, this, new VlcEventArgs<long>(eventData.MediaPlayerTimeChanged.NewTime));
+                    EventsHelper.RaiseEvent(TimeChanged, this, new VlcEventArgs<TimeSpan>(TimeSpan.FromMilliseconds(eventData.MediaPlayerTimeChanged.NewTime)));
                     break;
                 case EventTypes.MediaPlayerTitleChanged:
                     EventsHelper.RaiseEvent(TitleChanged, this, new VlcEventArgs<long>(eventData.MediaPlayerTitleChanged.NewTitle));
@@ -603,7 +604,7 @@ namespace Vlc.DotNet.Forms
         public event VlcEventHandler<VlcControl, EventArgs> Stopped;
 
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
-        public event VlcEventHandler<VlcControl, long> TimeChanged;
+        public event VlcEventHandler<VlcControl, TimeSpan> TimeChanged;
 
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public event VlcEventHandler<VlcControl, long> TitleChanged;

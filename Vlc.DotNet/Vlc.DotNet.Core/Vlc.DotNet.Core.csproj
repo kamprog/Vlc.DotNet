@@ -66,6 +66,10 @@
     </Compile>
     <Compile Include="HandleManager.cs" />
     <Compile Include="IVlcControl.cs" />
+    <Compile Include="Medias\EmptyMedia.cs" />
+    <Compile Include="Medias\LocationMedia.cs" />
+    <Compile Include="Medias\MediaBase.cs" />
+    <Compile Include="Medias\PathMedia.cs" />
     <Compile Include="Medias\VlcMediaMetadatas.cs" />
     <Compile Include="Medias\VlcMediaTrackInfos.cs" />
     <Compile Include="VlcAudioOutputDevice.cs" />
@@ -75,11 +79,7 @@
     <Compile Include="VlcLogVerbosities.cs" />
     <Compile Include="VlcContext.cs" />
     <Compile Include="EventsHelper.cs" />
-    <Compile Include="Medias\EmptyMedia.cs" />
-    <Compile Include="Medias\LocationMedia.cs" />
-    <Compile Include="Medias\PathMedia.cs" />
     <Compile Include="IntPtrExtensions.cs" />
-    <Compile Include="Medias\MediaBase.cs" />
     <Compile Include="VlcEventArgs.cs" />
     <Compile Include="VlcEventHandler%27.cs" />
     <Compile Include="CommonStrings.cs" />
@@ -121,7 +121,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_BuildVersioningStyle="None.None.None.None" BuildVersion_UpdateFileVersion="False" BuildVersion_UseGlobalSettings="False" BuildVersion_AssemblyInfoFilename="" />
+      <UserProperties BuildVersion_AssemblyInfoFilename="" BuildVersion_UseGlobalSettings="False" BuildVersion_UpdateFileVersion="False" BuildVersion_BuildVersioningStyle="None.None.None.None" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -7,16 +7,16 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
+using System.ComponentModel;
+using System.Windows;
+using System.Windows.Input;
+using Microsoft.Win32;
+using Vlc.DotNet.Core;
+using Vlc.DotNet.Core.Medias;
+
 namespace Vlc.DotNet.Wpf.SampleApplication
 {
-    using System;
-    using System.ComponentModel;
-    using System.Windows;
-    using System.Windows.Threading;
-
-    using Vlc.DotNet.Core;
-    using Vlc.DotNet.Core.Medias;
-
     /// <summary>
     /// Interaction logic for VlcPlayer.xaml
     /// </summary>
@@ -43,10 +43,10 @@ namespace Vlc.DotNet.Wpf.SampleApplication
         public VlcPlayer()
         {
             // Set libvlc.dll and libvlccore.dll directory path
-            VlcContext.LibVlcDllsPath = @"C:\Projets\vlc-1.2.0-git-20110530-1909";
+            VlcContext.LibVlcDllsPath = @"C:\Projets\vlc-1.2.0-git-20110723-0002";
 
             // Set the vlc plugins directory path
-            VlcContext.LibVlcPluginsPath = @"C:\Projets\vlc-1.2.0-git-20110530-1909\plugins";
+            VlcContext.LibVlcPluginsPath = @"C:\Projets\vlc-1.2.0-git-20110723-0002\plugins";
 
             /* Setting up the configuration of the VLC instance.
              * You can use any available command-line option using the AddOption function (see last two options). 
@@ -78,8 +78,9 @@ namespace Vlc.DotNet.Wpf.SampleApplication
             InitializeComponent();
 
             myVlcControl.VideoProperties.Scale = 2.0f;
-            this.myVlcControl.PositionChanged += this.VlcControlOnPositionChanged;
-            this.Closing += this.MainWindowOnClosing;
+            myVlcControl.PositionChanged += VlcControlOnPositionChanged;
+            myVlcControl.TimeChanged += VlcControlOnTimeChanged;
+            Closing += MainWindowOnClosing;
         }
 
         /// <summary>
@@ -89,8 +90,7 @@ namespace Vlc.DotNet.Wpf.SampleApplication
         /// <param name="e">Event arguments. </param>
         private void MainWindowOnClosing(object sender, CancelEventArgs e)
         {
-            // Stop the playback and close the context. 
-            myVlcControl.Stop();
+            // Close the context. 
             VlcContext.CloseAll();
         }
 
@@ -140,25 +140,25 @@ namespace Vlc.DotNet.Wpf.SampleApplication
 
             if (myVlcControl.Media != null)
             {
-                this.myVlcControl.Media.ParsedChanged -= this.MediaOnParsedChanged;
+                myVlcControl.Media.ParsedChanged -= MediaOnParsedChanged;
             }
 
-            var openFileDialog = new Microsoft.Win32.OpenFileDialog
-            {
-                Title = "Open media file for playback",
-                FileName = "Media File",
-                Filter = "All files |*.*"
-            };
+            var openFileDialog = new OpenFileDialog
+                                     {
+                                         Title = "Open media file for playback",
+                                         FileName = "Media File",
+                                         Filter = "All files |*.*"
+                                     };
 
             // Process open file dialog box results
-            if (openFileDialog.ShowDialog() == true)
-            {
-                textBlockOpen.Visibility = Visibility.Collapsed;
+            if (openFileDialog.ShowDialog() != true)
+                return;
 
-                myVlcControl.Media = new PathMedia(openFileDialog.FileName);
-                myVlcControl.Media.ParsedChanged += this.MediaOnParsedChanged;
-                myVlcControl.Play();
-            }
+            textBlockOpen.Visibility = Visibility.Collapsed;
+
+            myVlcControl.Media = new PathMedia(openFileDialog.FileName);
+            myVlcControl.Media.ParsedChanged += MediaOnParsedChanged;
+            myVlcControl.Play();
 
             /* Instead of opening a file for playback you can also connect to media streams using
              *     myVlcControl.Media = new LocationMedia(@"http://88.190.232.102:6404");
@@ -195,20 +195,14 @@ namespace Vlc.DotNet.Wpf.SampleApplication
         /// <param name="e">VLC event arguments. </param>
         private void MediaOnParsedChanged(MediaBase sender, VlcEventArgs<int> e)
         {
-            var updateGuiDelegate = (Action)delegate
-                {
-                    this.textBlock.Text = string.Format(
-                        "Duration: {0:00}:{1:00}:{2:00}",
-                        this.myVlcControl.Media.Duration.Hours,
-                        this.myVlcControl.Media.Duration.Minutes,
-                        this.myVlcControl.Media.Duration.Seconds);
+            textBlock.Text = string.Format(
+                "Duration: {0:00}:{1:00}:{2:00}",
+                myVlcControl.Media.Duration.Hours,
+                myVlcControl.Media.Duration.Minutes,
+                myVlcControl.Media.Duration.Seconds);
 
-                    this.sliderVolume.Value = this.myVlcControl.AudioProperties.Volume;
-                    this.checkboxMute.IsChecked = this.myVlcControl.AudioProperties.IsMute;
-                };
-
-            // event is raised from another task, so use the Dispatcher to update the GUI
-            this.Dispatcher.Invoke(DispatcherPriority.Normal, updateGuiDelegate);
+            sliderVolume.Value = myVlcControl.AudioProperties.Volume;
+            checkboxMute.IsChecked = myVlcControl.AudioProperties.IsMute;
         }
 
         /// <summary>
@@ -218,26 +212,25 @@ namespace Vlc.DotNet.Wpf.SampleApplication
         /// <param name="e">VLC event arguments. </param>
         private void VlcControlOnPositionChanged(VlcControl sender, VlcEventArgs<float> e)
         {
-            var updateGuiDelegate = (Action)delegate
-                {
-                    if (this.positionChanging)
-                    {
-                        // User is currently changing the position using the slider, so do not update. 
-                        return;
-                    }
+            if (positionChanging)
+            {
+                // User is currently changing the position using the slider, so do not update. 
+                return;
+            }
 
-                    this.sliderPosition.Value = e.Data;
-                    this.textBlock.Text = string.Format(
-                        "{0:00}:{1:00}:{2:00} / {3:00}:{4:00}:{5:00}",
-                        this.myVlcControl.Time.Hours,
-                        this.myVlcControl.Time.Minutes,
-                        this.myVlcControl.Time.Seconds,
-                        this.myVlcControl.Media.Duration.Hours,
-                        this.myVlcControl.Media.Duration.Minutes,
-                        this.myVlcControl.Media.Duration.Seconds);
-                };
+            sliderPosition.Value = e.Data;
+        }
 
-            this.Dispatcher.Invoke(DispatcherPriority.Normal, updateGuiDelegate);
+        private void VlcControlOnTimeChanged(VlcControl sender, VlcEventArgs<TimeSpan> e)
+        {
+            textBlock.Text = string.Format(
+                "{0:00}:{1:00}:{2:00} / {3:00}:{4:00}:{5:00}",
+                e.Data.Hours,
+                e.Data.Minutes,
+                e.Data.Seconds,
+                myVlcControl.Media.Duration.Hours,
+                myVlcControl.Media.Duration.Minutes,
+                myVlcControl.Media.Duration.Seconds);
         }
 
         #region Change position
@@ -247,10 +240,10 @@ namespace Vlc.DotNet.Wpf.SampleApplication
         /// </summary>
         /// <param name="sender">Event sender. </param>
         /// <param name="e">Event arguments. </param>
-        private void SliderMouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void SliderMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.positionChanging = true;
-            myVlcControl.PositionChanged -= this.VlcControlOnPositionChanged;
+            positionChanging = true;
+            myVlcControl.PositionChanged -= VlcControlOnPositionChanged;
         }
 
         /// <summary>
@@ -258,11 +251,11 @@ namespace Vlc.DotNet.Wpf.SampleApplication
         /// </summary>
         /// <param name="sender">Event sender. </param>
         /// <param name="e">Event arguments. </param>
-        private void SliderMouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void SliderMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             myVlcControl.Position = (float)sliderPosition.Value;
-            myVlcControl.PositionChanged += this.VlcControlOnPositionChanged;
-            this.positionChanging = false;
+            myVlcControl.PositionChanged += VlcControlOnPositionChanged;
+            positionChanging = false;
         }
 
         /// <summary>
@@ -272,7 +265,7 @@ namespace Vlc.DotNet.Wpf.SampleApplication
         /// <param name="e">Event arguments. </param>
         private void SliderValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (this.positionChanging)
+            if (positionChanging)
             {
                 myVlcControl.Position = (float)sliderPosition.Value;
             }

@@ -51,6 +51,11 @@ namespace Vlc.DotNet.Core.Interops
         public LibVlcVideo VideoInterops { get; private set; }
         public LibVlcErrorHandling ErrorHandlingInterops { get; private set; } 
 
+        public Version VlcVersion
+        {
+            get; private set;
+        }
+
         #region IDisposable Members
 
         public void Dispose()
@@ -127,29 +132,29 @@ namespace Vlc.DotNet.Core.Interops
 
             var reg = new Regex("^[0-9.]*");
             var match = reg.Match(GetVersion.Invoke());
-            var vlcVersion = new Version(match.Groups[0].Value);
+            VlcVersion = new Version(match.Groups[0].Value);
 
-            NewInstance = new LibVlcFunction<NewInstance>(myLibVlcDllHandle, vlcVersion);
-            ReleaseInstance = new LibVlcFunction<ReleaseInstance>(myLibVlcDllHandle, vlcVersion);
-            RetainInstance = new LibVlcFunction<RetainInstance>(myLibVlcDllHandle, vlcVersion);
-            AddInterface = new LibVlcFunction<AddInterface>(myLibVlcDllHandle, vlcVersion);
-            SetExitCallback = new LibVlcFunction<SetExitCallback>(myLibVlcDllHandle, vlcVersion);
-            Wait = new LibVlcFunction<Wait>(myLibVlcDllHandle, vlcVersion);
-            SetUserAgent = new LibVlcFunction<SetUserAgent>(myLibVlcDllHandle, vlcVersion);
-            GetCompiler = new LibVlcFunction<GetCompiler>(myLibVlcDllHandle, vlcVersion);
-            GetChangeSet = new LibVlcFunction<GetChangeSet>(myLibVlcDllHandle, vlcVersion);
-            FreeMemory = new LibVlcFunction<FreeMemory>(myLibVlcDllHandle, vlcVersion);
-            //GetModuleDescriptionList = new LibVlcFunction<GetModuleDescriptionList>(myLibVlcDllHandle, vlcVersion);
-            //ReleaseModule = new LibVlcFunction<ReleaseModuleDescription>(myLibVlcDllHandle, vlcVersion);
+            NewInstance = new LibVlcFunction<NewInstance>(myLibVlcDllHandle, VlcVersion);
+            ReleaseInstance = new LibVlcFunction<ReleaseInstance>(myLibVlcDllHandle, VlcVersion);
+            RetainInstance = new LibVlcFunction<RetainInstance>(myLibVlcDllHandle, VlcVersion);
+            AddInterface = new LibVlcFunction<AddInterface>(myLibVlcDllHandle, VlcVersion);
+            SetExitCallback = new LibVlcFunction<SetExitCallback>(myLibVlcDllHandle, VlcVersion);
+            Wait = new LibVlcFunction<Wait>(myLibVlcDllHandle, VlcVersion);
+            SetUserAgent = new LibVlcFunction<SetUserAgent>(myLibVlcDllHandle, VlcVersion);
+            GetCompiler = new LibVlcFunction<GetCompiler>(myLibVlcDllHandle, VlcVersion);
+            GetChangeSet = new LibVlcFunction<GetChangeSet>(myLibVlcDllHandle, VlcVersion);
+            FreeMemory = new LibVlcFunction<FreeMemory>(myLibVlcDllHandle, VlcVersion);
+            //GetModuleDescriptionList = new LibVlcFunction<GetModuleDescriptionList>(myLibVlcDllHandle, VlcVersion);
+            //ReleaseModule = new LibVlcFunction<ReleaseModuleDescription>(myLibVlcDllHandle, VlcVersion);
 
-            EventInterops = new LibVlcAsynchronousEvents(myLibVlcDllHandle, vlcVersion);
-            MediaPlayerInterops = new LibVlcMediaPlayer(myLibVlcDllHandle, vlcVersion);
-            MediaInterops = new LibVlcMedia(myLibVlcDllHandle, vlcVersion);
-            MediaListInterops = new LibVlcMediaList(myLibVlcDllHandle, vlcVersion);
-            AudioInterops = new LibVlcAudio(myLibVlcDllHandle, vlcVersion);
-            VideoInterops = new LibVlcVideo(myLibVlcDllHandle, vlcVersion);
-            LoggingInterops = new LibVlcLogging(myLibVlcDllHandle, vlcVersion);
-            ErrorHandlingInterops = new LibVlcErrorHandling(myLibVlcDllHandle, vlcVersion);
+            EventInterops = new LibVlcAsynchronousEvents(myLibVlcDllHandle, VlcVersion);
+            MediaPlayerInterops = new LibVlcMediaPlayer(myLibVlcDllHandle, VlcVersion);
+            MediaInterops = new LibVlcMedia(myLibVlcDllHandle, VlcVersion);
+            MediaListInterops = new LibVlcMediaList(myLibVlcDllHandle, VlcVersion);
+            AudioInterops = new LibVlcAudio(myLibVlcDllHandle, VlcVersion);
+            VideoInterops = new LibVlcVideo(myLibVlcDllHandle, VlcVersion);
+            LoggingInterops = new LibVlcLogging(myLibVlcDllHandle, VlcVersion);
+            ErrorHandlingInterops = new LibVlcErrorHandling(myLibVlcDllHandle, VlcVersion);
         }
     }
 }
