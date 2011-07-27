@@ -155,8 +155,8 @@ namespace Vlc.DotNet.Wpf
 
             CompositionTarget.Rendering -= CompositionTargetRendering;
 
-            //Using Dispatcher.Invoke to force finishing the latest raised events
-            Dispatcher.Invoke(DispatcherPriority.Normal,
+            //Using Dispatcher.Invoke to force priority to ContextIdle
+            Dispatcher.Invoke(DispatcherPriority.ContextIdle,
                 new Action(
                     delegate
                     {
@@ -171,7 +171,6 @@ namespace Vlc.DotNet.Wpf
                         VlcContext.HandleManager.MediaPlayerHandles.Remove(this);
 
                         myVideoLockCallbackHandle.Free();
-
                         myVideoSetFormatHandle.Free();
                         myVideoCleanupHandle.Free();
                     }));

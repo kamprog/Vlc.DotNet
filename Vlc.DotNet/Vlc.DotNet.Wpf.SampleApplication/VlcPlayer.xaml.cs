@@ -9,6 +9,8 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using Microsoft.Win32;
@@ -271,8 +273,6 @@ namespace Vlc.DotNet.Wpf.SampleApplication
                 myVlcControl.Position = (float)sliderPosition.Value;
             }
             //Update the current position text when it is in pause
-            //if (!myVlcControl.IsPaused) 
-            //    return;
             var duration = myVlcControl.Media.Duration;
             var time = TimeSpan.FromMilliseconds(duration.TotalMilliseconds * myVlcControl.Position);
             textBlock.Text = string.Format(
