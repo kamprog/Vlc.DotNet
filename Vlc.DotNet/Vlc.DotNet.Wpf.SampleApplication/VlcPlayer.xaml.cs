@@ -9,8 +9,6 @@
 
 using System;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using Microsoft.Win32;
@@ -225,14 +223,15 @@ namespace Vlc.DotNet.Wpf.SampleApplication
 
         private void VlcControlOnTimeChanged(VlcControl sender, VlcEventArgs<TimeSpan> e)
         {
+            var duration = myVlcControl.Media.Duration;
             textBlock.Text = string.Format(
                 "{0:00}:{1:00}:{2:00} / {3:00}:{4:00}:{5:00}",
                 e.Data.Hours,
                 e.Data.Minutes,
                 e.Data.Seconds,
-                myVlcControl.Media.Duration.Hours,
-                myVlcControl.Media.Duration.Minutes,
-                myVlcControl.Media.Duration.Seconds);
+                duration.Hours,
+                duration.Minutes,
+                duration.Seconds);
         }
 
         #region Change position
@@ -270,10 +269,10 @@ namespace Vlc.DotNet.Wpf.SampleApplication
         {
             if (positionChanging)
             {
-                myVlcControl.Position = (float)sliderPosition.Value;
+                myVlcControl.Position = (float)e.NewValue;
             }
             //Update the current position text when it is in pause
-            var duration = myVlcControl.Media.Duration;
+            var duration = myVlcControl.Media == null ? TimeSpan.Zero : myVlcControl.Media.Duration;
             var time = TimeSpan.FromMilliseconds(duration.TotalMilliseconds * myVlcControl.Position);
             textBlock.Text = string.Format(
                 "{0:00}:{1:00}:{2:00} / {3:00}:{4:00}:{5:00}",
