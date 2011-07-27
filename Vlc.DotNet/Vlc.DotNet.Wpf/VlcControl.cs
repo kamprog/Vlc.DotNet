@@ -1,12 +1,15 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Threading;
 using Vlc.DotNet.Core;
 using Vlc.DotNet.Core.Interops;
+using ThreadState = System.Threading.ThreadState;
 
 namespace Vlc.DotNet.Wpf
 {
@@ -83,7 +86,8 @@ namespace Vlc.DotNet.Wpf
                         singleInvoke.DynamicInvoke(sender, arg);
                         return;
                     }
-                    dispatcherObject.Dispatcher.Invoke(singleInvoke, new[] { sender, arg });
+                    if (EventsHelper.CanRaiseEvent)
+                        dispatcherObject.Dispatcher.Invoke(singleInvoke, new[] { sender, arg });
                 };
             InitEvents();
 
@@ -148,21 +152,29 @@ namespace Vlc.DotNet.Wpf
         public void Dispose()
         {
             EventsHelper.CanRaiseEvent = false;
+
             CompositionTarget.Rendering -= CompositionTargetRendering;
-            if (IsPlaying)
-                Stop();
-            FreeEvents();
-            AudioProperties.Dispose();
-            VideoProperties.Dispose();
-            LogProperties.Dispose();
-            AudioOutputDevices.Dispose();
-            VlcContext.InteropManager.MediaPlayerInterops.ReleaseInstance.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]);
-            VlcContext.HandleManager.MediaPlayerHandles.Remove(this);
 
-            myVideoLockCallbackHandle.Free();
+            //Using Dispatcher.Invoke to force finishing the latest raised events
+            Dispatcher.Invoke(DispatcherPriority.Normal,
+                new Action(
+                    delegate
+                    {
+                        FreeEvents();
+                        if (IsPlaying)
+                            Stop();
+                        AudioProperties.Dispose();
+                        VideoProperties.Dispose();
+                        LogProperties.Dispose();
+                        AudioOutputDevices.Dispose();
+                        VlcContext.InteropManager.MediaPlayerInterops.ReleaseInstance.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]);
+                        VlcContext.HandleManager.MediaPlayerHandles.Remove(this);
 
-            myVideoSetFormatHandle.Free();
-            myVideoCleanupHandle.Free();
+                        myVideoLockCallbackHandle.Free();
+
+                        myVideoSetFormatHandle.Free();
+                        myVideoCleanupHandle.Free();
+                    }));
         }
     }
 }

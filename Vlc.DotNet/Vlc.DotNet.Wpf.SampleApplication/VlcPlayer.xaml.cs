@@ -255,6 +255,7 @@ namespace Vlc.DotNet.Wpf.SampleApplication
         {
             myVlcControl.Position = (float)sliderPosition.Value;
             myVlcControl.PositionChanged += VlcControlOnPositionChanged;
+            
             positionChanging = false;
         }
 
@@ -269,6 +270,19 @@ namespace Vlc.DotNet.Wpf.SampleApplication
             {
                 myVlcControl.Position = (float)sliderPosition.Value;
             }
+            //Update the current position text when it is in pause
+            //if (!myVlcControl.IsPaused) 
+            //    return;
+            var duration = myVlcControl.Media.Duration;
+            var time = TimeSpan.FromMilliseconds(duration.TotalMilliseconds * myVlcControl.Position);
+            textBlock.Text = string.Format(
+                "{0:00}:{1:00}:{2:00} / {3:00}:{4:00}:{5:00}",
+                time.Hours,
+                time.Minutes,
+                time.Seconds,
+                duration.Hours,
+                duration.Minutes,
+                duration.Seconds);
         }
 
         #endregion
