@@ -148,6 +148,7 @@ namespace Vlc.DotNet.Core
             {
                 IsInitialized = true;
                 ErrorHandling = new VlcErrorHandling();
+                EventsHelper.CanRaiseEvent = true;
             }
         }
 
@@ -185,6 +186,7 @@ namespace Vlc.DotNet.Core
                 return;
             InteropManager.Dispose();
             InteropManager = null;
+            IsInitialized = false;
         }
     }
 }

@@ -1,15 +1,12 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Runtime.InteropServices;
-using System.Threading;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Threading;
 using Vlc.DotNet.Core;
 using Vlc.DotNet.Core.Interops;
-using ThreadState = System.Threading.ThreadState;
 
 namespace Vlc.DotNet.Wpf
 {

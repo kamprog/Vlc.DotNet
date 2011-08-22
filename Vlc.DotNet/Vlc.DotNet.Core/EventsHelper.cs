@@ -11,7 +11,7 @@ namespace Vlc.DotNet.Core
 
         static EventsHelper()
         {
-            CanRaiseEvent = true;
+            CanRaiseEvent = false;
         }
 
         public static void RaiseEvent<TSender, THandler>(VlcEventHandler<TSender, THandler> handler, TSender sender, VlcEventArgs<THandler> arg)
