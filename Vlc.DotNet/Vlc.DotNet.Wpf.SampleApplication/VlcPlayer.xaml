@@ -85,6 +85,7 @@
                 <Button Width="50" Name="buttonPause" Click="ButtonPauseClick">Pause</Button>
                 <Button Width="50" Name="buttonStop" Click="ButtonStopClick">Stop</Button>
                 <Button Width="50" Name="buttonOpen" Click="ButtonOpenClick">Open...</Button>
+                <Button Width="120" Name="buttonPlayYoutubeSample" Click="ButtonPlayYoutubeSample">Play Youtube Sample...</Button>
                 <TextBlock Margin="5,2" Name="textBlock"></TextBlock>
             </StackPanel>
         </Grid>

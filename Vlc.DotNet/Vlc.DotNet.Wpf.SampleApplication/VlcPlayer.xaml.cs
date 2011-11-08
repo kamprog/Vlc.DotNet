@@ -13,6 +13,7 @@ using System.Windows;
 using System.Windows.Input;
 using Microsoft.Win32;
 using Vlc.DotNet.Core;
+using Vlc.DotNet.Core.Interops.Signatures.LibVlc.Media;
 using Vlc.DotNet.Core.Medias;
 
 namespace Vlc.DotNet.Wpf.SampleApplication
@@ -31,7 +32,7 @@ namespace Vlc.DotNet.Wpf.SampleApplication
         /// <summary>
         /// Used to indicate that the user is currently changing the position (and the position bar shall not be updated). 
         /// </summary>
-        private bool positionChanging;
+        private bool myPositionChanging;
 
         #endregion
 
@@ -43,10 +44,10 @@ namespace Vlc.DotNet.Wpf.SampleApplication
         public VlcPlayer()
         {
             // Set libvlc.dll and libvlccore.dll directory path
-            VlcContext.LibVlcDllsPath = @"C:\Projets\vlc-1.2.0-git-20110723-0002";
+            VlcContext.LibVlcDllsPath = @"C:\Projets\vlc-1.2.0-pre1-20111108-0238";
 
             // Set the vlc plugins directory path
-            VlcContext.LibVlcPluginsPath = @"C:\Projets\vlc-1.2.0-git-20110723-0002\plugins";
+            VlcContext.LibVlcPluginsPath = @"C:\Projets\vlc-1.2.0-pre1-20111108-0238\plugins";
 
             /* Setting up the configuration of the VLC instance.
              * You can use any available command-line option using the AddOption function (see last two options). 
@@ -212,7 +213,7 @@ namespace Vlc.DotNet.Wpf.SampleApplication
         /// <param name="e">VLC event arguments. </param>
         private void VlcControlOnPositionChanged(VlcControl sender, VlcEventArgs<float> e)
         {
-            if (positionChanging)
+            if (myPositionChanging)
             {
                 // User is currently changing the position using the slider, so do not update. 
                 return;
@@ -223,6 +224,8 @@ namespace Vlc.DotNet.Wpf.SampleApplication
 
         private void VlcControlOnTimeChanged(VlcControl sender, VlcEventArgs<TimeSpan> e)
         {
+            if(myVlcControl.Media == null)
+                return;
             var duration = myVlcControl.Media.Duration;
             textBlock.Text = string.Format(
                 "{0:00}:{1:00}:{2:00} / {3:00}:{4:00}:{5:00}",
@@ -243,7 +246,7 @@ namespace Vlc.DotNet.Wpf.SampleApplication
         /// <param name="e">Event arguments. </param>
         private void SliderMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            positionChanging = true;
+            myPositionChanging = true;
             myVlcControl.PositionChanged -= VlcControlOnPositionChanged;
         }
 
@@ -256,8 +259,8 @@ namespace Vlc.DotNet.Wpf.SampleApplication
         {
             myVlcControl.Position = (float)sliderPosition.Value;
             myVlcControl.PositionChanged += VlcControlOnPositionChanged;
-            
-            positionChanging = false;
+
+            myPositionChanging = false;
         }
 
         /// <summary>
@@ -267,7 +270,7 @@ namespace Vlc.DotNet.Wpf.SampleApplication
         /// <param name="e">Event arguments. </param>
         private void SliderValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (positionChanging)
+            if (myPositionChanging)
             {
                 myVlcControl.Position = (float)e.NewValue;
             }
@@ -285,5 +288,23 @@ namespace Vlc.DotNet.Wpf.SampleApplication
         }
 
         #endregion
+
+        private void ButtonPlayYoutubeSample(object sender, RoutedEventArgs e)
+        {
+            var media = new LocationMedia(@"http://www.youtube.com/watch?v=WAjt5wPJVqM");
+            media.StateChanged +=
+                delegate(MediaBase s, VlcEventArgs<States> args)
+                {
+                    if (args.Data == States.Ended)
+                    {
+                        var subItems = media.SubItems;
+                        if (subItems.Count > 0)
+                        {
+                            myVlcControl.Play(subItems[0]);
+                        }
+                    }
+                };
+            myVlcControl.Play(media);
+        }
     }
 }

@@ -22,7 +22,6 @@ namespace Vlc.DotNet.Wpf
             : this((int)width, (int)height, format)
         {
         }
-
         public VlcControlWpfRendererContext(int width, int height, PixelFormat format)
         {
             Size = width * height * format.BitsPerPixel / 8;
@@ -36,6 +35,5 @@ namespace Vlc.DotNet.Wpf
         {
             Marshal.FreeHGlobal(Data);
         }
-
     }
 }

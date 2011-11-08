@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 using Vlc.DotNet.Core.Interops.Signatures.LibVlc.AsynchronousEvents;
@@ -22,6 +23,13 @@ namespace Vlc.DotNet.Core.Medias
         {
             Metadatas = new VlcMediaMetadatas(this);
             TrackInfos = new VlcMediaTrackInfos(this);
+        }
+
+        internal MediaBase(IntPtr handle)
+        {
+            if (handle == IntPtr.Zero)
+                throw new ArgumentNullException("handle");
+            Initialize(handle);
         }
 
         /// <summary>
@@ -119,6 +127,10 @@ namespace Vlc.DotNet.Core.Medias
         protected void Initialize()
         {
             IntPtr handle = GetNewMediaInstance();
+            Initialize(handle);
+        }
+        protected void Initialize(IntPtr handle)
+        {
             if (handle == IntPtr.Zero)
                 return;
             VlcContext.HandleManager.MediasHandles[this] = handle;
@@ -171,6 +183,8 @@ namespace Vlc.DotNet.Core.Medias
 
         private void FreeEvents()
         {
+            if (myEventManagerHandle == IntPtr.Zero || myEventCallback == null)
+                return;
             VlcContext.InteropManager.EventInterops.Detach.Invoke(myEventManagerHandle, EventTypes.MediaDurationChanged, myEventCallback, IntPtr.Zero);
             VlcContext.InteropManager.EventInterops.Detach.Invoke(myEventManagerHandle, EventTypes.MediaFreed, myEventCallback, IntPtr.Zero);
             VlcContext.InteropManager.EventInterops.Detach.Invoke(myEventManagerHandle, EventTypes.MediaMetaChanged, myEventCallback, IntPtr.Zero);

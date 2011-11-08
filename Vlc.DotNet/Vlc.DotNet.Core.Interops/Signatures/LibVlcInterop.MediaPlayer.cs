@@ -448,9 +448,9 @@ namespace Vlc.DotNet.Core.Interops.Signatures
             /// Release (free) trackDescription
             /// </summary>
             /// <param name="trackDescription">TrackDescription to release</param>
-            [LibVlcFunction("libvlc_track_description_release")]
+            [LibVlcFunction("libvlc_track_description_list_release")]
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-            public delegate void ReleaseTrackDescription(TrackDescription trackDescription);
+            public delegate void ReleaseTrackDescriptionList(TrackDescription trackDescription);
 
             namespace Video
             {

@@ -479,6 +479,8 @@ namespace Vlc.DotNet.Forms
         }
         private void FreeEvents()
         {
+            if (myEventCallback == null)
+                return;
             VlcContext.InteropManager.EventInterops.Detach.Invoke(VlcContext.HandleManager.EventManagerHandles[this], EventTypes.MediaPlayerBackward, myEventCallback, IntPtr.Zero);
             VlcContext.InteropManager.EventInterops.Detach.Invoke(VlcContext.HandleManager.EventManagerHandles[this], EventTypes.MediaPlayerBuffering, myEventCallback, IntPtr.Zero);
             VlcContext.InteropManager.EventInterops.Detach.Invoke(VlcContext.HandleManager.EventManagerHandles[this], EventTypes.MediaPlayerEncounteredError, myEventCallback, IntPtr.Zero);

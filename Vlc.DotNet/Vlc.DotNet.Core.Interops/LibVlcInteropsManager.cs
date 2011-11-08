@@ -16,7 +16,7 @@ namespace Vlc.DotNet.Core.Interops
         private IntPtr myLibVlcDllHandle;
 
         /// <summary>
-        /// LibVlcInteropsManager contructor
+        /// Initializes a new instance of the LibVlcInteropsManager class.
         /// </summary>
         /// <param name="libVlcDllsDirectory">The path to libvlc.dll and libvlccore.dll</param>
         public LibVlcInteropsManager(string libVlcDllsDirectory)

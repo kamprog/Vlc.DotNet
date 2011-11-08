@@ -295,7 +295,14 @@ namespace Vlc.DotNet.Core.Interops.Signatures
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
             public delegate int GetStats(IntPtr mediaInstance, out Stats stats);
 
-            //TODO : libvlc_media_subitems
+            /// <summary>
+            /// Get subitems of media descriptor object. This will increment the reference count of supplied media descriptor object. Use MediaList.Release() to decrement the reference counting.
+            /// </summary>
+            /// <param name="mediaInstance">The media instance.</param>
+            /// <returns>List of media descriptor subitems or NULL.</returns>
+            [LibVlcFunction("libvlc_media_subitems")]
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            public delegate IntPtr GetSubItems(IntPtr mediaInstance);
 
             /// <summary>
             /// Get event manager from media descriptor object.

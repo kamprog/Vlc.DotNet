@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;
@@ -16,6 +17,8 @@ namespace Vlc.DotNet.Wpf
     public sealed partial class VlcControl : FrameworkElement
     {
         private readonly Core.Interops.Signatures.LibVlc.MediaPlayer.Video.LockCallbackDelegate myVideoLockCallback;
+        private GCHandle myVideoUnlockCallbackHandle;
+        private readonly Core.Interops.Signatures.LibVlc.MediaPlayer.Video.UnlockCallbackDelegate myVideoUnlockCallback;
         private GCHandle myVideoLockCallbackHandle;
         private readonly Core.Interops.Signatures.LibVlc.MediaPlayer.Video.FormatCallbackDelegate myVideoSetFormat;
         private GCHandle myVideoSetFormatHandle;
@@ -24,6 +27,7 @@ namespace Vlc.DotNet.Wpf
 
         private InteropBitmap myBitmap;
         private IntPtr myBitmapSectionPointer;
+        private VlcControlWpfRendererContext myContext;
 
         /// <summary>
         /// Identifies the Vlc.DotNet.Wpf.VideoSource dependency property.
@@ -77,19 +81,17 @@ namespace Vlc.DotNet.Wpf
             EventsHelper.ExecuteRaiseEventDelegate =
                 delegate(Delegate singleInvoke, object sender, object arg)
                 {
-                    var dispatcherObject = singleInvoke.Target as DispatcherObject;
-                    if (dispatcherObject == null)
-                    {
-                        singleInvoke.DynamicInvoke(sender, arg);
-                        return;
-                    }
-                    if (EventsHelper.CanRaiseEvent)
-                        dispatcherObject.Dispatcher.Invoke(singleInvoke, new[] { sender, arg });
+                    if (Dispatcher.CheckAccess())
+                        Dispatcher.Invoke(DispatcherPriority.Normal, singleInvoke, sender, arg);
+                    else
+                        Dispatcher.BeginInvoke(DispatcherPriority.Normal, singleInvoke, sender, arg);
                 };
             InitEvents();
 
             myVideoLockCallback = LockCallback;
             myVideoLockCallbackHandle = GCHandle.Alloc(myVideoLockCallback);
+            myVideoUnlockCallback = UnlockCallback;
+            myVideoUnlockCallbackHandle = GCHandle.Alloc(myVideoUnlockCallback);
 
             myVideoSetFormat = VideoSetFormat;
             myVideoSetFormatHandle = GCHandle.Alloc(myVideoSetFormat);
@@ -99,7 +101,7 @@ namespace Vlc.DotNet.Wpf
             CompositionTarget.Rendering += CompositionTargetRendering;
 
             VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetFormatCallbacks.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this], myVideoSetFormat, myVideoCleanup);
-            VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetCallbacks.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this], myVideoLockCallback, null, null, IntPtr.Zero);
+            VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.SetCallbacks.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this], myVideoLockCallback, myVideoUnlockCallback, null, IntPtr.Zero);
         }
 
         #region Vlc Display
@@ -108,7 +110,10 @@ namespace Vlc.DotNet.Wpf
         {
             plane = opaque;
         }
-
+        private void UnlockCallback(IntPtr opaque, IntPtr picture, ref IntPtr plane)
+        {
+            GC.Collect();
+        }
         private void CompositionTargetRendering(object sender, EventArgs e)
         {
             if (myBitmap != null) { myBitmap.Invalidate(); }
@@ -116,20 +121,20 @@ namespace Vlc.DotNet.Wpf
 
         private uint VideoSetFormat(ref IntPtr opaque, ref uint chroma, ref uint width, ref uint height, ref uint pitches, ref uint lines)
         {
-            var context = new VlcControlWpfRendererContext(width, height, PixelFormats.Bgr32);
+            myContext = new VlcControlWpfRendererContext(width, height, PixelFormats.Bgr32);
 
             chroma = BitConverter.ToUInt32(new[] { (byte)'R', (byte)'V', (byte)'3', (byte)'2' }, 0);
-            width = (uint)context.Width;
-            height = (uint)context.Height;
-            pitches = (uint)context.Stride;
-            lines = (uint)context.Height;
+            width = (uint)myContext.Width;
+            height = (uint)myContext.Height;
+            pitches = (uint)myContext.Stride;
+            lines = (uint)myContext.Height;
 
-            myBitmapSectionPointer = Win32Interop.CreateFileMapping(new IntPtr(-1), IntPtr.Zero, Win32Interop.PageAccess.ReadWrite, 0, context.Size, null);
-            opaque = Win32Interop.MapViewOfFile(myBitmapSectionPointer, Win32Interop.FileMapAccess.AllAccess, 0, 0, (uint)context.Size);
+            myBitmapSectionPointer = Win32Interop.CreateFileMapping(new IntPtr(-1), IntPtr.Zero, Win32Interop.PageAccess.ReadWrite, 0, myContext.Size, null);
+            opaque = Win32Interop.MapViewOfFile(myBitmapSectionPointer, Win32Interop.FileMapAccess.AllAccess, 0, 0, (uint)myContext.Size);
 
             Dispatcher.Invoke((Action)(() =>
             {
-                myBitmap = (InteropBitmap)Imaging.CreateBitmapSourceFromMemorySection(myBitmapSectionPointer, context.Width, context.Height, context.PixelFormat, context.Stride, 0);
+                myBitmap = (InteropBitmap)Imaging.CreateBitmapSourceFromMemorySection(myBitmapSectionPointer, myContext.Width, myContext.Height, myContext.PixelFormat, myContext.Stride, 0);
                 VideoSource = myBitmap;
                 VideoBrush.ImageSource = myBitmap;
             }));

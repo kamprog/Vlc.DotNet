@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Specialized;
+using System.Threading;
 using Vlc.DotNet.Core.Interops;
 using Vlc.DotNet.Core.Medias;
 
