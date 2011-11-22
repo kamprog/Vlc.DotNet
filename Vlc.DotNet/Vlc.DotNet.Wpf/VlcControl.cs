@@ -17,9 +17,9 @@ namespace Vlc.DotNet.Wpf
     public sealed partial class VlcControl : FrameworkElement
     {
         private readonly Core.Interops.Signatures.LibVlc.MediaPlayer.Video.LockCallbackDelegate myVideoLockCallback;
-        private GCHandle myVideoUnlockCallbackHandle;
-        private readonly Core.Interops.Signatures.LibVlc.MediaPlayer.Video.UnlockCallbackDelegate myVideoUnlockCallback;
         private GCHandle myVideoLockCallbackHandle;
+        private readonly Core.Interops.Signatures.LibVlc.MediaPlayer.Video.UnlockCallbackDelegate myVideoUnlockCallback;
+        private GCHandle myVideoUnlockCallbackHandle;
         private readonly Core.Interops.Signatures.LibVlc.MediaPlayer.Video.FormatCallbackDelegate myVideoSetFormat;
         private GCHandle myVideoSetFormatHandle;
         private readonly Core.Interops.Signatures.LibVlc.MediaPlayer.Video.CleanupCallbackDelegate myVideoCleanup;
@@ -28,6 +28,7 @@ namespace Vlc.DotNet.Wpf
         private InteropBitmap myBitmap;
         private IntPtr myBitmapSectionPointer;
         private VlcControlWpfRendererContext myContext;
+        private object myLock;
 
         /// <summary>
         /// Identifies the Vlc.DotNet.Wpf.VideoSource dependency property.
@@ -173,6 +174,7 @@ namespace Vlc.DotNet.Wpf
                         VlcContext.HandleManager.MediaPlayerHandles.Remove(this);
 
                         myVideoLockCallbackHandle.Free();
+                        myVideoUnlockCallbackHandle.Free();
                         myVideoSetFormatHandle.Free();
                         myVideoCleanupHandle.Free();
                     }));

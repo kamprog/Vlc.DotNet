@@ -1,9 +1,14 @@
 ﻿using System;
-using System.ComponentModel;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using Vlc.DotNet.Core.Interops.Signatures.LibVlc;
+
+#if SILVERLIGHT
+
+#else
+using System.ComponentModel;
+#endif
 
 namespace Vlc.DotNet.Core.Interops
 {
@@ -127,11 +132,11 @@ namespace Vlc.DotNet.Core.Interops
             myLibVlcDllHandle = Win32Interop.LoadLibrary(libVlcFilePath);
             if (myLibVlcDllHandle == IntPtr.Zero)
                 throw new Win32Exception(Marshal.GetLastWin32Error());
-
+            
             GetVersion = new LibVlcFunction<GetVersion>(myLibVlcDllHandle);
 
             var reg = new Regex("^[0-9.]*");
-            var match = reg.Match(GetVersion.Invoke());
+            var match = reg.Match(IntPtrExtensions.ToStringAnsi(GetVersion.Invoke()));
             VlcVersion = new Version(match.Groups[0].Value);
 
             NewInstance = new LibVlcFunction<NewInstance>(myLibVlcDllHandle, VlcVersion);

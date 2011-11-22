@@ -44,10 +44,10 @@ namespace Vlc.DotNet.Wpf.SampleApplication
         public VlcPlayer()
         {
             // Set libvlc.dll and libvlccore.dll directory path
-            VlcContext.LibVlcDllsPath = @"C:\Projets\vlc-1.2.0-pre1-20111108-0238";
+            VlcContext.LibVlcDllsPath = @"C:\Projets\vlc-1.2.0-pre1-20111109-0006";
 
             // Set the vlc plugins directory path
-            VlcContext.LibVlcPluginsPath = @"C:\Projets\vlc-1.2.0-pre1-20111108-0238\plugins";
+            VlcContext.LibVlcPluginsPath = @"C:\Projets\vlc-1.2.0-pre1-20111109-0006\plugins";
 
             /* Setting up the configuration of the VLC instance.
              * You can use any available command-line option using the AddOption function (see last two options). 
@@ -72,7 +72,7 @@ namespace Vlc.DotNet.Wpf.SampleApplication
 
             // Pauses the playback of a movie on the last frame
             VlcContext.StartupOptions.AddOption("--play-and-pause");
-
+            
             // Initialize the VlcContext
             VlcContext.Initialize();
 

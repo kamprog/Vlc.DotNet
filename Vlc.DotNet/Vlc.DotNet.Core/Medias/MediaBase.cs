@@ -29,6 +29,8 @@ namespace Vlc.DotNet.Core.Medias
         {
             if (handle == IntPtr.Zero)
                 throw new ArgumentNullException("handle");
+            Metadatas = new VlcMediaMetadatas(this);
+            TrackInfos = new VlcMediaTrackInfos(this);
             Initialize(handle);
         }
 
@@ -59,7 +61,7 @@ namespace Vlc.DotNet.Core.Medias
             {
                 if (!VlcContext.HandleManager.MediasHandles.ContainsKey(this))
                     return null;
-                return VlcContext.InteropManager.MediaInterops.GetMrl.Invoke(VlcContext.HandleManager.MediasHandles[this]);
+                return IntPtrExtensions.ToStringAnsi(VlcContext.InteropManager.MediaInterops.GetMrl.Invoke(VlcContext.HandleManager.MediasHandles[this]));
             }
         }
 
@@ -195,6 +197,7 @@ namespace Vlc.DotNet.Core.Medias
             myEventCallbackHandle.Free();
         }
 
+        [AllowReversePInvokeCalls]
         private void OnVlcEvent(ref LibVlcEventArgs eventData, IntPtr userData)
         {
             switch (eventData.Type)

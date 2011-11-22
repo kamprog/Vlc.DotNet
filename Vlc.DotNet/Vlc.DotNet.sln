@@ -22,9 +22,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Vlc.DotNet Libraries", "Vlc
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Vlc.DotNet Examples", "Vlc.DotNet Examples", "{7C431E6A-60C5-4FFD-A91A-472C01A1117D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vlc.DotNet.Silverlight", "Vlc.DotNet.Silverlight\Vlc.DotNet.Silverlight.csproj", "{3BCC1439-6C05-4320-A48B-EEBE78E081F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vlc.DotNet.Silverlight.SampleApplication", "Vlc.DotNet.Silverlight.SampleApplication\Vlc.DotNet.Silverlight.SampleApplication.csproj", "{7B58A11D-0C60-47F3-9C3B-649D7CC497A8}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 7
+		SccNumberOfProjects = 9
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs10
 		SccLocalPath0 = .
@@ -52,6 +56,14 @@ Global
 		SccProjectTopLevelParentUniqueName6 = Vlc.DotNet.sln
 		SccProjectName6 = Vlc.DotNet.Core.Interops
 		SccLocalPath6 = Vlc.DotNet.Core.Interops
+		SccProjectUniqueName7 = Vlc.DotNet.Silverlight.SampleApplication\\Vlc.DotNet.Silverlight.SampleApplication.csproj
+		SccProjectTopLevelParentUniqueName7 = Vlc.DotNet.sln
+		SccProjectName7 = Vlc.DotNet.Silverlight.SampleApplication
+		SccLocalPath7 = Vlc.DotNet.Silverlight.SampleApplication
+		SccProjectUniqueName8 = Vlc.DotNet.Silverlight\\Vlc.DotNet.Silverlight.csproj
+		SccProjectTopLevelParentUniqueName8 = Vlc.DotNet.sln
+		SccProjectName8 = Vlc.DotNet.Silverlight
+		SccLocalPath8 = Vlc.DotNet.Silverlight
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Vlc.DotNet.vsmdi
@@ -125,17 +137,39 @@ Global
 		{7506DDE6-1D45-4FE0-8239-985C5F6EB605}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{7506DDE6-1D45-4FE0-8239-985C5F6EB605}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{7506DDE6-1D45-4FE0-8239-985C5F6EB605}.Release|x86.ActiveCfg = Release|Any CPU
+		{3BCC1439-6C05-4320-A48B-EEBE78E081F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BCC1439-6C05-4320-A48B-EEBE78E081F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BCC1439-6C05-4320-A48B-EEBE78E081F0}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{3BCC1439-6C05-4320-A48B-EEBE78E081F0}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{3BCC1439-6C05-4320-A48B-EEBE78E081F0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3BCC1439-6C05-4320-A48B-EEBE78E081F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BCC1439-6C05-4320-A48B-EEBE78E081F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BCC1439-6C05-4320-A48B-EEBE78E081F0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{3BCC1439-6C05-4320-A48B-EEBE78E081F0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{3BCC1439-6C05-4320-A48B-EEBE78E081F0}.Release|x86.ActiveCfg = Release|Any CPU
+		{7B58A11D-0C60-47F3-9C3B-649D7CC497A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B58A11D-0C60-47F3-9C3B-649D7CC497A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B58A11D-0C60-47F3-9C3B-649D7CC497A8}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{7B58A11D-0C60-47F3-9C3B-649D7CC497A8}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{7B58A11D-0C60-47F3-9C3B-649D7CC497A8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7B58A11D-0C60-47F3-9C3B-649D7CC497A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B58A11D-0C60-47F3-9C3B-649D7CC497A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B58A11D-0C60-47F3-9C3B-649D7CC497A8}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{7B58A11D-0C60-47F3-9C3B-649D7CC497A8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{7B58A11D-0C60-47F3-9C3B-649D7CC497A8}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{0DC24B0B-6862-4615-B62D-81795D2CDD07} = {E13EF559-D858-493A-8247-9C0475FCBFBD}
-		{7506DDE6-1D45-4FE0-8239-985C5F6EB605} = {E13EF559-D858-493A-8247-9C0475FCBFBD}
 		{A720906B-705B-4666-BBB9-AC54B9208BEB} = {E13EF559-D858-493A-8247-9C0475FCBFBD}
 		{F0657B1B-8F6C-4D9E-978A-021EF77AA0E7} = {E13EF559-D858-493A-8247-9C0475FCBFBD}
-		{62BCF1E6-C3D5-45AB-962D-99563C38614A} = {7C431E6A-60C5-4FFD-A91A-472C01A1117D}
+		{7506DDE6-1D45-4FE0-8239-985C5F6EB605} = {E13EF559-D858-493A-8247-9C0475FCBFBD}
+		{0DC24B0B-6862-4615-B62D-81795D2CDD07} = {E13EF559-D858-493A-8247-9C0475FCBFBD}
+		{3BCC1439-6C05-4320-A48B-EEBE78E081F0} = {E13EF559-D858-493A-8247-9C0475FCBFBD}
 		{41271969-A6C2-4B68-B111-1A23D1E15B31} = {7C431E6A-60C5-4FFD-A91A-472C01A1117D}
+		{62BCF1E6-C3D5-45AB-962D-99563C38614A} = {7C431E6A-60C5-4FFD-A91A-472C01A1117D}
+		{7B58A11D-0C60-47F3-9C3B-649D7CC497A8} = {7C431E6A-60C5-4FFD-A91A-472C01A1117D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		BuildVersion_AssemblyInfoFilename = Common\AssemblyInfoCommon.cs

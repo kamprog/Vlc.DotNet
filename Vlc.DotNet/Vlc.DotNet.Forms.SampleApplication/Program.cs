@@ -29,10 +29,10 @@ namespace Vlc.DotNet.Forms.SampleApplication
             Application.SetCompatibleTextRenderingDefault(false);
 
             // Set libvlc.dll and libvlccore.dll directory path
-            VlcContext.LibVlcDllsPath = CommonStrings.LIBVLC_DLLS_PATH_DEFAULT_VALUE_AMD64;
+            VlcContext.LibVlcDllsPath = @"C:\Projets\vlc-1.1.11"; // CommonStrings.LIBVLC_DLLS_PATH_DEFAULT_VALUE_AMD64;
 
             // Set the vlc plugins directory path
-            VlcContext.LibVlcPluginsPath = CommonStrings.PLUGINS_PATH_DEFAULT_VALUE_AMD64;
+            VlcContext.LibVlcPluginsPath = @"C:\Projets\vlc-1.1.11\pugins"; //CommonStrings.PLUGINS_PATH_DEFAULT_VALUE_AMD64;
 
             // Ignore the VLC configuration file
             VlcContext.StartupOptions.IgnoreConfig = true;

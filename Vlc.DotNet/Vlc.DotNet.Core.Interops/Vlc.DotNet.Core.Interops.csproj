@@ -64,6 +64,7 @@
     <Compile Include="..\Common\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
+    <Compile Include="IntPtrExtensions.cs" />
     <Compile Include="LibVlcErrorHandling.cs" />
     <Compile Include="LibVlcFunction.cs" />
     <Compile Include="LibVlcInteropsManager.cs" />
@@ -113,7 +114,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_AssemblyInfoFilename="..\Common\AssemblyInfoCommon.cs" BuildVersion_UseGlobalSettings="False" BuildVersion_UpdateFileVersion="True" BuildVersion_BuildVersioningStyle="YearStamp.MonthStamp.DayStamp.None" />
+      <UserProperties BuildVersion_BuildVersioningStyle="YearStamp.MonthStamp.DayStamp.None" BuildVersion_UpdateFileVersion="True" BuildVersion_UseGlobalSettings="False" BuildVersion_AssemblyInfoFilename="..\Common\AssemblyInfoCommon.cs" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

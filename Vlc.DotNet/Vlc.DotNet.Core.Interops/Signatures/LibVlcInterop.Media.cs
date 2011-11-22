@@ -235,8 +235,10 @@ namespace Vlc.DotNet.Core.Interops.Signatures
             /// <returns>String with mrl of media descriptor object.</returns>
             [LibVlcFunction("libvlc_media_get_mrl")]
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+#if !SILVERLIGHT
             [return: MarshalAs(UnmanagedType.AnsiBStr)]
-            public delegate string GetMrl(IntPtr mediaInstance);
+#endif
+            public delegate IntPtr GetMrl(IntPtr mediaInstance);
 
             /// <summary>
             /// Duplicate a media descriptor object.
@@ -255,8 +257,10 @@ namespace Vlc.DotNet.Core.Interops.Signatures
             /// <returns>The media's meta value.</returns>
             [LibVlcFunction("libvlc_media_get_meta")]
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+#if !SILVERLIGHT
             [return: MarshalAs(UnmanagedType.AnsiBStr)]
-            public delegate string GetMetadata(IntPtr mediaInstance, Metadatas metadata);
+#endif
+            public delegate IntPtr GetMetadata(IntPtr mediaInstance, Metadatas metadata);
 
             /// <summary>
             /// Set the meta of the media (this function will not save the meta, call SaveMetadatas in order to save the meta)

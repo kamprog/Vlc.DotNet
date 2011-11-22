@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace Vlc.DotNet.Core.Interops.Signatures
@@ -13,7 +14,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
             /// <returns>This will be NULL if there was no error.</returns>
             [LibVlcFunction("libvlc_errmsg")]
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-            public delegate string GetErrorMessage();
+            public delegate IntPtr GetErrorMessage();
 
             /// <summary>
             /// Clears the LibVLC error status for the current thread. This is optional. By default, the error status is automatically overridden when a new error occurs, and destroyed when the thread exits.
@@ -96,7 +97,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
         /// <returns>String containing the libvlc version.</returns>
         [LibVlcFunction("libvlc_get_version")]
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate string GetVersion();
+        public delegate IntPtr GetVersion();
 
         /// <summary>
         /// Retrieve libvlc compiler version.
@@ -104,7 +105,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
         /// <returns>String containing the libvlc compiler version.</returns>
         [LibVlcFunction("libvlc_get_compiler")]
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate string GetCompiler();
+        public delegate IntPtr GetCompiler();
 
         /// <summary>
         /// Retrieve libvlc changeset.
@@ -113,7 +114,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
         
         [LibVlcFunction("libvlc_get_changeset")]
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate string GetChangeSet();
+        public delegate IntPtr GetChangeSet();
 
         /// <summary>
         /// Frees an heap allocation returned by a LibVLC function.
@@ -155,7 +156,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
             /// <param name="eventType">The desired event.</param>
             /// <returns></returns>
             [LibVlcFunction("libvlc_event_type_name")]
-            public delegate string GetTypeName(EventTypes eventType);
+            public delegate IntPtr GetTypeName(EventTypes eventType);
         }
 
         namespace Logging

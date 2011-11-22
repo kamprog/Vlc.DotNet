@@ -16,7 +16,7 @@ namespace Vlc.DotNet.Core
             StartupOptions = new VlcStartupOptions();
             HandleManager = new VlcHandleManager();
             IsInitialized = false;
-
+#if !SILVERLIGHT
             var processorArchitecture = Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE");
             var processorArchiteW6432 = Environment.GetEnvironmentVariable("PROCESSOR_ARCHITEW6432");
 
@@ -28,9 +28,12 @@ namespace Vlc.DotNet.Core
             }
             else
             {
+#endif
                 LibVlcPluginsPath = CommonStrings.PLUGINS_PATH_DEFAULT_VALUE_X86;
                 LibVlcDllsPath = CommonStrings.LIBVLC_DLLS_PATH_DEFAULT_VALUE_X86;
-            }
+ #if !SILVERLIGHT
+           }
+#endif
         }
 
         internal static LibVlcInteropsManager InteropManager { get; private set; }
@@ -83,7 +86,7 @@ namespace Vlc.DotNet.Core
             {
                 if (!IsInitialized)
                     throw new ApplicationException("Vlc must be initailized before getting his compiler.");
-                return InteropManager != null ? InteropManager.GetCompiler.Invoke() : null;
+                return InteropManager != null ? IntPtrExtensions.ToStringAnsi(InteropManager.GetCompiler.Invoke()) : null;
             }
         }
 
@@ -96,7 +99,7 @@ namespace Vlc.DotNet.Core
             {
                 if (!IsInitialized)
                     throw new ApplicationException("Vlc must be initailized before getting his change set.");
-                return InteropManager != null ? InteropManager.GetChangeSet.Invoke() : null;
+                return InteropManager != null ? IntPtrExtensions.ToStringAnsi(InteropManager.GetChangeSet.Invoke()) : null;
             }
         }
 
