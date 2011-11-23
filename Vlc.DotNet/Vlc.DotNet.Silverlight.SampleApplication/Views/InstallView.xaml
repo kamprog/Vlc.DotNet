@@ -16,8 +16,8 @@
 
             <TextBlock Grid.Row="0" Text="Vlc.DotNet.Silverlight.SampleApplication" FontSize="27" />
             <TextBlock Grid.Row="1" Text="Click on the button to install sample application. The application must be out-of-browser to be enabled to run Interops. You must also install latest Vlc nightly build." TextWrapping="Wrap" />
-            <Button Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Padding="20,10" Click="OnBtnVlcNightlyBuildClick">Vlc nightly builds</Button>
-            <Button Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Padding="20,10" Click="OnBtnInstallClick">Install sample</Button>
+            <HyperlinkButton Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" NavigateUri="http://nightlies.videolan.org/build/win32/last/">Download latest VLC Nightly Build</HyperlinkButton>
+            <Button x:Name="myBtnInstall" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Padding="20,10" Click="OnBtnInstallClick">Install sample</Button>
         </Grid>
         <HyperlinkButton VerticalAlignment="Bottom" HorizontalAlignment="Right" ClickMode="Press" FontSize="28" Margin="20" NavigateUri="http://vlcdotnet.codeplex.com">Vlc.DotNet</HyperlinkButton>
     </Grid>
