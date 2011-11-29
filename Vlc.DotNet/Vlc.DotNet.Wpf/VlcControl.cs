@@ -77,6 +77,7 @@ namespace Vlc.DotNet.Wpf
             AudioProperties = new VlcAudioProperties(this);
             VideoProperties = new VlcVideoProperties(this);
             LogProperties = new VlcLogProperties();
+            Medias = new VlcMediaListPlayer(this);
             AudioOutputDevices = new VlcAudioOutputDevices();
 
             EventsHelper.ExecuteRaiseEventDelegate =
@@ -170,6 +171,7 @@ namespace Vlc.DotNet.Wpf
                         VideoProperties.Dispose();
                         LogProperties.Dispose();
                         AudioOutputDevices.Dispose();
+                        Medias.Dispose();
                         VlcContext.InteropManager.MediaPlayerInterops.ReleaseInstance.Invoke(VlcContext.HandleManager.MediaPlayerHandles[this]);
                         VlcContext.HandleManager.MediaPlayerHandles.Remove(this);
 

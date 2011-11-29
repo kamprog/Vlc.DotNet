@@ -172,9 +172,9 @@ Global
 		{7B58A11D-0C60-47F3-9C3B-649D7CC497A8} = {7C431E6A-60C5-4FFD-A91A-472C01A1117D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		BuildVersion_AssemblyInfoFilename = Common\AssemblyInfoCommon.cs
-		BuildVersion_UseGlobalSettings = False
-		BuildVersion_BuildVersioningStyle = None.None.None.None
 		BuildVersion_UpdateFileVersion = False
+		BuildVersion_BuildVersioningStyle = None.None.None.None
+		BuildVersion_UseGlobalSettings = False
+		BuildVersion_AssemblyInfoFilename = Common\AssemblyInfoCommon.cs
 	EndGlobalSection
 EndGlobal

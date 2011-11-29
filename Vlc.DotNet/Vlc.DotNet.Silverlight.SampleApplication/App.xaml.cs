@@ -19,6 +19,8 @@ namespace Vlc.DotNet.Silverlight.SampleApplication
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            RootVisual = new MainPage();
+            return;
             if (Application.Current.InstallState == InstallState.Installed && Application.Current.IsRunningOutOfBrowser)
             {
                 CheckAndDownloadUpdateAsync();

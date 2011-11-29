@@ -503,7 +503,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
 
                 [LibVlcFunction("libvlc_video_get_aspect_ratio")]
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                public delegate string GetAspectRatio(IntPtr playerInstance);
+                public delegate IntPtr GetAspectRatio(IntPtr playerInstance);
 
                 [LibVlcFunction("libvlc_video_set_aspect_ratio")]
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
@@ -562,7 +562,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
                 //TODO
                 //[LibVlcFunction("libvlc_video_get_crop_geometry")]
                 //[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                //public delegate string GetCropGeometry(IntPtr playerInstance);
+                //public delegate IntPtr GetCropGeometry(IntPtr playerInstance);
 
                 //TODO
                 //[LibVlcFunction("libvlc_video_set_crop_geometry")]
@@ -850,7 +850,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
                 /// <returns>Long name of the devide</returns>
                 [LibVlcFunction("libvlc_audio_output_device_longname")]
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                public delegate string GetOutputDeviceLongName(IntPtr instance, string outputName, int deviceIndex);
+                public delegate IntPtr GetOutputDeviceLongName(IntPtr instance, string outputName, int deviceIndex);
 
                 /// <summary>
                 /// Get id name of device
@@ -861,7 +861,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
                 /// <returns>Id name of device, use for setting device, need to be free after use</returns>
                 [LibVlcFunction("libvlc_audio_output_device_id")]
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                public delegate string GetOutputDeviceIdName(IntPtr instance, string outputName, int deviceIndex);
+                public delegate IntPtr GetOutputDeviceIdName(IntPtr instance, string outputName, int deviceIndex);
 
                 /// <summary>
                 /// Set audio output device. Changes are only effective after stop and play.

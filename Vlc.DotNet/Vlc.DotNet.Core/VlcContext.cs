@@ -36,7 +36,7 @@ namespace Vlc.DotNet.Core
 #endif
         }
 
-        internal static LibVlcInteropsManager InteropManager { get; private set; }
+        public static LibVlcInteropsManager InteropManager { get; private set; }
         internal static VlcHandleManager HandleManager { get; private set; }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace Vlc.DotNet.Core
         /// <summary>
         /// Initialize library
         /// </summary>
-        public static void Initialize()
+        public static IntPtr Initialize()
         {
             InteropManager = new LibVlcInteropsManager(LibVlcDllsPath);
             if (IsInitialized)
@@ -154,6 +154,7 @@ namespace Vlc.DotNet.Core
                 ErrorHandling = new VlcErrorHandling();
                 EventsHelper.CanRaiseEvent = true;
             }
+            return HandleManager.LibVlcHandle;
         }
 
         /// <summary>

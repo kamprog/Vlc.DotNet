@@ -71,6 +71,7 @@
     <Compile Include="LibVlcAudio.cs" />
     <Compile Include="LibVlcMediaList.cs" />
     <Compile Include="LibVlcMediaPlayerAudio.cs" />
+    <Compile Include="LibVlcMediaListPlayer.cs" />
     <Compile Include="LibVlcMediaPlayerVideo.cs" />
     <Compile Include="Signatures\LibVlcInterop.Events.cs" />
     <Compile Include="Signatures\LibVlcInterop.Media.cs" />
@@ -110,11 +111,12 @@
     <None Include="..\Common\Vlc.DotNet.pfx.snk">
       <Link>Vlc.DotNet.pfx.snk</Link>
     </None>
+    <Compile Include="Signatures\LibVlcInterop.MediaListPlayer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_BuildVersioningStyle="YearStamp.MonthStamp.DayStamp.None" BuildVersion_UpdateFileVersion="True" BuildVersion_UseGlobalSettings="False" BuildVersion_AssemblyInfoFilename="..\Common\AssemblyInfoCommon.cs" />
+      <UserProperties BuildVersion_AssemblyInfoFilename="..\Common\AssemblyInfoCommon.cs" BuildVersion_UseGlobalSettings="False" BuildVersion_UpdateFileVersion="True" BuildVersion_BuildVersioningStyle="YearStamp.MonthStamp.DayStamp.None" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

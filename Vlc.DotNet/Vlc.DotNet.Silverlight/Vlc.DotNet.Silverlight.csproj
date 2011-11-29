@@ -113,6 +113,9 @@
     <Compile Include="..\Vlc.DotNet.Core.Interops\LibVlcMediaList.cs">
       <Link>Core\Interops\LibVlcMediaList.cs</Link>
     </Compile>
+    <Compile Include="..\Vlc.DotNet.Core.Interops\LibVlcMediaListPlayer.cs">
+      <Link>Core\Interops\LibVlcMediaListPlayer.cs</Link>
+    </Compile>
     <Compile Include="..\Vlc.DotNet.Core.Interops\LibVlcMediaPlayer.cs">
       <Link>Core\Interops\LibVlcMediaPlayer.cs</Link>
     </Compile>
@@ -136,6 +139,9 @@
     </Compile>
     <Compile Include="..\Vlc.DotNet.Core.Interops\Signatures\LibVlcInterop.MediaList.cs">
       <Link>Core\Interops\Signatures\LibVlcInterop.MediaList.cs</Link>
+    </Compile>
+    <Compile Include="..\Vlc.DotNet.Core.Interops\Signatures\LibVlcInterop.MediaListPlayer.cs">
+      <Link>Core\Interops\Signatures\LibVlcInterop.MediaListPlayer.cs</Link>
     </Compile>
     <Compile Include="..\Vlc.DotNet.Core.Interops\Signatures\LibVlcInterop.MediaPlayer.cs">
       <Link>Core\Interops\Signatures\LibVlcInterop.MediaPlayer.cs</Link>
@@ -208,6 +214,12 @@
     </Compile>
     <Compile Include="..\Vlc.DotNet.Core\VlcLogVerbosities.cs">
       <Link>Core\VlcLogVerbosities.cs</Link>
+    </Compile>
+    <Compile Include="..\Vlc.DotNet.Core\VlcMediaList.cs">
+      <Link>Core\VlcMediaList.cs</Link>
+    </Compile>
+    <Compile Include="..\Vlc.DotNet.Core\VlcMediaListPlayer.cs">
+      <Link>Core\VlcMediaListPlayer.cs</Link>
     </Compile>
     <Compile Include="..\Vlc.DotNet.Core\VlcStartupOptions.cs">
       <Link>Core\VlcStartupOptions.cs</Link>

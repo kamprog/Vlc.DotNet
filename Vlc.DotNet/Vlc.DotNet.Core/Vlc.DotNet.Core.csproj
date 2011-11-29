@@ -86,6 +86,10 @@
     <Compile Include="VlcLogOptions.cs" />
     <Compile Include="VlcLogProperties.cs" />
     <Compile Include="VlcAudioOutputDevices.cs" />
+    <Compile Include="VlcMediaList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="VlcMediaListPlayer.cs" />
     <Compile Include="VlcStartupOptions.cs" />
     <Compile Include="VlcTrackDescription.cs" />
   </ItemGroup>
@@ -120,7 +124,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_BuildVersioningStyle="YearStamp.MonthStamp.DayStamp.None" BuildVersion_UpdateFileVersion="False" BuildVersion_UseGlobalSettings="False" BuildVersion_AssemblyInfoFilename="" />
+      <UserProperties BuildVersion_AssemblyInfoFilename="" BuildVersion_UseGlobalSettings="False" BuildVersion_UpdateFileVersion="False" BuildVersion_BuildVersioningStyle="YearStamp.MonthStamp.DayStamp.None" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

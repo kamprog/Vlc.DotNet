@@ -54,7 +54,8 @@ namespace Vlc.DotNet.Core.Interops
         public LibVlcMediaList MediaListInterops { get; set; }
         public LibVlcAudio AudioInterops { get; private set; }
         public LibVlcVideo VideoInterops { get; private set; }
-        public LibVlcErrorHandling ErrorHandlingInterops { get; private set; } 
+        public LibVlcErrorHandling ErrorHandlingInterops { get; private set; }
+        public LibVlcMediaListPlayer MediaListPlayerInterops { get; private set; } 
 
         public Version VlcVersion
         {
@@ -110,6 +111,9 @@ namespace Vlc.DotNet.Core.Interops
             if (LoggingInterops != null)
                 LoggingInterops.Dispose();
             LoggingInterops = null;
+            if (MediaListPlayerInterops != null)
+                MediaListPlayerInterops.Dispose();
+            MediaListPlayerInterops = null;
         }
 
         #endregion
@@ -160,6 +164,7 @@ namespace Vlc.DotNet.Core.Interops
             VideoInterops = new LibVlcVideo(myLibVlcDllHandle, VlcVersion);
             LoggingInterops = new LibVlcLogging(myLibVlcDllHandle, VlcVersion);
             ErrorHandlingInterops = new LibVlcErrorHandling(myLibVlcDllHandle, VlcVersion);
+            MediaListPlayerInterops = new LibVlcMediaListPlayer(myLibVlcDllHandle, VlcVersion);
         }
     }
 }

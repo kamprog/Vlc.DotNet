@@ -247,8 +247,8 @@ namespace Vlc.DotNet.Forms
                     VlcContext.HandleManager.MediaPlayerHandles != null &&
                     VlcContext.HandleManager.EventManagerHandles.ContainsKey(myHostVlcControl))
                 {
-                    aspect = VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.GetAspectRatio.Invoke(
-                        VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl]);
+                    aspect = IntPtrExtensions.ToStringAnsi(VlcContext.InteropManager.MediaPlayerInterops.VideoInterops.GetAspectRatio.Invoke(
+                        VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl]));
                 }
 
                 return string.IsNullOrEmpty(aspect) ? string.Empty : aspect;

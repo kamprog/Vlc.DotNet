@@ -111,7 +111,6 @@ namespace Vlc.DotNet.Core.Interops.Signatures
         /// Retrieve libvlc changeset.
         /// </summary>
         /// <returns>String containing the libvlc changeset.</returns>
-        
         [LibVlcFunction("libvlc_get_changeset")]
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         public delegate IntPtr GetChangeSet();

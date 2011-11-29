@@ -279,7 +279,7 @@ namespace Vlc.DotNet.Forms
                 VlcContext.HandleManager.MediaPlayerHandles != null &&
                 VlcContext.HandleManager.MediaPlayerHandles.ContainsKey(myHostVlcControl))
             {
-                return VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.GetOutputDeviceIdName.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl], outputName, deviceIndex);
+                return IntPtrExtensions.ToStringAnsi(VlcContext.InteropManager.MediaPlayerInterops.AudioInterops.GetOutputDeviceIdName.Invoke(VlcContext.HandleManager.MediaPlayerHandles[myHostVlcControl], outputName, deviceIndex));
             }
 
             return null;

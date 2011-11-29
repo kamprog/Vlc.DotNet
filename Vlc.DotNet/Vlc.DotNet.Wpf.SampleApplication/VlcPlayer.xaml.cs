@@ -14,6 +14,7 @@ using System.Windows.Input;
 using Microsoft.Win32;
 using Vlc.DotNet.Core;
 using Vlc.DotNet.Core.Interops.Signatures.LibVlc.Media;
+using Vlc.DotNet.Core.Interops.Signatures.LibVlc.MediaListPlayer;
 using Vlc.DotNet.Core.Medias;
 
 namespace Vlc.DotNet.Wpf.SampleApplication
@@ -71,7 +72,7 @@ namespace Vlc.DotNet.Wpf.SampleApplication
             VlcContext.StartupOptions.AddOption("--no-video-title-show");
 
             // Pauses the playback of a movie on the last frame
-            VlcContext.StartupOptions.AddOption("--play-and-pause");
+            //VlcContext.StartupOptions.AddOption("--play-and-pause");
             
             // Initialize the VlcContext
             VlcContext.Initialize();
@@ -304,7 +305,18 @@ namespace Vlc.DotNet.Wpf.SampleApplication
                         }
                     }
                 };
-            myVlcControl.Play(media);
+            myVlcControl.PlaybackMode = PlaybackModes.Loop;
+            myVlcControl.Play();
+        }
+
+        private void ButtonPreviousClick(object sender, RoutedEventArgs e)
+        {
+            myVlcControl.Previous();
+        }
+
+        private void ButtonNextClick(object sender, RoutedEventArgs e)
+        {
+            myVlcControl.Next();
         }
     }
 }
