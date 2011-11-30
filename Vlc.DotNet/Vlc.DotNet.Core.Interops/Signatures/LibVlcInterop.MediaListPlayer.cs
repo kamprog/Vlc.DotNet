@@ -38,7 +38,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
             /// Retain reference to a media list player.
             /// </summary>
             /// <param name="mediaListPlayerInstance">The media list player instance.</param>
-            [LibVlcFunction("libvlc_media_list_player_retain")]
+            [LibVlcFunction("libvlc_media_list_player_retain", "1.2")]
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
             public delegate void RetainInstance(IntPtr mediaListPlayerInstance);
 
