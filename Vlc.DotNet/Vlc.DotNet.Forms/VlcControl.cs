@@ -21,6 +21,7 @@ namespace Vlc.DotNet.Forms
                     VlcContext.HandleManager.LibVlcHandle);
             AudioProperties = new VlcAudioProperties(this);
             VideoProperties = new VlcVideoProperties(this);
+            Medias = new VlcMediaListPlayer(this);
             LogProperties = new VlcLogProperties();
             AudioOutputDevices = new VlcAudioOutputDevices();
 

@@ -77,6 +77,7 @@ namespace Vlc.DotNet.Silverlight
             AudioProperties = new VlcAudioProperties(this);
             VideoProperties = new VlcVideoProperties(this);
             LogProperties = new VlcLogProperties();
+            Medias = new VlcMediaListPlayer(this);
             AudioOutputDevices = new VlcAudioOutputDevices();
 
             EventsHelper.ExecuteRaiseEventDelegate =
