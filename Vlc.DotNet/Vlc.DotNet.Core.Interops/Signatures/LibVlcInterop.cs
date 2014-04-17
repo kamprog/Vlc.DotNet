@@ -137,6 +137,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
             /// <param name="userData">User provided data to carry with the event.</param>
             /// <returns>0 on success, ENOMEM on error.</returns>
             [LibVlcFunction("libvlc_event_attach")]
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
             public delegate int Attach(IntPtr eventManagerInstance, EventTypes eventType, EventCallbackDelegate callback, IntPtr userData);
 
             /// <summary>
@@ -147,6 +148,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
             /// <param name="callback">The function to call when EventType occurs.</param>
             /// <param name="userData">User provided data to carry with the event.</param>
             [LibVlcFunction("libvlc_event_detach")]
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
             public delegate void Detach(IntPtr eventManagerInstance, EventTypes eventType, EventCallbackDelegate callback, IntPtr userData);
 
             /// <summary>
@@ -155,6 +157,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
             /// <param name="eventType">The desired event.</param>
             /// <returns></returns>
             [LibVlcFunction("libvlc_event_type_name")]
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
             public delegate IntPtr GetTypeName(EventTypes eventType);
         }
 
@@ -218,6 +221,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
             /// <param name="logInstance">Log instance or NULL.</param>
             /// <returns>Log iterator object or NULL on error</returns>
             [LibVlcFunction("libvlc_log_get_iterator", null, "1.2")]
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
             public delegate IntPtr GetIterator(IntPtr logInstance);
 
             /// <summary>
@@ -234,6 +238,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
             /// </summary>
             /// <param name="logIteratorInstance">Log iterator instance.</param>
             [LibVlcFunction("libvlc_log_iterator_free", null, "1.2")]
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
             public delegate void FreeInstance(IntPtr logIteratorInstance);
 
             /// <summary>

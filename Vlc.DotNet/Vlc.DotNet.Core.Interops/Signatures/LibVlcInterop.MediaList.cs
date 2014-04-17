@@ -97,6 +97,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
             /// <param name="index">Position in array where to get.</param>
             /// <returns>Media instance at position.</returns>
             [LibVlcFunction("libvlc_media_list_item_at_index")]
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
             public delegate IntPtr GetItemAt(IntPtr mediaListInstance, int index);
 
             /// <summary>

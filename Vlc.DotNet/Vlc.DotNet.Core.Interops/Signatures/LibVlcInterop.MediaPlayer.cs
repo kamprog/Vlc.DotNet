@@ -236,6 +236,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
             /// <param name="playerInstance">The Media Player</param>
             /// <returns>Movie length (in ms), or -1 if there is no media.</returns>
             [LibVlcFunction("libvlc_media_player_get_length")]
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
             public delegate long GetLength(IntPtr playerInstance);
 
             /// <summary>
