@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
@@ -19,6 +20,9 @@ namespace Vlc.DotNet.Core.Interops
     {
         private IntPtr myLibVlcCoreDllHandle;
         private IntPtr myLibVlcDllHandle;
+#if !SILVERLIGHT
+        private string myLibVlcDllsDirectory;
+#endif
 
         /// <summary>
         /// Initializes a new instance of the LibVlcInteropsManager class.
@@ -55,11 +59,15 @@ namespace Vlc.DotNet.Core.Interops
         public LibVlcAudio AudioInterops { get; private set; }
         public LibVlcVideo VideoInterops { get; private set; }
         public LibVlcErrorHandling ErrorHandlingInterops { get; private set; }
-        public LibVlcMediaListPlayer MediaListPlayerInterops { get; private set; } 
+        public LibVlcMediaListPlayer MediaListPlayerInterops { get; private set; }
 
+        /// <summary>
+        /// Retreive the Vlc version.
+        /// </summary>
         public Version VlcVersion
         {
-            get; private set;
+            get;
+            private set;
         }
 
         #region IDisposable Members
@@ -114,6 +122,26 @@ namespace Vlc.DotNet.Core.Interops
             if (MediaListPlayerInterops != null)
                 MediaListPlayerInterops.Dispose();
             MediaListPlayerInterops = null;
+
+#if !SILVERLIGHT
+            foreach (ProcessModule module in Process.GetCurrentProcess().Modules)
+            {
+                if (!(module.FileName.StartsWith(myLibVlcDllsDirectory, StringComparison.CurrentCultureIgnoreCase)) && module.FileName.EndsWith("_plugin.dll"))
+                {
+                    continue;
+                }
+                Win32Interop.FreeLibrary(module.BaseAddress);
+            }
+
+            foreach (ProcessModule module in Process.GetCurrentProcess().Modules)
+            {
+                if (!module.FileName.StartsWith(myLibVlcDllsDirectory, StringComparison.CurrentCultureIgnoreCase))
+                {
+                    continue;
+                }
+                Win32Interop.FreeLibrary(module.BaseAddress);
+            }
+#endif
         }
 
         #endregion
@@ -130,13 +158,16 @@ namespace Vlc.DotNet.Core.Interops
             if (!File.Exists(libVlcCoreFilePath))
                 throw new FileNotFoundException("Libvlccore library not found in directory.");
 
+#if !SILVERLIGHT
+            myLibVlcDllsDirectory = libVlcDllsDirectory;
+#endif
             myLibVlcCoreDllHandle = Win32Interop.LoadLibrary(libVlcCoreFilePath);
             if (myLibVlcCoreDllHandle == IntPtr.Zero)
                 throw new Win32Exception(Marshal.GetLastWin32Error());
             myLibVlcDllHandle = Win32Interop.LoadLibrary(libVlcFilePath);
             if (myLibVlcDllHandle == IntPtr.Zero)
                 throw new Win32Exception(Marshal.GetLastWin32Error());
-            
+
             GetVersion = new LibVlcFunction<GetVersion>(myLibVlcDllHandle);
 
             var reg = new Regex("^[0-9.]*");
