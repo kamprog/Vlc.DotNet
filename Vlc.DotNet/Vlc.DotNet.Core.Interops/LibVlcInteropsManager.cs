@@ -124,15 +124,33 @@ namespace Vlc.DotNet.Core.Interops
             MediaListPlayerInterops = null;
 
 #if !SILVERLIGHT
-            foreach (ProcessModule module in Process.GetCurrentProcess().Modules)
+            bool contains;
+            do
             {
-                if (!(module.FileName.StartsWith(myLibVlcDllsDirectory, StringComparison.CurrentCultureIgnoreCase)) && module.FileName.EndsWith("_plugin.dll"))
+                foreach (ProcessModule module in Process.GetCurrentProcess().Modules)
                 {
-                    continue;
+                    if (
+                        !(module.FileName.StartsWith(myLibVlcDllsDirectory, StringComparison.CurrentCultureIgnoreCase)
+                        && module.FileName.EndsWith("_plugin.dll")))
+                    {
+                        continue;
+                    }
+                    Win32Interop.FreeLibrary(module.BaseAddress);
                 }
-                Win32Interop.FreeLibrary(module.BaseAddress);
-            }
+                contains = false;
+                foreach (ProcessModule module in Process.GetCurrentProcess().Modules)
+                {
+                    if (!module.FileName.StartsWith(myLibVlcDllsDirectory, StringComparison.CurrentCultureIgnoreCase) 
+                        || !module.FileName.EndsWith("_plugin.dll"))
+                    {
+                        continue;
+                    }
 
+                    contains = true;
+                    break;
+                }
+            }
+            while (contains);
             foreach (ProcessModule module in Process.GetCurrentProcess().Modules)
             {
                 if (!module.FileName.StartsWith(myLibVlcDllsDirectory, StringComparison.CurrentCultureIgnoreCase))
