@@ -1,0 +1,12 @@
+D:\Working\vlcdotnet\Vlc.DotNet\Vlc.DotNet.Wpf\bin\Debug\Vlc.DotNet.Wpf.XML
+D:\Working\vlcdotnet\Vlc.DotNet\Vlc.DotNet.Wpf\bin\Debug\Vlc.DotNet.Wpf.dll
+D:\Working\vlcdotnet\Vlc.DotNet\Vlc.DotNet.Wpf\bin\Debug\Vlc.DotNet.Wpf.pdb
+D:\Working\vlcdotnet\Vlc.DotNet\Vlc.DotNet.Wpf\bin\Debug\Vlc.DotNet.Core.dll
+D:\Working\vlcdotnet\Vlc.DotNet\Vlc.DotNet.Wpf\bin\Debug\Vlc.DotNet.Core.Interops.dll
+D:\Working\vlcdotnet\Vlc.DotNet\Vlc.DotNet.Wpf\bin\Debug\Vlc.DotNet.Core.Interops.pdb
+D:\Working\vlcdotnet\Vlc.DotNet\Vlc.DotNet.Wpf\bin\Debug\Vlc.DotNet.Core.Interops.xml
+D:\Working\vlcdotnet\Vlc.DotNet\Vlc.DotNet.Wpf\bin\Debug\Vlc.DotNet.Core.pdb
+D:\Working\vlcdotnet\Vlc.DotNet\Vlc.DotNet.Wpf\bin\Debug\Vlc.DotNet.Core.xml
+D:\Working\vlcdotnet\Vlc.DotNet\Vlc.DotNet.Wpf\obj\x86\Debug\Vlc.DotNet.Wpf.csprojResolveAssemblyReference.cache
+D:\Working\vlcdotnet\Vlc.DotNet\Vlc.DotNet.Wpf\obj\x86\Debug\Vlc.DotNet.Wpf.dll
+D:\Working\vlcdotnet\Vlc.DotNet\Vlc.DotNet.Wpf\obj\x86\Debug\Vlc.DotNet.Wpf.pdb

@@ -1,0 +1,5 @@
+D:\Working\vlcdotnet\Vlc.DotNet\Vlc.DotNet.Silverlight\Bin\Debug\Vlc.DotNet.Silverlight.dll
+D:\Working\vlcdotnet\Vlc.DotNet\Vlc.DotNet.Silverlight\Bin\Debug\Vlc.DotNet.Silverlight.pdb
+D:\Working\vlcdotnet\Vlc.DotNet\Vlc.DotNet.Silverlight\obj\Debug\Vlc.DotNet.Silverlight.csprojResolveAssemblyReference.cache
+D:\Working\vlcdotnet\Vlc.DotNet\Vlc.DotNet.Silverlight\obj\Debug\Vlc.DotNet.Silverlight.dll
+D:\Working\vlcdotnet\Vlc.DotNet\Vlc.DotNet.Silverlight\obj\Debug\Vlc.DotNet.Silverlight.pdb

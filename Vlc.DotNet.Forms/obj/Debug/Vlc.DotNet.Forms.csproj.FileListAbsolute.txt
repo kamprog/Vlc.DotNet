@@ -1,0 +1,12 @@
+D:\Working\vlcdotnet\Vlc.DotNet\Vlc.DotNet.Forms\bin\Debug\Vlc.DotNet.Forms.XML
+D:\Working\vlcdotnet\Vlc.DotNet\Vlc.DotNet.Forms\bin\Debug\Vlc.DotNet.Forms.dll
+D:\Working\vlcdotnet\Vlc.DotNet\Vlc.DotNet.Forms\bin\Debug\Vlc.DotNet.Forms.pdb
+D:\Working\vlcdotnet\Vlc.DotNet\Vlc.DotNet.Forms\bin\Debug\Vlc.DotNet.Core.dll
+D:\Working\vlcdotnet\Vlc.DotNet\Vlc.DotNet.Forms\bin\Debug\Vlc.DotNet.Core.Interops.dll
+D:\Working\vlcdotnet\Vlc.DotNet\Vlc.DotNet.Forms\bin\Debug\Vlc.DotNet.Core.Interops.pdb
+D:\Working\vlcdotnet\Vlc.DotNet\Vlc.DotNet.Forms\bin\Debug\Vlc.DotNet.Core.Interops.xml
+D:\Working\vlcdotnet\Vlc.DotNet\Vlc.DotNet.Forms\bin\Debug\Vlc.DotNet.Core.pdb
+D:\Working\vlcdotnet\Vlc.DotNet\Vlc.DotNet.Forms\bin\Debug\Vlc.DotNet.Core.xml
+D:\Working\vlcdotnet\Vlc.DotNet\Vlc.DotNet.Forms\obj\Debug\Vlc.DotNet.Forms.csprojResolveAssemblyReference.cache
+D:\Working\vlcdotnet\Vlc.DotNet\Vlc.DotNet.Forms\obj\Debug\Vlc.DotNet.Forms.dll
+D:\Working\vlcdotnet\Vlc.DotNet\Vlc.DotNet.Forms\obj\Debug\Vlc.DotNet.Forms.pdb
