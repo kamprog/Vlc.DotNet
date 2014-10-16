@@ -14,10 +14,10 @@
 	/* Preloads                                                                      */
 	/*********************************************************************************/
 
-	#preload-01 { background: url('../images/movie.jpg') no-repeat -9999px -9999px; }
-	#preload-02 { background: url('../images/dalek.jpg') no-repeat -9999px -9999px; }
-	#preload-03 { background: url('../images/net.jpg') no-repeat -9999px -9999px; }
-	#preload-04 { background: url('../images/snip.jpg') no-repeat -9999px -9999px; }
+	.preload-01 { background: url('../images/movie.jpg') no-repeat -9999px -9999px; }
+	.preload-02 { background: url('../images/dalek.jpg') no-repeat -9999px -9999px; }
+	.preload-03 { background: url('../images/net.jpg') no-repeat -9999px -9999px; }
+	.preload-04 { background: url('../images/snip.jpg') no-repeat -9999px -9999px; }
 	
 	/*********************************************************************************/
 	/* Basic                                                                         */
