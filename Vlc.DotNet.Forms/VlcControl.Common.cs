@@ -22,6 +22,7 @@ namespace Vlc.DotNet.Forms
     /// </summary>
     public sealed partial class VlcControl : IVlcControl
     {
+
         private EventCallbackDelegate myEventCallback;
         private GCHandle myEventCallbackHandle;
 
@@ -722,6 +723,6 @@ namespace Vlc.DotNet.Forms
                 if(Medias != null)
                     Medias.SetPlaybackMode(value);
             }
-        }        
+        }
     }
 }
