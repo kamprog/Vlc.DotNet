@@ -15,7 +15,7 @@ You can see a full overview of VLC Media Player features over on the [VLC site] 
 Version
 ----
 
-2.0
+N/A
 
 Usage
 --------------
@@ -107,7 +107,15 @@ VlcContext.CloseAll();
 Participation
 --------------
 
-To participate in the project, just fork it on github, add your improvement and submit a pull request.
+If you're good at documenting, you can help us write better documentation and make the awesome project even more awesome!
+
+If you like writing, you can write articles, blog posts or any other form of content about the project. Be sure to send us an e-mail so we can promote your post!
+
+If you like testing stuff you can test Vlc.DotNet and report any bugs and misbehaviours found through the GitHub Issues interface.
+
+If you have a means to promote or feature Vlc.DotNet on your website/blog/anything please feel free to send us an e-mail for more info and material.
+
+If you have an improvement or a new feature that you can implement fork the project, implement/improve it and submit a pull request!
 
 License
 ----
