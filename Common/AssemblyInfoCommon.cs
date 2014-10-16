@@ -10,8 +10,8 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("Vlc DotNet for WinForm & WPF")]
-[assembly: AssemblyCompany("ZeBobo5")]
-[assembly: AssemblyCopyright("Copyright © ZeBobo5 2011")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyCopyright("Copyright © RexGrammer 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
