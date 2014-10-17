@@ -117,6 +117,11 @@ Participation
 
 - If you have an **improvement** or a **new feature** that you can implement fork the project, implement/improve it and submit a **pull request**!
 
+Typos And Grammatical Errors
+--------------
+
+If you found a typo or a grammatical error please send me an e-mail, so I can fix it. Thank you for your support!
+
 License
 ----
 
