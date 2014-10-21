@@ -1,5 +1,0 @@
-d:\Working\Vlc.DotNet\Vlc.DotNet.Silverlight\Bin\Debug\Vlc.DotNet.Silverlight.dll
-d:\Working\Vlc.DotNet\Vlc.DotNet.Silverlight\Bin\Debug\Vlc.DotNet.Silverlight.pdb
-d:\Working\Vlc.DotNet\Vlc.DotNet.Silverlight\obj\Debug\Vlc.DotNet.Silverlight.dll
-d:\Working\Vlc.DotNet\Vlc.DotNet.Silverlight\obj\Debug\Vlc.DotNet.Silverlight.pdb
-d:\Working\Vlc.DotNet\Vlc.DotNet.Silverlight\obj\Debug\Vlc.DotNet.Silverlight.csprojResolveAssemblyReference.cache

@@ -1,4 +1,0 @@
-d:\Working\Vlc.DotNet\Vlc.DotNet.Core.Interops\bin\Release\Vlc.DotNet.Core.Interops.dll
-d:\Working\Vlc.DotNet\Vlc.DotNet.Core.Interops\bin\Release\Vlc.DotNet.Core.Interops.pdb
-d:\Working\Vlc.DotNet\Vlc.DotNet.Core.Interops\obj\Release\Vlc.DotNet.Core.Interops.dll
-d:\Working\Vlc.DotNet\Vlc.DotNet.Core.Interops\obj\Release\Vlc.DotNet.Core.Interops.pdb
