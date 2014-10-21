@@ -1,0 +1,564 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpKI>
+  <HelpKINode Title="Add method" Url="html/2ae872ee-5a93-1c94-7fdb-d251ffe41471.htm" />
+  <HelpKINode Title="AddOption method">
+    <HelpKINode Title="MediaBase.AddOption Method " Url="html/15fc18bf-02d9-921c-6609-f88285409d4f.htm" />
+    <HelpKINode Title="VlcStartupOptions.AddOption Method " Url="html/6d285a33-dfec-79b8-8886-5217b7f97441.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Album property" Url="html/ae2b9d72-b4d8-9522-4af2-051faebd2337.htm" />
+  <HelpKINode Title="Artist property" Url="html/e6780144-7a42-299d-2625-3228e4f223fa.htm" />
+  <HelpKINode Title="ArtworkURL property" Url="html/51ec04e0-20d3-f5a1-dda7-ba52574fe6d2.htm" />
+  <HelpKINode Title="AspectRatio property" Url="html/26b04044-c9f2-e298-8e35-a67819bd3ced.htm" />
+  <HelpKINode Title="AudioOutputDevices property" Url="html/df6997ff-89c0-b1e7-5149-d4c05f57ae41.htm" />
+  <HelpKINode Title="AudioProperties property" Url="html/8697c165-876a-574b-61b4-2d20ba61f39c.htm" />
+  <HelpKINode Title="Backward event" Url="html/ffa6ef25-ab42-6f27-c99c-0812477cf846.htm" />
+  <HelpKINode Title="Blend enumeration member" Url="html/c217a52e-30c7-4932-87bb-eed94b819f97.htm" />
+  <HelpKINode Title="Bob enumeration member" Url="html/c217a52e-30c7-4932-87bb-eed94b819f97.htm" />
+  <HelpKINode Title="Buffering event" Url="html/344b3fd7-b40c-5bed-8888-4629a391ca0d.htm" />
+  <HelpKINode Title="ChangeSet property" Url="html/3dc2878e-2b8b-a926-1ff4-b56d5e17eecd.htm" />
+  <HelpKINode Title="Channel property" Url="html/4f968ff8-5471-d214-6f73-6de81d83a62b.htm" />
+  <HelpKINode Title="Clear method">
+    <HelpKINode Title="VlcLogProperties.VlcLogMessages.Clear Method " Url="html/75f45725-12c4-d858-1707-9623db2c7c70.htm" />
+    <HelpKINode Title="VlcMediaListPlayer.Clear Method " Url="html/bf869aa4-27e9-ae0d-c932-3712e6929ade.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ClearError method" Url="html/d5c8bd8e-f90e-8ad1-d339-61f41e38fec5.htm" />
+  <HelpKINode Title="CloseAll method" Url="html/449a7d7a-eab1-70c0-ccd1-4153f15be694.htm" />
+  <HelpKINode Title="CommonStrings class">
+    <HelpKINode Title="CommonStrings Class" Url="html/eb8cccae-f120-ed4b-3d81-5cd6747d6039.htm" />
+    <HelpKINode Title="about CommonStrings class" Url="html/eb8cccae-f120-ed4b-3d81-5cd6747d6039.htm" />
+    <HelpKINode Title="fields" Url="html/f3f2a29e-7708-4ab0-17b0-f1304818ea0c.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CommonStrings.LIBVLC_DLLS_PATH_DEFAULT_VALUE_AMD64 field" Url="html/86ed9ec7-5f2b-bc55-6f91-2341644448f3.htm" />
+  <HelpKINode Title="CommonStrings.LIBVLC_DLLS_PATH_DEFAULT_VALUE_X86 field" Url="html/c4cf2618-0664-4fa6-7afb-667d333cdbf4.htm" />
+  <HelpKINode Title="CommonStrings.PLUGINS_PATH_DEFAULT_VALUE_AMD64 field" Url="html/a5aef0f6-cf17-da17-e555-c9d22ec0fff3.htm" />
+  <HelpKINode Title="CommonStrings.PLUGINS_PATH_DEFAULT_VALUE_X86 field" Url="html/cd7d705d-2c79-866a-bb19-9fd7639a5cee.htm" />
+  <HelpKINode Title="Compiler property" Url="html/153718b8-916a-b0db-9da6-703f2f9c6684.htm" />
+  <HelpKINode Title="Contains method" Url="html/38acfae1-4c8b-92b6-f883-6cf1a8053ec4.htm" />
+  <HelpKINode Title="Copyright property" Url="html/d6f68783-dcdc-70fb-15f1-caffd22c8c53.htm" />
+  <HelpKINode Title="CopyTo method" Url="html/bc5ed270-b97d-1bcb-a8fe-6f63e649edd6.htm" />
+  <HelpKINode Title="Count property">
+    <HelpKINode Title="VlcLogProperties.VlcLogMessages.Count Property " Url="html/73ed413e-b1f2-1d5d-7922-63eb47c72d44.htm" />
+    <HelpKINode Title="VlcMediaListPlayer.Count Property " Url="html/998988f2-1e4c-9ed7-722c-9d29bce293f0.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CurrentSpuIndex property" Url="html/a8778731-ce74-1e7e-c406-5ab390fc4bb7.htm" />
+  <HelpKINode Title="Data property" Url="html/99e43ed0-210e-f8cf-0e5b-e3f565ecdd5b.htm" />
+  <HelpKINode Title="Date property" Url="html/6d547774-1cee-5ac8-0798-2f7b4bd21ccd.htm" />
+  <HelpKINode Title="Debug enumeration member" Url="html/d1bb7f7e-0611-daa4-5ab7-a7a4f9df847d.htm" />
+  <HelpKINode Title="Delay property" Url="html/a564828b-9904-74be-c4af-78d66824b02a.htm" />
+  <HelpKINode Title="Description property">
+    <HelpKINode Title="VlcAudioOutputDevice.Description Property " Url="html/f99bfea3-87ba-fdf6-65a2-d90a4c2d28c8.htm" />
+    <HelpKINode Title="VlcMediaMetadatas.Description Property " Url="html/4241c644-0f9a-fe65-bf80-427b26bd9b8f.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Discard enumeration member" Url="html/c217a52e-30c7-4932-87bb-eed94b819f97.htm" />
+  <HelpKINode Title="Dispose method">
+    <HelpKINode Title="MediaBase.Dispose Method " Url="html/ab179ef6-a9ba-5099-1cde-7d662c7c3d3f.htm" />
+    <HelpKINode Title="VlcAudioOutputDevices.Dispose Method " Url="html/4a432905-1342-02bd-d998-ad6cad497fc9.htm" />
+    <HelpKINode Title="VlcAudioProperties.Dispose Method " Url="html/45236592-fd1a-abc4-34e5-4c4c3a00f2c9.htm" />
+    <HelpKINode Title="VlcLogProperties.Dispose Method " Url="html/5ff6fd28-1e65-e5e8-743b-a584a26e84da.htm" />
+    <HelpKINode Title="VlcLogProperties.VlcLogMessages.Dispose Method " Url="html/0d1fadc6-5310-fe08-0793-28b8fe583ffa.htm" />
+    <HelpKINode Title="VlcMediaListPlayer.Dispose Method " Url="html/9c348c88-bd38-841d-3740-c423c2b812e2.htm" />
+    <HelpKINode Title="VlcMediaMetadatas.Dispose Method " Url="html/7fcce46d-7b6a-a888-2bcd-3ab839c702d4.htm" />
+    <HelpKINode Title="VlcMediaTrackInfos.Dispose Method " Url="html/2cad80aa-c6d8-ee27-3904-4cf4f443d181.htm" />
+    <HelpKINode Title="VlcVideoProperties.Dispose Method " Url="html/f9013aab-e1ba-50bc-265c-942e06b00c85.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Duration property">
+    <HelpKINode Title="MediaBase.Duration Property " Url="html/4bac346c-418d-529e-14e0-fea441a179eb.htm" />
+    <HelpKINode Title="VlcControl.Duration Property " Url="html/48590a6e-1748-e45e-b797-47f93b758b62.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DurationChanged event" Url="html/9c0f4134-703d-e043-67fe-e184bbd38009.htm" />
+  <HelpKINode Title="EmptyMedia class">
+    <HelpKINode Title="EmptyMedia Class" Url="html/24b16cdb-3b9b-39a2-6453-c1f1a303c452.htm" />
+    <HelpKINode Title="about EmptyMedia class" Url="html/24b16cdb-3b9b-39a2-6453-c1f1a303c452.htm" />
+    <HelpKINode Title="constructor" Url="html/89a557f5-1454-d677-a4cd-32286ddac500.htm" />
+    <HelpKINode Title="events" Url="html/b20ef090-b938-6cbf-3bf9-402135b209a3.htm" />
+    <HelpKINode Title="methods" Url="html/81be76bb-2d1e-0be9-4642-7f76b8b6cd17.htm" />
+    <HelpKINode Title="properties" Url="html/c12642d2-004d-ae33-8d76-3f79eb92f8a2.htm" />
+  </HelpKINode>
+  <HelpKINode Title="EmptyMedia.EmptyMedia constructor" Url="html/89a557f5-1454-d677-a4cd-32286ddac500.htm" />
+  <HelpKINode Title="EmptyMedia.Name property" Url="html/9274db6e-212a-44c4-5118-0dbe7a042850.htm" />
+  <HelpKINode Title="EncodedBy property" Url="html/9d00fac5-1de3-1cf1-b2e8-40878ad2af43.htm" />
+  <HelpKINode Title="EncounteredError event" Url="html/fb9a8b22-06aa-eae5-dbf4-1576d58fb991.htm" />
+  <HelpKINode Title="EndReached event" Url="html/532268b8-4846-5d20-00ec-bd55cbfeeb05.htm" />
+  <HelpKINode Title="ErrorHandling property" Url="html/47bfcc36-e8df-70bc-303b-11e5de5bcda5.htm" />
+  <HelpKINode Title="Forward event" Url="html/fde913b8-2f8d-8787-2df0-cdb4bfa2de33.htm" />
+  <HelpKINode Title="FPS property" Url="html/d3a393ed-1ace-ae6e-7502-96abb9eefc0e.htm" />
+  <HelpKINode Title="Freed event" Url="html/28672c1b-af95-05dc-bfdf-a771693fca98.htm" />
+  <HelpKINode Title="Genre property" Url="html/95340279-4199-fd70-9fc8-65565514101d.htm" />
+  <HelpKINode Title="GetEnumerator method">
+    <HelpKINode Title="VlcAudioOutputDevices.GetEnumerator Method " Url="html/1eef34b2-1d03-5c42-6c03-ecb487b7c22e.htm" />
+    <HelpKINode Title="VlcLogProperties.VlcLogMessages.GetEnumerator Method " Url="html/c7e160ba-348a-702d-fe07-1bfcbe6b752c.htm" />
+    <HelpKINode Title="VlcMediaListPlayer.GetEnumerator Method " Url="html/e96767b5-c154-b1a0-ead4-6d6be6a033f5.htm" />
+    <HelpKINode Title="VlcMediaTrackInfos.GetEnumerator Method " Url="html/54729805-fed2-874e-13d5-6b2b1985f4a0.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GetErrorMessage method" Url="html/da687ae4-6c7c-e9ac-b90d-88c1b349311f.htm" />
+  <HelpKINode Title="GetNewMediaInstance method" Url="html/ab844eb5-ba80-e61f-53d8-03018b631d6a.htm" />
+  <HelpKINode Title="GetOutputDeviceIdName method" Url="html/327d8db4-b0b9-24c2-6c06-e8b8e3917761.htm" />
+  <HelpKINode Title="Header property" Url="html/95b84531-f05e-afeb-a54d-b71766846972.htm" />
+  <HelpKINode Title="Id property" Url="html/06eb3009-8faa-a915-3e53-8523f140626f.htm" />
+  <HelpKINode Title="IgnoreConfig property" Url="html/4fc5b943-499e-a84d-71bf-4307da51548a.htm" />
+  <HelpKINode Title="IndexOf method" Url="html/0e6e5077-89c4-d95e-3cdc-108c5e3d07b9.htm" />
+  <HelpKINode Title="Initialize method">
+    <HelpKINode Title="MediaBase.Initialize Method " Url="html/99c344c4-496d-ea3b-e023-cd60e1cf9363.htm" />
+    <HelpKINode Title="VlcContext.Initialize Method " Url="html/f24e690d-c6f1-8586-ee1c-735a1dacb329.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Insert method" Url="html/f3fdeca4-4f0e-77e3-eb47-65e1d5202b44.htm" />
+  <HelpKINode Title="InteropManager property" Url="html/f496cf19-dacc-b249-126f-21fb00035106.htm" />
+  <HelpKINode Title="IsFullscreen property" Url="html/795ca37d-05c7-72eb-b346-7651a95698e8.htm" />
+  <HelpKINode Title="IsInitialized property" Url="html/5e24c095-4bc7-a5db-5510-99596a0e5447.htm" />
+  <HelpKINode Title="IsMute property" Url="html/4de8aa61-2c9f-9671-8e29-d243d8df7740.htm" />
+  <HelpKINode Title="IsPausable property" Url="html/e54b4539-95f1-5133-3e97-006b82422ed3.htm" />
+  <HelpKINode Title="IsPaused property" Url="html/326b6e54-906b-051c-652e-cab68bc72603.htm" />
+  <HelpKINode Title="IsPlaying property" Url="html/111f1e81-cdc3-2aad-d2c8-87429d4cdfe4.htm" />
+  <HelpKINode Title="IsReadOnly property" Url="html/1fdac8f4-109f-6a78-2b3a-4d038cf1852e.htm" />
+  <HelpKINode Title="IsSeekable property" Url="html/fe9de87c-c3ea-5ff5-1353-6b5a240f480a.htm" />
+  <HelpKINode Title="Item property" Url="html/36661840-b18d-2d10-427b-1710fd5ffecf.htm" />
+  <HelpKINode Title="IVlcControl interface">
+    <HelpKINode Title="IVlcControl Interface" Url="html/a299409d-3427-1bd9-b8fb-60413c4bc723.htm" />
+    <HelpKINode Title="about IVlcControl interface" Url="html/a299409d-3427-1bd9-b8fb-60413c4bc723.htm" />
+    <HelpKINode Title="methods" Url="html/8a5a08c9-e041-a940-28e0-35f5c72e98ca.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IVlcControl.Stop method" Url="html/d3d260a9-cb54-ec01-0235-8f66f2e8fef5.htm" />
+  <HelpKINode Title="Ivtc enumeration member" Url="html/c217a52e-30c7-4932-87bb-eed94b819f97.htm" />
+  <HelpKINode Title="Language property" Url="html/74f8e5c9-c703-3bed-030b-72c76dff503d.htm" />
+  <HelpKINode Title="LengthChanged event" Url="html/955edf86-d984-8622-7483-19f4a71e7053.htm" />
+  <HelpKINode Title="LibVlcDllsPath property" Url="html/de396423-3339-6d9b-6b34-f2b40634fd5e.htm" />
+  <HelpKINode Title="LibVlcPluginsPath property" Url="html/3a62a34a-09b4-c8d8-28bc-6ff4545911b9.htm" />
+  <HelpKINode Title="LIBVLC_DLLS_PATH_DEFAULT_VALUE_AMD64 field" Url="html/86ed9ec7-5f2b-bc55-6f91-2341644448f3.htm" />
+  <HelpKINode Title="LIBVLC_DLLS_PATH_DEFAULT_VALUE_X86 field" Url="html/c4cf2618-0664-4fa6-7afb-667d333cdbf4.htm" />
+  <HelpKINode Title="Linear enumeration member" Url="html/c217a52e-30c7-4932-87bb-eed94b819f97.htm" />
+  <HelpKINode Title="Location property" Url="html/366ccbd5-7ff6-51db-92c0-90fb9b69e0b9.htm" />
+  <HelpKINode Title="LocationMedia class">
+    <HelpKINode Title="LocationMedia Class" Url="html/66ce2443-5053-6aef-e01c-7c302bfe9bfc.htm" />
+    <HelpKINode Title="about LocationMedia class" Url="html/66ce2443-5053-6aef-e01c-7c302bfe9bfc.htm" />
+    <HelpKINode Title="constructor" Url="html/35aab5a1-ded2-c61d-0169-182cccc2931f.htm" />
+    <HelpKINode Title="events" Url="html/d48e672c-7824-2e5c-9d08-c67d9e30a5f3.htm" />
+    <HelpKINode Title="methods" Url="html/5a90caab-7bfa-d1d7-0f1c-c95aa3dc623b.htm" />
+    <HelpKINode Title="properties" Url="html/9c5cad8d-574e-79de-a895-c8ec73764377.htm" />
+  </HelpKINode>
+  <HelpKINode Title="LocationMedia.Location property" Url="html/366ccbd5-7ff6-51db-92c0-90fb9b69e0b9.htm" />
+  <HelpKINode Title="LocationMedia.LocationMedia constructor" Url="html/35aab5a1-ded2-c61d-0169-182cccc2931f.htm" />
+  <HelpKINode Title="LocationMedia.SubItems property" Url="html/792267cc-d203-57da-baba-6b0d7ea3d3fa.htm" />
+  <HelpKINode Title="LogInFile property" Url="html/452b3a39-dea9-8dcd-0d1c-26f4f9eb86a5.htm" />
+  <HelpKINode Title="LogInFilePath property" Url="html/c10ce1f4-0cfa-d2a3-1111-c149ba4d6666.htm" />
+  <HelpKINode Title="LogMessages property" Url="html/2cc9e09e-2191-ed4c-0cae-5ec0b69cc0d6.htm" />
+  <HelpKINode Title="LogOptions property" Url="html/7160d86b-0b80-da68-413e-ebaa062448e4.htm" />
+  <HelpKINode Title="LogProperties property" Url="html/6a49aa96-4659-c412-c6b6-ae8735bc8651.htm" />
+  <HelpKINode Title="Mean enumeration member" Url="html/c217a52e-30c7-4932-87bb-eed94b819f97.htm" />
+  <HelpKINode Title="Media property" Url="html/a57cc954-2e72-6d48-8766-13ffa8c5a98a.htm" />
+  <HelpKINode Title="MediaBase class">
+    <HelpKINode Title="MediaBase Class" Url="html/0b284272-29ee-9301-d2f1-4936666a8463.htm" />
+    <HelpKINode Title="about MediaBase class" Url="html/0b284272-29ee-9301-d2f1-4936666a8463.htm" />
+    <HelpKINode Title="constructor" Url="html/0893faec-74b6-a5df-df72-01b664e8b7d9.htm" />
+    <HelpKINode Title="events" Url="html/7484a32e-c75c-611f-5ccd-de7606be591a.htm" />
+    <HelpKINode Title="methods" Url="html/f173fcf7-c874-2666-201f-7f4a3b652bec.htm" />
+    <HelpKINode Title="properties" Url="html/b1dbf305-1102-0e8f-fc51-c828ef5c543d.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MediaBase.AddOption method" Url="html/15fc18bf-02d9-921c-6609-f88285409d4f.htm" />
+  <HelpKINode Title="MediaBase.Dispose method" Url="html/ab179ef6-a9ba-5099-1cde-7d662c7c3d3f.htm" />
+  <HelpKINode Title="MediaBase.Duration property" Url="html/4bac346c-418d-529e-14e0-fea441a179eb.htm" />
+  <HelpKINode Title="MediaBase.DurationChanged event" Url="html/9c0f4134-703d-e043-67fe-e184bbd38009.htm" />
+  <HelpKINode Title="MediaBase.Freed event" Url="html/28672c1b-af95-05dc-bfdf-a771693fca98.htm" />
+  <HelpKINode Title="MediaBase.GetNewMediaInstance method" Url="html/ab844eb5-ba80-e61f-53d8-03018b631d6a.htm" />
+  <HelpKINode Title="MediaBase.Initialize method" Url="html/99c344c4-496d-ea3b-e023-cd60e1cf9363.htm" />
+  <HelpKINode Title="MediaBase.MediaBase constructor" Url="html/0893faec-74b6-a5df-df72-01b664e8b7d9.htm" />
+  <HelpKINode Title="MediaBase.MediaSubItemAdded event" Url="html/0e03eeaf-d948-d278-c43e-2a9c255c2e14.htm" />
+  <HelpKINode Title="MediaBase.MetaChanged event" Url="html/f48eb45c-e2cb-f990-5be1-b12756a6e533.htm" />
+  <HelpKINode Title="MediaBase.Metadatas property" Url="html/46818927-f6d1-59ec-c0fa-457f4cb7ecc9.htm" />
+  <HelpKINode Title="MediaBase.MRL property" Url="html/4c433783-2e68-cf4b-06fc-31aa1b79fa08.htm" />
+  <HelpKINode Title="MediaBase.ParsedChanged event" Url="html/48e8247a-4084-c11a-7b9c-9ae8e3f518fa.htm" />
+  <HelpKINode Title="MediaBase.State property" Url="html/e9a2aacc-f65f-9348-4822-296b591d345d.htm" />
+  <HelpKINode Title="MediaBase.StateChanged event" Url="html/a6737623-779f-b6e1-c3e4-ebb4dee7d64f.htm" />
+  <HelpKINode Title="MediaBase.Statistics property" Url="html/4ffe156d-082d-8aff-30eb-153c15bad038.htm" />
+  <HelpKINode Title="MediaBase.TrackInfos property" Url="html/fb1a4137-723a-949e-0b85-2c57150ae7bb.htm" />
+  <HelpKINode Title="Medias property" Url="html/5dbad234-3091-eb86-f7a0-b3be00d77b8b.htm" />
+  <HelpKINode Title="MediaSubItemAdded event" Url="html/0e03eeaf-d948-d278-c43e-2a9c255c2e14.htm" />
+  <HelpKINode Title="Message property" Url="html/b745c323-11eb-5bb1-34f6-7dc3ef2bb314.htm" />
+  <HelpKINode Title="MetaChanged event" Url="html/f48eb45c-e2cb-f990-5be1-b12756a6e533.htm" />
+  <HelpKINode Title="Metadatas property" Url="html/46818927-f6d1-59ec-c0fa-457f4cb7ecc9.htm" />
+  <HelpKINode Title="MRL property" Url="html/4c433783-2e68-cf4b-06fc-31aa1b79fa08.htm" />
+  <HelpKINode Title="Name property">
+    <HelpKINode Title="EmptyMedia.Name Property " Url="html/9274db6e-212a-44c4-5118-0dbe7a042850.htm" />
+    <HelpKINode Title="VlcAudioOutputDevice.Name Property " Url="html/b712ea90-eaa6-6506-0fd5-8e1d041f2516.htm" />
+    <HelpKINode Title="VlcLogMessage.Name Property " Url="html/c2bb48d8-7968-a5c5-daf1-24ae6bcce15d.htm" />
+    <HelpKINode Title="VlcTrackDescription.Name Property " Url="html/3860b6cc-f0de-961d-8c56-9dc592a7d6bc.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Next method" Url="html/f84e4b7c-7ecc-35b7-5cb0-4708d0c93bb5.htm" />
+  <HelpKINode Title="Next property" Url="html/053137ab-0b8d-8352-a39e-40da60b5209d.htm" />
+  <HelpKINode Title="NextFrame method" Url="html/ea64b757-0d53-4d83-d118-881dc6e11578.htm" />
+  <HelpKINode Title="None enumeration member">
+    <HelpKINode Title="VlcDeinterlaceModes Enumeration" Url="html/c217a52e-30c7-4932-87bb-eed94b819f97.htm" />
+    <HelpKINode Title="VlcLogVerbosities Enumeration" Url="html/d1bb7f7e-0611-daa4-5ab7-a7a4f9df847d.htm" />
+  </HelpKINode>
+  <HelpKINode Title="NowPlaying property" Url="html/1781e4b3-87e7-72f7-42ad-18b86263469f.htm" />
+  <HelpKINode Title="OutputDeviceType property" Url="html/fc49850d-d1e4-b2af-f773-9ba612c14a56.htm" />
+  <HelpKINode Title="ParsedChanged event" Url="html/48e8247a-4084-c11a-7b9c-9ae8e3f518fa.htm" />
+  <HelpKINode Title="Path property" Url="html/c8f0e0e7-b723-ab06-4a87-00715b3c4355.htm" />
+  <HelpKINode Title="PathMedia class">
+    <HelpKINode Title="PathMedia Class" Url="html/d8583e99-db6f-d8ee-affc-ca091bf3ee24.htm" />
+    <HelpKINode Title="about PathMedia class" Url="html/d8583e99-db6f-d8ee-affc-ca091bf3ee24.htm" />
+    <HelpKINode Title="constructor" Url="html/f24b863d-226b-764d-7fd4-e4ddd5fce8df.htm" />
+    <HelpKINode Title="events" Url="html/19543b31-d7fd-9af7-5735-a041a9fad403.htm" />
+    <HelpKINode Title="methods" Url="html/8070e740-bab1-fc10-8362-20f3da948de7.htm" />
+    <HelpKINode Title="properties" Url="html/6211c69d-ab5d-cef8-fe9c-b5fc72f2b32e.htm" />
+  </HelpKINode>
+  <HelpKINode Title="PathMedia.Path property" Url="html/c8f0e0e7-b723-ab06-4a87-00715b3c4355.htm" />
+  <HelpKINode Title="PathMedia.PathMedia constructor" Url="html/f24b863d-226b-764d-7fd4-e4ddd5fce8df.htm" />
+  <HelpKINode Title="PausableChanged event" Url="html/84b2fbe9-d31b-e1cb-115f-087f246f8864.htm" />
+  <HelpKINode Title="Pause method" Url="html/608ed0fb-98f5-75c3-3307-5a156d01fd9f.htm" />
+  <HelpKINode Title="Paused event" Url="html/5fbdcef0-8849-e276-7e88-d00e68d24750.htm" />
+  <HelpKINode Title="Phosphor enumeration member" Url="html/c217a52e-30c7-4932-87bb-eed94b819f97.htm" />
+  <HelpKINode Title="Play method" Url="html/d966f48d-ca27-6467-89cf-89ed07fa6996.htm" />
+  <HelpKINode Title="PlaybackMode property" Url="html/ceab545a-56ca-12d4-78b4-44e72691091a.htm" />
+  <HelpKINode Title="Playing event" Url="html/92972a44-aeb0-d88e-dcd2-fb2b1a1c9ee8.htm" />
+  <HelpKINode Title="PLUGINS_PATH_DEFAULT_VALUE_AMD64 field" Url="html/a5aef0f6-cf17-da17-e555-c9d22ec0fff3.htm" />
+  <HelpKINode Title="PLUGINS_PATH_DEFAULT_VALUE_X86 field" Url="html/cd7d705d-2c79-866a-bb19-9fd7639a5cee.htm" />
+  <HelpKINode Title="Position property" Url="html/4de538d4-587d-70d1-a7da-1cd5176077b9.htm" />
+  <HelpKINode Title="PositionChanged event" Url="html/e7af5a64-0235-6c20-f8bd-a846b8de8349.htm" />
+  <HelpKINode Title="Previous method" Url="html/3dc25441-373b-7627-dfe3-6ac657076e7f.htm" />
+  <HelpKINode Title="Publisher property" Url="html/929ac23e-2f1f-e44b-3462-9c2b53dd965d.htm" />
+  <HelpKINode Title="Rate property" Url="html/cc9380c5-be42-eb80-f1f0-708c06cd34f2.htm" />
+  <HelpKINode Title="Rating property" Url="html/fab51ca8-5548-98d6-733b-92ff97679c2c.htm" />
+  <HelpKINode Title="Remove method" Url="html/59154290-1263-5fe1-19bb-2d90544e8b48.htm" />
+  <HelpKINode Title="RemoveAt method" Url="html/f4fa85be-d9ce-2505-74ad-64214907fc60.htm" />
+  <HelpKINode Title="Save method" Url="html/a03040ad-70a2-0bc3-6be7-37cff84be165.htm" />
+  <HelpKINode Title="Scale property" Url="html/f46206d1-e03c-4ed0-e8a8-cf721b0562ca.htm" />
+  <HelpKINode Title="ScreenSaverEnabled property" Url="html/004e109d-5ca3-288a-1a12-6da072cf9b0c.htm" />
+  <HelpKINode Title="SeekableChanged event" Url="html/8297d103-f001-39e9-8eab-f96466043b78.htm" />
+  <HelpKINode Title="SetDeinterlaceMode method" Url="html/75d9916f-7f0e-0c03-c618-4c876919b95a.htm" />
+  <HelpKINode Title="SetSubtitleFile method" Url="html/409f83a9-a0ae-f4a3-a328-432b2d62e8c4.htm" />
+  <HelpKINode Title="Setting property" Url="html/2b515554-1ba3-a393-ea21-7dc2d1701404.htm" />
+  <HelpKINode Title="ShowLoggerConsole property">
+    <HelpKINode Title="VlcLogOptions.ShowLoggerConsole Property " Url="html/bd2f87c7-3735-a167-d758-3e0663a5a28f.htm" />
+    <HelpKINode Title="VlcStartupOptions.ShowLoggerConsole Property " Url="html/a7be5e24-bbfa-a820-6bae-0d66d37dc16c.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Size property" Url="html/a1dc0b8c-c79a-afec-648f-bbdf50825abc.htm" />
+  <HelpKINode Title="SnapshotTaken event" Url="html/bfff37d4-69be-4227-ea97-cf47dae03b80.htm" />
+  <HelpKINode Title="SpuCount property" Url="html/c1e8f8bf-1ca8-788c-d857-9bd37c64958e.htm" />
+  <HelpKINode Title="SpuDescription property" Url="html/889c2c10-2d22-476d-10bd-14063e9bb1bd.htm" />
+  <HelpKINode Title="Standard enumeration member" Url="html/d1bb7f7e-0611-daa4-5ab7-a7a4f9df847d.htm" />
+  <HelpKINode Title="StartupOptions property" Url="html/dc731201-cb92-a243-a833-20860120af76.htm" />
+  <HelpKINode Title="State property">
+    <HelpKINode Title="MediaBase.State Property " Url="html/e9a2aacc-f65f-9348-4822-296b591d345d.htm" />
+    <HelpKINode Title="VlcControl.State Property " Url="html/e13895f7-91cf-6e8c-4c5f-21435f76700e.htm" />
+  </HelpKINode>
+  <HelpKINode Title="StateChanged event" Url="html/a6737623-779f-b6e1-c3e4-ebb4dee7d64f.htm" />
+  <HelpKINode Title="Statistics property" Url="html/4ffe156d-082d-8aff-30eb-153c15bad038.htm" />
+  <HelpKINode Title="Stop method">
+    <HelpKINode Title="IVlcControl.Stop Method " Url="html/d3d260a9-cb54-ec01-0235-8f66f2e8fef5.htm" />
+    <HelpKINode Title="VlcControl.Stop Method " Url="html/36933d70-587a-99fa-8e2c-016e26f59bb1.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Stopped event" Url="html/8fd889be-b6f0-2e49-dd6a-562034f85bbd.htm" />
+  <HelpKINode Title="SubItems property" Url="html/792267cc-d203-57da-baba-6b0d7ea3d3fa.htm" />
+  <HelpKINode Title="TakeSnapshot method" Url="html/fbeaaa31-2994-aca9-76ec-2b7281b358cb.htm" />
+  <HelpKINode Title="Time property" Url="html/7947555c-3463-45ba-326e-35b01ef1c8d3.htm" />
+  <HelpKINode Title="TimeChanged event" Url="html/7ee5a255-1e90-f84e-189b-690d1ed0ab24.htm" />
+  <HelpKINode Title="Title property" Url="html/82d6b76d-81b0-85c5-a2bd-6c0bd9c8ed95.htm" />
+  <HelpKINode Title="TitleChanged event" Url="html/eaacbb04-31c3-83fa-1634-1daa49ca966a.htm" />
+  <HelpKINode Title="Track property" Url="html/91686628-821c-f600-ef9a-41dbb0118c8b.htm" />
+  <HelpKINode Title="TrackCount property" Url="html/4050a64a-639e-0aec-ea90-e2200322f705.htm" />
+  <HelpKINode Title="TrackID property" Url="html/5aa52206-d076-c646-9189-c0ebc7718c83.htm" />
+  <HelpKINode Title="TrackInfos property" Url="html/fb1a4137-723a-949e-0b85-2c57150ae7bb.htm" />
+  <HelpKINode Title="TrackNumber property" Url="html/5719cf0c-7f0f-a6cd-e125-80545c3ef2d3.htm" />
+  <HelpKINode Title="Type property" Url="html/fa502982-b943-e9d2-261c-30c9890d46c4.htm" />
+  <HelpKINode Title="URL property" Url="html/c84d6800-21cb-bed0-9e67-5c357f8b8ccd.htm" />
+  <HelpKINode Title="UserAgent property" Url="html/11a48b87-a490-4e33-271e-fc95ef3ed920.htm" />
+  <HelpKINode Title="Verbosity property">
+    <HelpKINode Title="VlcLogMessage.Verbosity Property " Url="html/0bf5a99d-eaa7-26aa-0a89-adada67c4bca.htm" />
+    <HelpKINode Title="VlcLogOptions.Verbosity Property " Url="html/d693596f-c843-6191-e651-3a938f241a84.htm" />
+    <HelpKINode Title="VlcLogProperties.Verbosity Property " Url="html/b0914ac3-9329-6100-143d-057eb769bc5f.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Version property" Url="html/b7868e46-8c98-c1cf-1e53-5c2b98a985b0.htm" />
+  <HelpKINode Title="VideoOutChanged event" Url="html/16c2ec6b-d57d-110a-f57e-b6b58cda2cd2.htm" />
+  <HelpKINode Title="VideoProperties property" Url="html/84adae6f-1db4-a1e9-3dea-b01a9c27b666.htm" />
+  <HelpKINode Title="Vlc.DotNet.Core namespace" Url="html/2545ebaf-fae6-d5f3-101d-d5716722d81f.htm" />
+  <HelpKINode Title="Vlc.DotNet.Core.CommonStrings class" Url="html/eb8cccae-f120-ed4b-3d81-5cd6747d6039.htm" />
+  <HelpKINode Title="Vlc.DotNet.Core.IVlcControl interface" Url="html/a299409d-3427-1bd9-b8fb-60413c4bc723.htm" />
+  <HelpKINode Title="Vlc.DotNet.Core.Medias namespace" Url="html/382e2c54-ae86-ed70-424e-9ed888109330.htm" />
+  <HelpKINode Title="Vlc.DotNet.Core.Medias.EmptyMedia class" Url="html/24b16cdb-3b9b-39a2-6453-c1f1a303c452.htm" />
+  <HelpKINode Title="Vlc.DotNet.Core.Medias.LocationMedia class" Url="html/66ce2443-5053-6aef-e01c-7c302bfe9bfc.htm" />
+  <HelpKINode Title="Vlc.DotNet.Core.Medias.MediaBase class" Url="html/0b284272-29ee-9301-d2f1-4936666a8463.htm" />
+  <HelpKINode Title="Vlc.DotNet.Core.Medias.PathMedia class" Url="html/d8583e99-db6f-d8ee-affc-ca091bf3ee24.htm" />
+  <HelpKINode Title="Vlc.DotNet.Core.Medias.VlcMediaMetadatas class" Url="html/573bc7eb-bac7-d2b3-463c-7767954b52ac.htm" />
+  <HelpKINode Title="Vlc.DotNet.Core.Medias.VlcMediaTrackInfos class" Url="html/3e285acc-9d3e-e9ba-6b2a-a4fc78eb48bd.htm" />
+  <HelpKINode Title="Vlc.DotNet.Core.VlcAudioOutputDevice class" Url="html/9c1fbc79-0b3a-fe39-c331-18c3a0b24822.htm" />
+  <HelpKINode Title="Vlc.DotNet.Core.VlcAudioOutputDevices class" Url="html/ad8d239e-78ee-8087-2752-1ec0741101ab.htm" />
+  <HelpKINode Title="Vlc.DotNet.Core.VlcContext class" Url="html/b862c8e0-fd3a-17c7-0f55-e99282efdcda.htm" />
+  <HelpKINode Title="Vlc.DotNet.Core.VlcDeinterlaceModes enumeration" Url="html/c217a52e-30c7-4932-87bb-eed94b819f97.htm" />
+  <HelpKINode Title="Vlc.DotNet.Core.VlcErrorHandling class" Url="html/a32971eb-9f53-7d56-3e72-517be67336d0.htm" />
+  <HelpKINode Title="Vlc.DotNet.Core.VlcEventArgs(Of T) class" Url="html/25b95dcb-8fce-490f-9e02-deeffdcd27b9.htm" />
+  <HelpKINode Title="Vlc.DotNet.Core.VlcEventArgs&lt;T&gt; class" Url="html/25b95dcb-8fce-490f-9e02-deeffdcd27b9.htm" />
+  <HelpKINode Title="Vlc.DotNet.Core.VlcEventHandler(Of TSender, TArg) delegate" Url="html/66db5fb0-6efa-3b1e-3a05-fe0bc745b345.htm" />
+  <HelpKINode Title="Vlc.DotNet.Core.VlcEventHandler&lt;TSender, TArg&gt; delegate" Url="html/66db5fb0-6efa-3b1e-3a05-fe0bc745b345.htm" />
+  <HelpKINode Title="Vlc.DotNet.Core.VlcLogMessage class" Url="html/53a1aea2-d06b-f795-1582-707818ab1530.htm" />
+  <HelpKINode Title="Vlc.DotNet.Core.VlcLogOptions class" Url="html/5d88043f-2440-1980-2792-346a5c503432.htm" />
+  <HelpKINode Title="Vlc.DotNet.Core.VlcLogProperties class" Url="html/c9d6b3d7-08e3-7e48-e707-ebc8abe85744.htm" />
+  <HelpKINode Title="Vlc.DotNet.Core.VlcLogProperties.VlcLogMessages class" Url="html/1dff7e6b-506d-63bf-3501-57a586e57fee.htm" />
+  <HelpKINode Title="Vlc.DotNet.Core.VlcLogVerbosities enumeration" Url="html/d1bb7f7e-0611-daa4-5ab7-a7a4f9df847d.htm" />
+  <HelpKINode Title="Vlc.DotNet.Core.VlcMediaListPlayer class" Url="html/24b749a7-0ff0-8e0b-6728-e559f2c80be1.htm" />
+  <HelpKINode Title="Vlc.DotNet.Core.VlcStartupOptions class" Url="html/f4c9d6ec-7e1e-2af0-7baa-8a12d936be0c.htm" />
+  <HelpKINode Title="Vlc.DotNet.Core.VlcTrackDescription class" Url="html/779d0ae6-5df4-b3cd-5d50-0f93811d51d2.htm" />
+  <HelpKINode Title="Vlc.DotNet.Forms namespace" Url="html/f657317e-eeeb-b99f-fd72-ffecdcffb418.htm" />
+  <HelpKINode Title="Vlc.DotNet.Forms.VlcAudioProperties class" Url="html/e1f26719-fb6a-328c-23d1-245cd68d00fd.htm" />
+  <HelpKINode Title="Vlc.DotNet.Forms.VlcControl class" Url="html/edd96222-823c-110d-e520-52afbda2eb11.htm" />
+  <HelpKINode Title="Vlc.DotNet.Forms.VlcVideoProperties class" Url="html/e12287f0-36cc-245c-df74-e69a09d42268.htm" />
+  <HelpKINode Title="VlcAudioOutputDevice class">
+    <HelpKINode Title="VlcAudioOutputDevice Class" Url="html/9c1fbc79-0b3a-fe39-c331-18c3a0b24822.htm" />
+    <HelpKINode Title="about VlcAudioOutputDevice class" Url="html/9c1fbc79-0b3a-fe39-c331-18c3a0b24822.htm" />
+    <HelpKINode Title="methods" Url="html/c5e47504-03a0-394c-b99d-3ce6bc0f06b6.htm" />
+    <HelpKINode Title="properties" Url="html/b33ababc-b6ab-09ac-3814-586be8093a18.htm" />
+  </HelpKINode>
+  <HelpKINode Title="VlcAudioOutputDevice.Description property" Url="html/f99bfea3-87ba-fdf6-65a2-d90a4c2d28c8.htm" />
+  <HelpKINode Title="VlcAudioOutputDevice.Name property" Url="html/b712ea90-eaa6-6506-0fd5-8e1d041f2516.htm" />
+  <HelpKINode Title="VlcAudioOutputDevices class">
+    <HelpKINode Title="VlcAudioOutputDevices Class" Url="html/ad8d239e-78ee-8087-2752-1ec0741101ab.htm" />
+    <HelpKINode Title="about VlcAudioOutputDevices class" Url="html/ad8d239e-78ee-8087-2752-1ec0741101ab.htm" />
+    <HelpKINode Title="methods" Url="html/7cb972ad-429f-0c92-00e0-d5c2bdfc6789.htm" />
+  </HelpKINode>
+  <HelpKINode Title="VlcAudioOutputDevices.Dispose method" Url="html/4a432905-1342-02bd-d998-ad6cad497fc9.htm" />
+  <HelpKINode Title="VlcAudioOutputDevices.GetEnumerator method" Url="html/1eef34b2-1d03-5c42-6c03-ecb487b7c22e.htm" />
+  <HelpKINode Title="VlcAudioProperties class">
+    <HelpKINode Title="VlcAudioProperties Class" Url="html/e1f26719-fb6a-328c-23d1-245cd68d00fd.htm" />
+    <HelpKINode Title="about VlcAudioProperties class" Url="html/e1f26719-fb6a-328c-23d1-245cd68d00fd.htm" />
+    <HelpKINode Title="methods" Url="html/2ee0c292-c965-80b3-5db3-5d35499a09aa.htm" />
+    <HelpKINode Title="properties" Url="html/ea7ab3cd-fc9f-b044-2b2e-600bc0a359f2.htm" />
+  </HelpKINode>
+  <HelpKINode Title="VlcAudioProperties.Channel property" Url="html/4f968ff8-5471-d214-6f73-6de81d83a62b.htm" />
+  <HelpKINode Title="VlcAudioProperties.Delay property" Url="html/a564828b-9904-74be-c4af-78d66824b02a.htm" />
+  <HelpKINode Title="VlcAudioProperties.Dispose method" Url="html/45236592-fd1a-abc4-34e5-4c4c3a00f2c9.htm" />
+  <HelpKINode Title="VlcAudioProperties.GetOutputDeviceIdName method" Url="html/327d8db4-b0b9-24c2-6c06-e8b8e3917761.htm" />
+  <HelpKINode Title="VlcAudioProperties.IsMute property" Url="html/4de8aa61-2c9f-9671-8e29-d243d8df7740.htm" />
+  <HelpKINode Title="VlcAudioProperties.OutputDeviceType property" Url="html/fc49850d-d1e4-b2af-f773-9ba612c14a56.htm" />
+  <HelpKINode Title="VlcAudioProperties.Track property" Url="html/91686628-821c-f600-ef9a-41dbb0118c8b.htm" />
+  <HelpKINode Title="VlcAudioProperties.TrackCount property" Url="html/4050a64a-639e-0aec-ea90-e2200322f705.htm" />
+  <HelpKINode Title="VlcAudioProperties.Volume property" Url="html/26fd8266-c054-0c34-41c0-fa6ab8d72ad1.htm" />
+  <HelpKINode Title="VlcContext class">
+    <HelpKINode Title="VlcContext Class" Url="html/b862c8e0-fd3a-17c7-0f55-e99282efdcda.htm" />
+    <HelpKINode Title="about VlcContext class" Url="html/b862c8e0-fd3a-17c7-0f55-e99282efdcda.htm" />
+    <HelpKINode Title="methods" Url="html/2625558e-c51b-10e8-3d10-e1a84a8cf4a6.htm" />
+    <HelpKINode Title="properties" Url="html/3ecfa475-e76f-b823-bdc1-d99aafc1c60a.htm" />
+  </HelpKINode>
+  <HelpKINode Title="VlcContext.ChangeSet property" Url="html/3dc2878e-2b8b-a926-1ff4-b56d5e17eecd.htm" />
+  <HelpKINode Title="VlcContext.CloseAll method" Url="html/449a7d7a-eab1-70c0-ccd1-4153f15be694.htm" />
+  <HelpKINode Title="VlcContext.Compiler property" Url="html/153718b8-916a-b0db-9da6-703f2f9c6684.htm" />
+  <HelpKINode Title="VlcContext.ErrorHandling property" Url="html/47bfcc36-e8df-70bc-303b-11e5de5bcda5.htm" />
+  <HelpKINode Title="VlcContext.Initialize method" Url="html/f24e690d-c6f1-8586-ee1c-735a1dacb329.htm" />
+  <HelpKINode Title="VlcContext.InteropManager property" Url="html/f496cf19-dacc-b249-126f-21fb00035106.htm" />
+  <HelpKINode Title="VlcContext.IsInitialized property" Url="html/5e24c095-4bc7-a5db-5510-99596a0e5447.htm" />
+  <HelpKINode Title="VlcContext.LibVlcDllsPath property" Url="html/de396423-3339-6d9b-6b34-f2b40634fd5e.htm" />
+  <HelpKINode Title="VlcContext.LibVlcPluginsPath property" Url="html/3a62a34a-09b4-c8d8-28bc-6ff4545911b9.htm" />
+  <HelpKINode Title="VlcContext.StartupOptions property" Url="html/dc731201-cb92-a243-a833-20860120af76.htm" />
+  <HelpKINode Title="VlcContext.Version property" Url="html/b7868e46-8c98-c1cf-1e53-5c2b98a985b0.htm" />
+  <HelpKINode Title="VlcControl class">
+    <HelpKINode Title="VlcControl Class" Url="html/edd96222-823c-110d-e520-52afbda2eb11.htm" />
+    <HelpKINode Title="about VlcControl class" Url="html/edd96222-823c-110d-e520-52afbda2eb11.htm" />
+    <HelpKINode Title="constructor" Url="html/cf5da942-51a1-5273-bfb9-9ed031f9c7ae.htm" />
+    <HelpKINode Title="events" Url="html/018e4774-f132-ca9a-1472-cd1964a7761a.htm" />
+    <HelpKINode Title="methods" Url="html/4e65d0f3-e867-2067-df0d-d9545853efbc.htm" />
+    <HelpKINode Title="properties" Url="html/57e2f7cc-e837-fdd7-5f6e-6330f1693db4.htm" />
+  </HelpKINode>
+  <HelpKINode Title="VlcControl.AudioOutputDevices property" Url="html/df6997ff-89c0-b1e7-5149-d4c05f57ae41.htm" />
+  <HelpKINode Title="VlcControl.AudioProperties property" Url="html/8697c165-876a-574b-61b4-2d20ba61f39c.htm" />
+  <HelpKINode Title="VlcControl.Backward event" Url="html/ffa6ef25-ab42-6f27-c99c-0812477cf846.htm" />
+  <HelpKINode Title="VlcControl.Buffering event" Url="html/344b3fd7-b40c-5bed-8888-4629a391ca0d.htm" />
+  <HelpKINode Title="VlcControl.Duration property" Url="html/48590a6e-1748-e45e-b797-47f93b758b62.htm" />
+  <HelpKINode Title="VlcControl.EncounteredError event" Url="html/fb9a8b22-06aa-eae5-dbf4-1576d58fb991.htm" />
+  <HelpKINode Title="VlcControl.EndReached event" Url="html/532268b8-4846-5d20-00ec-bd55cbfeeb05.htm" />
+  <HelpKINode Title="VlcControl.Forward event" Url="html/fde913b8-2f8d-8787-2df0-cdb4bfa2de33.htm" />
+  <HelpKINode Title="VlcControl.FPS property" Url="html/d3a393ed-1ace-ae6e-7502-96abb9eefc0e.htm" />
+  <HelpKINode Title="VlcControl.IsPausable property" Url="html/e54b4539-95f1-5133-3e97-006b82422ed3.htm" />
+  <HelpKINode Title="VlcControl.IsPaused property" Url="html/326b6e54-906b-051c-652e-cab68bc72603.htm" />
+  <HelpKINode Title="VlcControl.IsPlaying property" Url="html/111f1e81-cdc3-2aad-d2c8-87429d4cdfe4.htm" />
+  <HelpKINode Title="VlcControl.IsSeekable property" Url="html/fe9de87c-c3ea-5ff5-1353-6b5a240f480a.htm" />
+  <HelpKINode Title="VlcControl.LengthChanged event" Url="html/955edf86-d984-8622-7483-19f4a71e7053.htm" />
+  <HelpKINode Title="VlcControl.LogProperties property" Url="html/6a49aa96-4659-c412-c6b6-ae8735bc8651.htm" />
+  <HelpKINode Title="VlcControl.Media property" Url="html/a57cc954-2e72-6d48-8766-13ffa8c5a98a.htm" />
+  <HelpKINode Title="VlcControl.Medias property" Url="html/5dbad234-3091-eb86-f7a0-b3be00d77b8b.htm" />
+  <HelpKINode Title="VlcControl.Next method" Url="html/f84e4b7c-7ecc-35b7-5cb0-4708d0c93bb5.htm" />
+  <HelpKINode Title="VlcControl.NextFrame method" Url="html/ea64b757-0d53-4d83-d118-881dc6e11578.htm" />
+  <HelpKINode Title="VlcControl.PausableChanged event" Url="html/84b2fbe9-d31b-e1cb-115f-087f246f8864.htm" />
+  <HelpKINode Title="VlcControl.Pause method" Url="html/608ed0fb-98f5-75c3-3307-5a156d01fd9f.htm" />
+  <HelpKINode Title="VlcControl.Paused event" Url="html/5fbdcef0-8849-e276-7e88-d00e68d24750.htm" />
+  <HelpKINode Title="VlcControl.Play method" Url="html/d966f48d-ca27-6467-89cf-89ed07fa6996.htm" />
+  <HelpKINode Title="VlcControl.PlaybackMode property" Url="html/ceab545a-56ca-12d4-78b4-44e72691091a.htm" />
+  <HelpKINode Title="VlcControl.Playing event" Url="html/92972a44-aeb0-d88e-dcd2-fb2b1a1c9ee8.htm" />
+  <HelpKINode Title="VlcControl.Position property" Url="html/4de538d4-587d-70d1-a7da-1cd5176077b9.htm" />
+  <HelpKINode Title="VlcControl.PositionChanged event" Url="html/e7af5a64-0235-6c20-f8bd-a846b8de8349.htm" />
+  <HelpKINode Title="VlcControl.Previous method" Url="html/3dc25441-373b-7627-dfe3-6ac657076e7f.htm" />
+  <HelpKINode Title="VlcControl.Rate property" Url="html/cc9380c5-be42-eb80-f1f0-708c06cd34f2.htm" />
+  <HelpKINode Title="VlcControl.SeekableChanged event" Url="html/8297d103-f001-39e9-8eab-f96466043b78.htm" />
+  <HelpKINode Title="VlcControl.SnapshotTaken event" Url="html/bfff37d4-69be-4227-ea97-cf47dae03b80.htm" />
+  <HelpKINode Title="VlcControl.State property" Url="html/e13895f7-91cf-6e8c-4c5f-21435f76700e.htm" />
+  <HelpKINode Title="VlcControl.Stop method" Url="html/36933d70-587a-99fa-8e2c-016e26f59bb1.htm" />
+  <HelpKINode Title="VlcControl.Stopped event" Url="html/8fd889be-b6f0-2e49-dd6a-562034f85bbd.htm" />
+  <HelpKINode Title="VlcControl.TakeSnapshot method" Url="html/fbeaaa31-2994-aca9-76ec-2b7281b358cb.htm" />
+  <HelpKINode Title="VlcControl.Time property" Url="html/7947555c-3463-45ba-326e-35b01ef1c8d3.htm" />
+  <HelpKINode Title="VlcControl.TimeChanged event" Url="html/7ee5a255-1e90-f84e-189b-690d1ed0ab24.htm" />
+  <HelpKINode Title="VlcControl.TitleChanged event" Url="html/eaacbb04-31c3-83fa-1634-1daa49ca966a.htm" />
+  <HelpKINode Title="VlcControl.VideoOutChanged event" Url="html/16c2ec6b-d57d-110a-f57e-b6b58cda2cd2.htm" />
+  <HelpKINode Title="VlcControl.VideoProperties property" Url="html/84adae6f-1db4-a1e9-3dea-b01a9c27b666.htm" />
+  <HelpKINode Title="VlcControl.VlcControl constructor" Url="html/cf5da942-51a1-5273-bfb9-9ed031f9c7ae.htm" />
+  <HelpKINode Title="VlcControl.WillPlay property" Url="html/e01a5c24-fe0e-ea7a-74b6-779af459a3fb.htm" />
+  <HelpKINode Title="VlcDeinterlaceModes enumeration" Url="html/c217a52e-30c7-4932-87bb-eed94b819f97.htm" />
+  <HelpKINode Title="VlcErrorHandling class">
+    <HelpKINode Title="VlcErrorHandling Class" Url="html/a32971eb-9f53-7d56-3e72-517be67336d0.htm" />
+    <HelpKINode Title="about VlcErrorHandling class" Url="html/a32971eb-9f53-7d56-3e72-517be67336d0.htm" />
+    <HelpKINode Title="methods" Url="html/ee2784b3-bf3c-3bba-1e63-11df885bedf8.htm" />
+  </HelpKINode>
+  <HelpKINode Title="VlcErrorHandling.ClearError method" Url="html/d5c8bd8e-f90e-8ad1-d339-61f41e38fec5.htm" />
+  <HelpKINode Title="VlcErrorHandling.GetErrorMessage method" Url="html/da687ae4-6c7c-e9ac-b90d-88c1b349311f.htm" />
+  <HelpKINode Title="VlcEventArgs(Of T) class">
+    <HelpKINode Title="VlcEventArgs(T) Class" Url="html/25b95dcb-8fce-490f-9e02-deeffdcd27b9.htm" />
+    <HelpKINode Title="about VlcEventArgs(Of T) class" Url="html/25b95dcb-8fce-490f-9e02-deeffdcd27b9.htm" />
+    <HelpKINode Title="methods" Url="html/0e0d0ee9-da85-c805-e1fb-48c426099866.htm" />
+    <HelpKINode Title="properties" Url="html/ef0f286d-9114-3c1c-fe12-1e4c190e4e6c.htm" />
+  </HelpKINode>
+  <HelpKINode Title="VlcEventArgs(Of T).Data property" Url="html/99e43ed0-210e-f8cf-0e5b-e3f565ecdd5b.htm" />
+  <HelpKINode Title="VlcEventArgs&lt;T&gt; class">
+    <HelpKINode Title="VlcEventArgs(T) Class" Url="html/25b95dcb-8fce-490f-9e02-deeffdcd27b9.htm" />
+    <HelpKINode Title="about VlcEventArgs&lt;T&gt; class" Url="html/25b95dcb-8fce-490f-9e02-deeffdcd27b9.htm" />
+    <HelpKINode Title="methods" Url="html/0e0d0ee9-da85-c805-e1fb-48c426099866.htm" />
+    <HelpKINode Title="properties" Url="html/ef0f286d-9114-3c1c-fe12-1e4c190e4e6c.htm" />
+  </HelpKINode>
+  <HelpKINode Title="VlcEventArgs&lt;T&gt;.Data property" Url="html/99e43ed0-210e-f8cf-0e5b-e3f565ecdd5b.htm" />
+  <HelpKINode Title="VlcEventHandler(Of TSender, TArg) delegate" Url="html/66db5fb0-6efa-3b1e-3a05-fe0bc745b345.htm" />
+  <HelpKINode Title="VlcEventHandler&lt;TSender, TArg&gt; delegate" Url="html/66db5fb0-6efa-3b1e-3a05-fe0bc745b345.htm" />
+  <HelpKINode Title="VlcLogMessage class">
+    <HelpKINode Title="VlcLogMessage Class" Url="html/53a1aea2-d06b-f795-1582-707818ab1530.htm" />
+    <HelpKINode Title="about VlcLogMessage class" Url="html/53a1aea2-d06b-f795-1582-707818ab1530.htm" />
+    <HelpKINode Title="methods" Url="html/148a6235-81c6-b846-4632-5370bee6b376.htm" />
+    <HelpKINode Title="properties" Url="html/a17349e5-9e28-5915-22fa-9714a8019008.htm" />
+  </HelpKINode>
+  <HelpKINode Title="VlcLogMessage.Header property" Url="html/95b84531-f05e-afeb-a54d-b71766846972.htm" />
+  <HelpKINode Title="VlcLogMessage.Message property" Url="html/b745c323-11eb-5bb1-34f6-7dc3ef2bb314.htm" />
+  <HelpKINode Title="VlcLogMessage.Name property" Url="html/c2bb48d8-7968-a5c5-daf1-24ae6bcce15d.htm" />
+  <HelpKINode Title="VlcLogMessage.Type property" Url="html/fa502982-b943-e9d2-261c-30c9890d46c4.htm" />
+  <HelpKINode Title="VlcLogMessage.Verbosity property" Url="html/0bf5a99d-eaa7-26aa-0a89-adada67c4bca.htm" />
+  <HelpKINode Title="VlcLogMessages class">
+    <HelpKINode Title="methods" Url="html/626067ae-a4a0-3fab-bf23-eefd5ac283d3.htm" />
+    <HelpKINode Title="properties" Url="html/c82fed0b-cfaf-7cd3-1219-3c7af1dbf3fe.htm" />
+  </HelpKINode>
+  <HelpKINode Title="VlcLogOptions class">
+    <HelpKINode Title="VlcLogOptions Class" Url="html/5d88043f-2440-1980-2792-346a5c503432.htm" />
+    <HelpKINode Title="about VlcLogOptions class" Url="html/5d88043f-2440-1980-2792-346a5c503432.htm" />
+    <HelpKINode Title="methods" Url="html/12513eea-70af-6341-6feb-ec8702995e1c.htm" />
+    <HelpKINode Title="properties" Url="html/09d10a6f-e627-348e-537a-bbaeecbee8a8.htm" />
+  </HelpKINode>
+  <HelpKINode Title="VlcLogOptions.LogInFile property" Url="html/452b3a39-dea9-8dcd-0d1c-26f4f9eb86a5.htm" />
+  <HelpKINode Title="VlcLogOptions.LogInFilePath property" Url="html/c10ce1f4-0cfa-d2a3-1111-c149ba4d6666.htm" />
+  <HelpKINode Title="VlcLogOptions.ShowLoggerConsole property" Url="html/bd2f87c7-3735-a167-d758-3e0663a5a28f.htm" />
+  <HelpKINode Title="VlcLogOptions.Verbosity property" Url="html/d693596f-c843-6191-e651-3a938f241a84.htm" />
+  <HelpKINode Title="VlcLogProperties class">
+    <HelpKINode Title="VlcLogProperties Class" Url="html/c9d6b3d7-08e3-7e48-e707-ebc8abe85744.htm" />
+    <HelpKINode Title="about VlcLogProperties class" Url="html/c9d6b3d7-08e3-7e48-e707-ebc8abe85744.htm" />
+    <HelpKINode Title="methods" Url="html/f8eb21a4-3773-60aa-7867-a8106e2e49c7.htm" />
+    <HelpKINode Title="properties" Url="html/be29985d-460c-5d6a-697b-bba45f6ebe40.htm" />
+  </HelpKINode>
+  <HelpKINode Title="VlcLogProperties.Dispose method" Url="html/5ff6fd28-1e65-e5e8-743b-a584a26e84da.htm" />
+  <HelpKINode Title="VlcLogProperties.LogMessages property" Url="html/2cc9e09e-2191-ed4c-0cae-5ec0b69cc0d6.htm" />
+  <HelpKINode Title="VlcLogProperties.Verbosity property" Url="html/b0914ac3-9329-6100-143d-057eb769bc5f.htm" />
+  <HelpKINode Title="VlcLogProperties.VlcLogMessages class">
+    <HelpKINode Title="VlcLogProperties.VlcLogMessages Class" Url="html/1dff7e6b-506d-63bf-3501-57a586e57fee.htm" />
+    <HelpKINode Title="about VlcLogProperties.VlcLogMessages class" Url="html/1dff7e6b-506d-63bf-3501-57a586e57fee.htm" />
+  </HelpKINode>
+  <HelpKINode Title="VlcLogProperties.VlcLogMessages.Clear method" Url="html/75f45725-12c4-d858-1707-9623db2c7c70.htm" />
+  <HelpKINode Title="VlcLogProperties.VlcLogMessages.Count property" Url="html/73ed413e-b1f2-1d5d-7922-63eb47c72d44.htm" />
+  <HelpKINode Title="VlcLogProperties.VlcLogMessages.Dispose method" Url="html/0d1fadc6-5310-fe08-0793-28b8fe583ffa.htm" />
+  <HelpKINode Title="VlcLogProperties.VlcLogMessages.GetEnumerator method" Url="html/c7e160ba-348a-702d-fe07-1bfcbe6b752c.htm" />
+  <HelpKINode Title="VlcLogVerbosities enumeration" Url="html/d1bb7f7e-0611-daa4-5ab7-a7a4f9df847d.htm" />
+  <HelpKINode Title="VlcMediaListPlayer class">
+    <HelpKINode Title="VlcMediaListPlayer Class" Url="html/24b749a7-0ff0-8e0b-6728-e559f2c80be1.htm" />
+    <HelpKINode Title="about VlcMediaListPlayer class" Url="html/24b749a7-0ff0-8e0b-6728-e559f2c80be1.htm" />
+    <HelpKINode Title="methods" Url="html/a232db1e-e8b4-15ec-feae-43274a04f1ce.htm" />
+    <HelpKINode Title="properties" Url="html/e30eb1d7-700e-c683-5fa7-3faa0e2c2bbd.htm" />
+  </HelpKINode>
+  <HelpKINode Title="VlcMediaListPlayer.Add method" Url="html/2ae872ee-5a93-1c94-7fdb-d251ffe41471.htm" />
+  <HelpKINode Title="VlcMediaListPlayer.Clear method" Url="html/bf869aa4-27e9-ae0d-c932-3712e6929ade.htm" />
+  <HelpKINode Title="VlcMediaListPlayer.Contains method" Url="html/38acfae1-4c8b-92b6-f883-6cf1a8053ec4.htm" />
+  <HelpKINode Title="VlcMediaListPlayer.CopyTo method" Url="html/bc5ed270-b97d-1bcb-a8fe-6f63e649edd6.htm" />
+  <HelpKINode Title="VlcMediaListPlayer.Count property" Url="html/998988f2-1e4c-9ed7-722c-9d29bce293f0.htm" />
+  <HelpKINode Title="VlcMediaListPlayer.Dispose method" Url="html/9c348c88-bd38-841d-3740-c423c2b812e2.htm" />
+  <HelpKINode Title="VlcMediaListPlayer.GetEnumerator method" Url="html/e96767b5-c154-b1a0-ead4-6d6be6a033f5.htm" />
+  <HelpKINode Title="VlcMediaListPlayer.IndexOf method" Url="html/0e6e5077-89c4-d95e-3cdc-108c5e3d07b9.htm" />
+  <HelpKINode Title="VlcMediaListPlayer.Insert method" Url="html/f3fdeca4-4f0e-77e3-eb47-65e1d5202b44.htm" />
+  <HelpKINode Title="VlcMediaListPlayer.IsReadOnly property" Url="html/1fdac8f4-109f-6a78-2b3a-4d038cf1852e.htm" />
+  <HelpKINode Title="VlcMediaListPlayer.Item property" Url="html/36661840-b18d-2d10-427b-1710fd5ffecf.htm" />
+  <HelpKINode Title="VlcMediaListPlayer.Remove method" Url="html/59154290-1263-5fe1-19bb-2d90544e8b48.htm" />
+  <HelpKINode Title="VlcMediaListPlayer.RemoveAt method" Url="html/f4fa85be-d9ce-2505-74ad-64214907fc60.htm" />
+  <HelpKINode Title="VlcMediaMetadatas class">
+    <HelpKINode Title="VlcMediaMetadatas Class" Url="html/573bc7eb-bac7-d2b3-463c-7767954b52ac.htm" />
+    <HelpKINode Title="about VlcMediaMetadatas class" Url="html/573bc7eb-bac7-d2b3-463c-7767954b52ac.htm" />
+    <HelpKINode Title="methods" Url="html/f01cc889-3657-4d95-a079-15b409875226.htm" />
+    <HelpKINode Title="properties" Url="html/34873d58-06bf-2076-555b-f91881039718.htm" />
+  </HelpKINode>
+  <HelpKINode Title="VlcMediaMetadatas.Album property" Url="html/ae2b9d72-b4d8-9522-4af2-051faebd2337.htm" />
+  <HelpKINode Title="VlcMediaMetadatas.Artist property" Url="html/e6780144-7a42-299d-2625-3228e4f223fa.htm" />
+  <HelpKINode Title="VlcMediaMetadatas.ArtworkURL property" Url="html/51ec04e0-20d3-f5a1-dda7-ba52574fe6d2.htm" />
+  <HelpKINode Title="VlcMediaMetadatas.Copyright property" Url="html/d6f68783-dcdc-70fb-15f1-caffd22c8c53.htm" />
+  <HelpKINode Title="VlcMediaMetadatas.Date property" Url="html/6d547774-1cee-5ac8-0798-2f7b4bd21ccd.htm" />
+  <HelpKINode Title="VlcMediaMetadatas.Description property" Url="html/4241c644-0f9a-fe65-bf80-427b26bd9b8f.htm" />
+  <HelpKINode Title="VlcMediaMetadatas.Dispose method" Url="html/7fcce46d-7b6a-a888-2bcd-3ab839c702d4.htm" />
+  <HelpKINode Title="VlcMediaMetadatas.EncodedBy property" Url="html/9d00fac5-1de3-1cf1-b2e8-40878ad2af43.htm" />
+  <HelpKINode Title="VlcMediaMetadatas.Genre property" Url="html/95340279-4199-fd70-9fc8-65565514101d.htm" />
+  <HelpKINode Title="VlcMediaMetadatas.Language property" Url="html/74f8e5c9-c703-3bed-030b-72c76dff503d.htm" />
+  <HelpKINode Title="VlcMediaMetadatas.NowPlaying property" Url="html/1781e4b3-87e7-72f7-42ad-18b86263469f.htm" />
+  <HelpKINode Title="VlcMediaMetadatas.Publisher property" Url="html/929ac23e-2f1f-e44b-3462-9c2b53dd965d.htm" />
+  <HelpKINode Title="VlcMediaMetadatas.Rating property" Url="html/fab51ca8-5548-98d6-733b-92ff97679c2c.htm" />
+  <HelpKINode Title="VlcMediaMetadatas.Save method" Url="html/a03040ad-70a2-0bc3-6be7-37cff84be165.htm" />
+  <HelpKINode Title="VlcMediaMetadatas.Setting property" Url="html/2b515554-1ba3-a393-ea21-7dc2d1701404.htm" />
+  <HelpKINode Title="VlcMediaMetadatas.Title property" Url="html/82d6b76d-81b0-85c5-a2bd-6c0bd9c8ed95.htm" />
+  <HelpKINode Title="VlcMediaMetadatas.TrackID property" Url="html/5aa52206-d076-c646-9189-c0ebc7718c83.htm" />
+  <HelpKINode Title="VlcMediaMetadatas.TrackNumber property" Url="html/5719cf0c-7f0f-a6cd-e125-80545c3ef2d3.htm" />
+  <HelpKINode Title="VlcMediaMetadatas.URL property" Url="html/c84d6800-21cb-bed0-9e67-5c357f8b8ccd.htm" />
+  <HelpKINode Title="VlcMediaTrackInfos class">
+    <HelpKINode Title="VlcMediaTrackInfos Class" Url="html/3e285acc-9d3e-e9ba-6b2a-a4fc78eb48bd.htm" />
+    <HelpKINode Title="about VlcMediaTrackInfos class" Url="html/3e285acc-9d3e-e9ba-6b2a-a4fc78eb48bd.htm" />
+    <HelpKINode Title="methods" Url="html/79eb876d-7999-36b5-c20f-37738ddf3048.htm" />
+  </HelpKINode>
+  <HelpKINode Title="VlcMediaTrackInfos.Dispose method" Url="html/2cad80aa-c6d8-ee27-3904-4cf4f443d181.htm" />
+  <HelpKINode Title="VlcMediaTrackInfos.GetEnumerator method" Url="html/54729805-fed2-874e-13d5-6b2b1985f4a0.htm" />
+  <HelpKINode Title="VlcStartupOptions class">
+    <HelpKINode Title="VlcStartupOptions Class" Url="html/f4c9d6ec-7e1e-2af0-7baa-8a12d936be0c.htm" />
+    <HelpKINode Title="about VlcStartupOptions class" Url="html/f4c9d6ec-7e1e-2af0-7baa-8a12d936be0c.htm" />
+    <HelpKINode Title="constructor" Url="html/1d2e0400-3a86-02e6-8013-3561aa07124e.htm" />
+    <HelpKINode Title="methods" Url="html/d928347b-7ad0-77ea-7378-51c910f08609.htm" />
+    <HelpKINode Title="properties" Url="html/24511ce6-c8b4-55d4-dc54-d055021159fa.htm" />
+  </HelpKINode>
+  <HelpKINode Title="VlcStartupOptions.AddOption method" Url="html/6d285a33-dfec-79b8-8886-5217b7f97441.htm" />
+  <HelpKINode Title="VlcStartupOptions.IgnoreConfig property" Url="html/4fc5b943-499e-a84d-71bf-4307da51548a.htm" />
+  <HelpKINode Title="VlcStartupOptions.LogOptions property" Url="html/7160d86b-0b80-da68-413e-ebaa062448e4.htm" />
+  <HelpKINode Title="VlcStartupOptions.ScreenSaverEnabled property" Url="html/004e109d-5ca3-288a-1a12-6da072cf9b0c.htm" />
+  <HelpKINode Title="VlcStartupOptions.ShowLoggerConsole property" Url="html/a7be5e24-bbfa-a820-6bae-0d66d37dc16c.htm" />
+  <HelpKINode Title="VlcStartupOptions.UserAgent property" Url="html/11a48b87-a490-4e33-271e-fc95ef3ed920.htm" />
+  <HelpKINode Title="VlcStartupOptions.VlcStartupOptions constructor" Url="html/1d2e0400-3a86-02e6-8013-3561aa07124e.htm" />
+  <HelpKINode Title="VlcTrackDescription class">
+    <HelpKINode Title="VlcTrackDescription Class" Url="html/779d0ae6-5df4-b3cd-5d50-0f93811d51d2.htm" />
+    <HelpKINode Title="about VlcTrackDescription class" Url="html/779d0ae6-5df4-b3cd-5d50-0f93811d51d2.htm" />
+    <HelpKINode Title="methods" Url="html/ffefffab-25b2-5923-3f30-fd82240a6eae.htm" />
+    <HelpKINode Title="properties" Url="html/f0a7a6a9-4c47-3b35-4c30-89dc8707b9df.htm" />
+  </HelpKINode>
+  <HelpKINode Title="VlcTrackDescription.Id property" Url="html/06eb3009-8faa-a915-3e53-8523f140626f.htm" />
+  <HelpKINode Title="VlcTrackDescription.Name property" Url="html/3860b6cc-f0de-961d-8c56-9dc592a7d6bc.htm" />
+  <HelpKINode Title="VlcTrackDescription.Next property" Url="html/053137ab-0b8d-8352-a39e-40da60b5209d.htm" />
+  <HelpKINode Title="VlcVideoProperties class">
+    <HelpKINode Title="VlcVideoProperties Class" Url="html/e12287f0-36cc-245c-df74-e69a09d42268.htm" />
+    <HelpKINode Title="about VlcVideoProperties class" Url="html/e12287f0-36cc-245c-df74-e69a09d42268.htm" />
+    <HelpKINode Title="methods" Url="html/d1d077f3-ff95-779d-1ad4-0f66311f86f5.htm" />
+    <HelpKINode Title="properties" Url="html/14bc17fd-508d-bca6-bbab-160c8b0610fe.htm" />
+  </HelpKINode>
+  <HelpKINode Title="VlcVideoProperties.AspectRatio property" Url="html/26b04044-c9f2-e298-8e35-a67819bd3ced.htm" />
+  <HelpKINode Title="VlcVideoProperties.CurrentSpuIndex property" Url="html/a8778731-ce74-1e7e-c406-5ab390fc4bb7.htm" />
+  <HelpKINode Title="VlcVideoProperties.Dispose method" Url="html/f9013aab-e1ba-50bc-265c-942e06b00c85.htm" />
+  <HelpKINode Title="VlcVideoProperties.IsFullscreen property" Url="html/795ca37d-05c7-72eb-b346-7651a95698e8.htm" />
+  <HelpKINode Title="VlcVideoProperties.Scale property" Url="html/f46206d1-e03c-4ed0-e8a8-cf721b0562ca.htm" />
+  <HelpKINode Title="VlcVideoProperties.SetDeinterlaceMode method" Url="html/75d9916f-7f0e-0c03-c618-4c876919b95a.htm" />
+  <HelpKINode Title="VlcVideoProperties.SetSubtitleFile method" Url="html/409f83a9-a0ae-f4a3-a328-432b2d62e8c4.htm" />
+  <HelpKINode Title="VlcVideoProperties.Size property" Url="html/a1dc0b8c-c79a-afec-648f-bbdf50825abc.htm" />
+  <HelpKINode Title="VlcVideoProperties.SpuCount property" Url="html/c1e8f8bf-1ca8-788c-d857-9bd37c64958e.htm" />
+  <HelpKINode Title="VlcVideoProperties.SpuDescription property" Url="html/889c2c10-2d22-476d-10bd-14063e9bb1bd.htm" />
+  <HelpKINode Title="Volume property" Url="html/26fd8266-c054-0c34-41c0-fa6ab8d72ad1.htm" />
+  <HelpKINode Title="Warnings enumeration member" Url="html/d1bb7f7e-0611-daa4-5ab7-a7a4f9df847d.htm" />
+  <HelpKINode Title="WillPlay property" Url="html/e01a5c24-fe0e-ea7a-74b6-779af459a3fb.htm" />
+  <HelpKINode Title="X enumeration member" Url="html/c217a52e-30c7-4932-87bb-eed94b819f97.htm" />
+  <HelpKINode Title="Yadif enumeration member" Url="html/c217a52e-30c7-4932-87bb-eed94b819f97.htm" />
+  <HelpKINode Title="Yadif2x enumeration member" Url="html/c217a52e-30c7-4932-87bb-eed94b819f97.htm" />
+</HelpKI>

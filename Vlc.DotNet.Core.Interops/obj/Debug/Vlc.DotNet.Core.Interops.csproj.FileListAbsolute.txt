@@ -1,0 +1,6 @@
+d:\Working\Vlc.DotNet\Vlc.DotNet.Core.Interops\bin\Debug\Vlc.DotNet.Core.Interops.xml
+d:\Working\Vlc.DotNet\Vlc.DotNet.Core.Interops\bin\Debug\Vlc.DotNet.Core.Interops.dll
+d:\Working\Vlc.DotNet\Vlc.DotNet.Core.Interops\bin\Debug\Vlc.DotNet.Core.Interops.pdb
+d:\Working\Vlc.DotNet\Vlc.DotNet.Core.Interops\obj\Debug\Vlc.DotNet.Core.Interops.dll
+d:\Working\Vlc.DotNet\Vlc.DotNet.Core.Interops\obj\Debug\Vlc.DotNet.Core.Interops.pdb
+d:\Working\Vlc.DotNet\Vlc.DotNet.Core.Interops\obj\Debug\Vlc.DotNet.Core.Interops.csprojResolveAssemblyReference.cache
