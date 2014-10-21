@@ -15,6 +15,8 @@ You can see a full overview of VLC Media Player features over on the [VLC site] 
 Version
 ----
 
+# A new version is being developed (a total rework). Please be patient.
+
 N/A
 
 Usage
