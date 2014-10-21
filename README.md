@@ -30,6 +30,8 @@ To start using Vlc.DotNet in your project you need to set the VlcContext **LibVl
 Examples
 --------------
 
+You can view our full #documentation, on our [site] (https://rexgrammer.github.io/Vlc.DotNet/doc/index.html)
+
 Here you can find usage examples of the VLC Player control.
 
 ###Windows Forms:
