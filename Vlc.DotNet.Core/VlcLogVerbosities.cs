@@ -1,24 +1,27 @@
 ﻿namespace Vlc.DotNet.Core
 {
     /// <summary>
-    /// Verbosities enumeration
+    /// Contains logging verbosities.
     /// </summary>
     public enum VlcLogVerbosities
     {
         /// <summary>
-        /// None verbosity
+        /// No logging.
         /// </summary>
         None = -1,
+
         /// <summary>
-        /// Standard verbosity
+        /// Standard logging verbosity.
         /// </summary>
         Standard = 0,
+
         /// <summary>
-        /// Warnings verbosity
+        /// Logging verbosity containing warnings.
         /// </summary>
         Warnings = 1,
+
         /// <summary>
-        /// Debug verbosity
+        /// Debug logging verbosity.
         /// </summary>
         Debug = 2
     }

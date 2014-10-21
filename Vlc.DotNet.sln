@@ -10,7 +10,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{785A0A88-B818-407B-A6D0-A0E198FEFC77}"
 	ProjectSection(SolutionItems) = preProject
 		Common\AssemblyInfoCommon.cs = Common\AssemblyInfoCommon.cs
-		Common\Vlc.DotNet.pfx = Common\Vlc.DotNet.pfx
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vlc.DotNet.Forms", "Vlc.DotNet.Forms\Vlc.DotNet.Forms.csproj", "{A720906B-705B-4666-BBB9-AC54B9208BEB}"

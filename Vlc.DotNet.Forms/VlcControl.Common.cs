@@ -17,9 +17,6 @@ namespace Vlc.DotNet.Silverlight
 namespace Vlc.DotNet.Forms
 #endif
 {
-    /// <summary>
-    /// Vlc control to play media
-    /// </summary>
     public sealed partial class VlcControl : IVlcControl
     {
 
@@ -27,7 +24,7 @@ namespace Vlc.DotNet.Forms
         private GCHandle myEventCallbackHandle;
 
         /// <summary>
-        /// Gets the FPS of the video
+        /// Gets the FPS of the current video.
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public float FPS
@@ -50,7 +47,7 @@ namespace Vlc.DotNet.Forms
         }
 
         /// <summary>
-        /// Gets a value indicating whether player able to play
+        /// Gets a value indicating whether the player is able to play.
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public bool WillPlay
@@ -72,7 +69,7 @@ namespace Vlc.DotNet.Forms
         }
 
         /// <summary>
-        /// Gets a value indicating whether this media player seekable
+        /// Gets a value indicating whether this media is seekable.
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public bool IsSeekable
@@ -94,7 +91,7 @@ namespace Vlc.DotNet.Forms
         }
 
         /// <summary>
-        /// Gets a value indicating whether this media player can be paused
+        /// Gets a value indicating whether this media player can be paused.
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public bool IsPausable
@@ -116,7 +113,7 @@ namespace Vlc.DotNet.Forms
         }
 
         /// <summary>
-        /// Gets a value indicating whether media is playing
+        /// Gets a value indicating whether media is playing in the player.
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public bool IsPlaying
@@ -138,7 +135,7 @@ namespace Vlc.DotNet.Forms
         }
 
         /// <summary>
-        /// Gets a value indicating whether media is paused
+        /// Gets a value indicating whether the media is paused.
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public bool IsPaused
@@ -160,7 +157,7 @@ namespace Vlc.DotNet.Forms
         }
 
         /// <summary>
-        /// Gets or sets the current position of the playing media
+        /// Gets or sets the current position of the playing media.
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
 #if !SILVERLIGHT
@@ -202,7 +199,7 @@ namespace Vlc.DotNet.Forms
         }
 
         /// <summary>
-        /// Gets or sets the current time of the playing media
+        /// Gets or sets the current time of the playing media.
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
 #if !SILVERLIGHT
@@ -243,7 +240,7 @@ namespace Vlc.DotNet.Forms
         }
 
         /// <summary>
-        /// Gets or sets rate of playing
+        /// Gets or sets the rate of play.
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public float Rate
@@ -276,7 +273,7 @@ namespace Vlc.DotNet.Forms
         }
 
         /// <summary>
-        /// Gets or sets the current media
+        /// Gets or sets the current media.
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         [Browsable(false)]
@@ -335,7 +332,7 @@ namespace Vlc.DotNet.Forms
         }
 
         /// <summary>
-        /// Gets media player state
+        /// Gets the media player state.
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public States State
@@ -356,7 +353,7 @@ namespace Vlc.DotNet.Forms
         }
 
         /// <summary>
-        /// Gets current media duration
+        /// Gets current media duration.
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public TimeSpan Duration
@@ -381,7 +378,7 @@ namespace Vlc.DotNet.Forms
         }
 
         /// <summary>
-        /// Display the next frame if supported
+        /// Display the next frame if supported.
         /// </summary>
         public void NextFrame()
         {
@@ -456,42 +453,42 @@ namespace Vlc.DotNet.Forms
         //}
 
         /// <summary>
-        /// Play the current media
+        /// Plays the current media.
         /// </summary>
         public void Play()
         {
             Medias.Play();
         }
         /// <summary>
-        /// Play a media
+        /// Plays a media.
         /// </summary>
         public void Play(MediaBase media)
         {
             Medias.Play(media);
         }
         /// <summary>
-        /// Stop the current media
+        /// Stops the current media.
         /// </summary>
         public void Stop()
         {
             Medias.Stop();
         }
         /// <summary>
-        /// Play next media in Medias
+        /// Plays next media in Medias.
         /// </summary>
         public void Next()
         {
             Medias.Next();
         }
         /// <summary>
-        /// Play previous media
+        /// Plays previous media.
         /// </summary>
         public void Previous()
         {
             Medias.Previous();
         }
         /// <summary>
-        /// Pause the current media
+        /// Pauses the current media.
         /// </summary>
         public void Pause()
         {
@@ -499,11 +496,11 @@ namespace Vlc.DotNet.Forms
         }
 
         /// <summary>
-        /// Take snapshot
+        /// Takes snapshot.
         /// </summary>
-        /// <param name="filePath">The file path</param>
-        /// <param name="width">The width of the snapshot</param>
-        /// <param name="height">The height of the snapshot</param>
+        /// <param name="filePath">The file path.</param>
+        /// <param name="width">The width of the snapshot.</param>
+        /// <param name="height">The height of the snapshot.</param>
         public void TakeSnapshot(string filePath, uint width, uint height)
         {
             if (VlcContext.InteropManager != null &&
@@ -687,25 +684,25 @@ namespace Vlc.DotNet.Forms
         #endregion
 
         /// <summary>
-        /// Get audio properties
+        /// Gets audio properties.
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public VlcAudioProperties AudioProperties { get; private set; }
 
         /// <summary>
-        /// Get video properties
+        /// Gets video properties.
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public VlcVideoProperties VideoProperties { get; private set; }
 
         /// <summary>
-        /// Get log properties
+        /// Gets log properties.
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public VlcLogProperties LogProperties { get; private set; }
 
         /// <summary>
-        /// Get available output devices
+        /// Gets available output devices.
         /// </summary>
         [Category(CommonStrings.VLC_DOTNET_PROPERTIES_CATEGORY)]
         public VlcAudioOutputDevices AudioOutputDevices { get; private set; }

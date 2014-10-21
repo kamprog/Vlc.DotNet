@@ -103,15 +103,10 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="..\Common\Vlc.DotNet.pfx.snk">
-      <Link>Vlc.DotNet.pfx.snk</Link>
-    </None>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_BuildVersioningStyle="YearStamp.MonthStamp.DayStamp.None" BuildVersion_UpdateFileVersion="False" BuildVersion_UseGlobalSettings="False" BuildVersion_AssemblyInfoFilename="" />
+      <UserProperties BuildVersion_AssemblyInfoFilename="" BuildVersion_UseGlobalSettings="False" BuildVersion_UpdateFileVersion="False" BuildVersion_BuildVersioningStyle="YearStamp.MonthStamp.DayStamp.None" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

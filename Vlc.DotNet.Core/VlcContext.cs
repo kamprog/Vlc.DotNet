@@ -7,7 +7,7 @@ using Vlc.DotNet.Core.Medias;
 namespace Vlc.DotNet.Core
 {
     /// <summary>
-    /// The vlc context
+    /// The vlc context.
     /// </summary>
     public static class VlcContext
     {
@@ -40,58 +40,58 @@ namespace Vlc.DotNet.Core
         internal static VlcHandleManager HandleManager { get; private set; }
 
         /// <summary>
-        /// Error handling of vlc 
+        /// Vlc error handling.
         /// </summary>
         public static VlcErrorHandling ErrorHandling { get; private set; }
 
         /// <summary>
-        /// Get / Set the libvlc.dll and libvlccore.dll path 
+        /// Gets or Sets the LibVlcDLL paths.
         /// </summary>
         public static string LibVlcDllsPath { get; set; }
 
         /// <summary>
-        /// Get / Set the plugins directory for vlc
+        /// Gets or Sets the plugin directory for the VLC.
         /// </summary>
         public static string LibVlcPluginsPath { get; set; }
 
         /// <summary>
-        /// Options of the starting of Vlc
+        /// Gets the vlc startup options.
         /// </summary>
         public static VlcStartupOptions StartupOptions { get; private set; }
 
         /// <summary>
-        /// Check if VlcContext is initialized.
+        /// Checks if VlcContext is initialized.
         /// </summary>
         public static bool IsInitialized { get; private set; }
 
         /// <summary>
-        /// Get the vlc version
+        /// Gets the VLC version.
         /// </summary>
         public static Version Version
         {
             get
             {
                 if (!IsInitialized)
-                    throw new ApplicationException("Vlc must be initailized before getting his version.");
+                    throw new ApplicationException("VlcContext must be initailized before getting his version.");
                 return InteropManager != null ? InteropManager.VlcVersion : null;
             }
         }
 
         /// <summary>
-        /// Get the vlc compiler
+        /// Gets the VLC compiler.
         /// </summary>
         public static string Compiler
         {
             get
             {
                 if (!IsInitialized)
-                    throw new ApplicationException("Vlc must be initailized before getting his compiler.");
+                    throw new ApplicationException("VlcContext must be initailized before getting his compiler.");
                 return InteropManager != null ? IntPtrExtensions.ToStringAnsi(InteropManager.GetCompiler.Invoke()) : null;
             }
         }
 
         /// <summary>
-        /// Get the vlc change set
+        /// Gets the VLC ChangeSet.
         /// </summary>
         public static string ChangeSet
         {
@@ -158,7 +158,7 @@ namespace Vlc.DotNet.Core
         }
 
         /// <summary>
-        /// Close of LibVlc and VlcControls instance
+        /// Closes all usages of LibVlc and VlcContext.
         /// </summary>
         public static void CloseAll()
         {

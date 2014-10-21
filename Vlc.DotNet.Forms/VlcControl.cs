@@ -5,10 +5,13 @@ using Vlc.DotNet.Core;
 
 namespace Vlc.DotNet.Forms
 {
+    /// <summary>
+    /// The VLC player control.
+    /// </summary>
     public sealed partial class VlcControl : Control
     {
         /// <summary>
-        /// Constructor of VlcControl
+        /// VlcControl constructor.
         /// </summary>
         public VlcControl()
         {

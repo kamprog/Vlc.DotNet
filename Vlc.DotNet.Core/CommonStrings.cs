@@ -1,27 +1,27 @@
 ﻿namespace Vlc.DotNet.Core
 {
-    ///<summary>
-    /// CommonString class
-    ///</summary>
+    /// <summary>
+    /// Contains the default paths to the VLC binaries and plugins.
+    /// </summary>
     public static class CommonStrings
     {
         /// <summary>
-        /// "C:\Program Files (x86)\VideoLAN\VLC\"
+        /// The default binaries path for x64 systems - "C:\Program Files (x86)\VideoLAN\VLC\".
         /// </summary>
         public const string LIBVLC_DLLS_PATH_DEFAULT_VALUE_AMD64 = @"C:\Program Files (x86)\VideoLAN\VLC\";
 
         /// <summary>
-        /// "C:\Program Files\VideoLAN\VLC\"
+        /// The default binaries path for x86 systems - "C:\Program Files\VideoLAN\VLC\".
         /// </summary>
         public const string LIBVLC_DLLS_PATH_DEFAULT_VALUE_X86 = @"C:\Program Files\VideoLAN\VLC\";
 
         /// <summary>
-        /// "C:\Program Files (x86)\VideoLAN\VLC\plugins\"
+        /// The default plugins path for x64 systems - "C:\Program Files (x86)\VideoLAN\VLC\plugins\".
         /// </summary>
         public const string PLUGINS_PATH_DEFAULT_VALUE_AMD64 = @"C:\Program Files (x86)\VideoLAN\VLC\plugins\";
 
         /// <summary>
-        /// "C:\Program Files\VideoLAN\VLC\plugins\"
+        /// The default plugins path for x86 systems - "C:\Program Files\VideoLAN\VLC\plugins\".
         /// </summary>
         public const string PLUGINS_PATH_DEFAULT_VALUE_X86 = @"C:\Program Files\VideoLAN\VLC\plugins\";
 
