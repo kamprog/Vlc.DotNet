@@ -114,7 +114,7 @@ namespace Vlc.DotNet.Wpf
         }
         private void UnlockCallback(IntPtr opaque, IntPtr picture, ref IntPtr plane)
         {
-            GC.Collect();
+           GC.Collect(GC.MaxGeneration, GCCollectionMode.Optimized);
         }
         private void CompositionTargetRendering(object sender, EventArgs e)
         {
